@@ -1,32 +1,12 @@
 import {formatFiles, generateFiles, names, Tree} from '@nrwl/devkit';
+import {readFileSync} from "fs";
+import {indexApiJson} from "./index-api-json";
+import {getComponents} from "./get-components";
 
-const symbols = {};
-const implementers: { [interfaceName: string]: any[] } = {}
-const inputTypes = {};
+const ui5ApiJson = JSON.parse(readFileSync('./node_modules/@ui5/webcomponents/dist/api.json', 'utf8'));
 
-const typesMap = {
-  integer: 'number',
-  float: 'number',
-  double: 'number',
-  boolean: 'boolean',
-  string: 'string',
-  object: 'Record<string, any>',
-  array: 'Array<any>',
-  htmlelement: 'HTMLElement',
-  element: 'Element',
-  node: 'Node'
-}
-
-function getPropertyType(type: string): string {
-  if (symbols[type]) {
-    if (symbols[type].kind === 'class') {
-      const types = symbols[type].properties.map(p => `'${p.type}'`);
-      return types.join(' | ');
-    }
-    return symbols[type];
-  }
-  return typesMap[type.toLowerCase()] || 'any';
-}
+const {symbols, implementers} = indexApiJson(ui5ApiJson);
+const components = getComponents({symbols, implementers});
 
 const directiveImport = (ui5ClassName: Record<string, string> | string, base: string) => {
   const {className, fileName} = typeof ui5ClassName === 'string' ? names(ui5ClassName) : ui5ClassName;
@@ -37,85 +17,8 @@ const directiveImport = (ui5ClassName: Record<string, string> | string, base: st
   }
 }
 
-function getComponentDescription(symbol: any) {
-  if (symbol.tagname) {
-    const symbolImplements = [];
-    if (symbol.implements) {
-      symbol.implements.forEach((i: string) => {
-        symbolImplements.push(i)
-      });
-    }
-    return {
-      selector: symbol.tagname,
-      component: symbol.basename,
-      path: `@ui5/webcomponents/dist/${symbol.resource}`,
-      inputs: (symbol.properties || []).filter(prop => prop.visibility === 'public').map((property) => {
-        inputTypes[property.type] = true;
-        const inputNames = names(property.name);
-        return {
-          publicName: inputNames.fileName,
-          name: inputNames.propertyName,
-          type: getPropertyType(property.type),
-          defaultValue: property.defaultValue,
-        }
-      }),
-      outputs: (symbol.events || []).filter(event => event.visibility === 'public').map((event) => {
-        const eventNames = names(event.name);
-        const parameters = (event.parameters || []).reduce((acc, parameter) => {
-          acc[parameter.name] = getPropertyType(parameter.type);
-          return acc;
-        }, {});
-        return {
-          name: eventNames.propertyName,
-          publicName: eventNames.propertyName === eventNames.name ? undefined : eventNames.name,
-          data: `{
-            detail: { ${Object.keys(parameters).map(key => `'${key}': ${parameters[key]}`).join(',')} }
-          }`,
-        }
-      }),
-      slots: (symbol.slots || []).filter(slot => slot.visibility === 'public' && slot.name !== 'default').map((slot) => {
-        return {
-          name: slot.name,
-          instanceOf: (() => {
-            const interfaceName = slot.type.replace('[]', '');
-            if (!implementers[interfaceName]) {
-              return getPropertyType(interfaceName);
-            }
-            if (symbolImplements.includes(interfaceName)) {
-              return 'self';
-            }
-            return implementers[interfaceName].map((i) => getComponentDescription(i)).filter(c => c !== null);
-          })(),
-          isArray: slot.type.endsWith('[]'),
-        }
-      })
-    }
-  }
-  return null;
-}
-
 export default async function (tree: Tree, schema: any) {
-  const appJson = JSON.parse(tree.read('node_modules/@ui5/webcomponents/dist/api.json', 'utf-8'));
-  appJson.symbols.forEach((symbol) => {
-    symbols[symbol.basename] = symbol;
-    if (symbol.implements) {
-      symbol.implements.forEach((interfaceName) => {
-        if (!implementers[interfaceName]) {
-          implementers[interfaceName] = [];
-        }
-        implementers[interfaceName].push(symbol);
-      });
-    }
-  });
-  const components = [];
-  appJson.symbols.forEach((symbol) => {
-    const component = getComponentDescription(symbol);
-    if (component) {
-      components.push(component);
-    }
-  });
   const directives = [];
-
   for (const component of components) {
     const namings = names(component.component);
     const imports = [];
