@@ -109,7 +109,7 @@ export function getComponents({
   }
 
   function getInputs(symbol: SymbolObject): ComponentData['inputs'] {
-    return (symbol.properties || []).filter(prop => prop.visibility === 'public').map((property) => {
+    return symbol.properties.filter(prop => prop.visibility === 'public').map((property) => {
       inputTypes[property.type] = true;
       const inputNames = names(property.name);
       return {
@@ -122,7 +122,7 @@ export function getComponents({
   }
 
   function getOutputs(symbol: SymbolObject): ComponentData['outputs'] {
-    return (symbol.events || []).filter(event => event.visibility === 'public').map((event) => {
+    return symbol.events.filter(event => event.visibility === 'public').map((event) => {
       const eventNames = names(event.name);
       const parameters = (event.parameters || []).reduce((acc, parameter) => {
         acc[parameter.name] = getPropertyType(parameter.type, symbol.tagname, eventNames.propertyName);
@@ -138,7 +138,7 @@ export function getComponents({
   }
 
   function getSlots(symbol: SymbolObject, component: ComponentData): ComponentData['slots'] {
-    return (symbol.slots || []).filter(slot => slot.visibility === 'public' && slot.name !== 'default').map((slot) => {
+    return symbol.slots.filter(slot => slot.visibility === 'public' && slot.name !== 'default').map((slot) => {
       const interfaceName = slot.type.replace('[]', '');
       const canBeSelf = component.implements.includes(interfaceName);
       let slotComponents: any = implementers[interfaceName] || [];
@@ -166,7 +166,7 @@ export function getComponents({
       const component: ComponentData = {
         dependencies,
         formData: [],
-        implements: symbol.implements || [],
+        implements: symbol.implements,
         selector: symbol.tagname,
         componentNames: names(symbol.basename),
         path: `@ui5/webcomponents/dist/${symbol.resource}`,
