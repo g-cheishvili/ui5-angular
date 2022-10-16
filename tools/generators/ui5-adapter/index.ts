@@ -3,7 +3,8 @@ import {readFileSync, rmdirSync} from "fs";
 import {indexApiJson} from "./index-api-json";
 import {getComponents} from "./get-components";
 
-const ui5ApiJson = JSON.parse(readFileSync('./node_modules/@ui5/webcomponents/dist/api.json', 'utf8'));
+// const ui5ApiJson = JSON.parse(readFileSync('./node_modules/@ui5/webcomponents/dist/api.json', 'utf8'));
+const ui5ApiJson = JSON.parse(readFileSync('./ui5-api-mock.json', 'utf8'));
 
 const {symbols, implementers} = indexApiJson(ui5ApiJson);
 const components = getComponents({symbols, implementers});
@@ -22,8 +23,8 @@ export default async function (tree: Tree, schema: any) {
   const directives = [];
   for (const component of components) {
     const namings = component.componentNames;
-    if (component.selector === 'ui5-card') {
-      debugger;
+    if (component.formData.length > 0) {
+      console.log({formData: component.formData, name: component.selector});
     }
     component.slots.forEach(slot => {
       const tagNames = [];

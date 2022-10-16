@@ -8,7 +8,7 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "script": "nx workspace-generator ui5-adapter"
+    "script": "nx workspace-generator ui5-adapter --verbose"
   },
   "private": true,
   "dependencies": {

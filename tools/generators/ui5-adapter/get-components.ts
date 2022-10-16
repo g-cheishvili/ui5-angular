@@ -1,10 +1,11 @@
-import {RootObject} from "./index-api-json";
+import {SymbolObject} from "./index-api-json";
 import {names} from "@nrwl/devkit";
 
 interface ComponentData {
   dependencies: Array<{ path: string, className: string }>,
   selector: string,
   implements: Array<string>,
+  formData: Array<{ input: ComponentData['inputs'][number], events: ComponentData['outputs'] }>,
   componentNames: {
     name: string;
     className: string;
@@ -60,7 +61,7 @@ const objectTypeMapper = (elementTagName: string, identifier: string) => {
 export function getComponents({
                                 implementers,
                                 symbols
-                              }: { implementers: Record<string, RootObject[]>; symbols: Record<string, RootObject> }): ComponentData[] {
+                              }: { implementers: Record<string, SymbolObject[]>; symbols: Record<string, SymbolObject> }): ComponentData[] {
   const components = [];
   const inputTypes = {};
   const typesMap: Record<string, string | ((tag: string, entryName: string) => string)> = {
@@ -107,7 +108,7 @@ export function getComponents({
     return mappedType || 'any';
   }
 
-  function getInputs(symbol: RootObject): ComponentData['inputs'] {
+  function getInputs(symbol: SymbolObject): ComponentData['inputs'] {
     return (symbol.properties || []).filter(prop => prop.visibility === 'public').map((property) => {
       inputTypes[property.type] = true;
       const inputNames = names(property.name);
@@ -120,7 +121,7 @@ export function getComponents({
     })
   }
 
-  function getOutputs(symbol: RootObject): ComponentData['outputs'] {
+  function getOutputs(symbol: SymbolObject): ComponentData['outputs'] {
     return (symbol.events || []).filter(event => event.visibility === 'public').map((event) => {
       const eventNames = names(event.name);
       const parameters = (event.parameters || []).reduce((acc, parameter) => {
@@ -136,7 +137,7 @@ export function getComponents({
     });
   }
 
-  function getSlots(symbol: RootObject, component: ComponentData): ComponentData['slots'] {
+  function getSlots(symbol: SymbolObject, component: ComponentData): ComponentData['slots'] {
     return (symbol.slots || []).filter(slot => slot.visibility === 'public' && slot.name !== 'default').map((slot) => {
       const interfaceName = slot.type.replace('[]', '');
       const canBeSelf = component.implements.includes(interfaceName);
@@ -159,11 +160,12 @@ export function getComponents({
     })
   }
 
-  function getComponentDescription(symbol: RootObject): ComponentData {
+  function getComponentDescription(symbol: SymbolObject): ComponentData {
     if (symbol.tagname) {
       const dependencies: Array<{ path: string, className: string }> = [];
       const component: ComponentData = {
         dependencies,
+        formData: [],
         implements: symbol.implements || [],
         selector: symbol.tagname,
         componentNames: names(symbol.basename),
@@ -175,6 +177,17 @@ export function getComponents({
       component.inputs = getInputs(symbol);
       component.outputs = getOutputs(symbol);
       component.slots = getSlots(symbol, component);
+      if (symbol.formAssociated) {
+        for (const propertyName of symbol.formProperties) {
+          const property = symbol.properties.find(p => p.name === propertyName);
+          if (!property) {
+            console.warn(`Property ${propertyName} not found in ${symbol.basename}`);
+          }
+          const input = component.inputs.find(i => i.name === propertyName);
+          const events = component.outputs.filter(o => property?.formEvents?.includes(o.name));
+          component.formData.push({input, events});
+        }
+      }
       const getDepIdentifier = ({path, className}: { path: string, className: string }) => `${path}#${className}`;
       for (const slot of component.slots) {
         for (const supportedSlotType of slot.supportedElements) {
@@ -190,9 +203,7 @@ export function getComponents({
           }
         }
       }
-      if (dependencies.length > 0) {
-        debugger;
-      }
+
       return component
     }
     return null;

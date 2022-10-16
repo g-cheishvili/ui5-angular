@@ -10,6 +10,7 @@ interface LinkElement extends HTMLElement {
   };
   accessibleName: string;
   accessibleNameRef: string;
+  accessibleRole: string;
   design: 'Default' | 'Emphasized' | 'Subtle';
   disabled: boolean;
   href: string;
@@ -58,6 +59,15 @@ export class LinkDirective {
     return this.elementRef.nativeElement.getAttribute(
       'accessible-name-ref'
     ) as unknown as LinkElement['accessibleNameRef'];
+  }
+  @Input()
+  set accessibleRole(val: LinkElement['accessibleRole']) {
+    this.elementRef.nativeElement.accessibleRole = val;
+  }
+  get accessibleRole() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-role'
+    ) as unknown as LinkElement['accessibleRole'];
   }
   @Input()
   set design(val: LinkElement['design']) {

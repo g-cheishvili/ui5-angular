@@ -3,6 +3,7 @@ export interface Constructor {
 }
 
 export interface Property {
+  formEvents: string[];
   name: string;
   visibility: string;
   since: string;
@@ -34,7 +35,9 @@ export interface Event {
   description: string;
 }
 
-export interface RootObject {
+export interface SymbolObject {
+  formProperties: string[];
+  formAssociated: boolean;
   kind: string;
   name: string;
   basename: string;
@@ -55,15 +58,24 @@ export interface RootObject {
 
 
 type ApiJson = {
-  symbols: RootObject[]
+  symbols: SymbolObject[]
 }
 
 export function indexApiJson(ui5ApiJson: ApiJson) {
-  const symbols: Record<string, RootObject> = {};
-  const implementers: Record<string, RootObject[]> = {};
+  const symbols: Record<string, SymbolObject> = {};
+  const implementers: Record<string, SymbolObject[]> = {};
 
   ui5ApiJson.symbols.forEach((symbol) => {
     symbols[symbol.basename] = symbol;
+    symbol.formAssociated = (symbol.formAssociated as unknown as string) === 'true';
+    symbol.formProperties = (symbol.formProperties as unknown as string || '').split(',');
+    symbol.properties = symbol.properties || [];
+    symbol.events = symbol.events || [];
+    symbol.slots = symbol.slots || [];
+    symbol.implements = symbol.implements || [];
+    for (const property of symbol.properties) {
+      property.formEvents = (property.formEvents as unknown as string || '').split(',');
+    }
     if (symbol.implements) {
       symbol.implements.forEach((interfaceName) => {
         if (!implementers[interfaceName]) {
