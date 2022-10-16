@@ -1,17 +1,19 @@
 import { Directive, ElementRef <% if(inputs.length > 0) { %>, Input<% } %><% if(outputs.length > 0) { %>, Output<% } %> } from '@angular/core';
+<% for(const dep of dependencies) {%>
+import { <%- dep.className %> } from '<%- dep.path %>';<% } %>
 <% if(outputs.length > 0) { %>
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from "rxjs";<% } %>
-<% if(inputs.some((input) => input.type === 'boolean')) { %>
-import { booleanInput, BooleanInputType } from '../utils/boolean-input';
-<% } %>
-<% for(const imp of imports) { %>
-import { <%= imp.className %> } from './<%= imp.fileName %>';
-<% } %>
 import '<%- ui5ComponentPath %>';
-<% if(inputs.length > 0) { %>
-interface PropTypes {<% for(const input of inputs) { %>
-  <%= input.name %>: <% if(input.type === 'boolean') { %>BooleanInputType<% } else { %><%- input.type %><% } %>;
+interface <%- className %>Element extends HTMLElement {<% for(const input of inputs) { %>
+  <%= input.name %>: <%- input.type %>;<% } %>
+
+  // Slots<% for(const slot of slots) { %>
+  <%= slot.name %>: <%- slot.type %>;<% } %>
+}
+<% if(outputs.length > 0) { %>
+interface OutputTypes {<% for(const output of outputs) { %>
+  <%= output.name %>: <%- output.type %>;
   <% } %>
 }
 <% } %>
@@ -20,22 +22,28 @@ interface PropTypes {<% for(const input of inputs) { %>
 })
 export class <%- className %>Directive {
   <% for(const input of inputs) { %>@Input()
-  set <%- input.name %>(val: PropTypes["<%- input.name %>"]) {
-    <% if(input.type === 'boolean') { %>
-    if(booleanInput(val)) {
-      this.elementRef.nativeElement.setAttribute('<%- input.publicName %>', '');
-    } else {
-      this.elementRef.nativeElement.removeAttribute('<%- input.publicName %>');
-    }
-    <% } else { %>
-    this.elementRef.nativeElement.setAttribute('<%- input.publicName %>', val as unknown as string);
-    <% } %>
+  set <%- input.name %>(val: <%- className %>Element["<%- input.name %>"]) {
+    this.elementRef.nativeElement.<%- input.name %> = val;
   }
   get <%- input.name %>() {
-    return this.elementRef.nativeElement.getAttribute('<%- input.publicName %>') as unknown as PropTypes["<%- input.name %>"];
+    <% if(input.type === 'boolean') { %>
+      return this.elementRef.nativeElement.hasAttribute('<%- input.publicName %>');
+    <% } else { %>
+      return this.elementRef.nativeElement.getAttribute('<%- input.publicName %>') as unknown as <%- className %>Element["<%- input.name %>"];
+    <% } %>
   }<% } %>
   <% for(const output of outputs) { %>
-  @Output(<% if(output.publicName) { %>'<%- output.publicName %>'<% } %>) <%- output.name %>: Observable<<%- output.data %>> = new PlaceholderOutput();<% } %>
-  constructor(private elementRef: ElementRef<HTMLElement>) {
+  @Output(<% if(output.publicName) { %>'<%- output.publicName %>'<% } %>) <%- output.name %>: Observable<CustomEvent<OutputTypes["<%- output.name %>"]>> = new PlaceholderOutput();<% } %>
+  constructor(private elementRef: ElementRef<<%- className %>Element>) {
   }
+
+  get element(): <%- className %>Element {
+    return this.elementRef.nativeElement;
+  }
+
+  <% for(const slot of slots) { %>
+  get <%- slot.name %>(): <%- className %>Element['<%- slot.name %>'] {
+    return this.elementRef.nativeElement.<%- slot.name %>;
+  }
+  <% } %>
 }

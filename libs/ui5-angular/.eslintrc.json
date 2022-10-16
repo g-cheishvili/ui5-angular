@@ -23,6 +23,9 @@
         ],
         "@typescript-eslint/no-explicit-any": [
           "off"
+        ],
+        "@angular-eslint/no-host-metadata-property": [
+          "off"
         ]
       }
     },

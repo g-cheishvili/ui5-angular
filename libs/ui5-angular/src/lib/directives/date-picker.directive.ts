@@ -1,0 +1,138 @@
+import { Directive, ElementRef, Input, Output } from '@angular/core';
+
+import { PlaceholderOutput } from '../utils/placeholder-output';
+import { Observable } from 'rxjs';
+import '@ui5/webcomponents/dist/DatePicker.js';
+interface DatePickerElement extends HTMLElement {
+  accessibleName: string;
+  accessibleNameRef: string;
+  dateValue: any;
+  disabled: boolean;
+  hideWeekNumbers: boolean;
+  name: string;
+  placeholder: string;
+  readonly: boolean;
+  required: boolean;
+  value: string;
+  valueState: any;
+
+  // Slots
+  valueStateMessage: HTMLElement;
+}
+
+interface OutputTypes {
+  change: { value: string; valid: boolean };
+
+  input: { value: string; valid: boolean };
+}
+
+@Directive({
+  selector: 'ui5-date-picker',
+})
+export class DatePickerDirective {
+  @Input()
+  set accessibleName(val: DatePickerElement['accessibleName']) {
+    this.elementRef.nativeElement.accessibleName = val;
+  }
+  get accessibleName() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name'
+    ) as unknown as DatePickerElement['accessibleName'];
+  }
+  @Input()
+  set accessibleNameRef(val: DatePickerElement['accessibleNameRef']) {
+    this.elementRef.nativeElement.accessibleNameRef = val;
+  }
+  get accessibleNameRef() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name-ref'
+    ) as unknown as DatePickerElement['accessibleNameRef'];
+  }
+  @Input()
+  set dateValue(val: DatePickerElement['dateValue']) {
+    this.elementRef.nativeElement.dateValue = val;
+  }
+  get dateValue() {
+    return this.elementRef.nativeElement.getAttribute(
+      'date-value'
+    ) as unknown as DatePickerElement['dateValue'];
+  }
+  @Input()
+  set disabled(val: DatePickerElement['disabled']) {
+    this.elementRef.nativeElement.disabled = val;
+  }
+  get disabled() {
+    return this.elementRef.nativeElement.hasAttribute('disabled');
+  }
+  @Input()
+  set hideWeekNumbers(val: DatePickerElement['hideWeekNumbers']) {
+    this.elementRef.nativeElement.hideWeekNumbers = val;
+  }
+  get hideWeekNumbers() {
+    return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
+  }
+  @Input()
+  set name(val: DatePickerElement['name']) {
+    this.elementRef.nativeElement.name = val;
+  }
+  get name() {
+    return this.elementRef.nativeElement.getAttribute(
+      'name'
+    ) as unknown as DatePickerElement['name'];
+  }
+  @Input()
+  set placeholder(val: DatePickerElement['placeholder']) {
+    this.elementRef.nativeElement.placeholder = val;
+  }
+  get placeholder() {
+    return this.elementRef.nativeElement.getAttribute(
+      'placeholder'
+    ) as unknown as DatePickerElement['placeholder'];
+  }
+  @Input()
+  set readonly(val: DatePickerElement['readonly']) {
+    this.elementRef.nativeElement.readonly = val;
+  }
+  get readonly() {
+    return this.elementRef.nativeElement.hasAttribute('readonly');
+  }
+  @Input()
+  set required(val: DatePickerElement['required']) {
+    this.elementRef.nativeElement.required = val;
+  }
+  get required() {
+    return this.elementRef.nativeElement.hasAttribute('required');
+  }
+  @Input()
+  set value(val: DatePickerElement['value']) {
+    this.elementRef.nativeElement.value = val;
+  }
+  get value() {
+    return this.elementRef.nativeElement.getAttribute(
+      'value'
+    ) as unknown as DatePickerElement['value'];
+  }
+  @Input()
+  set valueState(val: DatePickerElement['valueState']) {
+    this.elementRef.nativeElement.valueState = val;
+  }
+  get valueState() {
+    return this.elementRef.nativeElement.getAttribute(
+      'value-state'
+    ) as unknown as DatePickerElement['valueState'];
+  }
+
+  @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
+    new PlaceholderOutput();
+  @Output() input: Observable<CustomEvent<OutputTypes['input']>> =
+    new PlaceholderOutput();
+  constructor(private elementRef: ElementRef<DatePickerElement>) {}
+
+  get element(): DatePickerElement {
+    return this.elementRef.nativeElement;
+  }
+
+  get valueStateMessage(): DatePickerElement['valueStateMessage'] {
+    return this.elementRef.nativeElement.valueStateMessage;
+  }
+}
