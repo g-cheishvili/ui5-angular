@@ -1,0 +1,20 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+<% for(const imp of imports) { %>
+import { <%= imp.className %> } from './<%= imp.fileName %>';<% } %>
+
+
+@NgModule({
+  declarations: [
+  <% for(const imp of imports) { %>
+    <%= imp.className %>,<% } %>
+  ],
+  imports: [
+    CommonModule
+  ],
+  exports: [
+  <% for(const imp of imports) { %>
+    <%= imp.className %>,<% } %>
+  ]
+})
+export class Ui5AngularModule { }

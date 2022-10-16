@@ -1,0 +1,3 @@
+<% for(const imp of imports) { %>export { <%= imp.className %> } from './lib/<%= imp.fileName %>';
+<% } %>
+export * from './lib/ui5-angular.module';

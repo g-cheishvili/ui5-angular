@@ -1,1 +1,23 @@
-<ui-angular-nx-welcome></ui-angular-nx-welcome>
+<!--<ui5-multi-combobox placeholder="Choose your countries">-->
+<!--  <ui5-mcb-item [selected]="true" text="Argentina"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Bulgaria"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Denmark"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="England"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Albania"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Morocco"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Portugal"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Germany"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Philippines"></ui5-mcb-item>-->
+<!--  <ui5-mcb-item text="Paraguay"></ui5-mcb-item>-->
+<!--</ui5-multi-combobox>-->
+<!--<ui5-calendar-->
+<!--  [hideWeekNumbers]="false"-->
+<!--&gt;-->
+<!--</ui5-calendar>-->
+<ui5-calendar #calendar hideWeekNumbers selectionMode="Multiple" (selected-dates-change)="changeHandler($event)"></ui5-calendar>
+
+<ui5-avatar>
+  <div avatar-badge>
+
+  </div>
+</ui5-avatar>

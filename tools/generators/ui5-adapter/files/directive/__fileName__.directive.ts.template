@@ -1,0 +1,41 @@
+import { Directive, ElementRef <% if(inputs.length > 0) { %>, Input<% } %><% if(outputs.length > 0) { %>, Output<% } %> } from '@angular/core';
+<% if(outputs.length > 0) { %>
+import { PlaceholderOutput } from '../utils/placeholder-output';
+import { Observable } from "rxjs";<% } %>
+<% if(inputs.some((input) => input.type === 'boolean')) { %>
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+<% } %>
+<% for(const imp of imports) { %>
+import { <%= imp.className %> } from './<%= imp.fileName %>';
+<% } %>
+import '<%- ui5ComponentPath %>';
+<% if(inputs.length > 0) { %>
+interface PropTypes {<% for(const input of inputs) { %>
+  <%= input.name %>: <% if(input.type === 'boolean') { %>BooleanInputType<% } else { %><%- input.type %><% } %>;
+  <% } %>
+}
+<% } %>
+@Directive({
+  selector: '<%- selector %>'
+})
+export class <%- className %>Directive {
+  <% for(const input of inputs) { %>@Input()
+  set <%- input.name %>(val: PropTypes["<%- input.name %>"]) {
+    <% if(input.type === 'boolean') { %>
+    if(booleanInput(val)) {
+      this.elementRef.nativeElement.setAttribute('<%- input.publicName %>', '');
+    } else {
+      this.elementRef.nativeElement.removeAttribute('<%- input.publicName %>');
+    }
+    <% } else { %>
+    this.elementRef.nativeElement.setAttribute('<%- input.publicName %>', val as unknown as string);
+    <% } %>
+  }
+  get <%- input.name %>() {
+    return this.elementRef.nativeElement.getAttribute('<%- input.publicName %>') as unknown as PropTypes["<%- input.name %>"];
+  }<% } %>
+  <% for(const output of outputs) { %>
+  @Output(<% if(output.publicName) { %>'<%- output.publicName %>'<% } %>) <%- output.name %>: Observable<<%- output.data %>> = new PlaceholderOutput();<% } %>
+  constructor(private elementRef: ElementRef<HTMLElement>) {
+  }
+}

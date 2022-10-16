@@ -1,0 +1,33 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/ui5-angular/src",
+  "prefix": "ui-angular",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/ui5-angular"],
+      "options": {
+        "project": "libs/ui5-angular/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ui5-angular/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ui5-angular/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ui5-angular/**/*.ts",
+          "libs/ui5-angular/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

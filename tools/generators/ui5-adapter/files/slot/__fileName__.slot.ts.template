@@ -1,0 +1,10 @@
+import { Directive, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '<%- selector %>'
+})
+export class <%- className %>Slot {
+  constructor(_elementRef: ElementRef<Element>) {
+    _elementRef.nativeElement.setAttribute('slot', '<%- slotName %>');
+  }
+}
