@@ -11,8 +11,11 @@ import { ButtonDirective } from './button.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/ShellBar.js';
-interface ShellBarElement extends HTMLElement {
+interface ShellBarElement {
   accessibilityRoles: Record<string, any>;
   accessibilityTexts: Record<string, any>;
   copilotDomRef: HTMLElement;
@@ -24,9 +27,9 @@ interface ShellBarElement extends HTMLElement {
   productSwitchDomRef: HTMLElement;
   profileDomRef: HTMLElement;
   secondaryTitle: string;
-  showCoPilot: boolean;
-  showNotifications: boolean;
-  showProductSwitch: boolean;
+  showCoPilot: BooleanInputType;
+  showNotifications: BooleanInputType;
+  showProductSwitch: BooleanInputType;
 
   // Slots
   logo: AvatarDirective['element'];
@@ -161,21 +164,21 @@ export class ShellBarDirective {
   }
   @Input()
   set showCoPilot(val: ShellBarElement['showCoPilot']) {
-    this.elementRef.nativeElement.showCoPilot = val;
+    this.elementRef.nativeElement.showCoPilot = booleanInput(val);
   }
   get showCoPilot() {
     return this.elementRef.nativeElement.hasAttribute('show-co-pilot');
   }
   @Input()
   set showNotifications(val: ShellBarElement['showNotifications']) {
-    this.elementRef.nativeElement.showNotifications = val;
+    this.elementRef.nativeElement.showNotifications = booleanInput(val);
   }
   get showNotifications() {
     return this.elementRef.nativeElement.hasAttribute('show-notifications');
   }
   @Input()
   set showProductSwitch(val: ShellBarElement['showProductSwitch']) {
-    this.elementRef.nativeElement.showProductSwitch = val;
+    this.elementRef.nativeElement.showProductSwitch = booleanInput(val);
   }
   get showProductSwitch() {
     return this.elementRef.nativeElement.hasAttribute('show-product-switch');
@@ -199,9 +202,9 @@ export class ShellBarDirective {
   @Output('profile-click') profileClick: Observable<
     CustomEvent<OutputTypes['profileClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ShellBarElement>) {}
+  constructor(private elementRef: ElementRef<ShellBarElement & HTMLElement>) {}
 
-  get element(): ShellBarElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

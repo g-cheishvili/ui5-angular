@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/Menu.js';
-interface MenuElement extends HTMLElement {
+interface MenuElement {
   headerText: string;
 
   // Slots
@@ -30,9 +31,9 @@ export class MenuDirective {
   @Output('item-click') itemClick: Observable<
     CustomEvent<OutputTypes['itemClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<MenuElement>) {}
+  constructor(private elementRef: ElementRef<MenuElement & HTMLElement>) {}
 
-  get element(): MenuElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

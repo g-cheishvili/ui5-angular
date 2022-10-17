@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/ColorPicker.js';
-interface ColorPickerElement extends HTMLElement {
+interface ColorPickerElement {
   color: string;
 
   // Slots
@@ -29,9 +30,11 @@ export class ColorPickerDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ColorPickerElement>) {}
+  constructor(
+    private elementRef: ElementRef<ColorPickerElement & HTMLElement>
+  ) {}
 
-  get element(): ColorPickerElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

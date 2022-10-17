@@ -4,15 +4,18 @@ import { NotificationActionDirective } from './notification-action.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
-interface NotificationListGroupItemElement extends HTMLElement {
-  collapsed: boolean;
-  showCounter: boolean;
-  busy: boolean;
+interface NotificationListGroupItemElement {
+  collapsed: BooleanInputType;
+  showCounter: BooleanInputType;
+  busy: BooleanInputType;
   busyDelay: number;
   priority: 'High' | 'Low' | 'Medium' | 'None';
-  read: boolean;
-  showClose: boolean;
+  read: BooleanInputType;
+  showClose: BooleanInputType;
   titleText: string;
 
   // Slots
@@ -31,21 +34,21 @@ interface OutputTypes {
 export class NotificationListGroupItemDirective {
   @Input()
   set collapsed(val: NotificationListGroupItemElement['collapsed']) {
-    this.elementRef.nativeElement.collapsed = val;
+    this.elementRef.nativeElement.collapsed = booleanInput(val);
   }
   get collapsed() {
     return this.elementRef.nativeElement.hasAttribute('collapsed');
   }
   @Input()
   set showCounter(val: NotificationListGroupItemElement['showCounter']) {
-    this.elementRef.nativeElement.showCounter = val;
+    this.elementRef.nativeElement.showCounter = booleanInput(val);
   }
   get showCounter() {
     return this.elementRef.nativeElement.hasAttribute('show-counter');
   }
   @Input()
   set busy(val: NotificationListGroupItemElement['busy']) {
-    this.elementRef.nativeElement.busy = val;
+    this.elementRef.nativeElement.busy = booleanInput(val);
   }
   get busy() {
     return this.elementRef.nativeElement.hasAttribute('busy');
@@ -70,14 +73,14 @@ export class NotificationListGroupItemDirective {
   }
   @Input()
   set read(val: NotificationListGroupItemElement['read']) {
-    this.elementRef.nativeElement.read = val;
+    this.elementRef.nativeElement.read = booleanInput(val);
   }
   get read() {
     return this.elementRef.nativeElement.hasAttribute('read');
   }
   @Input()
   set showClose(val: NotificationListGroupItemElement['showClose']) {
-    this.elementRef.nativeElement.showClose = val;
+    this.elementRef.nativeElement.showClose = booleanInput(val);
   }
   get showClose() {
     return this.elementRef.nativeElement.hasAttribute('show-close');
@@ -97,10 +100,12 @@ export class NotificationListGroupItemDirective {
   @Output() close: Observable<CustomEvent<OutputTypes['close']>> =
     new PlaceholderOutput();
   constructor(
-    private elementRef: ElementRef<NotificationListGroupItemElement>
+    private elementRef: ElementRef<
+      NotificationListGroupItemElement & HTMLElement
+    >
   ) {}
 
-  get element(): NotificationListGroupItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

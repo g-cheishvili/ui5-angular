@@ -2,8 +2,11 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/DateRangePicker.js';
-interface DateRangePickerElement extends HTMLElement {
+interface DateRangePickerElement {
   dateValue: any;
   dateValueUTC: any;
   delimiter: string;
@@ -11,12 +14,12 @@ interface DateRangePickerElement extends HTMLElement {
   startDateValue: any;
   accessibleName: string;
   accessibleNameRef: string;
-  disabled: boolean;
-  hideWeekNumbers: boolean;
+  disabled: BooleanInputType;
+  hideWeekNumbers: BooleanInputType;
   name: string;
   placeholder: string;
-  readonly: boolean;
-  required: boolean;
+  readonly: BooleanInputType;
+  required: BooleanInputType;
   value: string;
   valueState: any;
   formatPattern: string;
@@ -104,14 +107,14 @@ export class DateRangePickerDirective {
   }
   @Input()
   set disabled(val: DateRangePickerElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
   }
   @Input()
   set hideWeekNumbers(val: DateRangePickerElement['hideWeekNumbers']) {
-    this.elementRef.nativeElement.hideWeekNumbers = val;
+    this.elementRef.nativeElement.hideWeekNumbers = booleanInput(val);
   }
   get hideWeekNumbers() {
     return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
@@ -136,14 +139,14 @@ export class DateRangePickerDirective {
   }
   @Input()
   set readonly(val: DateRangePickerElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set required(val: DateRangePickerElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
@@ -218,9 +221,11 @@ export class DateRangePickerDirective {
     new PlaceholderOutput();
   @Output() input: Observable<CustomEvent<OutputTypes['input']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<DateRangePickerElement>) {}
+  constructor(
+    private elementRef: ElementRef<DateRangePickerElement & HTMLElement>
+  ) {}
 
-  get element(): DateRangePickerElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

@@ -2,8 +2,11 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Link.js';
-interface LinkElement extends HTMLElement {
+interface LinkElement {
   accessibilityAttributes: {
     expanded?: boolean;
     hasPopup?: 'Dialog' | 'Grid' | 'Listbox' | 'Menu' | 'Tree';
@@ -12,7 +15,7 @@ interface LinkElement extends HTMLElement {
   accessibleNameRef: string;
   accessibleRole: string;
   design: 'Default' | 'Emphasized' | 'Subtle';
-  disabled: boolean;
+  disabled: BooleanInputType;
   href: string;
   target: string;
   wrappingType: 'None' | 'Normal';
@@ -80,7 +83,7 @@ export class LinkDirective {
   }
   @Input()
   set disabled(val: LinkElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -115,9 +118,9 @@ export class LinkDirective {
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<LinkElement>) {}
+  constructor(private elementRef: ElementRef<LinkElement & HTMLElement>) {}
 
-  get element(): LinkElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

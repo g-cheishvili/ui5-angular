@@ -2,16 +2,19 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/CheckBox.js';
-interface CheckBoxElement extends HTMLElement {
+interface CheckBoxElement {
   accessibleName: string;
   accessibleNameRef: string;
-  checked: boolean;
-  disabled: boolean;
-  indeterminate: boolean;
+  checked: BooleanInputType;
+  disabled: BooleanInputType;
+  indeterminate: BooleanInputType;
   name: string;
-  readonly: boolean;
-  required: boolean;
+  readonly: BooleanInputType;
+  required: BooleanInputType;
   text: string;
   valueState: any;
   wrappingType: 'None' | 'Normal';
@@ -47,21 +50,21 @@ export class CheckBoxDirective {
   }
   @Input()
   set checked(val: CheckBoxElement['checked']) {
-    this.elementRef.nativeElement.checked = val;
+    this.elementRef.nativeElement.checked = booleanInput(val);
   }
   get checked() {
     return this.elementRef.nativeElement.hasAttribute('checked');
   }
   @Input()
   set disabled(val: CheckBoxElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
   }
   @Input()
   set indeterminate(val: CheckBoxElement['indeterminate']) {
-    this.elementRef.nativeElement.indeterminate = val;
+    this.elementRef.nativeElement.indeterminate = booleanInput(val);
   }
   get indeterminate() {
     return this.elementRef.nativeElement.hasAttribute('indeterminate');
@@ -77,14 +80,14 @@ export class CheckBoxDirective {
   }
   @Input()
   set readonly(val: CheckBoxElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set required(val: CheckBoxElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
@@ -119,9 +122,9 @@ export class CheckBoxDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<CheckBoxElement>) {}
+  constructor(private elementRef: ElementRef<CheckBoxElement & HTMLElement>) {}
 
-  get element(): CheckBoxElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

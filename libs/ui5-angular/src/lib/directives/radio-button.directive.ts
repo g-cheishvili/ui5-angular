@@ -2,14 +2,17 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/RadioButton.js';
-interface RadioButtonElement extends HTMLElement {
+interface RadioButtonElement {
   accessibleName: string;
   accessibleNameRef: string;
-  checked: boolean;
-  disabled: boolean;
+  checked: BooleanInputType;
+  disabled: BooleanInputType;
   name: string;
-  readonly: boolean;
+  readonly: BooleanInputType;
   text: string;
   value: string;
   valueState: any;
@@ -46,14 +49,14 @@ export class RadioButtonDirective {
   }
   @Input()
   set checked(val: RadioButtonElement['checked']) {
-    this.elementRef.nativeElement.checked = val;
+    this.elementRef.nativeElement.checked = booleanInput(val);
   }
   get checked() {
     return this.elementRef.nativeElement.hasAttribute('checked');
   }
   @Input()
   set disabled(val: RadioButtonElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -69,7 +72,7 @@ export class RadioButtonDirective {
   }
   @Input()
   set readonly(val: RadioButtonElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
@@ -113,9 +116,11 @@ export class RadioButtonDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<RadioButtonElement>) {}
+  constructor(
+    private elementRef: ElementRef<RadioButtonElement & HTMLElement>
+  ) {}
 
-  get element(): RadioButtonElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

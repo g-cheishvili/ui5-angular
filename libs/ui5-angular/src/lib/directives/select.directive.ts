@@ -2,13 +2,16 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Select.js';
-interface SelectElement extends HTMLElement {
+interface SelectElement {
   accessibleName: string;
   accessibleNameRef: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   name: string;
-  required: boolean;
+  required: BooleanInputType;
   selectedOption: any;
   valueState: any;
 
@@ -44,7 +47,7 @@ export class SelectDirective {
   }
   @Input()
   set disabled(val: SelectElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -60,7 +63,7 @@ export class SelectDirective {
   }
   @Input()
   set required(val: SelectElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
@@ -86,9 +89,9 @@ export class SelectDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<SelectElement>) {}
+  constructor(private elementRef: ElementRef<SelectElement & HTMLElement>) {}
 
-  get element(): SelectElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

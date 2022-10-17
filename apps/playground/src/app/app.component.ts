@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import '@ui5/webcomponents/dist/Calendar.js';
+import {MultiComboBoxDirective} from "ui5-angular";
 
 @Component({
   selector: 'ui-angular-root',
@@ -8,8 +9,11 @@ import '@ui5/webcomponents/dist/Calendar.js';
 })
 export class AppComponent {
   title = 'playground';
+  @ViewChild(MultiComboBoxDirective)
+  multiComboBox!: MultiComboBoxDirective;
+  someInputVal = 'initial value';
 
-  changeHandler($event: { detail: { values: Array<any>; dates: Array<any> } }) {
-    console.log($event.detail)
+  changeHandler($event: string) {
+    console.log($event)
   }
 }

@@ -2,8 +2,11 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/SplitButton.js';
-interface SplitButtonElement extends HTMLElement {
+interface SplitButtonElement {
   accessibleName: string;
   activeIcon: string;
   design:
@@ -13,7 +16,7 @@ interface SplitButtonElement extends HTMLElement {
     | 'Negative'
     | 'Positive'
     | 'Transparent';
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
 
   // Slots
@@ -58,7 +61,7 @@ export class SplitButtonDirective {
   }
   @Input()
   set disabled(val: SplitButtonElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -78,9 +81,11 @@ export class SplitButtonDirective {
   > = new PlaceholderOutput();
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<SplitButtonElement>) {}
+  constructor(
+    private elementRef: ElementRef<SplitButtonElement & HTMLElement>
+  ) {}
 
-  get element(): SplitButtonElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

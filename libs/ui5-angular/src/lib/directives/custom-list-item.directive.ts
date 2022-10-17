@@ -2,11 +2,14 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/CustomListItem.js';
-interface CustomListItemElement extends HTMLElement {
+interface CustomListItemElement {
   accessibleName: string;
   type: 'Active' | 'Detail' | 'Inactive';
-  selected: boolean;
+  selected: BooleanInputType;
 
   // Slots
 }
@@ -39,7 +42,7 @@ export class CustomListItemDirective {
   }
   @Input()
   set selected(val: CustomListItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -48,9 +51,11 @@ export class CustomListItemDirective {
   @Output('detail-click') detailClick: Observable<
     CustomEvent<OutputTypes['detailClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<CustomListItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<CustomListItemElement & HTMLElement>
+  ) {}
 
-  get element(): CustomListItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

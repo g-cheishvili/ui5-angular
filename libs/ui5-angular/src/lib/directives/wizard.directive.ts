@@ -2,8 +2,9 @@ import { Directive, ElementRef, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents-fiori/dist/Wizard.js';
-interface WizardElement extends HTMLElement {
+interface WizardElement {
   // Slots
 }
 
@@ -22,9 +23,9 @@ export class WizardDirective {
   @Output('step-change') stepChange: Observable<
     CustomEvent<OutputTypes['stepChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<WizardElement>) {}
+  constructor(private elementRef: ElementRef<WizardElement & HTMLElement>) {}
 
-  get element(): WizardElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

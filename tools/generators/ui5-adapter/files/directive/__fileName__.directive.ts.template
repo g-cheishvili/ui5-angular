@@ -4,9 +4,12 @@ import { <%- dep.className %> } from '<%- dep.path %>';<% } %>
 <% if(outputs.length > 0) { %>
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from "rxjs";<% } %>
+<% if(inputs.some((input) => input.type === 'boolean')) { %>
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+<% } %>
 import '<%- ui5ComponentPath %>';
-interface <%- className %>Element extends HTMLElement {<% for(const input of inputs) { %>
-  <%= input.name %>: <%- input.type %>;<% } %>
+interface <%- className %>Element {<% for(const input of inputs) { %>
+  <%= input.name %>: <% if(input.type === 'boolean') { %>BooleanInputType<% } else { %><%- input.type %><% } %>;<% } %>
 
   // Slots<% for(const slot of slots) { %>
   <%= slot.name %>: <%- slot.type %>;<% } %>
@@ -22,8 +25,9 @@ interface OutputTypes {<% for(const output of outputs) { %>
 })
 export class <%- className %>Directive {
   <% for(const input of inputs) { %>@Input()
-  set <%- input.name %>(val: <%- className %>Element["<%- input.name %>"]) {
-    this.elementRef.nativeElement.<%- input.name %> = val;
+  set <%- input.name %>(val: <%- className %>Element["<%- input.name %>"]) { <% if(input.type === 'boolean') { %>
+    this.elementRef.nativeElement.<%- input.name %> = booleanInput(val);<% } else { %>
+    this.elementRef.nativeElement.<%- input.name %> = val;<% } %>
   }
   get <%- input.name %>() {
     <% if(input.type === 'boolean') { %>
@@ -34,10 +38,10 @@ export class <%- className %>Directive {
   }<% } %>
   <% for(const output of outputs) { %>
   @Output(<% if(output.publicName) { %>'<%- output.publicName %>'<% } %>) <%- output.name %>: Observable<CustomEvent<OutputTypes["<%- output.name %>"]>> = new PlaceholderOutput();<% } %>
-  constructor(private elementRef: ElementRef<<%- className %>Element>) {
+  constructor(private elementRef: ElementRef<<%- className %>Element & HTMLElement>) {
   }
 
-  get element(): <%- className %>Element {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

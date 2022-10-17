@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/SuggestionGroupItem.js';
-interface SuggestionGroupItemElement extends HTMLElement {
+interface SuggestionGroupItemElement {
   text: string;
 
   // Slots
@@ -21,9 +21,11 @@ export class SuggestionGroupItemDirective {
     ) as unknown as SuggestionGroupItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<SuggestionGroupItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<SuggestionGroupItemElement & HTMLElement>
+  ) {}
 
-  get element(): SuggestionGroupItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

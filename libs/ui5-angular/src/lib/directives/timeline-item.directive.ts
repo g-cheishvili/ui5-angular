@@ -2,11 +2,14 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/TimelineItem.js';
-interface TimelineItemElement extends HTMLElement {
+interface TimelineItemElement {
   icon: string;
   name: string;
-  nameClickable: boolean;
+  nameClickable: BooleanInputType;
   subtitleText: string;
   titleText: string;
 
@@ -41,7 +44,7 @@ export class TimelineItemDirective {
   }
   @Input()
   set nameClickable(val: TimelineItemElement['nameClickable']) {
-    this.elementRef.nativeElement.nameClickable = val;
+    this.elementRef.nativeElement.nameClickable = booleanInput(val);
   }
   get nameClickable() {
     return this.elementRef.nativeElement.hasAttribute('name-clickable');
@@ -68,9 +71,11 @@ export class TimelineItemDirective {
   @Output('name-click') nameClick: Observable<
     CustomEvent<OutputTypes['nameClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TimelineItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<TimelineItemElement & HTMLElement>
+  ) {}
 
-  get element(): TimelineItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

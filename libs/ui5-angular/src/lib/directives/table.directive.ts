@@ -4,19 +4,22 @@ import { TableColumnDirective } from './table-column.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Table.js';
-interface TableElement extends HTMLElement {
+interface TableElement {
   accessibleName: string;
   accessibleNameRef: string;
-  busy: boolean;
+  busy: BooleanInputType;
   busyDelay: number;
   growing: 'Button' | 'None' | 'Scroll';
   growingButtonSubtext: string;
   growingButtonText: string;
-  hideNoData: boolean;
+  hideNoData: BooleanInputType;
   mode: 'MultiSelect' | 'None' | 'SingleSelect';
   noDataText: string;
-  stickyColumnHeader: boolean;
+  stickyColumnHeader: BooleanInputType;
 
   // Slots
   columns: Array<TableColumnDirective['element']>;
@@ -59,7 +62,7 @@ export class TableDirective {
   }
   @Input()
   set busy(val: TableElement['busy']) {
-    this.elementRef.nativeElement.busy = val;
+    this.elementRef.nativeElement.busy = booleanInput(val);
   }
   get busy() {
     return this.elementRef.nativeElement.hasAttribute('busy');
@@ -102,7 +105,7 @@ export class TableDirective {
   }
   @Input()
   set hideNoData(val: TableElement['hideNoData']) {
-    this.elementRef.nativeElement.hideNoData = val;
+    this.elementRef.nativeElement.hideNoData = booleanInput(val);
   }
   get hideNoData() {
     return this.elementRef.nativeElement.hasAttribute('hide-no-data');
@@ -127,7 +130,7 @@ export class TableDirective {
   }
   @Input()
   set stickyColumnHeader(val: TableElement['stickyColumnHeader']) {
-    this.elementRef.nativeElement.stickyColumnHeader = val;
+    this.elementRef.nativeElement.stickyColumnHeader = booleanInput(val);
   }
   get stickyColumnHeader() {
     return this.elementRef.nativeElement.hasAttribute('sticky-column-header');
@@ -145,9 +148,9 @@ export class TableDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TableElement>) {}
+  constructor(private elementRef: ElementRef<TableElement & HTMLElement>) {}
 
-  get element(): TableElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

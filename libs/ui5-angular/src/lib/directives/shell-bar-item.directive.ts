@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents-fiori/dist/ShellBarItem.js';
-interface ShellBarItemElement extends HTMLElement {
+interface ShellBarItemElement {
   count: string;
   icon: string;
   text: string;
@@ -49,9 +50,11 @@ export class ShellBarItemDirective {
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ShellBarItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<ShellBarItemElement & HTMLElement>
+  ) {}
 
-  get element(): ShellBarItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

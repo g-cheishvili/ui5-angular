@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/BreadcrumbsItem.js';
-interface BreadcrumbsItemElement extends HTMLElement {
+interface BreadcrumbsItemElement {
   accessibleName: string;
   href: string;
   target: string;
@@ -41,9 +41,11 @@ export class BreadcrumbsItemDirective {
     ) as unknown as BreadcrumbsItemElement['target'];
   }
 
-  constructor(private elementRef: ElementRef<BreadcrumbsItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<BreadcrumbsItemElement & HTMLElement>
+  ) {}
 
-  get element(): BreadcrumbsItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

@@ -9,7 +9,6 @@ export function indexApiJson() {
     readFileSync('./ui5-fiori-api-mock.json', 'utf8')
   ]).reduce((acc, next: SymbolObject) => {
     const packageName = ((spl) => spl[3])(next.name.split('.'));
-
     next.resource = `@ui5/webcomponents${packageName === 'fiori' ? '-fiori' : ''}/dist/${next.resource}`;
     acc[next.basename] = next;
     return acc;
@@ -26,9 +25,6 @@ export function indexApiJson() {
     symbol.events = symbol.events || [];
     symbol.slots = symbol.slots || [];
     symbol.implements = symbol.implements || [];
-    if (symbol.tagname === 'ui5-bar') {
-      debugger;
-    }
     for (const property of symbol.properties) {
       property.formEvents = ((typeof property.formEvents === 'string' ? [property.formEvents] : property.formEvents) || []).filter(Boolean);
     }

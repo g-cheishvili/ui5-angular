@@ -1,12 +1,14 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/SideNavigationItem.js';
-interface SideNavigationItemElement extends HTMLElement {
-  expanded: boolean;
+interface SideNavigationItemElement {
+  expanded: BooleanInputType;
   icon: string;
-  selected: boolean;
+  selected: BooleanInputType;
   text: string;
-  wholeItemToggleable: boolean;
+  wholeItemToggleable: BooleanInputType;
 
   // Slots
 }
@@ -17,7 +19,7 @@ interface SideNavigationItemElement extends HTMLElement {
 export class SideNavigationItemDirective {
   @Input()
   set expanded(val: SideNavigationItemElement['expanded']) {
-    this.elementRef.nativeElement.expanded = val;
+    this.elementRef.nativeElement.expanded = booleanInput(val);
   }
   get expanded() {
     return this.elementRef.nativeElement.hasAttribute('expanded');
@@ -33,7 +35,7 @@ export class SideNavigationItemDirective {
   }
   @Input()
   set selected(val: SideNavigationItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -51,15 +53,17 @@ export class SideNavigationItemDirective {
   set wholeItemToggleable(
     val: SideNavigationItemElement['wholeItemToggleable']
   ) {
-    this.elementRef.nativeElement.wholeItemToggleable = val;
+    this.elementRef.nativeElement.wholeItemToggleable = booleanInput(val);
   }
   get wholeItemToggleable() {
     return this.elementRef.nativeElement.hasAttribute('whole-item-toggleable');
   }
 
-  constructor(private elementRef: ElementRef<SideNavigationItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<SideNavigationItemElement & HTMLElement>
+  ) {}
 
-  get element(): SideNavigationItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

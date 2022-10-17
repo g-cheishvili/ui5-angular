@@ -2,8 +2,11 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
-interface SegmentedButtonItemElement extends HTMLElement {
+interface SegmentedButtonItemElement {
   design:
     | 'Attention'
     | 'Default'
@@ -11,13 +14,13 @@ interface SegmentedButtonItemElement extends HTMLElement {
     | 'Negative'
     | 'Positive'
     | 'Transparent';
-  iconEnd: boolean;
-  submits: boolean;
-  pressed: boolean;
+  iconEnd: BooleanInputType;
+  submits: BooleanInputType;
+  pressed: BooleanInputType;
   accessibilityAttributes: Record<string, any>;
   accessibleName: string;
   accessibleNameRef: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
   tooltip: string;
 
@@ -43,21 +46,21 @@ export class SegmentedButtonItemDirective {
   }
   @Input()
   set iconEnd(val: SegmentedButtonItemElement['iconEnd']) {
-    this.elementRef.nativeElement.iconEnd = val;
+    this.elementRef.nativeElement.iconEnd = booleanInput(val);
   }
   get iconEnd() {
     return this.elementRef.nativeElement.hasAttribute('icon-end');
   }
   @Input()
   set submits(val: SegmentedButtonItemElement['submits']) {
-    this.elementRef.nativeElement.submits = val;
+    this.elementRef.nativeElement.submits = booleanInput(val);
   }
   get submits() {
     return this.elementRef.nativeElement.hasAttribute('submits');
   }
   @Input()
   set pressed(val: SegmentedButtonItemElement['pressed']) {
-    this.elementRef.nativeElement.pressed = val;
+    this.elementRef.nativeElement.pressed = booleanInput(val);
   }
   get pressed() {
     return this.elementRef.nativeElement.hasAttribute('pressed');
@@ -93,7 +96,7 @@ export class SegmentedButtonItemDirective {
   }
   @Input()
   set disabled(val: SegmentedButtonItemElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -119,9 +122,11 @@ export class SegmentedButtonItemDirective {
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<SegmentedButtonItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<SegmentedButtonItemElement & HTMLElement>
+  ) {}
 
-  get element(): SegmentedButtonItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

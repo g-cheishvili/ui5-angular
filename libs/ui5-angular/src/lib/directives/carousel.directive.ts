@@ -2,12 +2,15 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Carousel.js';
-interface CarouselElement extends HTMLElement {
+interface CarouselElement {
   arrowsPlacement: 'Content' | 'Navigation';
-  cyclic: boolean;
-  hideNavigationArrows: boolean;
-  hidePageIndicator: boolean;
+  cyclic: BooleanInputType;
+  hideNavigationArrows: BooleanInputType;
+  hidePageIndicator: BooleanInputType;
   itemsPerPageL: number;
   itemsPerPageM: number;
   itemsPerPageS: number;
@@ -34,21 +37,21 @@ export class CarouselDirective {
   }
   @Input()
   set cyclic(val: CarouselElement['cyclic']) {
-    this.elementRef.nativeElement.cyclic = val;
+    this.elementRef.nativeElement.cyclic = booleanInput(val);
   }
   get cyclic() {
     return this.elementRef.nativeElement.hasAttribute('cyclic');
   }
   @Input()
   set hideNavigationArrows(val: CarouselElement['hideNavigationArrows']) {
-    this.elementRef.nativeElement.hideNavigationArrows = val;
+    this.elementRef.nativeElement.hideNavigationArrows = booleanInput(val);
   }
   get hideNavigationArrows() {
     return this.elementRef.nativeElement.hasAttribute('hide-navigation-arrows');
   }
   @Input()
   set hidePageIndicator(val: CarouselElement['hidePageIndicator']) {
-    this.elementRef.nativeElement.hidePageIndicator = val;
+    this.elementRef.nativeElement.hidePageIndicator = booleanInput(val);
   }
   get hidePageIndicator() {
     return this.elementRef.nativeElement.hasAttribute('hide-page-indicator');
@@ -83,9 +86,9 @@ export class CarouselDirective {
 
   @Output() navigate: Observable<CustomEvent<OutputTypes['navigate']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<CarouselElement>) {}
+  constructor(private elementRef: ElementRef<CarouselElement & HTMLElement>) {}
 
-  get element(): CarouselElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

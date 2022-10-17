@@ -2,9 +2,12 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/DayPicker.js';
-interface DayPickerElement extends HTMLElement {
-  hideWeekNumbers: boolean;
+interface DayPickerElement {
+  hideWeekNumbers: BooleanInputType;
   selectedDates: Array<any>;
   selectionMode: 'Multiple' | 'Range' | 'Single';
   formatPattern: string;
@@ -28,7 +31,7 @@ interface OutputTypes {
 export class DayPickerDirective {
   @Input()
   set hideWeekNumbers(val: DayPickerElement['hideWeekNumbers']) {
-    this.elementRef.nativeElement.hideWeekNumbers = val;
+    this.elementRef.nativeElement.hideWeekNumbers = booleanInput(val);
   }
   get hideWeekNumbers() {
     return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
@@ -101,9 +104,9 @@ export class DayPickerDirective {
     new PlaceholderOutput();
   @Output() navigate: Observable<CustomEvent<OutputTypes['navigate']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<DayPickerElement>) {}
+  constructor(private elementRef: ElementRef<DayPickerElement & HTMLElement>) {}
 
-  get element(): DayPickerElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

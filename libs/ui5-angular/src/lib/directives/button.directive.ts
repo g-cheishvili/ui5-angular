@@ -2,8 +2,11 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Button.js';
-interface ButtonElement extends HTMLElement {
+interface ButtonElement {
   accessibilityAttributes: {
     expanded?: boolean;
     hasPopup?: 'Dialog' | 'Grid' | 'Listbox' | 'Menu' | 'Tree';
@@ -18,10 +21,10 @@ interface ButtonElement extends HTMLElement {
     | 'Negative'
     | 'Positive'
     | 'Transparent';
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
-  iconEnd: boolean;
-  submits: boolean;
+  iconEnd: BooleanInputType;
+  submits: BooleanInputType;
   tooltip: string;
 
   // Slots
@@ -73,7 +76,7 @@ export class ButtonDirective {
   }
   @Input()
   set disabled(val: ButtonElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -89,14 +92,14 @@ export class ButtonDirective {
   }
   @Input()
   set iconEnd(val: ButtonElement['iconEnd']) {
-    this.elementRef.nativeElement.iconEnd = val;
+    this.elementRef.nativeElement.iconEnd = booleanInput(val);
   }
   get iconEnd() {
     return this.elementRef.nativeElement.hasAttribute('icon-end');
   }
   @Input()
   set submits(val: ButtonElement['submits']) {
-    this.elementRef.nativeElement.submits = val;
+    this.elementRef.nativeElement.submits = booleanInput(val);
   }
   get submits() {
     return this.elementRef.nativeElement.hasAttribute('submits');
@@ -113,9 +116,9 @@ export class ButtonDirective {
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ButtonElement>) {}
+  constructor(private elementRef: ElementRef<ButtonElement & HTMLElement>) {}
 
-  get element(): ButtonElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

@@ -5,9 +5,12 @@ import { SortItemDirective } from './sort-item.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/ViewSettingsDialog.js';
-interface ViewSettingsDialogElement extends HTMLElement {
-  sortDescending: boolean;
+interface ViewSettingsDialogElement {
+  sortDescending: BooleanInputType;
 
   // Slots
   filterItems: Array<FilterItemDirective['element']>;
@@ -40,7 +43,7 @@ interface OutputTypes {
 export class ViewSettingsDialogDirective {
   @Input()
   set sortDescending(val: ViewSettingsDialogElement['sortDescending']) {
-    this.elementRef.nativeElement.sortDescending = val;
+    this.elementRef.nativeElement.sortDescending = booleanInput(val);
   }
   get sortDescending() {
     return this.elementRef.nativeElement.hasAttribute('sort-descending');
@@ -53,9 +56,11 @@ export class ViewSettingsDialogDirective {
     new PlaceholderOutput();
   @Output() confirm: Observable<CustomEvent<OutputTypes['confirm']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ViewSettingsDialogElement>) {}
+  constructor(
+    private elementRef: ElementRef<ViewSettingsDialogElement & HTMLElement>
+  ) {}
 
-  get element(): ViewSettingsDialogElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

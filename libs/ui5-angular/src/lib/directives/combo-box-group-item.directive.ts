@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/ComboBoxGroupItem.js';
-interface ComboBoxGroupItemElement extends HTMLElement {
+interface ComboBoxGroupItemElement {
   text: string;
 
   // Slots
@@ -21,9 +21,11 @@ export class ComboBoxGroupItemDirective {
     ) as unknown as ComboBoxGroupItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<ComboBoxGroupItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<ComboBoxGroupItemElement & HTMLElement>
+  ) {}
 
-  get element(): ComboBoxGroupItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

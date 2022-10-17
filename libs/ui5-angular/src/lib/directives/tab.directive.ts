@@ -2,13 +2,15 @@ import { Directive, ElementRef, Input } from '@angular/core';
 
 import { TabSeparatorDirective } from './tab-separator.directive';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Tab.js';
-interface TabElement extends HTMLElement {
+interface TabElement {
   additionalText: string;
   design: 'Critical' | 'Default' | 'Negative' | 'Neutral' | 'Positive';
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
-  selected: boolean;
+  selected: BooleanInputType;
   text: string;
 
   // Slots
@@ -39,7 +41,7 @@ export class TabDirective {
   }
   @Input()
   set disabled(val: TabElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -55,7 +57,7 @@ export class TabDirective {
   }
   @Input()
   set selected(val: TabElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -70,9 +72,9 @@ export class TabDirective {
     ) as unknown as TabElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<TabElement>) {}
+  constructor(private elementRef: ElementRef<TabElement & HTMLElement>) {}
 
-  get element(): TabElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

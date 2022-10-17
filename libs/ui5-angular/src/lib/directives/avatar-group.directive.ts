@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/AvatarGroup.js';
-interface AvatarGroupElement extends HTMLElement {
+interface AvatarGroupElement {
   colorScheme: Array<
     | 'Accent1'
     | 'Accent10'
@@ -66,9 +67,11 @@ export class AvatarGroupDirective {
     new PlaceholderOutput();
   @Output() overflow: Observable<CustomEvent<OutputTypes['overflow']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<AvatarGroupElement>) {}
+  constructor(
+    private elementRef: ElementRef<AvatarGroupElement & HTMLElement>
+  ) {}
 
-  get element(): AvatarGroupElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

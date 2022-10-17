@@ -1,8 +1,10 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/FilterItemOption.js';
-interface FilterItemOptionElement extends HTMLElement {
-  selected: boolean;
+interface FilterItemOptionElement {
+  selected: BooleanInputType;
   text: string;
 
   // Slots
@@ -14,7 +16,7 @@ interface FilterItemOptionElement extends HTMLElement {
 export class FilterItemOptionDirective {
   @Input()
   set selected(val: FilterItemOptionElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -29,9 +31,11 @@ export class FilterItemOptionDirective {
     ) as unknown as FilterItemOptionElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<FilterItemOptionElement>) {}
+  constructor(
+    private elementRef: ElementRef<FilterItemOptionElement & HTMLElement>
+  ) {}
 
-  get element(): FilterItemOptionElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

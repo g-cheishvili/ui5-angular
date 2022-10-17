@@ -2,17 +2,20 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/RangeSlider.js';
-interface RangeSliderElement extends HTMLElement {
+interface RangeSliderElement {
   endValue: number;
   startValue: number;
   accessibleName: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   labelInterval: number;
   max: number;
   min: number;
-  showTickmarks: boolean;
-  showTooltip: boolean;
+  showTickmarks: BooleanInputType;
+  showTooltip: BooleanInputType;
   step: number;
 
   // Slots
@@ -57,7 +60,7 @@ export class RangeSliderDirective {
   }
   @Input()
   set disabled(val: RangeSliderElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -91,14 +94,14 @@ export class RangeSliderDirective {
   }
   @Input()
   set showTickmarks(val: RangeSliderElement['showTickmarks']) {
-    this.elementRef.nativeElement.showTickmarks = val;
+    this.elementRef.nativeElement.showTickmarks = booleanInput(val);
   }
   get showTickmarks() {
     return this.elementRef.nativeElement.hasAttribute('show-tickmarks');
   }
   @Input()
   set showTooltip(val: RangeSliderElement['showTooltip']) {
-    this.elementRef.nativeElement.showTooltip = val;
+    this.elementRef.nativeElement.showTooltip = booleanInput(val);
   }
   get showTooltip() {
     return this.elementRef.nativeElement.hasAttribute('show-tooltip');
@@ -117,9 +120,11 @@ export class RangeSliderDirective {
     new PlaceholderOutput();
   @Output() input: Observable<CustomEvent<OutputTypes['input']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<RangeSliderElement>) {}
+  constructor(
+    private elementRef: ElementRef<RangeSliderElement & HTMLElement>
+  ) {}
 
-  get element(): RangeSliderElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

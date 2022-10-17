@@ -5,14 +5,17 @@ import { NotificationActionDirective } from './notification-action.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
-interface NotificationListItemElement extends HTMLElement {
+interface NotificationListItemElement {
   wrappingType: 'None' | 'Normal';
-  busy: boolean;
+  busy: BooleanInputType;
   busyDelay: number;
   priority: 'High' | 'Low' | 'Medium' | 'None';
-  read: boolean;
-  showClose: boolean;
+  read: BooleanInputType;
+  showClose: BooleanInputType;
   titleText: string;
 
   // Slots
@@ -40,7 +43,7 @@ export class NotificationListItemDirective {
   }
   @Input()
   set busy(val: NotificationListItemElement['busy']) {
-    this.elementRef.nativeElement.busy = val;
+    this.elementRef.nativeElement.busy = booleanInput(val);
   }
   get busy() {
     return this.elementRef.nativeElement.hasAttribute('busy');
@@ -65,14 +68,14 @@ export class NotificationListItemDirective {
   }
   @Input()
   set read(val: NotificationListItemElement['read']) {
-    this.elementRef.nativeElement.read = val;
+    this.elementRef.nativeElement.read = booleanInput(val);
   }
   get read() {
     return this.elementRef.nativeElement.hasAttribute('read');
   }
   @Input()
   set showClose(val: NotificationListItemElement['showClose']) {
-    this.elementRef.nativeElement.showClose = val;
+    this.elementRef.nativeElement.showClose = booleanInput(val);
   }
   get showClose() {
     return this.elementRef.nativeElement.hasAttribute('show-close');
@@ -89,9 +92,11 @@ export class NotificationListItemDirective {
 
   @Output() close: Observable<CustomEvent<OutputTypes['close']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<NotificationListItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<NotificationListItemElement & HTMLElement>
+  ) {}
 
-  get element(): NotificationListItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/ComboBoxItem.js';
-interface ComboBoxItemElement extends HTMLElement {
+interface ComboBoxItemElement {
   additionalText: string;
   text: string;
 
@@ -31,9 +31,11 @@ export class ComboBoxItemDirective {
     ) as unknown as ComboBoxItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<ComboBoxItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<ComboBoxItemElement & HTMLElement>
+  ) {}
 
-  get element(): ComboBoxItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

@@ -1,7 +1,7 @@
 import { Directive, ElementRef } from '@angular/core';
 
 import '@ui5/webcomponents/dist/TableGroupRow.js';
-interface TableGroupRowElement extends HTMLElement {
+interface TableGroupRowElement {
   // Slots
 }
 
@@ -9,9 +9,11 @@ interface TableGroupRowElement extends HTMLElement {
   selector: 'ui5-table-group-row',
 })
 export class TableGroupRowDirective {
-  constructor(private elementRef: ElementRef<TableGroupRowElement>) {}
+  constructor(
+    private elementRef: ElementRef<TableGroupRowElement & HTMLElement>
+  ) {}
 
-  get element(): TableGroupRowElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

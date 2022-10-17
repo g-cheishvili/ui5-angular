@@ -2,17 +2,20 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/List.js';
-interface ListElement extends HTMLElement {
+interface ListElement {
   accessibleName: string;
   accessibleNameRef: string;
   accessibleRole: string;
-  busy: boolean;
+  busy: BooleanInputType;
   busyDelay: number;
   footerText: string;
   growing: 'Button' | 'None' | 'Scroll';
   headerText: string;
-  indent: boolean;
+  indent: BooleanInputType;
   mode:
     | 'Delete'
     | 'MultiSelect'
@@ -78,7 +81,7 @@ export class ListDirective {
   }
   @Input()
   set busy(val: ListElement['busy']) {
-    this.elementRef.nativeElement.busy = val;
+    this.elementRef.nativeElement.busy = booleanInput(val);
   }
   get busy() {
     return this.elementRef.nativeElement.hasAttribute('busy');
@@ -121,7 +124,7 @@ export class ListDirective {
   }
   @Input()
   set indent(val: ListElement['indent']) {
-    this.elementRef.nativeElement.indent = val;
+    this.elementRef.nativeElement.indent = booleanInput(val);
   }
   get indent() {
     return this.elementRef.nativeElement.hasAttribute('indent');
@@ -172,9 +175,9 @@ export class ListDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ListElement>) {}
+  constructor(private elementRef: ElementRef<ListElement & HTMLElement>) {}
 
-  get element(): ListElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

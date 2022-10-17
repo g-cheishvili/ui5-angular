@@ -4,20 +4,23 @@ import { IconDirective } from './icon.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Input.js';
-interface InputElement extends HTMLElement {
+interface InputElement {
   accessibleName: string;
   accessibleNameRef: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   maxlength: number;
   name: string;
-  noTypeahead: boolean;
+  noTypeahead: BooleanInputType;
   placeholder: string;
   previewItem: any;
-  readonly: boolean;
-  required: boolean;
-  showClearIcon: boolean;
-  showSuggestions: boolean;
+  readonly: BooleanInputType;
+  required: BooleanInputType;
+  showClearIcon: BooleanInputType;
+  showSuggestions: BooleanInputType;
   type: 'Email' | 'Number' | 'Password' | 'Tel' | 'Text' | 'URL';
   value: string;
   valueState: any;
@@ -61,7 +64,7 @@ export class InputDirective {
   }
   @Input()
   set disabled(val: InputElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -86,7 +89,7 @@ export class InputDirective {
   }
   @Input()
   set noTypeahead(val: InputElement['noTypeahead']) {
-    this.elementRef.nativeElement.noTypeahead = val;
+    this.elementRef.nativeElement.noTypeahead = booleanInput(val);
   }
   get noTypeahead() {
     return this.elementRef.nativeElement.hasAttribute('no-typeahead');
@@ -111,28 +114,28 @@ export class InputDirective {
   }
   @Input()
   set readonly(val: InputElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set required(val: InputElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
   }
   @Input()
   set showClearIcon(val: InputElement['showClearIcon']) {
-    this.elementRef.nativeElement.showClearIcon = val;
+    this.elementRef.nativeElement.showClearIcon = booleanInput(val);
   }
   get showClearIcon() {
     return this.elementRef.nativeElement.hasAttribute('show-clear-icon');
   }
   @Input()
   set showSuggestions(val: InputElement['showSuggestions']) {
-    this.elementRef.nativeElement.showSuggestions = val;
+    this.elementRef.nativeElement.showSuggestions = booleanInput(val);
   }
   get showSuggestions() {
     return this.elementRef.nativeElement.hasAttribute('show-suggestions');
@@ -175,9 +178,9 @@ export class InputDirective {
   @Output('suggestion-item-select') suggestionItemSelect: Observable<
     CustomEvent<OutputTypes['suggestionItemSelect']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<InputElement>) {}
+  constructor(private elementRef: ElementRef<InputElement & HTMLElement>) {}
 
-  get element(): InputElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

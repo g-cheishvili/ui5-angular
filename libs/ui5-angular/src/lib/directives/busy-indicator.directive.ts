@@ -1,8 +1,10 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/BusyIndicator.js';
-interface BusyIndicatorElement extends HTMLElement {
-  active: boolean;
+interface BusyIndicatorElement {
+  active: BooleanInputType;
   delay: number;
   size: 'Large' | 'Medium' | 'Small';
   text: string;
@@ -16,7 +18,7 @@ interface BusyIndicatorElement extends HTMLElement {
 export class BusyIndicatorDirective {
   @Input()
   set active(val: BusyIndicatorElement['active']) {
-    this.elementRef.nativeElement.active = val;
+    this.elementRef.nativeElement.active = booleanInput(val);
   }
   get active() {
     return this.elementRef.nativeElement.hasAttribute('active');
@@ -49,9 +51,11 @@ export class BusyIndicatorDirective {
     ) as unknown as BusyIndicatorElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<BusyIndicatorElement>) {}
+  constructor(
+    private elementRef: ElementRef<BusyIndicatorElement & HTMLElement>
+  ) {}
 
-  get element(): BusyIndicatorElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

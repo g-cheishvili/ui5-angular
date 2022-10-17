@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/Title.js';
-interface TitleElement extends HTMLElement {
+interface TitleElement {
   level: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
   wrappingType: 'None' | 'Normal';
 
@@ -31,9 +31,9 @@ export class TitleDirective {
     ) as unknown as TitleElement['wrappingType'];
   }
 
-  constructor(private elementRef: ElementRef<TitleElement>) {}
+  constructor(private elementRef: ElementRef<TitleElement & HTMLElement>) {}
 
-  get element(): TitleElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

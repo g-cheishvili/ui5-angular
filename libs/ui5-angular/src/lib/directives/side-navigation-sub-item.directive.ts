@@ -1,9 +1,11 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js';
-interface SideNavigationSubItemElement extends HTMLElement {
+interface SideNavigationSubItemElement {
   icon: string;
-  selected: boolean;
+  selected: BooleanInputType;
   text: string;
 
   // Slots
@@ -24,7 +26,7 @@ export class SideNavigationSubItemDirective {
   }
   @Input()
   set selected(val: SideNavigationSubItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -39,9 +41,11 @@ export class SideNavigationSubItemDirective {
     ) as unknown as SideNavigationSubItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<SideNavigationSubItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<SideNavigationSubItemElement & HTMLElement>
+  ) {}
 
-  get element(): SideNavigationSubItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

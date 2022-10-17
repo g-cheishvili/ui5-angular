@@ -1,10 +1,12 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/ProgressIndicator.js';
-interface ProgressIndicatorElement extends HTMLElement {
-  disabled: boolean;
+interface ProgressIndicatorElement {
+  disabled: BooleanInputType;
   displayValue: string;
-  hideValue: boolean;
+  hideValue: BooleanInputType;
   value: number;
   valueState: any;
 
@@ -17,7 +19,7 @@ interface ProgressIndicatorElement extends HTMLElement {
 export class ProgressIndicatorDirective {
   @Input()
   set disabled(val: ProgressIndicatorElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -33,7 +35,7 @@ export class ProgressIndicatorDirective {
   }
   @Input()
   set hideValue(val: ProgressIndicatorElement['hideValue']) {
-    this.elementRef.nativeElement.hideValue = val;
+    this.elementRef.nativeElement.hideValue = booleanInput(val);
   }
   get hideValue() {
     return this.elementRef.nativeElement.hasAttribute('hide-value');
@@ -57,9 +59,11 @@ export class ProgressIndicatorDirective {
     ) as unknown as ProgressIndicatorElement['valueState'];
   }
 
-  constructor(private elementRef: ElementRef<ProgressIndicatorElement>) {}
+  constructor(
+    private elementRef: ElementRef<ProgressIndicatorElement & HTMLElement>
+  ) {}
 
-  get element(): ProgressIndicatorElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

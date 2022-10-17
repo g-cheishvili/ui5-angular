@@ -2,16 +2,19 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Slider.js';
-interface SliderElement extends HTMLElement {
+interface SliderElement {
   value: number;
   accessibleName: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   labelInterval: number;
   max: number;
   min: number;
-  showTickmarks: boolean;
-  showTooltip: boolean;
+  showTickmarks: BooleanInputType;
+  showTooltip: BooleanInputType;
   step: number;
 
   // Slots
@@ -47,7 +50,7 @@ export class SliderDirective {
   }
   @Input()
   set disabled(val: SliderElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -81,14 +84,14 @@ export class SliderDirective {
   }
   @Input()
   set showTickmarks(val: SliderElement['showTickmarks']) {
-    this.elementRef.nativeElement.showTickmarks = val;
+    this.elementRef.nativeElement.showTickmarks = booleanInput(val);
   }
   get showTickmarks() {
     return this.elementRef.nativeElement.hasAttribute('show-tickmarks');
   }
   @Input()
   set showTooltip(val: SliderElement['showTooltip']) {
-    this.elementRef.nativeElement.showTooltip = val;
+    this.elementRef.nativeElement.showTooltip = booleanInput(val);
   }
   get showTooltip() {
     return this.elementRef.nativeElement.hasAttribute('show-tooltip');
@@ -107,9 +110,9 @@ export class SliderDirective {
     new PlaceholderOutput();
   @Output() input: Observable<CustomEvent<OutputTypes['input']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<SliderElement>) {}
+  constructor(private elementRef: ElementRef<SliderElement & HTMLElement>) {}
 
-  get element(): SliderElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

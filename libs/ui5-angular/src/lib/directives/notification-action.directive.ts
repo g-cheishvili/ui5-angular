@@ -1,7 +1,9 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/NotificationAction.js';
-interface NotificationActionElement extends HTMLElement {
+interface NotificationActionElement {
   design:
     | 'Attention'
     | 'Default'
@@ -9,7 +11,7 @@ interface NotificationActionElement extends HTMLElement {
     | 'Negative'
     | 'Positive'
     | 'Transparent';
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
   text: string;
 
@@ -31,7 +33,7 @@ export class NotificationActionDirective {
   }
   @Input()
   set disabled(val: NotificationActionElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -55,9 +57,11 @@ export class NotificationActionDirective {
     ) as unknown as NotificationActionElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<NotificationActionElement>) {}
+  constructor(
+    private elementRef: ElementRef<NotificationActionElement & HTMLElement>
+  ) {}
 
-  get element(): NotificationActionElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

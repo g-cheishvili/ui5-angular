@@ -1,12 +1,14 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Icon.js';
-interface IconElement extends HTMLElement {
+interface IconElement {
   accessibleName: string;
   accessibleRole: string;
-  interactive: boolean;
+  interactive: BooleanInputType;
   name: string;
-  showTooltip: boolean;
+  showTooltip: BooleanInputType;
 
   // Slots
 }
@@ -35,7 +37,7 @@ export class IconDirective {
   }
   @Input()
   set interactive(val: IconElement['interactive']) {
-    this.elementRef.nativeElement.interactive = val;
+    this.elementRef.nativeElement.interactive = booleanInput(val);
   }
   get interactive() {
     return this.elementRef.nativeElement.hasAttribute('interactive');
@@ -51,15 +53,15 @@ export class IconDirective {
   }
   @Input()
   set showTooltip(val: IconElement['showTooltip']) {
-    this.elementRef.nativeElement.showTooltip = val;
+    this.elementRef.nativeElement.showTooltip = booleanInput(val);
   }
   get showTooltip() {
     return this.elementRef.nativeElement.hasAttribute('show-tooltip');
   }
 
-  constructor(private elementRef: ElementRef<IconElement>) {}
+  constructor(private elementRef: ElementRef<IconElement & HTMLElement>) {}
 
-  get element(): IconElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/CalendarDate.js';
-interface CalendarDateElement extends HTMLElement {
+interface CalendarDateElement {
   value: string;
 
   // Slots
@@ -21,9 +21,11 @@ export class CalendarDateDirective {
     ) as unknown as CalendarDateElement['value'];
   }
 
-  constructor(private elementRef: ElementRef<CalendarDateElement>) {}
+  constructor(
+    private elementRef: ElementRef<CalendarDateElement & HTMLElement>
+  ) {}
 
-  get element(): CalendarDateElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

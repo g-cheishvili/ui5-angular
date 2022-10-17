@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents-fiori/dist/ProductSwitchItem.js';
-interface ProductSwitchItemElement extends HTMLElement {
+interface ProductSwitchItemElement {
   icon: string;
   subtitleText: string;
   target: string;
@@ -69,9 +70,11 @@ export class ProductSwitchItemDirective {
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ProductSwitchItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<ProductSwitchItemElement & HTMLElement>
+  ) {}
 
-  get element(): ProductSwitchItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/Tree.js';
-interface TreeElement extends HTMLElement {
+interface TreeElement {
   accessibleName: string;
   accessibleNameRef: string;
   footerText: string;
@@ -117,9 +118,9 @@ export class TreeDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TreeElement>) {}
+  constructor(private elementRef: ElementRef<TreeElement & HTMLElement>) {}
 
-  get element(): TreeElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

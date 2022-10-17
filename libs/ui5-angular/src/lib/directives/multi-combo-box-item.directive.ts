@@ -1,8 +1,10 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
-interface MultiComboBoxItemElement extends HTMLElement {
-  selected: boolean;
+interface MultiComboBoxItemElement {
+  selected: BooleanInputType;
   additionalText: string;
   text: string;
 
@@ -15,7 +17,7 @@ interface MultiComboBoxItemElement extends HTMLElement {
 export class MultiComboBoxItemDirective {
   @Input()
   set selected(val: MultiComboBoxItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -39,9 +41,11 @@ export class MultiComboBoxItemDirective {
     ) as unknown as MultiComboBoxItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<MultiComboBoxItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<MultiComboBoxItemElement & HTMLElement>
+  ) {}
 
-  get element(): MultiComboBoxItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

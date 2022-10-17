@@ -2,12 +2,15 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/RatingIndicator.js';
-interface RatingIndicatorElement extends HTMLElement {
+interface RatingIndicatorElement {
   accessibleName: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   max: number;
-  readonly: boolean;
+  readonly: BooleanInputType;
   value: number;
 
   // Slots
@@ -32,7 +35,7 @@ export class RatingIndicatorDirective {
   }
   @Input()
   set disabled(val: RatingIndicatorElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -48,7 +51,7 @@ export class RatingIndicatorDirective {
   }
   @Input()
   set readonly(val: RatingIndicatorElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
@@ -65,9 +68,11 @@ export class RatingIndicatorDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<RatingIndicatorElement>) {}
+  constructor(
+    private elementRef: ElementRef<RatingIndicatorElement & HTMLElement>
+  ) {}
 
-  get element(): RatingIndicatorElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

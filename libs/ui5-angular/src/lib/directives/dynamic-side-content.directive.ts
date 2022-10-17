@@ -2,11 +2,14 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/DynamicSideContent.js';
-interface DynamicSideContentElement extends HTMLElement {
-  equalSplit: boolean;
-  hideMainContent: boolean;
-  hideSideContent: boolean;
+interface DynamicSideContentElement {
+  equalSplit: BooleanInputType;
+  hideMainContent: BooleanInputType;
+  hideSideContent: BooleanInputType;
   sideContentFallDown: 'BelowL' | 'BelowM' | 'BelowXL' | 'OnMinimumWidth';
   sideContentPosition: 'End' | 'Start';
   sideContentVisibility:
@@ -35,21 +38,21 @@ interface OutputTypes {
 export class DynamicSideContentDirective {
   @Input()
   set equalSplit(val: DynamicSideContentElement['equalSplit']) {
-    this.elementRef.nativeElement.equalSplit = val;
+    this.elementRef.nativeElement.equalSplit = booleanInput(val);
   }
   get equalSplit() {
     return this.elementRef.nativeElement.hasAttribute('equal-split');
   }
   @Input()
   set hideMainContent(val: DynamicSideContentElement['hideMainContent']) {
-    this.elementRef.nativeElement.hideMainContent = val;
+    this.elementRef.nativeElement.hideMainContent = booleanInput(val);
   }
   get hideMainContent() {
     return this.elementRef.nativeElement.hasAttribute('hide-main-content');
   }
   @Input()
   set hideSideContent(val: DynamicSideContentElement['hideSideContent']) {
-    this.elementRef.nativeElement.hideSideContent = val;
+    this.elementRef.nativeElement.hideSideContent = booleanInput(val);
   }
   get hideSideContent() {
     return this.elementRef.nativeElement.hasAttribute('hide-side-content');
@@ -91,9 +94,11 @@ export class DynamicSideContentDirective {
   @Output('layout-change') layoutChange: Observable<
     CustomEvent<OutputTypes['layoutChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<DynamicSideContentElement>) {}
+  constructor(
+    private elementRef: ElementRef<DynamicSideContentElement & HTMLElement>
+  ) {}
 
-  get element(): DynamicSideContentElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

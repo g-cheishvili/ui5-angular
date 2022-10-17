@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/YearPicker.js';
-interface YearPickerElement extends HTMLElement {
+interface YearPickerElement {
   selectedDates: Array<any>;
   formatPattern: string;
   maxDate: string;
@@ -83,9 +84,11 @@ export class YearPickerDirective {
     new PlaceholderOutput();
   @Output() navigate: Observable<CustomEvent<OutputTypes['navigate']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<YearPickerElement>) {}
+  constructor(
+    private elementRef: ElementRef<YearPickerElement & HTMLElement>
+  ) {}
 
-  get element(): YearPickerElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

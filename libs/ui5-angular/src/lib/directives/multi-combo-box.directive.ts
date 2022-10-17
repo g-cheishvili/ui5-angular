@@ -4,18 +4,21 @@ import { IconDirective } from './icon.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/MultiComboBox.js';
-interface MultiComboBoxElement extends HTMLElement {
+interface MultiComboBoxElement {
   accessibleName: string;
   accessibleNameRef: string;
-  allowCustomValues: boolean;
-  disabled: boolean;
+  allowCustomValues: BooleanInputType;
+  disabled: BooleanInputType;
   filter: string;
-  noTypeahead: boolean;
-  open: boolean;
+  noTypeahead: BooleanInputType;
+  open: BooleanInputType;
   placeholder: string;
-  readonly: boolean;
-  required: boolean;
+  readonly: BooleanInputType;
+  required: BooleanInputType;
   value: string;
   valueState: any;
 
@@ -58,14 +61,14 @@ export class MultiComboBoxDirective {
   }
   @Input()
   set allowCustomValues(val: MultiComboBoxElement['allowCustomValues']) {
-    this.elementRef.nativeElement.allowCustomValues = val;
+    this.elementRef.nativeElement.allowCustomValues = booleanInput(val);
   }
   get allowCustomValues() {
     return this.elementRef.nativeElement.hasAttribute('allow-custom-values');
   }
   @Input()
   set disabled(val: MultiComboBoxElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -81,14 +84,14 @@ export class MultiComboBoxDirective {
   }
   @Input()
   set noTypeahead(val: MultiComboBoxElement['noTypeahead']) {
-    this.elementRef.nativeElement.noTypeahead = val;
+    this.elementRef.nativeElement.noTypeahead = booleanInput(val);
   }
   get noTypeahead() {
     return this.elementRef.nativeElement.hasAttribute('no-typeahead');
   }
   @Input()
   set open(val: MultiComboBoxElement['open']) {
-    this.elementRef.nativeElement.open = val;
+    this.elementRef.nativeElement.open = booleanInput(val);
   }
   get open() {
     return this.elementRef.nativeElement.hasAttribute('open');
@@ -104,14 +107,14 @@ export class MultiComboBoxDirective {
   }
   @Input()
   set readonly(val: MultiComboBoxElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set required(val: MultiComboBoxElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
@@ -145,9 +148,11 @@ export class MultiComboBoxDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<MultiComboBoxElement>) {}
+  constructor(
+    private elementRef: ElementRef<MultiComboBoxElement & HTMLElement>
+  ) {}
 
-  get element(): MultiComboBoxElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

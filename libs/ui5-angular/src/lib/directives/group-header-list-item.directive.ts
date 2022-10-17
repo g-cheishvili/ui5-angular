@@ -1,9 +1,11 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/GroupHeaderListItem.js';
-interface GroupHeaderListItemElement extends HTMLElement {
+interface GroupHeaderListItemElement {
   accessibleName: string;
-  selected: boolean;
+  selected: BooleanInputType;
 
   // Slots
 }
@@ -23,15 +25,17 @@ export class GroupHeaderListItemDirective {
   }
   @Input()
   set selected(val: GroupHeaderListItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
   }
 
-  constructor(private elementRef: ElementRef<GroupHeaderListItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<GroupHeaderListItemElement & HTMLElement>
+  ) {}
 
-  get element(): GroupHeaderListItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

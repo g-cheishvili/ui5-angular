@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/ColorPaletteItem.js';
-interface ColorPaletteItemElement extends HTMLElement {
+interface ColorPaletteItemElement {
   value: string;
 
   // Slots
@@ -21,9 +21,11 @@ export class ColorPaletteItemDirective {
     ) as unknown as ColorPaletteItemElement['value'];
   }
 
-  constructor(private elementRef: ElementRef<ColorPaletteItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<ColorPaletteItemElement & HTMLElement>
+  ) {}
 
-  get element(): ColorPaletteItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

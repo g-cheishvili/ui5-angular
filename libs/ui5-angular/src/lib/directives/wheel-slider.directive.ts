@@ -1,10 +1,12 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/WheelSlider.js';
-interface WheelSliderElement extends HTMLElement {
-  cyclic: boolean;
-  disabled: boolean;
-  expanded: boolean;
+interface WheelSliderElement {
+  cyclic: BooleanInputType;
+  disabled: BooleanInputType;
+  expanded: BooleanInputType;
   label: string;
   value: string;
 
@@ -17,21 +19,21 @@ interface WheelSliderElement extends HTMLElement {
 export class WheelSliderDirective {
   @Input()
   set cyclic(val: WheelSliderElement['cyclic']) {
-    this.elementRef.nativeElement.cyclic = val;
+    this.elementRef.nativeElement.cyclic = booleanInput(val);
   }
   get cyclic() {
     return this.elementRef.nativeElement.hasAttribute('cyclic');
   }
   @Input()
   set disabled(val: WheelSliderElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
   }
   @Input()
   set expanded(val: WheelSliderElement['expanded']) {
-    this.elementRef.nativeElement.expanded = val;
+    this.elementRef.nativeElement.expanded = booleanInput(val);
   }
   get expanded() {
     return this.elementRef.nativeElement.hasAttribute('expanded');
@@ -55,9 +57,11 @@ export class WheelSliderDirective {
     ) as unknown as WheelSliderElement['value'];
   }
 
-  constructor(private elementRef: ElementRef<WheelSliderElement>) {}
+  constructor(
+    private elementRef: ElementRef<WheelSliderElement & HTMLElement>
+  ) {}
 
-  get element(): WheelSliderElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

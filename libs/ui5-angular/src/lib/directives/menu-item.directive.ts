@@ -1,12 +1,14 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/MenuItem.js';
-interface MenuItemElement extends HTMLElement {
+interface MenuItemElement {
   accessibleName: string;
   additionalText: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
-  startsSection: boolean;
+  startsSection: BooleanInputType;
   text: string;
 
   // Slots
@@ -36,7 +38,7 @@ export class MenuItemDirective {
   }
   @Input()
   set disabled(val: MenuItemElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -52,7 +54,7 @@ export class MenuItemDirective {
   }
   @Input()
   set startsSection(val: MenuItemElement['startsSection']) {
-    this.elementRef.nativeElement.startsSection = val;
+    this.elementRef.nativeElement.startsSection = booleanInput(val);
   }
   get startsSection() {
     return this.elementRef.nativeElement.hasAttribute('starts-section');
@@ -67,9 +69,9 @@ export class MenuItemDirective {
     ) as unknown as MenuItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<MenuItemElement>) {}
+  constructor(private elementRef: ElementRef<MenuItemElement & HTMLElement>) {}
 
-  get element(): MenuItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

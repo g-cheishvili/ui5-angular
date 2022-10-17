@@ -2,17 +2,20 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/StandardListItem.js';
-interface StandardListItemElement extends HTMLElement {
+interface StandardListItemElement {
   accessibleName: string;
   additionalText: string;
   additionalTextState: any;
   description: string;
   icon: string;
-  iconEnd: boolean;
+  iconEnd: BooleanInputType;
   image: string;
   type: 'Active' | 'Detail' | 'Inactive';
-  selected: boolean;
+  selected: BooleanInputType;
 
   // Slots
 }
@@ -72,7 +75,7 @@ export class StandardListItemDirective {
   }
   @Input()
   set iconEnd(val: StandardListItemElement['iconEnd']) {
-    this.elementRef.nativeElement.iconEnd = val;
+    this.elementRef.nativeElement.iconEnd = booleanInput(val);
   }
   get iconEnd() {
     return this.elementRef.nativeElement.hasAttribute('icon-end');
@@ -97,7 +100,7 @@ export class StandardListItemDirective {
   }
   @Input()
   set selected(val: StandardListItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -106,9 +109,11 @@ export class StandardListItemDirective {
   @Output('detail-click') detailClick: Observable<
     CustomEvent<OutputTypes['detailClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<StandardListItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<StandardListItemElement & HTMLElement>
+  ) {}
 
-  get element(): StandardListItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

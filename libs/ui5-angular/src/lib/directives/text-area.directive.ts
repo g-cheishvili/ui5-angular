@@ -2,20 +2,23 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/TextArea.js';
-interface TextAreaElement extends HTMLElement {
+interface TextAreaElement {
   accessibleName: string;
   accessibleNameRef: string;
-  disabled: boolean;
-  growing: boolean;
+  disabled: BooleanInputType;
+  growing: BooleanInputType;
   growingMaxLines: number;
   maxlength: number;
   name: string;
   placeholder: string;
-  readonly: boolean;
-  required: boolean;
+  readonly: BooleanInputType;
+  required: BooleanInputType;
   rows: number;
-  showExceededText: boolean;
+  showExceededText: BooleanInputType;
   value: string;
   valueState: any;
 
@@ -53,14 +56,14 @@ export class TextAreaDirective {
   }
   @Input()
   set disabled(val: TextAreaElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
   }
   @Input()
   set growing(val: TextAreaElement['growing']) {
-    this.elementRef.nativeElement.growing = val;
+    this.elementRef.nativeElement.growing = booleanInput(val);
   }
   get growing() {
     return this.elementRef.nativeElement.hasAttribute('growing');
@@ -103,14 +106,14 @@ export class TextAreaDirective {
   }
   @Input()
   set readonly(val: TextAreaElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set required(val: TextAreaElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
@@ -126,7 +129,7 @@ export class TextAreaDirective {
   }
   @Input()
   set showExceededText(val: TextAreaElement['showExceededText']) {
-    this.elementRef.nativeElement.showExceededText = val;
+    this.elementRef.nativeElement.showExceededText = booleanInput(val);
   }
   get showExceededText() {
     return this.elementRef.nativeElement.hasAttribute('show-exceeded-text');
@@ -154,9 +157,9 @@ export class TextAreaDirective {
     new PlaceholderOutput();
   @Output() input: Observable<CustomEvent<OutputTypes['input']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TextAreaElement>) {}
+  constructor(private elementRef: ElementRef<TextAreaElement & HTMLElement>) {}
 
-  get element(): TextAreaElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

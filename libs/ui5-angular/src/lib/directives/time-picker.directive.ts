@@ -2,13 +2,16 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/TimePicker.js';
-interface TimePickerElement extends HTMLElement {
+interface TimePickerElement {
   dateValue: any;
-  disabled: boolean;
+  disabled: BooleanInputType;
   formatPattern: string;
   placeholder: string;
-  readonly: boolean;
+  readonly: BooleanInputType;
   value: string;
   valueState: any;
 
@@ -37,7 +40,7 @@ export class TimePickerDirective {
   }
   @Input()
   set disabled(val: TimePickerElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -62,7 +65,7 @@ export class TimePickerDirective {
   }
   @Input()
   set readonly(val: TimePickerElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
@@ -90,9 +93,11 @@ export class TimePickerDirective {
     new PlaceholderOutput();
   @Output() input: Observable<CustomEvent<OutputTypes['input']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TimePickerElement>) {}
+  constructor(
+    private elementRef: ElementRef<TimePickerElement & HTMLElement>
+  ) {}
 
-  get element(): TimePickerElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

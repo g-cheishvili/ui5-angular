@@ -4,11 +4,14 @@ import { IconDirective } from './icon.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/MessageStrip.js';
-interface MessageStripElement extends HTMLElement {
+interface MessageStripElement {
   design: 'Information' | 'Negative' | 'Positive' | 'Warning';
-  hideCloseButton: boolean;
-  hideIcon: boolean;
+  hideCloseButton: BooleanInputType;
+  hideIcon: BooleanInputType;
 
   // Slots
   icon: IconDirective['element'];
@@ -33,14 +36,14 @@ export class MessageStripDirective {
   }
   @Input()
   set hideCloseButton(val: MessageStripElement['hideCloseButton']) {
-    this.elementRef.nativeElement.hideCloseButton = val;
+    this.elementRef.nativeElement.hideCloseButton = booleanInput(val);
   }
   get hideCloseButton() {
     return this.elementRef.nativeElement.hasAttribute('hide-close-button');
   }
   @Input()
   set hideIcon(val: MessageStripElement['hideIcon']) {
-    this.elementRef.nativeElement.hideIcon = val;
+    this.elementRef.nativeElement.hideIcon = booleanInput(val);
   }
   get hideIcon() {
     return this.elementRef.nativeElement.hasAttribute('hide-icon');
@@ -48,9 +51,11 @@ export class MessageStripDirective {
 
   @Output() close: Observable<CustomEvent<OutputTypes['close']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<MessageStripElement>) {}
+  constructor(
+    private elementRef: ElementRef<MessageStripElement & HTMLElement>
+  ) {}
 
-  get element(): MessageStripElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

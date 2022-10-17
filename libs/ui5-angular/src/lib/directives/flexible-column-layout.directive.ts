@@ -2,13 +2,16 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js';
-interface FlexibleColumnLayoutElement extends HTMLElement {
+interface FlexibleColumnLayoutElement {
   accessibilityRoles: Record<string, any>;
   accessibilityTexts: Record<string, any>;
   columnLayout: Array<any>;
-  endColumnVisible: boolean;
-  hideArrows: boolean;
+  endColumnVisible: BooleanInputType;
+  hideArrows: BooleanInputType;
   layout:
     | 'EndColumnFullScreen'
     | 'MidColumnFullScreen'
@@ -19,8 +22,8 @@ interface FlexibleColumnLayoutElement extends HTMLElement {
     | 'ThreeColumnsStartExpandedEndHidden'
     | 'TwoColumnsMidExpanded'
     | 'TwoColumnsStartExpanded';
-  midColumnVisible: boolean;
-  startColumnVisible: boolean;
+  midColumnVisible: BooleanInputType;
+  startColumnVisible: BooleanInputType;
   visibleColumns: number;
 
   // Slots
@@ -87,14 +90,14 @@ export class FlexibleColumnLayoutDirective {
   }
   @Input()
   set endColumnVisible(val: FlexibleColumnLayoutElement['endColumnVisible']) {
-    this.elementRef.nativeElement.endColumnVisible = val;
+    this.elementRef.nativeElement.endColumnVisible = booleanInput(val);
   }
   get endColumnVisible() {
     return this.elementRef.nativeElement.hasAttribute('end-column-visible');
   }
   @Input()
   set hideArrows(val: FlexibleColumnLayoutElement['hideArrows']) {
-    this.elementRef.nativeElement.hideArrows = val;
+    this.elementRef.nativeElement.hideArrows = booleanInput(val);
   }
   get hideArrows() {
     return this.elementRef.nativeElement.hasAttribute('hide-arrows');
@@ -110,7 +113,7 @@ export class FlexibleColumnLayoutDirective {
   }
   @Input()
   set midColumnVisible(val: FlexibleColumnLayoutElement['midColumnVisible']) {
-    this.elementRef.nativeElement.midColumnVisible = val;
+    this.elementRef.nativeElement.midColumnVisible = booleanInput(val);
   }
   get midColumnVisible() {
     return this.elementRef.nativeElement.hasAttribute('mid-column-visible');
@@ -119,7 +122,7 @@ export class FlexibleColumnLayoutDirective {
   set startColumnVisible(
     val: FlexibleColumnLayoutElement['startColumnVisible']
   ) {
-    this.elementRef.nativeElement.startColumnVisible = val;
+    this.elementRef.nativeElement.startColumnVisible = booleanInput(val);
   }
   get startColumnVisible() {
     return this.elementRef.nativeElement.hasAttribute('start-column-visible');
@@ -137,9 +140,11 @@ export class FlexibleColumnLayoutDirective {
   @Output('layout-change') layoutChange: Observable<
     CustomEvent<OutputTypes['layoutChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<FlexibleColumnLayoutElement>) {}
+  constructor(
+    private elementRef: ElementRef<FlexibleColumnLayoutElement & HTMLElement>
+  ) {}
 
-  get element(): FlexibleColumnLayoutElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

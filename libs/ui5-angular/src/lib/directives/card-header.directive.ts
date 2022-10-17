@@ -2,9 +2,12 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/CardHeader.js';
-interface CardHeaderElement extends HTMLElement {
-  interactive: boolean;
+interface CardHeaderElement {
+  interactive: BooleanInputType;
   status: string;
   subtitleText: string;
   titleText: string;
@@ -24,7 +27,7 @@ interface OutputTypes {
 export class CardHeaderDirective {
   @Input()
   set interactive(val: CardHeaderElement['interactive']) {
-    this.elementRef.nativeElement.interactive = val;
+    this.elementRef.nativeElement.interactive = booleanInput(val);
   }
   get interactive() {
     return this.elementRef.nativeElement.hasAttribute('interactive');
@@ -59,9 +62,11 @@ export class CardHeaderDirective {
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<CardHeaderElement>) {}
+  constructor(
+    private elementRef: ElementRef<CardHeaderElement & HTMLElement>
+  ) {}
 
-  get element(): CardHeaderElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

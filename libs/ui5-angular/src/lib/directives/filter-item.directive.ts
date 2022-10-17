@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 import { FilterItemOptionDirective } from './filter-item-option.directive';
 
 import '@ui5/webcomponents-fiori/dist/FilterItem.js';
-interface FilterItemElement extends HTMLElement {
+interface FilterItemElement {
   text: string;
 
   // Slots
@@ -24,9 +24,11 @@ export class FilterItemDirective {
     ) as unknown as FilterItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<FilterItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<FilterItemElement & HTMLElement>
+  ) {}
 
-  get element(): FilterItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

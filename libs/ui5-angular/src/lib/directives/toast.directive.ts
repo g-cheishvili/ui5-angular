@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/Toast.js';
-interface ToastElement extends HTMLElement {
+interface ToastElement {
   duration: number;
   placement:
     | 'BottomCenter'
@@ -40,9 +40,9 @@ export class ToastDirective {
     ) as unknown as ToastElement['placement'];
   }
 
-  constructor(private elementRef: ElementRef<ToastElement>) {}
+  constructor(private elementRef: ElementRef<ToastElement & HTMLElement>) {}
 
-  get element(): ToastElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

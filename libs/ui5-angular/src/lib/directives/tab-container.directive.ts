@@ -4,12 +4,15 @@ import { ButtonDirective } from './button.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/TabContainer.js';
-interface TabContainerElement extends HTMLElement {
+interface TabContainerElement {
   allItems: any;
-  collapsed: boolean;
-  fixed: boolean;
-  showOverflow: boolean;
+  collapsed: BooleanInputType;
+  fixed: BooleanInputType;
+  showOverflow: BooleanInputType;
   tabLayout: 'Inline' | 'Standard';
   tabsOverflowMode: 'End' | 'StartAndEnd';
 
@@ -37,21 +40,21 @@ export class TabContainerDirective {
   }
   @Input()
   set collapsed(val: TabContainerElement['collapsed']) {
-    this.elementRef.nativeElement.collapsed = val;
+    this.elementRef.nativeElement.collapsed = booleanInput(val);
   }
   get collapsed() {
     return this.elementRef.nativeElement.hasAttribute('collapsed');
   }
   @Input()
   set fixed(val: TabContainerElement['fixed']) {
-    this.elementRef.nativeElement.fixed = val;
+    this.elementRef.nativeElement.fixed = booleanInput(val);
   }
   get fixed() {
     return this.elementRef.nativeElement.hasAttribute('fixed');
   }
   @Input()
   set showOverflow(val: TabContainerElement['showOverflow']) {
-    this.elementRef.nativeElement.showOverflow = val;
+    this.elementRef.nativeElement.showOverflow = booleanInput(val);
   }
   get showOverflow() {
     return this.elementRef.nativeElement.hasAttribute('show-overflow');
@@ -78,9 +81,11 @@ export class TabContainerDirective {
   @Output('tab-select') tabSelect: Observable<
     CustomEvent<OutputTypes['tabSelect']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TabContainerElement>) {}
+  constructor(
+    private elementRef: ElementRef<TabContainerElement & HTMLElement>
+  ) {}
 
-  get element(): TabContainerElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

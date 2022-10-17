@@ -2,17 +2,20 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/TreeListItem.js';
-interface TreeListItemElement extends HTMLElement {
+interface TreeListItemElement {
   accessibleName: string;
   additionalText: string;
   additionalTextState: any;
-  expanded: boolean;
+  expanded: BooleanInputType;
   icon: string;
   level: number;
-  showToggleButton: boolean;
+  showToggleButton: BooleanInputType;
   type: 'Active' | 'Detail' | 'Inactive';
-  selected: boolean;
+  selected: BooleanInputType;
 
   // Slots
 }
@@ -60,7 +63,7 @@ export class TreeListItemDirective {
   }
   @Input()
   set expanded(val: TreeListItemElement['expanded']) {
-    this.elementRef.nativeElement.expanded = val;
+    this.elementRef.nativeElement.expanded = booleanInput(val);
   }
   get expanded() {
     return this.elementRef.nativeElement.hasAttribute('expanded');
@@ -85,7 +88,7 @@ export class TreeListItemDirective {
   }
   @Input()
   set showToggleButton(val: TreeListItemElement['showToggleButton']) {
-    this.elementRef.nativeElement.showToggleButton = val;
+    this.elementRef.nativeElement.showToggleButton = booleanInput(val);
   }
   get showToggleButton() {
     return this.elementRef.nativeElement.hasAttribute('show-toggle-button');
@@ -101,7 +104,7 @@ export class TreeListItemDirective {
   }
   @Input()
   set selected(val: TreeListItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -116,9 +119,11 @@ export class TreeListItemDirective {
   @Output('detail-click') detailClick: Observable<
     CustomEvent<OutputTypes['detailClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TreeListItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<TreeListItemElement & HTMLElement>
+  ) {}
 
-  get element(): TreeListItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

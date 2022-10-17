@@ -2,14 +2,17 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/UploadCollectionItem.js';
-interface UploadCollectionItemElement extends HTMLElement {
-  disableDeleteButton: boolean;
+interface UploadCollectionItemElement {
+  disableDeleteButton: BooleanInputType;
   file: any;
   fileName: string;
-  fileNameClickable: boolean;
-  hideRetryButton: boolean;
-  hideTerminateButton: boolean;
+  fileNameClickable: BooleanInputType;
+  hideRetryButton: BooleanInputType;
+  hideTerminateButton: BooleanInputType;
   progress: number;
   uploadState: 'Complete' | 'Error' | 'Ready' | 'Uploading';
 
@@ -35,7 +38,7 @@ export class UploadCollectionItemDirective {
   set disableDeleteButton(
     val: UploadCollectionItemElement['disableDeleteButton']
   ) {
-    this.elementRef.nativeElement.disableDeleteButton = val;
+    this.elementRef.nativeElement.disableDeleteButton = booleanInput(val);
   }
   get disableDeleteButton() {
     return this.elementRef.nativeElement.hasAttribute('disable-delete-button');
@@ -60,14 +63,14 @@ export class UploadCollectionItemDirective {
   }
   @Input()
   set fileNameClickable(val: UploadCollectionItemElement['fileNameClickable']) {
-    this.elementRef.nativeElement.fileNameClickable = val;
+    this.elementRef.nativeElement.fileNameClickable = booleanInput(val);
   }
   get fileNameClickable() {
     return this.elementRef.nativeElement.hasAttribute('file-name-clickable');
   }
   @Input()
   set hideRetryButton(val: UploadCollectionItemElement['hideRetryButton']) {
-    this.elementRef.nativeElement.hideRetryButton = val;
+    this.elementRef.nativeElement.hideRetryButton = booleanInput(val);
   }
   get hideRetryButton() {
     return this.elementRef.nativeElement.hasAttribute('hide-retry-button');
@@ -76,7 +79,7 @@ export class UploadCollectionItemDirective {
   set hideTerminateButton(
     val: UploadCollectionItemElement['hideTerminateButton']
   ) {
-    this.elementRef.nativeElement.hideTerminateButton = val;
+    this.elementRef.nativeElement.hideTerminateButton = booleanInput(val);
   }
   get hideTerminateButton() {
     return this.elementRef.nativeElement.hasAttribute('hide-terminate-button');
@@ -109,9 +112,11 @@ export class UploadCollectionItemDirective {
     new PlaceholderOutput();
   @Output() terminate: Observable<CustomEvent<OutputTypes['terminate']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<UploadCollectionItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<UploadCollectionItemElement & HTMLElement>
+  ) {}
 
-  get element(): UploadCollectionItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

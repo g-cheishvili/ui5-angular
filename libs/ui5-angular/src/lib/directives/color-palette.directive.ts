@@ -2,8 +2,9 @@ import { Directive, ElementRef, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/ColorPalette.js';
-interface ColorPaletteElement extends HTMLElement {
+interface ColorPaletteElement {
   // Slots
 }
 
@@ -18,9 +19,11 @@ export class ColorPaletteDirective {
   @Output('item-click') itemClick: Observable<
     CustomEvent<OutputTypes['itemClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ColorPaletteElement>) {}
+  constructor(
+    private elementRef: ElementRef<ColorPaletteElement & HTMLElement>
+  ) {}
 
-  get element(): ColorPaletteElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

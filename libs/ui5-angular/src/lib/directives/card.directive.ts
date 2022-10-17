@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/Card.js';
-interface CardElement extends HTMLElement {
+interface CardElement {
   accessibleName: string;
   accessibleNameRef: string;
 
@@ -32,9 +32,9 @@ export class CardDirective {
     ) as unknown as CardElement['accessibleNameRef'];
   }
 
-  constructor(private elementRef: ElementRef<CardElement>) {}
+  constructor(private elementRef: ElementRef<CardElement & HTMLElement>) {}
 
-  get element(): CardElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

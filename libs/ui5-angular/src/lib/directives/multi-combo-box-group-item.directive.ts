@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/MultiComboBoxGroupItem.js';
-interface MultiComboBoxGroupItemElement extends HTMLElement {
+interface MultiComboBoxGroupItemElement {
   text: string;
 
   // Slots
@@ -21,9 +21,11 @@ export class MultiComboBoxGroupItemDirective {
     ) as unknown as MultiComboBoxGroupItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<MultiComboBoxGroupItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<MultiComboBoxGroupItemElement & HTMLElement>
+  ) {}
 
-  get element(): MultiComboBoxGroupItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

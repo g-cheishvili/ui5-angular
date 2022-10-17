@@ -2,15 +2,18 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Panel.js';
-interface PanelElement extends HTMLElement {
+interface PanelElement {
   accessibleName: string;
   accessibleRole: 'Complementary' | 'Form' | 'Region';
-  collapsed: boolean;
-  fixed: boolean;
+  collapsed: BooleanInputType;
+  fixed: BooleanInputType;
   headerLevel: 'H1' | 'H2' | 'H3' | 'H4' | 'H5' | 'H6';
   headerText: string;
-  noAnimation: boolean;
+  noAnimation: BooleanInputType;
 
   // Slots
   header: Array<HTMLElement>;
@@ -44,14 +47,14 @@ export class PanelDirective {
   }
   @Input()
   set collapsed(val: PanelElement['collapsed']) {
-    this.elementRef.nativeElement.collapsed = val;
+    this.elementRef.nativeElement.collapsed = booleanInput(val);
   }
   get collapsed() {
     return this.elementRef.nativeElement.hasAttribute('collapsed');
   }
   @Input()
   set fixed(val: PanelElement['fixed']) {
-    this.elementRef.nativeElement.fixed = val;
+    this.elementRef.nativeElement.fixed = booleanInput(val);
   }
   get fixed() {
     return this.elementRef.nativeElement.hasAttribute('fixed');
@@ -76,7 +79,7 @@ export class PanelDirective {
   }
   @Input()
   set noAnimation(val: PanelElement['noAnimation']) {
-    this.elementRef.nativeElement.noAnimation = val;
+    this.elementRef.nativeElement.noAnimation = booleanInput(val);
   }
   get noAnimation() {
     return this.elementRef.nativeElement.hasAttribute('no-animation');
@@ -84,9 +87,9 @@ export class PanelDirective {
 
   @Output() toggle: Observable<CustomEvent<OutputTypes['toggle']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<PanelElement>) {}
+  constructor(private elementRef: ElementRef<PanelElement & HTMLElement>) {}
 
-  get element(): PanelElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

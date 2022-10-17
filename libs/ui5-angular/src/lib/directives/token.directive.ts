@@ -4,10 +4,13 @@ import { IconDirective } from './icon.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Token.js';
-interface TokenElement extends HTMLElement {
-  readonly: boolean;
-  selected: boolean;
+interface TokenElement {
+  readonly: BooleanInputType;
+  selected: BooleanInputType;
   text: string;
 
   // Slots
@@ -24,14 +27,14 @@ interface OutputTypes {
 export class TokenDirective {
   @Input()
   set readonly(val: TokenElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set selected(val: TokenElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -48,9 +51,9 @@ export class TokenDirective {
 
   @Output() select: Observable<CustomEvent<OutputTypes['select']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<TokenElement>) {}
+  constructor(private elementRef: ElementRef<TokenElement & HTMLElement>) {}
 
-  get element(): TokenElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

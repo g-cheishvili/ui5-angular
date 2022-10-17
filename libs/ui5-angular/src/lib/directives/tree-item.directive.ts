@@ -1,15 +1,17 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/TreeItem.js';
-interface TreeItemElement extends HTMLElement {
+interface TreeItemElement {
   accessibleName: string;
   additionalText: string;
   additionalTextState: any;
-  expanded: boolean;
-  hasChildren: boolean;
+  expanded: BooleanInputType;
+  hasChildren: BooleanInputType;
   icon: string;
-  indeterminate: boolean;
-  selected: boolean;
+  indeterminate: BooleanInputType;
+  selected: BooleanInputType;
   text: string;
 
   // Slots
@@ -48,14 +50,14 @@ export class TreeItemDirective {
   }
   @Input()
   set expanded(val: TreeItemElement['expanded']) {
-    this.elementRef.nativeElement.expanded = val;
+    this.elementRef.nativeElement.expanded = booleanInput(val);
   }
   get expanded() {
     return this.elementRef.nativeElement.hasAttribute('expanded');
   }
   @Input()
   set hasChildren(val: TreeItemElement['hasChildren']) {
-    this.elementRef.nativeElement.hasChildren = val;
+    this.elementRef.nativeElement.hasChildren = booleanInput(val);
   }
   get hasChildren() {
     return this.elementRef.nativeElement.hasAttribute('has-children');
@@ -71,14 +73,14 @@ export class TreeItemDirective {
   }
   @Input()
   set indeterminate(val: TreeItemElement['indeterminate']) {
-    this.elementRef.nativeElement.indeterminate = val;
+    this.elementRef.nativeElement.indeterminate = booleanInput(val);
   }
   get indeterminate() {
     return this.elementRef.nativeElement.hasAttribute('indeterminate');
   }
   @Input()
   set selected(val: TreeItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -93,9 +95,9 @@ export class TreeItemDirective {
     ) as unknown as TreeItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<TreeItemElement>) {}
+  constructor(private elementRef: ElementRef<TreeItemElement & HTMLElement>) {}
 
-  get element(): TreeItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

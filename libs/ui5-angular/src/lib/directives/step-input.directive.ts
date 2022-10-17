@@ -2,17 +2,20 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/StepInput.js';
-interface StepInputElement extends HTMLElement {
+interface StepInputElement {
   accessibleName: string;
   accessibleNameRef: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   max: number;
   min: number;
   name: string;
   placeholder: string;
-  readonly: boolean;
-  required: boolean;
+  readonly: BooleanInputType;
+  required: BooleanInputType;
   step: number;
   value: number;
   valuePrecision: number;
@@ -50,7 +53,7 @@ export class StepInputDirective {
   }
   @Input()
   set disabled(val: StepInputElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -93,14 +96,14 @@ export class StepInputDirective {
   }
   @Input()
   set readonly(val: StepInputElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set required(val: StepInputElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
@@ -144,9 +147,9 @@ export class StepInputDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<StepInputElement>) {}
+  constructor(private elementRef: ElementRef<StepInputElement & HTMLElement>) {}
 
-  get element(): StepInputElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

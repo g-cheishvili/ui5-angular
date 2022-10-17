@@ -1,8 +1,10 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/SortItem.js';
-interface SortItemElement extends HTMLElement {
-  selected: boolean;
+interface SortItemElement {
+  selected: BooleanInputType;
   text: string;
 
   // Slots
@@ -14,7 +16,7 @@ interface SortItemElement extends HTMLElement {
 export class SortItemDirective {
   @Input()
   set selected(val: SortItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -29,9 +31,9 @@ export class SortItemDirective {
     ) as unknown as SortItemElement['text'];
   }
 
-  constructor(private elementRef: ElementRef<SortItemElement>) {}
+  constructor(private elementRef: ElementRef<SortItemElement & HTMLElement>) {}
 
-  get element(): SortItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

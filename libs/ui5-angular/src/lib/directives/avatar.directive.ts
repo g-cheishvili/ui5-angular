@@ -1,7 +1,9 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Avatar.js';
-interface AvatarElement extends HTMLElement {
+interface AvatarElement {
   accessibleName: string;
   colorScheme:
     | 'Accent1'
@@ -17,7 +19,7 @@ interface AvatarElement extends HTMLElement {
     | 'Placeholder';
   icon: string;
   initials: string;
-  interactive: boolean;
+  interactive: BooleanInputType;
   shape: 'Circle' | 'Square';
   size: 'L' | 'M' | 'S' | 'XL' | 'XS';
 
@@ -67,7 +69,7 @@ export class AvatarDirective {
   }
   @Input()
   set interactive(val: AvatarElement['interactive']) {
-    this.elementRef.nativeElement.interactive = val;
+    this.elementRef.nativeElement.interactive = booleanInput(val);
   }
   get interactive() {
     return this.elementRef.nativeElement.hasAttribute('interactive');
@@ -91,9 +93,9 @@ export class AvatarDirective {
     ) as unknown as AvatarElement['size'];
   }
 
-  constructor(private elementRef: ElementRef<AvatarElement>) {}
+  constructor(private elementRef: ElementRef<AvatarElement & HTMLElement>) {}
 
-  get element(): AvatarElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

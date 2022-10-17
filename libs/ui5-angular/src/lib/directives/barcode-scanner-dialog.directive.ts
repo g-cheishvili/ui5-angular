@@ -2,8 +2,9 @@ import { Directive, ElementRef, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents-fiori/dist/BarcodeScannerDialog.js';
-interface BarcodeScannerDialogElement extends HTMLElement {
+interface BarcodeScannerDialogElement {
   // Slots
 }
 
@@ -23,9 +24,11 @@ export class BarcodeScannerDialogDirective {
   @Output('scan-success') scanSuccess: Observable<
     CustomEvent<OutputTypes['scanSuccess']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<BarcodeScannerDialogElement>) {}
+  constructor(
+    private elementRef: ElementRef<BarcodeScannerDialogElement & HTMLElement>
+  ) {}
 
-  get element(): BarcodeScannerDialogElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

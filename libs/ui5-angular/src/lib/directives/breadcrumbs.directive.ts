@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/Breadcrumbs.js';
-interface BreadcrumbsElement extends HTMLElement {
+interface BreadcrumbsElement {
   design: 'NoCurrentPage' | 'Standard';
   separatorStyle:
     | 'BackSlash'
@@ -52,9 +53,11 @@ export class BreadcrumbsDirective {
   @Output('item-click') itemClick: Observable<
     CustomEvent<OutputTypes['itemClick']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<BreadcrumbsElement>) {}
+  constructor(
+    private elementRef: ElementRef<BreadcrumbsElement & HTMLElement>
+  ) {}
 
-  get element(): BreadcrumbsElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

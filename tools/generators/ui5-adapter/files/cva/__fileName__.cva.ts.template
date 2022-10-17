@@ -1,0 +1,32 @@
+import {Directive, ElementRef, forwardRef} from "@angular/core";
+import {NG_VALUE_ACCESSOR} from "@angular/forms";
+import {GenericControlValueAccessor} from "../generic-control-value-accessor";
+import {fromEvent, merge} from "rxjs";
+
+import {<%- className %>Directive} from '../directives/<%- fileName %>.directive';
+
+@Directive({
+  selector: 'ui5-input',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => <%- className %>Cva),
+      multi: true
+    }
+  ]
+})
+export class <%- className %>Cva extends GenericControlValueAccessor<<%- className %>Directive['<%- input.name %>']> {
+  constructor(private elementRef: ElementRef<<%- className %>Directive['element']>) {
+    super({
+      get value() {
+        return elementRef.nativeElement.<%- input.name %>;
+      },
+      set value(val) {
+        elementRef.nativeElement.<%- input.name %> = val;
+      },
+      valueUpdatedNotifier$: merge(<% for(const ev of events) { %>
+        fromEvent(elementRef.nativeElement, '<%- ev.name %>'),<% } %>
+      )
+    });
+  }
+}

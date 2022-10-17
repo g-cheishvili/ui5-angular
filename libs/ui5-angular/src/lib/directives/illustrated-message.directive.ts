@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents-fiori/dist/IllustratedMessage.js';
-interface IllustratedMessageElement extends HTMLElement {
+interface IllustratedMessageElement {
   accessibleNameRef: string;
   name:
     | 'AddColumn'
@@ -151,9 +151,11 @@ export class IllustratedMessageDirective {
     ) as unknown as IllustratedMessageElement['titleText'];
   }
 
-  constructor(private elementRef: ElementRef<IllustratedMessageElement>) {}
+  constructor(
+    private elementRef: ElementRef<IllustratedMessageElement & HTMLElement>
+  ) {}
 
-  get element(): IllustratedMessageElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

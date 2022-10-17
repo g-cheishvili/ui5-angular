@@ -1,11 +1,13 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/WizardStep.js';
-interface WizardStepElement extends HTMLElement {
-  branching: boolean;
-  disabled: boolean;
+interface WizardStepElement {
+  branching: BooleanInputType;
+  disabled: BooleanInputType;
   icon: string;
-  selected: boolean;
+  selected: BooleanInputType;
   subtitleText: string;
   titleText: string;
 
@@ -18,14 +20,14 @@ interface WizardStepElement extends HTMLElement {
 export class WizardStepDirective {
   @Input()
   set branching(val: WizardStepElement['branching']) {
-    this.elementRef.nativeElement.branching = val;
+    this.elementRef.nativeElement.branching = booleanInput(val);
   }
   get branching() {
     return this.elementRef.nativeElement.hasAttribute('branching');
   }
   @Input()
   set disabled(val: WizardStepElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -41,7 +43,7 @@ export class WizardStepDirective {
   }
   @Input()
   set selected(val: WizardStepElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -65,9 +67,11 @@ export class WizardStepDirective {
     ) as unknown as WizardStepElement['titleText'];
   }
 
-  constructor(private elementRef: ElementRef<WizardStepElement>) {}
+  constructor(
+    private elementRef: ElementRef<WizardStepElement & HTMLElement>
+  ) {}
 
-  get element(): WizardStepElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

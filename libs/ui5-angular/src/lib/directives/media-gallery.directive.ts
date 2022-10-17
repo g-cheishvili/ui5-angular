@@ -2,13 +2,16 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/MediaGallery.js';
-interface MediaGalleryElement extends HTMLElement {
-  interactiveDisplayArea: boolean;
+interface MediaGalleryElement {
+  interactiveDisplayArea: BooleanInputType;
   layout: 'Auto' | 'Horizontal' | 'Vertical';
   menuHorizontalAlign: 'Left' | 'Right';
   menuVerticalAlign: 'Bottom' | 'Top';
-  showAllThumbnails: boolean;
+  showAllThumbnails: BooleanInputType;
 
   // Slots
 }
@@ -29,7 +32,7 @@ export class MediaGalleryDirective {
   set interactiveDisplayArea(
     val: MediaGalleryElement['interactiveDisplayArea']
   ) {
-    this.elementRef.nativeElement.interactiveDisplayArea = val;
+    this.elementRef.nativeElement.interactiveDisplayArea = booleanInput(val);
   }
   get interactiveDisplayArea() {
     return this.elementRef.nativeElement.hasAttribute(
@@ -65,7 +68,7 @@ export class MediaGalleryDirective {
   }
   @Input()
   set showAllThumbnails(val: MediaGalleryElement['showAllThumbnails']) {
-    this.elementRef.nativeElement.showAllThumbnails = val;
+    this.elementRef.nativeElement.showAllThumbnails = booleanInput(val);
   }
   get showAllThumbnails() {
     return this.elementRef.nativeElement.hasAttribute('show-all-thumbnails');
@@ -80,9 +83,11 @@ export class MediaGalleryDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<MediaGalleryElement>) {}
+  constructor(
+    private elementRef: ElementRef<MediaGalleryElement & HTMLElement>
+  ) {}
 
-  get element(): MediaGalleryElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

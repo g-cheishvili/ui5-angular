@@ -2,13 +2,16 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Switch.js';
-interface SwitchElement extends HTMLElement {
+interface SwitchElement {
   accessibleName: string;
   accessibleNameRef: string;
-  checked: boolean;
+  checked: BooleanInputType;
   design: 'Graphical' | 'Textual';
-  disabled: boolean;
+  disabled: BooleanInputType;
   textOff: string;
   textOn: string;
 
@@ -43,7 +46,7 @@ export class SwitchDirective {
   }
   @Input()
   set checked(val: SwitchElement['checked']) {
-    this.elementRef.nativeElement.checked = val;
+    this.elementRef.nativeElement.checked = booleanInput(val);
   }
   get checked() {
     return this.elementRef.nativeElement.hasAttribute('checked');
@@ -59,7 +62,7 @@ export class SwitchDirective {
   }
   @Input()
   set disabled(val: SwitchElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -85,9 +88,9 @@ export class SwitchDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<SwitchElement>) {}
+  constructor(private elementRef: ElementRef<SwitchElement & HTMLElement>) {}
 
-  get element(): SwitchElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

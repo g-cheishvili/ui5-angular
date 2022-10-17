@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents-fiori/dist/Timeline.js';
-interface TimelineElement extends HTMLElement {
+interface TimelineElement {
   accessibleName: string;
   layout: 'Horizontal' | 'Vertical';
 
@@ -31,9 +31,9 @@ export class TimelineDirective {
     ) as unknown as TimelineElement['layout'];
   }
 
-  constructor(private elementRef: ElementRef<TimelineElement>) {}
+  constructor(private elementRef: ElementRef<TimelineElement & HTMLElement>) {}
 
-  get element(): TimelineElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

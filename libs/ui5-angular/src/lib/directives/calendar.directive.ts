@@ -2,9 +2,12 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Calendar.js';
-interface CalendarElement extends HTMLElement {
-  hideWeekNumbers: boolean;
+interface CalendarElement {
+  hideWeekNumbers: BooleanInputType;
   selectionMode: 'Multiple' | 'Range' | 'Single';
   formatPattern: string;
   maxDate: string;
@@ -25,7 +28,7 @@ interface OutputTypes {
 export class CalendarDirective {
   @Input()
   set hideWeekNumbers(val: CalendarElement['hideWeekNumbers']) {
-    this.elementRef.nativeElement.hideWeekNumbers = val;
+    this.elementRef.nativeElement.hideWeekNumbers = booleanInput(val);
   }
   get hideWeekNumbers() {
     return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
@@ -88,9 +91,9 @@ export class CalendarDirective {
   @Output('selected-dates-change') selectedDatesChange: Observable<
     CustomEvent<OutputTypes['selectedDatesChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<CalendarElement>) {}
+  constructor(private elementRef: ElementRef<CalendarElement & HTMLElement>) {}
 
-  get element(): CalendarElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

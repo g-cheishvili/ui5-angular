@@ -1,10 +1,12 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Label.js';
-interface LabelElement extends HTMLElement {
+interface LabelElement {
   for: string;
-  required: boolean;
-  showColon: boolean;
+  required: BooleanInputType;
+  showColon: BooleanInputType;
   wrappingType: 'None' | 'Normal';
 
   // Slots
@@ -25,14 +27,14 @@ export class LabelDirective {
   }
   @Input()
   set required(val: LabelElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
   }
   @Input()
   set showColon(val: LabelElement['showColon']) {
-    this.elementRef.nativeElement.showColon = val;
+    this.elementRef.nativeElement.showColon = booleanInput(val);
   }
   get showColon() {
     return this.elementRef.nativeElement.hasAttribute('show-colon');
@@ -47,9 +49,9 @@ export class LabelDirective {
     ) as unknown as LabelElement['wrappingType'];
   }
 
-  constructor(private elementRef: ElementRef<LabelElement>) {}
+  constructor(private elementRef: ElementRef<LabelElement & HTMLElement>) {}
 
-  get element(): LabelElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

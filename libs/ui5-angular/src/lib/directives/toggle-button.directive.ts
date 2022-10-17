@@ -2,9 +2,12 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/ToggleButton.js';
-interface ToggleButtonElement extends HTMLElement {
-  pressed: boolean;
+interface ToggleButtonElement {
+  pressed: BooleanInputType;
   accessibilityAttributes: Record<string, any>;
   accessibleName: string;
   accessibleNameRef: string;
@@ -15,10 +18,10 @@ interface ToggleButtonElement extends HTMLElement {
     | 'Negative'
     | 'Positive'
     | 'Transparent';
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
-  iconEnd: boolean;
-  submits: boolean;
+  iconEnd: BooleanInputType;
+  submits: BooleanInputType;
   tooltip: string;
 
   // Slots
@@ -34,7 +37,7 @@ interface OutputTypes {
 export class ToggleButtonDirective {
   @Input()
   set pressed(val: ToggleButtonElement['pressed']) {
-    this.elementRef.nativeElement.pressed = val;
+    this.elementRef.nativeElement.pressed = booleanInput(val);
   }
   get pressed() {
     return this.elementRef.nativeElement.hasAttribute('pressed');
@@ -79,7 +82,7 @@ export class ToggleButtonDirective {
   }
   @Input()
   set disabled(val: ToggleButtonElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -95,14 +98,14 @@ export class ToggleButtonDirective {
   }
   @Input()
   set iconEnd(val: ToggleButtonElement['iconEnd']) {
-    this.elementRef.nativeElement.iconEnd = val;
+    this.elementRef.nativeElement.iconEnd = booleanInput(val);
   }
   get iconEnd() {
     return this.elementRef.nativeElement.hasAttribute('icon-end');
   }
   @Input()
   set submits(val: ToggleButtonElement['submits']) {
-    this.elementRef.nativeElement.submits = val;
+    this.elementRef.nativeElement.submits = booleanInput(val);
   }
   get submits() {
     return this.elementRef.nativeElement.hasAttribute('submits');
@@ -119,9 +122,11 @@ export class ToggleButtonDirective {
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ToggleButtonElement>) {}
+  constructor(
+    private elementRef: ElementRef<ToggleButtonElement & HTMLElement>
+  ) {}
 
-  get element(): ToggleButtonElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

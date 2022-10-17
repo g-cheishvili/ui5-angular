@@ -20,8 +20,20 @@ export default async function (tree: Tree) {
   const directives = [];
   for (const component of components) {
     const namings = component.componentNames;
-    if (component.formData.length > 0) {
-      console.log({formData: component.formData, name: component.selector});
+    if (component.selector === 'ui5-multi-combobox') {
+      debugger;
+    }
+    if (component.formData.length > 1) {
+      console.warn('multiple form data was provided');
+    }
+    const formData = component.formData[0];
+    if (formData) {
+      generateFiles(tree, `${__dirname}/files/cva`, `libs/ui5-angular/src/lib/cvas`, {
+        ...namings,
+        input: formData.input,
+        events: formData.events,
+      });
+      directives.push(directiveImport(namings, 'cva'));
     }
     component.slots.forEach(slot => {
       const tagNames = [];

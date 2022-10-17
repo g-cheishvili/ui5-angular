@@ -1,15 +1,1 @@
-<div class="ui5-content-density-compact">
-  <ui5-card class="medium">
-    <ui5-card-header slot="header" titleText="Team Space" subtitleText="Direct Reports" status="3 of 10">
-      <ui5-icon name="group" slot="avatar"></ui5-icon>
-      <ui5-button design="Transparent" card-header-action>View All</ui5-button>
-    </ui5-card-header>
-    <div class="card-content">
-      <ui5-list>
-        <ui5-li>
-          Something
-        </ui5-li>
-      </ui5-list>
-    </div>
-  </ui5-card>
-</div>
+<ui5-input [ngModel]="someInputVal" (ngModelChange)="changeHandler($event)"></ui5-input>

@@ -2,18 +2,21 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Dialog.js';
-interface DialogElement extends HTMLElement {
-  draggable: boolean;
+interface DialogElement {
+  draggable: BooleanInputType;
   headerText: string;
-  resizable: boolean;
+  resizable: BooleanInputType;
   state: any;
-  stretch: boolean;
+  stretch: BooleanInputType;
   accessibleName: string;
   accessibleNameRef: string;
   initialFocus: string;
-  open: boolean;
-  preventFocusRestore: boolean;
+  open: BooleanInputType;
+  preventFocusRestore: BooleanInputType;
 
   // Slots
   footer: Array<HTMLElement>;
@@ -36,7 +39,7 @@ interface OutputTypes {
 export class DialogDirective {
   @Input()
   set draggable(val: DialogElement['draggable']) {
-    this.elementRef.nativeElement.draggable = val;
+    this.elementRef.nativeElement.draggable = booleanInput(val);
   }
   get draggable() {
     return this.elementRef.nativeElement.hasAttribute('draggable');
@@ -52,7 +55,7 @@ export class DialogDirective {
   }
   @Input()
   set resizable(val: DialogElement['resizable']) {
-    this.elementRef.nativeElement.resizable = val;
+    this.elementRef.nativeElement.resizable = booleanInput(val);
   }
   get resizable() {
     return this.elementRef.nativeElement.hasAttribute('resizable');
@@ -68,7 +71,7 @@ export class DialogDirective {
   }
   @Input()
   set stretch(val: DialogElement['stretch']) {
-    this.elementRef.nativeElement.stretch = val;
+    this.elementRef.nativeElement.stretch = booleanInput(val);
   }
   get stretch() {
     return this.elementRef.nativeElement.hasAttribute('stretch');
@@ -102,14 +105,14 @@ export class DialogDirective {
   }
   @Input()
   set open(val: DialogElement['open']) {
-    this.elementRef.nativeElement.open = val;
+    this.elementRef.nativeElement.open = booleanInput(val);
   }
   get open() {
     return this.elementRef.nativeElement.hasAttribute('open');
   }
   @Input()
   set preventFocusRestore(val: DialogElement['preventFocusRestore']) {
-    this.elementRef.nativeElement.preventFocusRestore = val;
+    this.elementRef.nativeElement.preventFocusRestore = booleanInput(val);
   }
   get preventFocusRestore() {
     return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
@@ -127,9 +130,9 @@ export class DialogDirective {
   @Output('before-open') beforeOpen: Observable<
     CustomEvent<OutputTypes['beforeOpen']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<DialogElement>) {}
+  constructor(private elementRef: ElementRef<DialogElement & HTMLElement>) {}
 
-  get element(): DialogElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

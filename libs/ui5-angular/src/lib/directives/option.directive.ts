@@ -1,11 +1,13 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/Option.js';
-interface OptionElement extends HTMLElement {
+interface OptionElement {
   additionalText: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   icon: string;
-  selected: boolean;
+  selected: BooleanInputType;
   value: string;
 
   // Slots
@@ -26,7 +28,7 @@ export class OptionDirective {
   }
   @Input()
   set disabled(val: OptionElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -42,7 +44,7 @@ export class OptionDirective {
   }
   @Input()
   set selected(val: OptionElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -57,9 +59,9 @@ export class OptionDirective {
     ) as unknown as OptionElement['value'];
   }
 
-  constructor(private elementRef: ElementRef<OptionElement>) {}
+  constructor(private elementRef: ElementRef<OptionElement & HTMLElement>) {}
 
-  get element(): OptionElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

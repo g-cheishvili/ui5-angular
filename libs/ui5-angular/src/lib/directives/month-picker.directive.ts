@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/MonthPicker.js';
-interface MonthPickerElement extends HTMLElement {
+interface MonthPickerElement {
   selectedDates: Array<any>;
   formatPattern: string;
   maxDate: string;
@@ -83,9 +84,11 @@ export class MonthPickerDirective {
     new PlaceholderOutput();
   @Output() navigate: Observable<CustomEvent<OutputTypes['navigate']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<MonthPickerElement>) {}
+  constructor(
+    private elementRef: ElementRef<MonthPickerElement & HTMLElement>
+  ) {}
 
-  get element(): MonthPickerElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

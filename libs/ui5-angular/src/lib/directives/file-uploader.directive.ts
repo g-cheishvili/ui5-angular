@@ -2,13 +2,16 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/FileUploader.js';
-interface FileUploaderElement extends HTMLElement {
+interface FileUploaderElement {
   accept: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   files: any;
-  hideInput: boolean;
-  multiple: boolean;
+  hideInput: BooleanInputType;
+  multiple: BooleanInputType;
   name: string;
   placeholder: string;
   value: string;
@@ -37,7 +40,7 @@ export class FileUploaderDirective {
   }
   @Input()
   set disabled(val: FileUploaderElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -53,14 +56,14 @@ export class FileUploaderDirective {
   }
   @Input()
   set hideInput(val: FileUploaderElement['hideInput']) {
-    this.elementRef.nativeElement.hideInput = val;
+    this.elementRef.nativeElement.hideInput = booleanInput(val);
   }
   get hideInput() {
     return this.elementRef.nativeElement.hasAttribute('hide-input');
   }
   @Input()
   set multiple(val: FileUploaderElement['multiple']) {
-    this.elementRef.nativeElement.multiple = val;
+    this.elementRef.nativeElement.multiple = booleanInput(val);
   }
   get multiple() {
     return this.elementRef.nativeElement.hasAttribute('multiple');
@@ -104,9 +107,11 @@ export class FileUploaderDirective {
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
     new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<FileUploaderElement>) {}
+  constructor(
+    private elementRef: ElementRef<FileUploaderElement & HTMLElement>
+  ) {}
 
-  get element(): FileUploaderElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

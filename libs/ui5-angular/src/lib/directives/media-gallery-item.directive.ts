@@ -1,10 +1,12 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/MediaGalleryItem.js';
-interface MediaGalleryItemElement extends HTMLElement {
-  disabled: boolean;
+interface MediaGalleryItemElement {
+  disabled: BooleanInputType;
   layout: 'Square' | 'Wide';
-  selected: boolean;
+  selected: BooleanInputType;
 
   // Slots
   thumbnail: HTMLElement;
@@ -16,7 +18,7 @@ interface MediaGalleryItemElement extends HTMLElement {
 export class MediaGalleryItemDirective {
   @Input()
   set disabled(val: MediaGalleryItemElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -32,15 +34,17 @@ export class MediaGalleryItemDirective {
   }
   @Input()
   set selected(val: MediaGalleryItemElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
   }
 
-  constructor(private elementRef: ElementRef<MediaGalleryItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<MediaGalleryItemElement & HTMLElement>
+  ) {}
 
-  get element(): MediaGalleryItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

@@ -1,8 +1,10 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/TableRow.js';
-interface TableRowElement extends HTMLElement {
-  selected: boolean;
+interface TableRowElement {
+  selected: BooleanInputType;
   type: 'Active' | 'Inactive';
 
   // Slots
@@ -14,7 +16,7 @@ interface TableRowElement extends HTMLElement {
 export class TableRowDirective {
   @Input()
   set selected(val: TableRowElement['selected']) {
-    this.elementRef.nativeElement.selected = val;
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
   get selected() {
     return this.elementRef.nativeElement.hasAttribute('selected');
@@ -29,9 +31,9 @@ export class TableRowDirective {
     ) as unknown as TableRowElement['type'];
   }
 
-  constructor(private elementRef: ElementRef<TableRowElement>) {}
+  constructor(private elementRef: ElementRef<TableRowElement & HTMLElement>) {}
 
-  get element(): TableRowElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

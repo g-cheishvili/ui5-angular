@@ -19,31 +19,38 @@ import { CardHeaderActionSlot } from './slots/card-header-action.slot';
 import { CardHeaderAvatarSlot } from './slots/card-header-avatar.slot';
 import { CardHeaderDirective } from './directives/card-header.directive';
 import { CarouselDirective } from './directives/carousel.directive';
+import { CheckBoxCva } from './cvas/check-box.cva';
 import { CheckBoxDirective } from './directives/check-box.directive';
 import { ColorPaletteDirective } from './directives/color-palette.directive';
 import { ColorPaletteItemDirective } from './directives/color-palette-item.directive';
 import { ColorPalettePopoverDirective } from './directives/color-palette-popover.directive';
 import { ColorPickerDirective } from './directives/color-picker.directive';
+import { ComboBoxCva } from './cvas/combo-box.cva';
 import { ComboBoxIconSlot } from './slots/combo-box-icon.slot';
 import { ComboBoxValueStateMessageSlot } from './slots/combo-box-value-state-message.slot';
 import { ComboBoxDirective } from './directives/combo-box.directive';
 import { ComboBoxGroupItemDirective } from './directives/combo-box-group-item.directive';
 import { ComboBoxItemDirective } from './directives/combo-box-item.directive';
 import { CustomListItemDirective } from './directives/custom-list-item.directive';
+import { DatePickerCva } from './cvas/date-picker.cva';
 import { DatePickerValueStateMessageSlot } from './slots/date-picker-value-state-message.slot';
 import { DatePickerDirective } from './directives/date-picker.directive';
+import { DateRangePickerCva } from './cvas/date-range-picker.cva';
 import { DateRangePickerValueStateMessageSlot } from './slots/date-range-picker-value-state-message.slot';
 import { DateRangePickerDirective } from './directives/date-range-picker.directive';
+import { DateTimePickerCva } from './cvas/date-time-picker.cva';
 import { DateTimePickerValueStateMessageSlot } from './slots/date-time-picker-value-state-message.slot';
 import { DateTimePickerDirective } from './directives/date-time-picker.directive';
 import { DayPickerDirective } from './directives/day-picker.directive';
 import { DialogFooterSlot } from './slots/dialog-footer.slot';
 import { DialogHeaderSlot } from './slots/dialog-header.slot';
 import { DialogDirective } from './directives/dialog.directive';
+import { FileUploaderCva } from './cvas/file-uploader.cva';
 import { FileUploaderValueStateMessageSlot } from './slots/file-uploader-value-state-message.slot';
 import { FileUploaderDirective } from './directives/file-uploader.directive';
 import { GroupHeaderListItemDirective } from './directives/group-header-list-item.directive';
 import { IconDirective } from './directives/icon.directive';
+import { InputCva } from './cvas/input.cva';
 import { InputIconSlot } from './slots/input-icon.slot';
 import { InputValueStateMessageSlot } from './slots/input-value-state-message.slot';
 import { InputDirective } from './directives/input.directive';
@@ -56,11 +63,13 @@ import { MenuItemDirective } from './directives/menu-item.directive';
 import { MessageStripIconSlot } from './slots/message-strip-icon.slot';
 import { MessageStripDirective } from './directives/message-strip.directive';
 import { MonthPickerDirective } from './directives/month-picker.directive';
+import { MultiComboBoxCva } from './cvas/multi-combo-box.cva';
 import { MultiComboBoxIconSlot } from './slots/multi-combo-box-icon.slot';
 import { MultiComboBoxValueStateMessageSlot } from './slots/multi-combo-box-value-state-message.slot';
 import { MultiComboBoxDirective } from './directives/multi-combo-box.directive';
 import { MultiComboBoxGroupItemDirective } from './directives/multi-combo-box-group-item.directive';
 import { MultiComboBoxItemDirective } from './directives/multi-combo-box-item.directive';
+import { MultiInputCva } from './cvas/multi-input.cva';
 import { MultiInputTokensSlot } from './slots/multi-input-tokens.slot';
 import { MultiInputIconSlot } from './slots/multi-input-icon.slot';
 import { MultiInputValueStateMessageSlot } from './slots/multi-input-value-state-message.slot';
@@ -72,6 +81,7 @@ import { PopoverFooterSlot } from './slots/popover-footer.slot';
 import { PopoverHeaderSlot } from './slots/popover-header.slot';
 import { PopoverDirective } from './directives/popover.directive';
 import { ProgressIndicatorDirective } from './directives/progress-indicator.directive';
+import { RadioButtonCva } from './cvas/radio-button.cva';
 import { RadioButtonDirective } from './directives/radio-button.directive';
 import { RangeSliderDirective } from './directives/range-slider.directive';
 import { RatingIndicatorDirective } from './directives/rating-indicator.directive';
@@ -90,6 +100,7 @@ import { StepInputValueStateMessageSlot } from './slots/step-input-value-state-m
 import { StepInputDirective } from './directives/step-input.directive';
 import { SuggestionGroupItemDirective } from './directives/suggestion-group-item.directive';
 import { SuggestionItemDirective } from './directives/suggestion-item.directive';
+import { SwitchCva } from './cvas/switch.cva';
 import { SwitchDirective } from './directives/switch.directive';
 import { TabSubTabsSlot } from './slots/tab-sub-tabs.slot';
 import { TabDirective } from './directives/tab.directive';
@@ -105,6 +116,7 @@ import { TableRowDirective } from './directives/table-row.directive';
 import { TabSeparatorDirective } from './directives/tab-separator.directive';
 import { TextAreaValueStateMessageSlot } from './slots/text-area-value-state-message.slot';
 import { TextAreaDirective } from './directives/text-area.directive';
+import { TimePickerCva } from './cvas/time-picker.cva';
 import { TimePickerValueStateMessageSlot } from './slots/time-picker-value-state-message.slot';
 import { TimePickerDirective } from './directives/time-picker.directive';
 import { TitleDirective } from './directives/title.directive';
@@ -196,31 +208,38 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     CardHeaderAvatarSlot,
     CardHeaderDirective,
     CarouselDirective,
+    CheckBoxCva,
     CheckBoxDirective,
     ColorPaletteDirective,
     ColorPaletteItemDirective,
     ColorPalettePopoverDirective,
     ColorPickerDirective,
+    ComboBoxCva,
     ComboBoxIconSlot,
     ComboBoxValueStateMessageSlot,
     ComboBoxDirective,
     ComboBoxGroupItemDirective,
     ComboBoxItemDirective,
     CustomListItemDirective,
+    DatePickerCva,
     DatePickerValueStateMessageSlot,
     DatePickerDirective,
+    DateRangePickerCva,
     DateRangePickerValueStateMessageSlot,
     DateRangePickerDirective,
+    DateTimePickerCva,
     DateTimePickerValueStateMessageSlot,
     DateTimePickerDirective,
     DayPickerDirective,
     DialogFooterSlot,
     DialogHeaderSlot,
     DialogDirective,
+    FileUploaderCva,
     FileUploaderValueStateMessageSlot,
     FileUploaderDirective,
     GroupHeaderListItemDirective,
     IconDirective,
+    InputCva,
     InputIconSlot,
     InputValueStateMessageSlot,
     InputDirective,
@@ -233,11 +252,13 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     MessageStripIconSlot,
     MessageStripDirective,
     MonthPickerDirective,
+    MultiComboBoxCva,
     MultiComboBoxIconSlot,
     MultiComboBoxValueStateMessageSlot,
     MultiComboBoxDirective,
     MultiComboBoxGroupItemDirective,
     MultiComboBoxItemDirective,
+    MultiInputCva,
     MultiInputTokensSlot,
     MultiInputIconSlot,
     MultiInputValueStateMessageSlot,
@@ -249,6 +270,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     PopoverHeaderSlot,
     PopoverDirective,
     ProgressIndicatorDirective,
+    RadioButtonCva,
     RadioButtonDirective,
     RangeSliderDirective,
     RatingIndicatorDirective,
@@ -267,6 +289,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     StepInputDirective,
     SuggestionGroupItemDirective,
     SuggestionItemDirective,
+    SwitchCva,
     SwitchDirective,
     TabSubTabsSlot,
     TabDirective,
@@ -282,6 +305,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     TabSeparatorDirective,
     TextAreaValueStateMessageSlot,
     TextAreaDirective,
+    TimePickerCva,
     TimePickerValueStateMessageSlot,
     TimePickerDirective,
     TitleDirective,
@@ -373,31 +397,38 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     CardHeaderAvatarSlot,
     CardHeaderDirective,
     CarouselDirective,
+    CheckBoxCva,
     CheckBoxDirective,
     ColorPaletteDirective,
     ColorPaletteItemDirective,
     ColorPalettePopoverDirective,
     ColorPickerDirective,
+    ComboBoxCva,
     ComboBoxIconSlot,
     ComboBoxValueStateMessageSlot,
     ComboBoxDirective,
     ComboBoxGroupItemDirective,
     ComboBoxItemDirective,
     CustomListItemDirective,
+    DatePickerCva,
     DatePickerValueStateMessageSlot,
     DatePickerDirective,
+    DateRangePickerCva,
     DateRangePickerValueStateMessageSlot,
     DateRangePickerDirective,
+    DateTimePickerCva,
     DateTimePickerValueStateMessageSlot,
     DateTimePickerDirective,
     DayPickerDirective,
     DialogFooterSlot,
     DialogHeaderSlot,
     DialogDirective,
+    FileUploaderCva,
     FileUploaderValueStateMessageSlot,
     FileUploaderDirective,
     GroupHeaderListItemDirective,
     IconDirective,
+    InputCva,
     InputIconSlot,
     InputValueStateMessageSlot,
     InputDirective,
@@ -410,11 +441,13 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     MessageStripIconSlot,
     MessageStripDirective,
     MonthPickerDirective,
+    MultiComboBoxCva,
     MultiComboBoxIconSlot,
     MultiComboBoxValueStateMessageSlot,
     MultiComboBoxDirective,
     MultiComboBoxGroupItemDirective,
     MultiComboBoxItemDirective,
+    MultiInputCva,
     MultiInputTokensSlot,
     MultiInputIconSlot,
     MultiInputValueStateMessageSlot,
@@ -426,6 +459,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     PopoverHeaderSlot,
     PopoverDirective,
     ProgressIndicatorDirective,
+    RadioButtonCva,
     RadioButtonDirective,
     RangeSliderDirective,
     RatingIndicatorDirective,
@@ -444,6 +478,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     StepInputDirective,
     SuggestionGroupItemDirective,
     SuggestionItemDirective,
+    SwitchCva,
     SwitchDirective,
     TabSubTabsSlot,
     TabDirective,
@@ -459,6 +494,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     TabSeparatorDirective,
     TextAreaValueStateMessageSlot,
     TextAreaDirective,
+    TimePickerCva,
     TimePickerValueStateMessageSlot,
     TimePickerDirective,
     TitleDirective,

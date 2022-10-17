@@ -4,9 +4,12 @@ import { SideNavigationItemDirective } from './side-navigation-item.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/SideNavigation.js';
-interface SideNavigationElement extends HTMLElement {
-  collapsed: boolean;
+interface SideNavigationElement {
+  collapsed: BooleanInputType;
 
   // Slots
   fixedItems: Array<SideNavigationItemDirective['element']>;
@@ -23,7 +26,7 @@ interface OutputTypes {
 export class SideNavigationDirective {
   @Input()
   set collapsed(val: SideNavigationElement['collapsed']) {
-    this.elementRef.nativeElement.collapsed = val;
+    this.elementRef.nativeElement.collapsed = booleanInput(val);
   }
   get collapsed() {
     return this.elementRef.nativeElement.hasAttribute('collapsed');
@@ -32,9 +35,11 @@ export class SideNavigationDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<SideNavigationElement>) {}
+  constructor(
+    private elementRef: ElementRef<SideNavigationElement & HTMLElement>
+  ) {}
 
-  get element(): SideNavigationElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

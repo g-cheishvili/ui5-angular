@@ -4,16 +4,19 @@ import { IconDirective } from './icon.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/ComboBox.js';
-interface ComboBoxElement extends HTMLElement {
+interface ComboBoxElement {
   accessibleName: string;
   accessibleNameRef: string;
-  disabled: boolean;
+  disabled: BooleanInputType;
   filter: string;
-  loading: boolean;
+  loading: BooleanInputType;
   placeholder: string;
-  readonly: boolean;
-  required: boolean;
+  readonly: BooleanInputType;
+  required: BooleanInputType;
   value: string;
   valueState: any;
 
@@ -54,7 +57,7 @@ export class ComboBoxDirective {
   }
   @Input()
   set disabled(val: ComboBoxElement['disabled']) {
-    this.elementRef.nativeElement.disabled = val;
+    this.elementRef.nativeElement.disabled = booleanInput(val);
   }
   get disabled() {
     return this.elementRef.nativeElement.hasAttribute('disabled');
@@ -70,7 +73,7 @@ export class ComboBoxDirective {
   }
   @Input()
   set loading(val: ComboBoxElement['loading']) {
-    this.elementRef.nativeElement.loading = val;
+    this.elementRef.nativeElement.loading = booleanInput(val);
   }
   get loading() {
     return this.elementRef.nativeElement.hasAttribute('loading');
@@ -86,14 +89,14 @@ export class ComboBoxDirective {
   }
   @Input()
   set readonly(val: ComboBoxElement['readonly']) {
-    this.elementRef.nativeElement.readonly = val;
+    this.elementRef.nativeElement.readonly = booleanInput(val);
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
   }
   @Input()
   set required(val: ComboBoxElement['required']) {
-    this.elementRef.nativeElement.required = val;
+    this.elementRef.nativeElement.required = booleanInput(val);
   }
   get required() {
     return this.elementRef.nativeElement.hasAttribute('required');
@@ -124,9 +127,9 @@ export class ComboBoxDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ComboBoxElement>) {}
+  constructor(private elementRef: ElementRef<ComboBoxElement & HTMLElement>) {}
 
-  get element(): ComboBoxElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

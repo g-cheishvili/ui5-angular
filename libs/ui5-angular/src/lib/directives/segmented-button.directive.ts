@@ -2,8 +2,9 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
 import '@ui5/webcomponents/dist/SegmentedButton.js';
-interface SegmentedButtonElement extends HTMLElement {
+interface SegmentedButtonElement {
   accessibleName: string;
   selectedItem: any;
 
@@ -40,9 +41,11 @@ export class SegmentedButtonDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<SegmentedButtonElement>) {}
+  constructor(
+    private elementRef: ElementRef<SegmentedButtonElement & HTMLElement>
+  ) {}
 
-  get element(): SegmentedButtonElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

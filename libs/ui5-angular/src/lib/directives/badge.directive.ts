@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 import { IconDirective } from './icon.directive';
 
 import '@ui5/webcomponents/dist/Badge.js';
-interface BadgeElement extends HTMLElement {
+interface BadgeElement {
   colorScheme: string;
 
   // Slots
@@ -24,9 +24,9 @@ export class BadgeDirective {
     ) as unknown as BadgeElement['colorScheme'];
   }
 
-  constructor(private elementRef: ElementRef<BadgeElement>) {}
+  constructor(private elementRef: ElementRef<BadgeElement & HTMLElement>) {}
 
-  get element(): BadgeElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

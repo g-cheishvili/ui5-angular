@@ -2,12 +2,14 @@ import { Directive, ElementRef, Input } from '@angular/core';
 
 import { BarDirective } from './bar.directive';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/Page.js';
-interface PageElement extends HTMLElement {
+interface PageElement {
   backgroundDesign: 'List' | 'Solid' | 'Transparent';
-  disableScrolling: boolean;
-  floatingFooter: boolean;
-  hideFooter: boolean;
+  disableScrolling: BooleanInputType;
+  floatingFooter: BooleanInputType;
+  hideFooter: BooleanInputType;
 
   // Slots
   footer: BarDirective['element'];
@@ -29,29 +31,29 @@ export class PageDirective {
   }
   @Input()
   set disableScrolling(val: PageElement['disableScrolling']) {
-    this.elementRef.nativeElement.disableScrolling = val;
+    this.elementRef.nativeElement.disableScrolling = booleanInput(val);
   }
   get disableScrolling() {
     return this.elementRef.nativeElement.hasAttribute('disable-scrolling');
   }
   @Input()
   set floatingFooter(val: PageElement['floatingFooter']) {
-    this.elementRef.nativeElement.floatingFooter = val;
+    this.elementRef.nativeElement.floatingFooter = booleanInput(val);
   }
   get floatingFooter() {
     return this.elementRef.nativeElement.hasAttribute('floating-footer');
   }
   @Input()
   set hideFooter(val: PageElement['hideFooter']) {
-    this.elementRef.nativeElement.hideFooter = val;
+    this.elementRef.nativeElement.hideFooter = booleanInput(val);
   }
   get hideFooter() {
     return this.elementRef.nativeElement.hasAttribute('hide-footer');
   }
 
-  constructor(private elementRef: ElementRef<PageElement>) {}
+  constructor(private elementRef: ElementRef<PageElement & HTMLElement>) {}
 
-  get element(): PageElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

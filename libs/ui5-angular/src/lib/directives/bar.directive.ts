@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents-fiori/dist/Bar.js';
-interface BarElement extends HTMLElement {
+interface BarElement {
   design: 'FloatingFooter' | 'Footer' | 'Header' | 'Subheader';
 
   // Slots
@@ -23,9 +23,9 @@ export class BarDirective {
     ) as unknown as BarElement['design'];
   }
 
-  constructor(private elementRef: ElementRef<BarElement>) {}
+  constructor(private elementRef: ElementRef<BarElement & HTMLElement>) {}
 
-  get element(): BarElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

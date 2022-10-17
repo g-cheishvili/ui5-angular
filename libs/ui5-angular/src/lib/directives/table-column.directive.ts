@@ -1,8 +1,10 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/TableColumn.js';
-interface TableColumnElement extends HTMLElement {
-  demandPopin: boolean;
+interface TableColumnElement {
+  demandPopin: BooleanInputType;
   minWidth: number;
   popinText: string;
 
@@ -15,7 +17,7 @@ interface TableColumnElement extends HTMLElement {
 export class TableColumnDirective {
   @Input()
   set demandPopin(val: TableColumnElement['demandPopin']) {
-    this.elementRef.nativeElement.demandPopin = val;
+    this.elementRef.nativeElement.demandPopin = booleanInput(val);
   }
   get demandPopin() {
     return this.elementRef.nativeElement.hasAttribute('demand-popin');
@@ -39,9 +41,11 @@ export class TableColumnDirective {
     ) as unknown as TableColumnElement['popinText'];
   }
 
-  constructor(private elementRef: ElementRef<TableColumnElement>) {}
+  constructor(
+    private elementRef: ElementRef<TableColumnElement & HTMLElement>
+  ) {}
 
-  get element(): TableColumnElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

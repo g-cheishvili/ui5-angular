@@ -2,10 +2,13 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents-fiori/dist/UploadCollection.js';
-interface UploadCollectionElement extends HTMLElement {
+interface UploadCollectionElement {
   accessibleName: string;
-  hideDragOverlay: boolean;
+  hideDragOverlay: BooleanInputType;
   mode:
     | 'Delete'
     | 'MultiSelect'
@@ -44,7 +47,7 @@ export class UploadCollectionDirective {
   }
   @Input()
   set hideDragOverlay(val: UploadCollectionElement['hideDragOverlay']) {
-    this.elementRef.nativeElement.hideDragOverlay = val;
+    this.elementRef.nativeElement.hideDragOverlay = booleanInput(val);
   }
   get hideDragOverlay() {
     return this.elementRef.nativeElement.hasAttribute('hide-drag-overlay');
@@ -85,9 +88,11 @@ export class UploadCollectionDirective {
   @Output('selection-change') selectionChange: Observable<
     CustomEvent<OutputTypes['selectionChange']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<UploadCollectionElement>) {}
+  constructor(
+    private elementRef: ElementRef<UploadCollectionElement & HTMLElement>
+  ) {}
 
-  get element(): UploadCollectionElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 

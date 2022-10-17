@@ -1,12 +1,14 @@
 import { Directive, ElementRef, Input } from '@angular/core';
 
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/SuggestionItem.js';
-interface SuggestionItemElement extends HTMLElement {
+interface SuggestionItemElement {
   additionalText: string;
   additionalTextState: any;
   description: string;
   icon: string;
-  iconEnd: boolean;
+  iconEnd: BooleanInputType;
   image: string;
   text: string;
   type: 'Active' | 'Detail' | 'Inactive';
@@ -56,7 +58,7 @@ export class SuggestionItemDirective {
   }
   @Input()
   set iconEnd(val: SuggestionItemElement['iconEnd']) {
-    this.elementRef.nativeElement.iconEnd = val;
+    this.elementRef.nativeElement.iconEnd = booleanInput(val);
   }
   get iconEnd() {
     return this.elementRef.nativeElement.hasAttribute('icon-end');
@@ -89,9 +91,11 @@ export class SuggestionItemDirective {
     ) as unknown as SuggestionItemElement['type'];
   }
 
-  constructor(private elementRef: ElementRef<SuggestionItemElement>) {}
+  constructor(
+    private elementRef: ElementRef<SuggestionItemElement & HTMLElement>
+  ) {}
 
-  get element(): SuggestionItemElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

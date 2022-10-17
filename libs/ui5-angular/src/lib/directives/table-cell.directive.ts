@@ -1,7 +1,7 @@
 import { Directive, ElementRef } from '@angular/core';
 
 import '@ui5/webcomponents/dist/TableCell.js';
-interface TableCellElement extends HTMLElement {
+interface TableCellElement {
   // Slots
 }
 
@@ -9,9 +9,9 @@ interface TableCellElement extends HTMLElement {
   selector: 'ui5-table-cell',
 })
 export class TableCellDirective {
-  constructor(private elementRef: ElementRef<TableCellElement>) {}
+  constructor(private elementRef: ElementRef<TableCellElement & HTMLElement>) {}
 
-  get element(): TableCellElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 }

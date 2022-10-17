@@ -2,22 +2,25 @@ import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
+
+import { booleanInput, BooleanInputType } from '../utils/boolean-input';
+
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
-interface ResponsivePopoverElement extends HTMLElement {
-  allowTargetOverlap: boolean;
+interface ResponsivePopoverElement {
+  allowTargetOverlap: BooleanInputType;
   headerText: string;
-  hideArrow: boolean;
-  hideBackdrop: boolean;
+  hideArrow: BooleanInputType;
+  hideBackdrop: BooleanInputType;
   horizontalAlign: 'Center' | 'Left' | 'Right' | 'Stretch';
-  modal: boolean;
+  modal: BooleanInputType;
   opener: any;
   placementType: 'Bottom' | 'Left' | 'Right' | 'Top';
   verticalAlign: 'Bottom' | 'Center' | 'Stretch' | 'Top';
   accessibleName: string;
   accessibleNameRef: string;
   initialFocus: string;
-  open: boolean;
-  preventFocusRestore: boolean;
+  open: BooleanInputType;
+  preventFocusRestore: BooleanInputType;
 
   // Slots
   footer: Array<HTMLElement>;
@@ -40,7 +43,7 @@ interface OutputTypes {
 export class ResponsivePopoverDirective {
   @Input()
   set allowTargetOverlap(val: ResponsivePopoverElement['allowTargetOverlap']) {
-    this.elementRef.nativeElement.allowTargetOverlap = val;
+    this.elementRef.nativeElement.allowTargetOverlap = booleanInput(val);
   }
   get allowTargetOverlap() {
     return this.elementRef.nativeElement.hasAttribute('allow-target-overlap');
@@ -56,14 +59,14 @@ export class ResponsivePopoverDirective {
   }
   @Input()
   set hideArrow(val: ResponsivePopoverElement['hideArrow']) {
-    this.elementRef.nativeElement.hideArrow = val;
+    this.elementRef.nativeElement.hideArrow = booleanInput(val);
   }
   get hideArrow() {
     return this.elementRef.nativeElement.hasAttribute('hide-arrow');
   }
   @Input()
   set hideBackdrop(val: ResponsivePopoverElement['hideBackdrop']) {
-    this.elementRef.nativeElement.hideBackdrop = val;
+    this.elementRef.nativeElement.hideBackdrop = booleanInput(val);
   }
   get hideBackdrop() {
     return this.elementRef.nativeElement.hasAttribute('hide-backdrop');
@@ -79,7 +82,7 @@ export class ResponsivePopoverDirective {
   }
   @Input()
   set modal(val: ResponsivePopoverElement['modal']) {
-    this.elementRef.nativeElement.modal = val;
+    this.elementRef.nativeElement.modal = booleanInput(val);
   }
   get modal() {
     return this.elementRef.nativeElement.hasAttribute('modal');
@@ -140,7 +143,7 @@ export class ResponsivePopoverDirective {
   }
   @Input()
   set open(val: ResponsivePopoverElement['open']) {
-    this.elementRef.nativeElement.open = val;
+    this.elementRef.nativeElement.open = booleanInput(val);
   }
   get open() {
     return this.elementRef.nativeElement.hasAttribute('open');
@@ -149,7 +152,7 @@ export class ResponsivePopoverDirective {
   set preventFocusRestore(
     val: ResponsivePopoverElement['preventFocusRestore']
   ) {
-    this.elementRef.nativeElement.preventFocusRestore = val;
+    this.elementRef.nativeElement.preventFocusRestore = booleanInput(val);
   }
   get preventFocusRestore() {
     return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
@@ -167,9 +170,11 @@ export class ResponsivePopoverDirective {
   @Output('before-open') beforeOpen: Observable<
     CustomEvent<OutputTypes['beforeOpen']>
   > = new PlaceholderOutput();
-  constructor(private elementRef: ElementRef<ResponsivePopoverElement>) {}
+  constructor(
+    private elementRef: ElementRef<ResponsivePopoverElement & HTMLElement>
+  ) {}
 
-  get element(): ResponsivePopoverElement {
+  get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
   }
 
