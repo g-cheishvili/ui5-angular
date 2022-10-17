@@ -22,6 +22,7 @@
     "@angular/router": "~14.2.0",
     "@nrwl/angular": "14.7.5",
     "@ui5/webcomponents": "1.8.0",
+    "@ui5/webcomponents-fiori": "^1.8.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
@@ -46,6 +47,7 @@
     "@types/node": "16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
+    "@ui5/tooling-webc": "^0.1.4",
     "cypress": "^10.7.0",
     "eslint": "~8.15.0",
     "eslint-config-prettier": "8.1.0",

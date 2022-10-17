@@ -1,5 +1,7 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { PlaceholderOutput } from '../utils/placeholder-output';
+import { Observable } from 'rxjs';
 import '@ui5/webcomponents/dist/Dialog.js';
 interface DialogElement extends HTMLElement {
   draggable: boolean;
@@ -7,10 +9,25 @@ interface DialogElement extends HTMLElement {
   resizable: boolean;
   state: any;
   stretch: boolean;
+  accessibleName: string;
+  accessibleNameRef: string;
+  initialFocus: string;
+  open: boolean;
+  preventFocusRestore: boolean;
 
   // Slots
   footer: Array<HTMLElement>;
   header: Array<HTMLElement>;
+}
+
+interface OutputTypes {
+  afterClose: void;
+
+  afterOpen: void;
+
+  beforeClose: { escPressed: boolean };
+
+  beforeOpen: void;
 }
 
 @Directive({
@@ -56,7 +73,60 @@ export class DialogDirective {
   get stretch() {
     return this.elementRef.nativeElement.hasAttribute('stretch');
   }
+  @Input()
+  set accessibleName(val: DialogElement['accessibleName']) {
+    this.elementRef.nativeElement.accessibleName = val;
+  }
+  get accessibleName() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name'
+    ) as unknown as DialogElement['accessibleName'];
+  }
+  @Input()
+  set accessibleNameRef(val: DialogElement['accessibleNameRef']) {
+    this.elementRef.nativeElement.accessibleNameRef = val;
+  }
+  get accessibleNameRef() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name-ref'
+    ) as unknown as DialogElement['accessibleNameRef'];
+  }
+  @Input()
+  set initialFocus(val: DialogElement['initialFocus']) {
+    this.elementRef.nativeElement.initialFocus = val;
+  }
+  get initialFocus() {
+    return this.elementRef.nativeElement.getAttribute(
+      'initial-focus'
+    ) as unknown as DialogElement['initialFocus'];
+  }
+  @Input()
+  set open(val: DialogElement['open']) {
+    this.elementRef.nativeElement.open = val;
+  }
+  get open() {
+    return this.elementRef.nativeElement.hasAttribute('open');
+  }
+  @Input()
+  set preventFocusRestore(val: DialogElement['preventFocusRestore']) {
+    this.elementRef.nativeElement.preventFocusRestore = val;
+  }
+  get preventFocusRestore() {
+    return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
+  }
 
+  @Output('after-close') afterClose: Observable<
+    CustomEvent<OutputTypes['afterClose']>
+  > = new PlaceholderOutput();
+  @Output('after-open') afterOpen: Observable<
+    CustomEvent<OutputTypes['afterOpen']>
+  > = new PlaceholderOutput();
+  @Output('before-close') beforeClose: Observable<
+    CustomEvent<OutputTypes['beforeClose']>
+  > = new PlaceholderOutput();
+  @Output('before-open') beforeOpen: Observable<
+    CustomEvent<OutputTypes['beforeOpen']>
+  > = new PlaceholderOutput();
   constructor(private elementRef: ElementRef<DialogElement>) {}
 
   get element(): DialogElement {

@@ -1,5 +1,7 @@
-import { Directive, ElementRef, Input } from '@angular/core';
+import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { PlaceholderOutput } from '../utils/placeholder-output';
+import { Observable } from 'rxjs';
 import '@ui5/webcomponents/dist/StandardListItem.js';
 interface StandardListItemElement extends HTMLElement {
   accessibleName: string;
@@ -9,8 +11,14 @@ interface StandardListItemElement extends HTMLElement {
   icon: string;
   iconEnd: boolean;
   image: string;
+  type: 'Active' | 'Detail' | 'Inactive';
+  selected: boolean;
 
   // Slots
+}
+
+interface OutputTypes {
+  detailClick: void;
 }
 
 @Directive({
@@ -78,7 +86,26 @@ export class StandardListItemDirective {
       'image'
     ) as unknown as StandardListItemElement['image'];
   }
+  @Input()
+  set type(val: StandardListItemElement['type']) {
+    this.elementRef.nativeElement.type = val;
+  }
+  get type() {
+    return this.elementRef.nativeElement.getAttribute(
+      'type'
+    ) as unknown as StandardListItemElement['type'];
+  }
+  @Input()
+  set selected(val: StandardListItemElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected() {
+    return this.elementRef.nativeElement.hasAttribute('selected');
+  }
 
+  @Output('detail-click') detailClick: Observable<
+    CustomEvent<OutputTypes['detailClick']>
+  > = new PlaceholderOutput();
   constructor(private elementRef: ElementRef<StandardListItemElement>) {}
 
   get element(): StandardListItemElement {

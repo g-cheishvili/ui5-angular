@@ -26,6 +26,9 @@
         ],
         "@angular-eslint/no-host-metadata-property": [
           "off"
+        ],
+        "@angular-eslint/no-output-native": [
+          "off"
         ]
       }
     },

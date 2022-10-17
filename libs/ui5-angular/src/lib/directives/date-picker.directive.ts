@@ -15,6 +15,11 @@ interface DatePickerElement extends HTMLElement {
   required: boolean;
   value: string;
   valueState: any;
+  formatPattern: string;
+  maxDate: string;
+  minDate: string;
+  primaryCalendarType: any;
+  secondaryCalendarType: any;
 
   // Slots
   valueStateMessage: HTMLElement;
@@ -120,6 +125,51 @@ export class DatePickerDirective {
     return this.elementRef.nativeElement.getAttribute(
       'value-state'
     ) as unknown as DatePickerElement['valueState'];
+  }
+  @Input()
+  set formatPattern(val: DatePickerElement['formatPattern']) {
+    this.elementRef.nativeElement.formatPattern = val;
+  }
+  get formatPattern() {
+    return this.elementRef.nativeElement.getAttribute(
+      'format-pattern'
+    ) as unknown as DatePickerElement['formatPattern'];
+  }
+  @Input()
+  set maxDate(val: DatePickerElement['maxDate']) {
+    this.elementRef.nativeElement.maxDate = val;
+  }
+  get maxDate() {
+    return this.elementRef.nativeElement.getAttribute(
+      'max-date'
+    ) as unknown as DatePickerElement['maxDate'];
+  }
+  @Input()
+  set minDate(val: DatePickerElement['minDate']) {
+    this.elementRef.nativeElement.minDate = val;
+  }
+  get minDate() {
+    return this.elementRef.nativeElement.getAttribute(
+      'min-date'
+    ) as unknown as DatePickerElement['minDate'];
+  }
+  @Input()
+  set primaryCalendarType(val: DatePickerElement['primaryCalendarType']) {
+    this.elementRef.nativeElement.primaryCalendarType = val;
+  }
+  get primaryCalendarType() {
+    return this.elementRef.nativeElement.getAttribute(
+      'primary-calendar-type'
+    ) as unknown as DatePickerElement['primaryCalendarType'];
+  }
+  @Input()
+  set secondaryCalendarType(val: DatePickerElement['secondaryCalendarType']) {
+    this.elementRef.nativeElement.secondaryCalendarType = val;
+  }
+  get secondaryCalendarType() {
+    return this.elementRef.nativeElement.getAttribute(
+      'secondary-calendar-type'
+    ) as unknown as DatePickerElement['secondaryCalendarType'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -1,5 +1,5 @@
-import {SymbolObject} from "./index-api-json";
 import {names} from "@nrwl/devkit";
+import {SymbolObject} from "./api-json.types";
 
 interface ComponentData {
   dependencies: Array<{ path: string, className: string }>,
@@ -169,7 +169,7 @@ export function getComponents({
         implements: symbol.implements,
         selector: symbol.tagname,
         componentNames: names(symbol.basename),
-        path: `@ui5/webcomponents/dist/${symbol.resource}`,
+        path: symbol.resource,
         inputs: [],
         outputs: [],
         slots: []

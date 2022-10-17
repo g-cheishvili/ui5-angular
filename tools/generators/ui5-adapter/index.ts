@@ -1,12 +1,9 @@
 import {formatFiles, generateFiles, names, Tree} from '@nrwl/devkit';
-import {readFileSync, rmdirSync} from "fs";
+import {rmdirSync} from "fs";
 import {indexApiJson} from "./index-api-json";
 import {getComponents} from "./get-components";
 
-// const ui5ApiJson = JSON.parse(readFileSync('./node_modules/@ui5/webcomponents/dist/api.json', 'utf8'));
-const ui5ApiJson = JSON.parse(readFileSync('./ui5-api-mock.json', 'utf8'));
-
-const {symbols, implementers} = indexApiJson(ui5ApiJson);
+const {symbols, implementers} = indexApiJson();
 const components = getComponents({symbols, implementers});
 
 const directiveImport = (ui5ClassName: Record<string, string> | string, base: string) => {
@@ -18,7 +15,7 @@ const directiveImport = (ui5ClassName: Record<string, string> | string, base: st
   }
 }
 
-export default async function (tree: Tree, schema: any) {
+export default async function (tree: Tree) {
   rmdirSync('libs/ui5-angular/src', {recursive: true});
   const directives = [];
   for (const component of components) {

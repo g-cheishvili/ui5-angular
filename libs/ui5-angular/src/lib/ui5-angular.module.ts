@@ -32,7 +32,9 @@ import { ComboBoxItemDirective } from './directives/combo-box-item.directive';
 import { CustomListItemDirective } from './directives/custom-list-item.directive';
 import { DatePickerValueStateMessageSlot } from './slots/date-picker-value-state-message.slot';
 import { DatePickerDirective } from './directives/date-picker.directive';
+import { DateRangePickerValueStateMessageSlot } from './slots/date-range-picker-value-state-message.slot';
 import { DateRangePickerDirective } from './directives/date-range-picker.directive';
+import { DateTimePickerValueStateMessageSlot } from './slots/date-time-picker-value-state-message.slot';
 import { DateTimePickerDirective } from './directives/date-time-picker.directive';
 import { DayPickerDirective } from './directives/day-picker.directive';
 import { DialogFooterSlot } from './slots/dialog-footer.slot';
@@ -60,6 +62,8 @@ import { MultiComboBoxDirective } from './directives/multi-combo-box.directive';
 import { MultiComboBoxGroupItemDirective } from './directives/multi-combo-box-group-item.directive';
 import { MultiComboBoxItemDirective } from './directives/multi-combo-box-item.directive';
 import { MultiInputTokensSlot } from './slots/multi-input-tokens.slot';
+import { MultiInputIconSlot } from './slots/multi-input-icon.slot';
+import { MultiInputValueStateMessageSlot } from './slots/multi-input-value-state-message.slot';
 import { MultiInputDirective } from './directives/multi-input.directive';
 import { OptionDirective } from './directives/option.directive';
 import { PanelHeaderSlot } from './slots/panel-header.slot';
@@ -71,6 +75,8 @@ import { ProgressIndicatorDirective } from './directives/progress-indicator.dire
 import { RadioButtonDirective } from './directives/radio-button.directive';
 import { RangeSliderDirective } from './directives/range-slider.directive';
 import { RatingIndicatorDirective } from './directives/rating-indicator.directive';
+import { ResponsivePopoverFooterSlot } from './slots/responsive-popover-footer.slot';
+import { ResponsivePopoverHeaderSlot } from './slots/responsive-popover-header.slot';
 import { ResponsivePopoverDirective } from './directives/responsive-popover.directive';
 import { SegmentedButtonDirective } from './directives/segmented-button.directive';
 import { SegmentedButtonItemDirective } from './directives/segmented-button-item.directive';
@@ -99,6 +105,7 @@ import { TableRowDirective } from './directives/table-row.directive';
 import { TabSeparatorDirective } from './directives/tab-separator.directive';
 import { TextAreaValueStateMessageSlot } from './slots/text-area-value-state-message.slot';
 import { TextAreaDirective } from './directives/text-area.directive';
+import { TimePickerValueStateMessageSlot } from './slots/time-picker-value-state-message.slot';
 import { TimePickerDirective } from './directives/time-picker.directive';
 import { TitleDirective } from './directives/title.directive';
 import { ToastDirective } from './directives/toast.directive';
@@ -111,6 +118,63 @@ import { TreeItemDirective } from './directives/tree-item.directive';
 import { TreeListItemDirective } from './directives/tree-list-item.directive';
 import { WheelSliderDirective } from './directives/wheel-slider.directive';
 import { YearPickerDirective } from './directives/year-picker.directive';
+import { BarEndContentSlot } from './slots/bar-end-content.slot';
+import { BarStartContentSlot } from './slots/bar-start-content.slot';
+import { BarDirective } from './directives/bar.directive';
+import { BarcodeScannerDialogDirective } from './directives/barcode-scanner-dialog.directive';
+import { DynamicSideContentSideContentSlot } from './slots/dynamic-side-content-side-content.slot';
+import { DynamicSideContentDirective } from './directives/dynamic-side-content.directive';
+import { FilterItemValuesSlot } from './slots/filter-item-values.slot';
+import { FilterItemDirective } from './directives/filter-item.directive';
+import { FilterItemOptionDirective } from './directives/filter-item-option.directive';
+import { FlexibleColumnLayoutEndColumnSlot } from './slots/flexible-column-layout-end-column.slot';
+import { FlexibleColumnLayoutMidColumnSlot } from './slots/flexible-column-layout-mid-column.slot';
+import { FlexibleColumnLayoutStartColumnSlot } from './slots/flexible-column-layout-start-column.slot';
+import { FlexibleColumnLayoutDirective } from './directives/flexible-column-layout.directive';
+import { IllustratedMessageSubtitleSlot } from './slots/illustrated-message-subtitle.slot';
+import { IllustratedMessageTitleSlot } from './slots/illustrated-message-title.slot';
+import { IllustratedMessageDirective } from './directives/illustrated-message.directive';
+import { MediaGalleryDirective } from './directives/media-gallery.directive';
+import { MediaGalleryItemThumbnailSlot } from './slots/media-gallery-item-thumbnail.slot';
+import { MediaGalleryItemDirective } from './directives/media-gallery-item.directive';
+import { NotificationActionDirective } from './directives/notification-action.directive';
+import { NotificationListGroupItemActionsSlot } from './slots/notification-list-group-item-actions.slot';
+import { NotificationListGroupItemDirective } from './directives/notification-list-group-item.directive';
+import { NotificationListItemAvatarSlot } from './slots/notification-list-item-avatar.slot';
+import { NotificationListItemFootnotesSlot } from './slots/notification-list-item-footnotes.slot';
+import { NotificationListItemActionsSlot } from './slots/notification-list-item-actions.slot';
+import { NotificationListItemDirective } from './directives/notification-list-item.directive';
+import { NotificationListItemBaseActionsSlot } from './slots/notification-list-item-base-actions.slot';
+import { NotificationListItemBaseDirective } from './directives/notification-list-item-base.directive';
+import { PageFooterSlot } from './slots/page-footer.slot';
+import { PageHeaderSlot } from './slots/page-header.slot';
+import { PageDirective } from './directives/page.directive';
+import { ProductSwitchDirective } from './directives/product-switch.directive';
+import { ProductSwitchItemDirective } from './directives/product-switch-item.directive';
+import { ShellBarLogoSlot } from './slots/shell-bar-logo.slot';
+import { ShellBarMenuItemsSlot } from './slots/shell-bar-menu-items.slot';
+import { ShellBarProfileSlot } from './slots/shell-bar-profile.slot';
+import { ShellBarSearchFieldSlot } from './slots/shell-bar-search-field.slot';
+import { ShellBarStartButtonSlot } from './slots/shell-bar-start-button.slot';
+import { ShellBarDirective } from './directives/shell-bar.directive';
+import { ShellBarItemDirective } from './directives/shell-bar-item.directive';
+import { SideNavigationFixedItemsSlot } from './slots/side-navigation-fixed-items.slot';
+import { SideNavigationHeaderSlot } from './slots/side-navigation-header.slot';
+import { SideNavigationDirective } from './directives/side-navigation.directive';
+import { SideNavigationItemDirective } from './directives/side-navigation-item.directive';
+import { SideNavigationSubItemDirective } from './directives/side-navigation-sub-item.directive';
+import { SortItemDirective } from './directives/sort-item.directive';
+import { TimelineDirective } from './directives/timeline.directive';
+import { TimelineItemDirective } from './directives/timeline-item.directive';
+import { UploadCollectionHeaderSlot } from './slots/upload-collection-header.slot';
+import { UploadCollectionDirective } from './directives/upload-collection.directive';
+import { UploadCollectionItemThumbnailSlot } from './slots/upload-collection-item-thumbnail.slot';
+import { UploadCollectionItemDirective } from './directives/upload-collection-item.directive';
+import { ViewSettingsDialogFilterItemsSlot } from './slots/view-settings-dialog-filter-items.slot';
+import { ViewSettingsDialogSortItemsSlot } from './slots/view-settings-dialog-sort-items.slot';
+import { ViewSettingsDialogDirective } from './directives/view-settings-dialog.directive';
+import { WizardDirective } from './directives/wizard.directive';
+import { WizardStepDirective } from './directives/wizard-step.directive';
 
 @NgModule({
   declarations: [
@@ -145,7 +209,9 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     CustomListItemDirective,
     DatePickerValueStateMessageSlot,
     DatePickerDirective,
+    DateRangePickerValueStateMessageSlot,
     DateRangePickerDirective,
+    DateTimePickerValueStateMessageSlot,
     DateTimePickerDirective,
     DayPickerDirective,
     DialogFooterSlot,
@@ -173,6 +239,8 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     MultiComboBoxGroupItemDirective,
     MultiComboBoxItemDirective,
     MultiInputTokensSlot,
+    MultiInputIconSlot,
+    MultiInputValueStateMessageSlot,
     MultiInputDirective,
     OptionDirective,
     PanelHeaderSlot,
@@ -184,6 +252,8 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     RadioButtonDirective,
     RangeSliderDirective,
     RatingIndicatorDirective,
+    ResponsivePopoverFooterSlot,
+    ResponsivePopoverHeaderSlot,
     ResponsivePopoverDirective,
     SegmentedButtonDirective,
     SegmentedButtonItemDirective,
@@ -212,6 +282,7 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     TabSeparatorDirective,
     TextAreaValueStateMessageSlot,
     TextAreaDirective,
+    TimePickerValueStateMessageSlot,
     TimePickerDirective,
     TitleDirective,
     ToastDirective,
@@ -224,6 +295,63 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     TreeListItemDirective,
     WheelSliderDirective,
     YearPickerDirective,
+    BarEndContentSlot,
+    BarStartContentSlot,
+    BarDirective,
+    BarcodeScannerDialogDirective,
+    DynamicSideContentSideContentSlot,
+    DynamicSideContentDirective,
+    FilterItemValuesSlot,
+    FilterItemDirective,
+    FilterItemOptionDirective,
+    FlexibleColumnLayoutEndColumnSlot,
+    FlexibleColumnLayoutMidColumnSlot,
+    FlexibleColumnLayoutStartColumnSlot,
+    FlexibleColumnLayoutDirective,
+    IllustratedMessageSubtitleSlot,
+    IllustratedMessageTitleSlot,
+    IllustratedMessageDirective,
+    MediaGalleryDirective,
+    MediaGalleryItemThumbnailSlot,
+    MediaGalleryItemDirective,
+    NotificationActionDirective,
+    NotificationListGroupItemActionsSlot,
+    NotificationListGroupItemDirective,
+    NotificationListItemAvatarSlot,
+    NotificationListItemFootnotesSlot,
+    NotificationListItemActionsSlot,
+    NotificationListItemDirective,
+    NotificationListItemBaseActionsSlot,
+    NotificationListItemBaseDirective,
+    PageFooterSlot,
+    PageHeaderSlot,
+    PageDirective,
+    ProductSwitchDirective,
+    ProductSwitchItemDirective,
+    ShellBarLogoSlot,
+    ShellBarMenuItemsSlot,
+    ShellBarProfileSlot,
+    ShellBarSearchFieldSlot,
+    ShellBarStartButtonSlot,
+    ShellBarDirective,
+    ShellBarItemDirective,
+    SideNavigationFixedItemsSlot,
+    SideNavigationHeaderSlot,
+    SideNavigationDirective,
+    SideNavigationItemDirective,
+    SideNavigationSubItemDirective,
+    SortItemDirective,
+    TimelineDirective,
+    TimelineItemDirective,
+    UploadCollectionHeaderSlot,
+    UploadCollectionDirective,
+    UploadCollectionItemThumbnailSlot,
+    UploadCollectionItemDirective,
+    ViewSettingsDialogFilterItemsSlot,
+    ViewSettingsDialogSortItemsSlot,
+    ViewSettingsDialogDirective,
+    WizardDirective,
+    WizardStepDirective,
   ],
   imports: [CommonModule],
   exports: [
@@ -258,7 +386,9 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     CustomListItemDirective,
     DatePickerValueStateMessageSlot,
     DatePickerDirective,
+    DateRangePickerValueStateMessageSlot,
     DateRangePickerDirective,
+    DateTimePickerValueStateMessageSlot,
     DateTimePickerDirective,
     DayPickerDirective,
     DialogFooterSlot,
@@ -286,6 +416,8 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     MultiComboBoxGroupItemDirective,
     MultiComboBoxItemDirective,
     MultiInputTokensSlot,
+    MultiInputIconSlot,
+    MultiInputValueStateMessageSlot,
     MultiInputDirective,
     OptionDirective,
     PanelHeaderSlot,
@@ -297,6 +429,8 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     RadioButtonDirective,
     RangeSliderDirective,
     RatingIndicatorDirective,
+    ResponsivePopoverFooterSlot,
+    ResponsivePopoverHeaderSlot,
     ResponsivePopoverDirective,
     SegmentedButtonDirective,
     SegmentedButtonItemDirective,
@@ -325,6 +459,7 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     TabSeparatorDirective,
     TextAreaValueStateMessageSlot,
     TextAreaDirective,
+    TimePickerValueStateMessageSlot,
     TimePickerDirective,
     TitleDirective,
     ToastDirective,
@@ -337,6 +472,63 @@ import { YearPickerDirective } from './directives/year-picker.directive';
     TreeListItemDirective,
     WheelSliderDirective,
     YearPickerDirective,
+    BarEndContentSlot,
+    BarStartContentSlot,
+    BarDirective,
+    BarcodeScannerDialogDirective,
+    DynamicSideContentSideContentSlot,
+    DynamicSideContentDirective,
+    FilterItemValuesSlot,
+    FilterItemDirective,
+    FilterItemOptionDirective,
+    FlexibleColumnLayoutEndColumnSlot,
+    FlexibleColumnLayoutMidColumnSlot,
+    FlexibleColumnLayoutStartColumnSlot,
+    FlexibleColumnLayoutDirective,
+    IllustratedMessageSubtitleSlot,
+    IllustratedMessageTitleSlot,
+    IllustratedMessageDirective,
+    MediaGalleryDirective,
+    MediaGalleryItemThumbnailSlot,
+    MediaGalleryItemDirective,
+    NotificationActionDirective,
+    NotificationListGroupItemActionsSlot,
+    NotificationListGroupItemDirective,
+    NotificationListItemAvatarSlot,
+    NotificationListItemFootnotesSlot,
+    NotificationListItemActionsSlot,
+    NotificationListItemDirective,
+    NotificationListItemBaseActionsSlot,
+    NotificationListItemBaseDirective,
+    PageFooterSlot,
+    PageHeaderSlot,
+    PageDirective,
+    ProductSwitchDirective,
+    ProductSwitchItemDirective,
+    ShellBarLogoSlot,
+    ShellBarMenuItemsSlot,
+    ShellBarProfileSlot,
+    ShellBarSearchFieldSlot,
+    ShellBarStartButtonSlot,
+    ShellBarDirective,
+    ShellBarItemDirective,
+    SideNavigationFixedItemsSlot,
+    SideNavigationHeaderSlot,
+    SideNavigationDirective,
+    SideNavigationItemDirective,
+    SideNavigationSubItemDirective,
+    SortItemDirective,
+    TimelineDirective,
+    TimelineItemDirective,
+    UploadCollectionHeaderSlot,
+    UploadCollectionDirective,
+    UploadCollectionItemThumbnailSlot,
+    UploadCollectionItemDirective,
+    ViewSettingsDialogFilterItemsSlot,
+    ViewSettingsDialogSortItemsSlot,
+    ViewSettingsDialogDirective,
+    WizardDirective,
+    WizardStepDirective,
   ],
 })
 export class Ui5AngularModule {}

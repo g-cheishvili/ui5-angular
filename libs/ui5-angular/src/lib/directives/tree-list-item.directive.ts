@@ -11,6 +11,8 @@ interface TreeListItemElement extends HTMLElement {
   icon: string;
   level: number;
   showToggleButton: boolean;
+  type: 'Active' | 'Detail' | 'Inactive';
+  selected: boolean;
 
   // Slots
 }
@@ -21,6 +23,8 @@ interface OutputTypes {
   stepOut: { item: HTMLElement };
 
   toggle: { item: HTMLElement };
+
+  detailClick: void;
 }
 
 @Directive({
@@ -86,6 +90,22 @@ export class TreeListItemDirective {
   get showToggleButton() {
     return this.elementRef.nativeElement.hasAttribute('show-toggle-button');
   }
+  @Input()
+  set type(val: TreeListItemElement['type']) {
+    this.elementRef.nativeElement.type = val;
+  }
+  get type() {
+    return this.elementRef.nativeElement.getAttribute(
+      'type'
+    ) as unknown as TreeListItemElement['type'];
+  }
+  @Input()
+  set selected(val: TreeListItemElement['selected']) {
+    this.elementRef.nativeElement.selected = val;
+  }
+  get selected() {
+    return this.elementRef.nativeElement.hasAttribute('selected');
+  }
 
   @Output('step-in') stepIn: Observable<CustomEvent<OutputTypes['stepIn']>> =
     new PlaceholderOutput();
@@ -93,6 +113,9 @@ export class TreeListItemDirective {
     new PlaceholderOutput();
   @Output() toggle: Observable<CustomEvent<OutputTypes['toggle']>> =
     new PlaceholderOutput();
+  @Output('detail-click') detailClick: Observable<
+    CustomEvent<OutputTypes['detailClick']>
+  > = new PlaceholderOutput();
   constructor(private elementRef: ElementRef<TreeListItemElement>) {}
 
   get element(): TreeListItemElement {
