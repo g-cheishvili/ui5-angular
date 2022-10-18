@@ -1,1 +1,7 @@
-<ui5-input [ngModel]="someInputVal" (ngModelChange)="changeHandler($event)"></ui5-input>
+<ui5-date-picker
+  minDate="1/1/2020"
+  maxDate="4/5/2020"
+  formatPattern="dd/MM/yyyy"
+  [ngModel]="someInputVal"
+  (ngModelChange)="changeHandler($event)">
+</ui5-date-picker>

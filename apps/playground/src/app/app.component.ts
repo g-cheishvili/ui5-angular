@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'playground';
   @ViewChild(MultiComboBoxDirective)
   multiComboBox!: MultiComboBoxDirective;
-  someInputVal = 'initial value';
+  someInputVal!: string;
 
   changeHandler($event: string) {
     console.log($event)
