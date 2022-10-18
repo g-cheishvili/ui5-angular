@@ -6,7 +6,7 @@ import { fromEvent, merge } from 'rxjs';
 import { DatePickerDirective } from '../directives/date-picker.directive';
 
 @Directive({
-  selector: 'ui5-input',
+  selector: 'ui5-date-picker',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -26,7 +26,10 @@ export class DatePickerCva extends GenericControlValueAccessor<
       set value(val) {
         elementRef.nativeElement.value = val;
       },
-      valueUpdatedNotifier$: merge(),
+      valueUpdatedNotifier$: merge(
+        fromEvent(elementRef.nativeElement, 'change'),
+        fromEvent(elementRef.nativeElement, 'input')
+      ),
     });
   }
 }

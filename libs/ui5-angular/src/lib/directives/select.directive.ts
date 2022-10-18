@@ -13,7 +13,8 @@ interface SelectElement {
   name: string;
   required: BooleanInputType;
   selectedOption: any;
-  valueState: any;
+  value: string;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
   valueStateMessage: Array<HTMLElement>;
@@ -76,6 +77,15 @@ export class SelectDirective {
     return this.elementRef.nativeElement.getAttribute(
       'selected-option'
     ) as unknown as SelectElement['selectedOption'];
+  }
+  @Input()
+  set value(val: SelectElement['value']) {
+    this.elementRef.nativeElement.value = val;
+  }
+  get value() {
+    return this.elementRef.nativeElement.getAttribute(
+      'value'
+    ) as unknown as SelectElement['value'];
   }
   @Input()
   set valueState(val: SelectElement['valueState']) {

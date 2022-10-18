@@ -90,6 +90,7 @@ import { ResponsivePopoverHeaderSlot } from './slots/responsive-popover-header.s
 import { ResponsivePopoverDirective } from './directives/responsive-popover.directive';
 import { SegmentedButtonDirective } from './directives/segmented-button.directive';
 import { SegmentedButtonItemDirective } from './directives/segmented-button-item.directive';
+import { SelectCva } from './cvas/select.cva';
 import { SelectValueStateMessageSlot } from './slots/select-value-state-message.slot';
 import { SelectDirective } from './directives/select.directive';
 import { SliderDirective } from './directives/slider.directive';
@@ -279,6 +280,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     ResponsivePopoverDirective,
     SegmentedButtonDirective,
     SegmentedButtonItemDirective,
+    SelectCva,
     SelectValueStateMessageSlot,
     SelectDirective,
     SliderDirective,
@@ -468,6 +470,7 @@ import { WizardStepDirective } from './directives/wizard-step.directive';
     ResponsivePopoverDirective,
     SegmentedButtonDirective,
     SegmentedButtonItemDirective,
+    SelectCva,
     SelectValueStateMessageSlot,
     SelectDirective,
     SliderDirective,

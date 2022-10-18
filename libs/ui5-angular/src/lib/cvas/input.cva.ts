@@ -26,7 +26,10 @@ export class InputCva extends GenericControlValueAccessor<
       set value(val) {
         elementRef.nativeElement.value = val;
       },
-      valueUpdatedNotifier$: merge(),
+      valueUpdatedNotifier$: merge(
+        fromEvent(elementRef.nativeElement, 'change'),
+        fromEvent(elementRef.nativeElement, 'input')
+      ),
     });
   }
 }

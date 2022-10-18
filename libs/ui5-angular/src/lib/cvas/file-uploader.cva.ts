@@ -6,7 +6,7 @@ import { fromEvent, merge } from 'rxjs';
 import { FileUploaderDirective } from '../directives/file-uploader.directive';
 
 @Directive({
-  selector: 'ui5-input',
+  selector: 'ui5-file-uploader',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

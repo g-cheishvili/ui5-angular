@@ -10,7 +10,7 @@ interface DialogElement {
   draggable: BooleanInputType;
   headerText: string;
   resizable: BooleanInputType;
-  state: any;
+  state: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
   stretch: BooleanInputType;
   accessibleName: string;
   accessibleNameRef: string;

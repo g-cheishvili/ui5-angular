@@ -20,7 +20,7 @@ interface TextAreaElement {
   rows: number;
   showExceededText: BooleanInputType;
   value: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
   valueStateMessage: Array<HTMLElement>;

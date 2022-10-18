@@ -13,7 +13,7 @@ interface TimePickerElement {
   placeholder: string;
   readonly: BooleanInputType;
   value: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
   valueStateMessage: HTMLElement;

@@ -2,6 +2,7 @@ import {names} from "@nrwl/devkit";
 import {SymbolObject} from "./api-json.types";
 
 interface ComponentData {
+  baseName: string;
   dependencies: Array<{ path: string, className: string }>,
   selector: string,
   implements: Array<string>,
@@ -75,7 +76,8 @@ export function getComponents({
     array: 'Array<any>',
     htmlelement: 'HTMLElement',
     element: 'Element',
-    node: 'Node'
+    node: 'Node',
+    valuestate: '"None" | "Success" | "Warning" | "Error" | "Information"'
   }
 
   function getPropertyType(type: string, tagname: string, identifier: string): string {
@@ -164,6 +166,7 @@ export function getComponents({
     if (symbol.tagname) {
       const dependencies: Array<{ path: string, className: string }> = [];
       const component: ComponentData = {
+        baseName: symbol.basename,
         dependencies,
         formData: [],
         implements: symbol.implements,

@@ -9,7 +9,7 @@ import '@ui5/webcomponents/dist/TreeListItem.js';
 interface TreeListItemElement {
   accessibleName: string;
   additionalText: string;
-  additionalTextState: any;
+  additionalTextState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
   expanded: BooleanInputType;
   icon: string;
   level: number;

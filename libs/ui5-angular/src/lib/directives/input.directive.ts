@@ -23,7 +23,7 @@ interface InputElement {
   showSuggestions: BooleanInputType;
   type: 'Email' | 'Number' | 'Password' | 'Tel' | 'Text' | 'URL';
   value: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
   icon: Array<IconDirective['element']>;

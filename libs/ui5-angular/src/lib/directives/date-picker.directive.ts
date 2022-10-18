@@ -17,7 +17,7 @@ interface DatePickerElement {
   readonly: BooleanInputType;
   required: BooleanInputType;
   value: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
   formatPattern: string;
   maxDate: string;
   minDate: string;

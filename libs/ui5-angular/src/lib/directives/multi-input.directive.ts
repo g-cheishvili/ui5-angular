@@ -25,7 +25,7 @@ interface MultiInputElement {
   showSuggestions: BooleanInputType;
   type: 'Email' | 'Number' | 'Password' | 'Tel' | 'Text' | 'URL';
   value: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
   tokens: Array<TokenDirective['element']>;

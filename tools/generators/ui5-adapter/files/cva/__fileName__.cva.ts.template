@@ -6,7 +6,7 @@ import {fromEvent, merge} from "rxjs";
 import {<%- className %>Directive} from '../directives/<%- fileName %>.directive';
 
 @Directive({
-  selector: 'ui5-input',
+  selector: '<%- selector %>',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

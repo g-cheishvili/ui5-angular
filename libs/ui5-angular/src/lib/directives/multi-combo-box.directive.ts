@@ -20,7 +20,7 @@ interface MultiComboBoxElement {
   readonly: BooleanInputType;
   required: BooleanInputType;
   value: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
   icon: IconDirective['element'];

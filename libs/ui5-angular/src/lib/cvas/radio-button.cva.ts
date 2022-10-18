@@ -6,7 +6,7 @@ import { fromEvent, merge } from 'rxjs';
 import { RadioButtonDirective } from '../directives/radio-button.directive';
 
 @Directive({
-  selector: 'ui5-input',
+  selector: 'ui5-radio-button',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

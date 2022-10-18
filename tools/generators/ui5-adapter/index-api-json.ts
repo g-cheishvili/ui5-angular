@@ -26,7 +26,9 @@ export function indexApiJson() {
     symbol.slots = symbol.slots || [];
     symbol.implements = symbol.implements || [];
     for (const property of symbol.properties) {
-      property.formEvents = ((typeof property.formEvents === 'string' ? [property.formEvents] : property.formEvents) || []).filter(Boolean);
+      property.formEvents = ((typeof property.formEvents === 'string' ? [property.formEvents] : property.formEvents) || []).reduce((acc, next) => {
+        return acc.concat(next.split(','));
+      }, []).filter(Boolean);
     }
     if (symbol.implements) {
       symbol.implements.forEach((interfaceName) => {

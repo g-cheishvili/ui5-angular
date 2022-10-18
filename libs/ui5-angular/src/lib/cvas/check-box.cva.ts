@@ -6,7 +6,7 @@ import { fromEvent, merge } from 'rxjs';
 import { CheckBoxDirective } from '../directives/check-box.directive';
 
 @Directive({
-  selector: 'ui5-input',
+  selector: 'ui5-checkbox',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

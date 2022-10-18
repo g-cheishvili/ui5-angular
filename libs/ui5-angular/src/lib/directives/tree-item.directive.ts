@@ -6,7 +6,7 @@ import '@ui5/webcomponents/dist/TreeItem.js';
 interface TreeItemElement {
   accessibleName: string;
   additionalText: string;
-  additionalTextState: any;
+  additionalTextState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
   expanded: BooleanInputType;
   hasChildren: BooleanInputType;
   icon: string;

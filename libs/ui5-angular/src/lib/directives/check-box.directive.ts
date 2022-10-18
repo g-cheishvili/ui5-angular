@@ -16,7 +16,7 @@ interface CheckBoxElement {
   readonly: BooleanInputType;
   required: BooleanInputType;
   text: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
   wrappingType: 'None' | 'Normal';
 
   // Slots

@@ -9,7 +9,7 @@ import '@ui5/webcomponents/dist/StandardListItem.js';
 interface StandardListItemElement {
   accessibleName: string;
   additionalText: string;
-  additionalTextState: any;
+  additionalTextState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
   description: string;
   icon: string;
   iconEnd: BooleanInputType;

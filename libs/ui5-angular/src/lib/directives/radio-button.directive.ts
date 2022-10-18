@@ -15,7 +15,7 @@ interface RadioButtonElement {
   readonly: BooleanInputType;
   text: string;
   value: string;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
   wrappingType: 'None' | 'Normal';
 
   // Slots

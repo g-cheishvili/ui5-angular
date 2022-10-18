@@ -19,7 +19,7 @@ interface StepInputElement {
   step: number;
   value: number;
   valuePrecision: number;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
   valueStateMessage: HTMLElement;

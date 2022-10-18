@@ -8,7 +8,7 @@ interface ProgressIndicatorElement {
   displayValue: string;
   hideValue: BooleanInputType;
   value: number;
-  valueState: any;
+  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
 
   // Slots
 }

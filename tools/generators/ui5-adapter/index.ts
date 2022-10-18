@@ -20,16 +20,18 @@ export default async function (tree: Tree) {
   const directives = [];
   for (const component of components) {
     const namings = component.componentNames;
-    if (component.selector === 'ui5-multi-combobox') {
-      debugger;
-    }
     if (component.formData.length > 1) {
       console.warn('multiple form data was provided');
     }
     const formData = component.formData[0];
     if (formData) {
+      const symbol = symbols[component.baseName];
+      if (component.selector === 'ui5-daterange-picker') {
+        debugger;
+      }
       generateFiles(tree, `${__dirname}/files/cva`, `libs/ui5-angular/src/lib/cvas`, {
         ...namings,
+        selector: component.selector,
         input: formData.input,
         events: formData.events,
       });

@@ -6,7 +6,7 @@ import { fromEvent, merge } from 'rxjs';
 import { SwitchDirective } from '../directives/switch.directive';
 
 @Directive({
-  selector: 'ui5-input',
+  selector: 'ui5-switch',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

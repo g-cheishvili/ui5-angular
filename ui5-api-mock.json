@@ -4623,6 +4623,8 @@
       "basename": "Select",
       "tagname": "ui5-select",
       "appenddocs": "Option",
+      "formProperties": "value",
+      "formAssociated": "true",
       "resource": "Select.js",
       "module": "Select",
       "static": true,
@@ -4676,7 +4678,16 @@
           "readonly": "true",
           "visibility": "public",
           "type": "sap.ui.webcomponents.main.ISelectOption",
-          "description": "Currently selected option."
+          "description": "Currently selected <code>ui5-option</code> element."
+        },
+        {
+          "name": "value",
+          "readonly": "true",
+          "visibility": "public",
+          "since": "1.9.0",
+          "formEvents": "change",
+          "type": "String",
+          "description": "Currently selected value."
         },
         {
           "name": "valueState",

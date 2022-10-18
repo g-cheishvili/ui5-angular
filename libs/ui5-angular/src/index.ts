@@ -87,6 +87,7 @@ export { ResponsivePopoverHeaderSlot } from './lib/slots/responsive-popover-head
 export { ResponsivePopoverDirective } from './lib/directives/responsive-popover.directive';
 export { SegmentedButtonDirective } from './lib/directives/segmented-button.directive';
 export { SegmentedButtonItemDirective } from './lib/directives/segmented-button-item.directive';
+export { SelectCva } from './lib/cvas/select.cva';
 export { SelectValueStateMessageSlot } from './lib/slots/select-value-state-message.slot';
 export { SelectDirective } from './lib/directives/select.directive';
 export { SliderDirective } from './lib/directives/slider.directive';

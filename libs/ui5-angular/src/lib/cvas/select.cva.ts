@@ -3,24 +3,22 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { GenericControlValueAccessor } from '../generic-control-value-accessor';
 import { fromEvent, merge } from 'rxjs';
 
-import { MultiComboBoxDirective } from '../directives/multi-combo-box.directive';
+import { SelectDirective } from '../directives/select.directive';
 
 @Directive({
-  selector: 'ui5-multi-combobox',
+  selector: 'ui5-select',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => MultiComboBoxCva),
+      useExisting: forwardRef(() => SelectCva),
       multi: true,
     },
   ],
 })
-export class MultiComboBoxCva extends GenericControlValueAccessor<
-  MultiComboBoxDirective['value']
+export class SelectCva extends GenericControlValueAccessor<
+  SelectDirective['value']
 > {
-  constructor(
-    private elementRef: ElementRef<MultiComboBoxDirective['element']>
-  ) {
+  constructor(private elementRef: ElementRef<SelectDirective['element']>) {
     super({
       get value() {
         return elementRef.nativeElement.value;
@@ -29,8 +27,7 @@ export class MultiComboBoxCva extends GenericControlValueAccessor<
         elementRef.nativeElement.value = val;
       },
       valueUpdatedNotifier$: merge(
-        fromEvent(elementRef.nativeElement, 'change'),
-        fromEvent(elementRef.nativeElement, 'input')
+        fromEvent(elementRef.nativeElement, 'change')
       ),
     });
   }

@@ -6,7 +6,7 @@ import { fromEvent, merge } from 'rxjs';
 import { ComboBoxDirective } from '../directives/combo-box.directive';
 
 @Directive({
-  selector: 'ui5-input',
+  selector: 'ui5-combobox',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -26,7 +26,10 @@ export class ComboBoxCva extends GenericControlValueAccessor<
       set value(val) {
         elementRef.nativeElement.value = val;
       },
-      valueUpdatedNotifier$: merge(),
+      valueUpdatedNotifier$: merge(
+        fromEvent(elementRef.nativeElement, 'change'),
+        fromEvent(elementRef.nativeElement, 'input')
+      ),
     });
   }
 }
