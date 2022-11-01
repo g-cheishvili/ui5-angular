@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { SuggestionGroupItemDirective } from './suggestion-group-item.directive';
+import { SuggestionItemDirective } from './suggestion-item.directive';
 import { IconDirective } from './icon.directive';
 import { TokenDirective } from './token.directive';
 
@@ -17,7 +19,9 @@ interface MultiInputElement {
   name: string;
   noTypeahead: BooleanInputType;
   placeholder: string;
-  previewItem: SuggestionGroupItemDirective | SuggestionItemDirective;
+  previewItem:
+    | SuggestionGroupItemDirective['element']
+    | SuggestionItemDirective['element'];
   readonly: BooleanInputType;
   required: BooleanInputType;
   showClearIcon: BooleanInputType;

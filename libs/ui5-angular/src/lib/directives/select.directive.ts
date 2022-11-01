@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { OptionDirective } from './option.directive';
+
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
 
@@ -12,7 +14,7 @@ interface SelectElement {
   disabled: BooleanInputType;
   name: string;
   required: BooleanInputType;
-  selectedOption: OptionDirective;
+  selectedOption: OptionDirective['element'];
   valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
 
   // Slots

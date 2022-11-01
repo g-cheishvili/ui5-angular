@@ -1,12 +1,14 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { SegmentedButtonItemDirective } from './segmented-button-item.directive';
+
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
 
 import '@ui5/webcomponents/dist/SegmentedButton.js';
 interface SegmentedButtonElement {
   accessibleName: string;
-  selectedItem: SegmentedButtonItemDirective;
+  selectedItem: SegmentedButtonItemDirective['element'];
 
   // Slots
 }

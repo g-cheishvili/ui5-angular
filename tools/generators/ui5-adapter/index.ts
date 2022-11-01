@@ -22,7 +22,6 @@ export default async function (tree: Tree) {
   const directives = [];
   for (const component of components) {
     const namings = component.componentNames;
-
     const formData = component.formData;
 
     if (formData) {

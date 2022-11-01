@@ -82,7 +82,7 @@ export function getComponents({
     node: 'Node'
   }
 
-  function getPropertyType(type: string, tagname: string, identifier: string): string {
+  function getPropertyType(type: string, tagname: string, identifier: string, component: ComponentData): string {
     const isArray = type.endsWith('[]');
     if (isArray) {
       type = type.slice(0, -2);
@@ -98,7 +98,13 @@ export function getComponents({
         return types.join(' | ');
       }
       if (symbols[type].kind === 'interface') {
-        let types = implementers[type].map(c => `${c.basename}Directive`);
+        let types = implementers[type].map(c => `${c.basename}Directive['element']`);
+        for (const dep of implementers[type]) {
+          component.dependencies.push({
+            path: `./${names(dep.basename).fileName}.directive`,
+            className: `${dep.basename}Directive`
+          })
+        }
         types = types.length ? types : ['any'];
         if (isArray) {
           return `Array<${types.join(' | ')}>`;
@@ -120,24 +126,24 @@ export function getComponents({
     return mappedType || 'any';
   }
 
-  function getInputs(symbol: SymbolObject): ComponentData['inputs'] {
+  function getInputs(symbol: SymbolObject, component: ComponentData): ComponentData['inputs'] {
     return symbol.properties.filter(prop => prop.visibility === 'public').map((property) => {
       inputTypes[property.type] = true;
       const inputNames = names(property.name);
       return {
         publicName: inputNames.fileName,
         name: inputNames.propertyName,
-        type: getPropertyType(property.type, symbol.tagname, inputNames.propertyName),
+        type: getPropertyType(property.type, symbol.tagname, inputNames.propertyName, component),
         defaultValue: property.defaultValue,
       }
     })
   }
 
-  function getOutputs(symbol: SymbolObject): ComponentData['outputs'] {
+  function getOutputs(symbol: SymbolObject, component: ComponentData): ComponentData['outputs'] {
     return symbol.events.filter(event => event.visibility === 'public').map((event) => {
       const eventNames = names(event.name);
       const parameters = (event.parameters || []).reduce((acc, parameter) => {
-        acc[parameter.name] = getPropertyType(parameter.type, symbol.tagname, eventNames.propertyName);
+        acc[parameter.name] = getPropertyType(parameter.type, symbol.tagname, eventNames.propertyName, component);
         return acc;
       }, {});
       const eventType = !event.parameters?.length ? 'void' : `{ ${Object.keys(parameters).map(key => `'${key}': ${parameters[key]}`).join(',')} }`;
@@ -186,8 +192,8 @@ export function getComponents({
         outputs: [],
         slots: [],
       };
-      component.inputs = getInputs(symbol);
-      component.outputs = getOutputs(symbol);
+      component.inputs = getInputs(symbol, component);
+      component.outputs = getOutputs(symbol, component);
       component.slots = getSlots(symbol, component);
       if (symbol.formData) {
         component.formData = symbol.formData.map(data => {
