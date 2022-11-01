@@ -2,19 +2,23 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 <% for(const imp of imports) { %>
 import { <%= imp.className %> } from './<%= imp.fileName %>';<% } %>
+import {RtlDirective} from './directives/rtl.directive';
 
+const declarations = [
+  RtlDirective,
+  <% for(const imp of imports) { %>
+  <%= imp.className %>,<% } %>
+];
 
 @NgModule({
   declarations: [
-  <% for(const imp of imports) { %>
-    <%= imp.className %>,<% } %>
+    ...declarations
   ],
   imports: [
     CommonModule
   ],
   exports: [
-  <% for(const imp of imports) { %>
-    <%= imp.className %>,<% } %>
+    ...declarations
   ]
 })
 export class Ui5AngularModule { }

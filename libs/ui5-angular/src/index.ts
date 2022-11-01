@@ -190,4 +190,6 @@ export { TreeListItemDirective } from './lib/directives/tree-list-item.directive
 export { WheelSliderDirective } from './lib/directives/wheel-slider.directive';
 export { YearPickerDirective } from './lib/directives/year-picker.directive';
 
+export * from './lib/directives/rtl.directive';
+export * from './lib/services/rtl.service';
 export * from './lib/ui5-angular.module';
