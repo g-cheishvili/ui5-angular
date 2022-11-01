@@ -43,36 +43,28 @@ export class ButtonDirective {
     this.elementRef.nativeElement.accessibilityAttributes = val;
   }
   get accessibilityAttributes() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-attributes'
-    ) as unknown as ButtonElement['accessibilityAttributes'];
+    return this.elementRef.nativeElement.accessibilityAttributes;
   }
   @Input()
   set accessibleName(val: ButtonElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as ButtonElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: ButtonElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as ButtonElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set design(val: ButtonElement['design']) {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as ButtonElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: ButtonElement['disabled']) {
@@ -86,9 +78,7 @@ export class ButtonDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as ButtonElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set iconEnd(val: ButtonElement['iconEnd']) {
@@ -109,9 +99,7 @@ export class ButtonDirective {
     this.elementRef.nativeElement.tooltip = val;
   }
   get tooltip() {
-    return this.elementRef.nativeElement.getAttribute(
-      'tooltip'
-    ) as unknown as ButtonElement['tooltip'];
+    return this.elementRef.nativeElement.tooltip;
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

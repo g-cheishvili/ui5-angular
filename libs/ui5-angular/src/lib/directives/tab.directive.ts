@@ -26,18 +26,14 @@ export class TabDirective {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as TabElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set design(val: TabElement['design']) {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as TabElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: TabElement['disabled']) {
@@ -51,9 +47,7 @@ export class TabDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as TabElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set selected(val: TabElement['selected']) {
@@ -67,9 +61,7 @@ export class TabDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as TabElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(private elementRef: ElementRef<TabElement & HTMLElement>) {}

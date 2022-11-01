@@ -28,9 +28,7 @@ export class MediaGalleryItemDirective {
     this.elementRef.nativeElement.layout = val;
   }
   get layout() {
-    return this.elementRef.nativeElement.getAttribute(
-      'layout'
-    ) as unknown as MediaGalleryItemElement['layout'];
+    return this.elementRef.nativeElement.layout;
   }
   @Input()
   set selected(val: MediaGalleryItemElement['selected']) {

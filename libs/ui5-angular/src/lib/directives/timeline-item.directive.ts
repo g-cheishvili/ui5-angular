@@ -29,18 +29,14 @@ export class TimelineItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as TimelineItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set name(val: TimelineItemElement['name']) {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as TimelineItemElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set nameClickable(val: TimelineItemElement['nameClickable']) {
@@ -54,18 +50,14 @@ export class TimelineItemDirective {
     this.elementRef.nativeElement.subtitleText = val;
   }
   get subtitleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'subtitle-text'
-    ) as unknown as TimelineItemElement['subtitleText'];
+    return this.elementRef.nativeElement.subtitleText;
   }
   @Input()
   set titleText(val: TimelineItemElement['titleText']) {
     this.elementRef.nativeElement.titleText = val;
   }
   get titleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'title-text'
-    ) as unknown as TimelineItemElement['titleText'];
+    return this.elementRef.nativeElement.titleText;
   }
 
   @Output('name-click') nameClick: Observable<

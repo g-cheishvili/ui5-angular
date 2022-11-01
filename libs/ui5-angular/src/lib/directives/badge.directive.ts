@@ -19,9 +19,7 @@ export class BadgeDirective {
     this.elementRef.nativeElement.colorScheme = val;
   }
   get colorScheme() {
-    return this.elementRef.nativeElement.getAttribute(
-      'color-scheme'
-    ) as unknown as BadgeElement['colorScheme'];
+    return this.elementRef.nativeElement.colorScheme;
   }
 
   constructor(private elementRef: ElementRef<BadgeElement & HTMLElement>) {}

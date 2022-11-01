@@ -37,9 +37,7 @@ export class WizardStepDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as WizardStepElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set selected(val: WizardStepElement['selected']) {
@@ -53,18 +51,14 @@ export class WizardStepDirective {
     this.elementRef.nativeElement.subtitleText = val;
   }
   get subtitleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'subtitle-text'
-    ) as unknown as WizardStepElement['subtitleText'];
+    return this.elementRef.nativeElement.subtitleText;
   }
   @Input()
   set titleText(val: WizardStepElement['titleText']) {
     this.elementRef.nativeElement.titleText = val;
   }
   get titleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'title-text'
-    ) as unknown as WizardStepElement['titleText'];
+    return this.elementRef.nativeElement.titleText;
   }
 
   constructor(

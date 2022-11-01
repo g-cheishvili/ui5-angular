@@ -32,18 +32,14 @@ export class SwitchDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as SwitchElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: SwitchElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as SwitchElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set checked(val: SwitchElement['checked']) {
@@ -57,9 +53,7 @@ export class SwitchDirective {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as SwitchElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: SwitchElement['disabled']) {
@@ -73,27 +67,21 @@ export class SwitchDirective {
     this.elementRef.nativeElement.textOff = val;
   }
   get textOff() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text-off'
-    ) as unknown as SwitchElement['textOff'];
+    return this.elementRef.nativeElement.textOff;
   }
   @Input()
   set textOn(val: SwitchElement['textOn']) {
     this.elementRef.nativeElement.textOn = val;
   }
   get textOn() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text-on'
-    ) as unknown as SwitchElement['textOn'];
+    return this.elementRef.nativeElement.textOn;
   }
   @Input()
   set tooltip(val: SwitchElement['tooltip']) {
     this.elementRef.nativeElement.tooltip = val;
   }
   get tooltip() {
-    return this.elementRef.nativeElement.getAttribute(
-      'tooltip'
-    ) as unknown as SwitchElement['tooltip'];
+    return this.elementRef.nativeElement.tooltip;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

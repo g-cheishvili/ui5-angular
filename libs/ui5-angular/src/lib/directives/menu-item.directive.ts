@@ -23,18 +23,14 @@ export class MenuItemDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as MenuItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set additionalText(val: MenuItemElement['additionalText']) {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as MenuItemElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set disabled(val: MenuItemElement['disabled']) {
@@ -48,9 +44,7 @@ export class MenuItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as MenuItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set startsSection(val: MenuItemElement['startsSection']) {
@@ -64,9 +58,7 @@ export class MenuItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as MenuItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(private elementRef: ElementRef<MenuItemElement & HTMLElement>) {}

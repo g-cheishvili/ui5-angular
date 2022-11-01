@@ -41,18 +41,14 @@ export class TimePickerDirective {
     this.elementRef.nativeElement.formatPattern = val;
   }
   get formatPattern() {
-    return this.elementRef.nativeElement.getAttribute(
-      'format-pattern'
-    ) as unknown as TimePickerElement['formatPattern'];
+    return this.elementRef.nativeElement.formatPattern;
   }
   @Input()
   set placeholder(val: TimePickerElement['placeholder']) {
     this.elementRef.nativeElement.placeholder = val;
   }
   get placeholder() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placeholder'
-    ) as unknown as TimePickerElement['placeholder'];
+    return this.elementRef.nativeElement.placeholder;
   }
   @Input()
   set readonly(val: TimePickerElement['readonly']) {
@@ -66,27 +62,21 @@ export class TimePickerDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as TimePickerElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: TimePickerElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as TimePickerElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
   @Input()
   set dateValue(val: TimePickerElement['dateValue']) {
     this.elementRef.nativeElement.dateValue = val;
   }
   get dateValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'date-value'
-    ) as unknown as TimePickerElement['dateValue'];
+    return this.elementRef.nativeElement.dateValue;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

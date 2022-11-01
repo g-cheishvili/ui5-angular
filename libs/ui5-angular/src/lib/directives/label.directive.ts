@@ -21,9 +21,7 @@ export class LabelDirective {
     this.elementRef.nativeElement.for = val;
   }
   get for() {
-    return this.elementRef.nativeElement.getAttribute(
-      'for'
-    ) as unknown as LabelElement['for'];
+    return this.elementRef.nativeElement.for;
   }
   @Input()
   set required(val: LabelElement['required']) {
@@ -44,9 +42,7 @@ export class LabelDirective {
     this.elementRef.nativeElement.wrappingType = val;
   }
   get wrappingType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'wrapping-type'
-    ) as unknown as LabelElement['wrappingType'];
+    return this.elementRef.nativeElement.wrappingType;
   }
 
   constructor(private elementRef: ElementRef<LabelElement & HTMLElement>) {}

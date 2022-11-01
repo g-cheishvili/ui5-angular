@@ -40,27 +40,21 @@ export class AvatarGroupDirective {
     this.elementRef.nativeElement.colorScheme = val;
   }
   get colorScheme() {
-    return this.elementRef.nativeElement.getAttribute(
-      'color-scheme'
-    ) as unknown as AvatarGroupElement['colorScheme'];
+    return this.elementRef.nativeElement.colorScheme;
   }
   @Input()
   set hiddenItems(val: AvatarGroupElement['hiddenItems']) {
     this.elementRef.nativeElement.hiddenItems = val;
   }
   get hiddenItems() {
-    return this.elementRef.nativeElement.getAttribute(
-      'hidden-items'
-    ) as unknown as AvatarGroupElement['hiddenItems'];
+    return this.elementRef.nativeElement.hiddenItems;
   }
   @Input()
   set type(val: AvatarGroupElement['type']) {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as AvatarGroupElement['type'];
+    return this.elementRef.nativeElement.type;
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

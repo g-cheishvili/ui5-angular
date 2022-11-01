@@ -44,45 +44,35 @@ export class DayPickerDirective {
     this.elementRef.nativeElement.formatPattern = val;
   }
   get formatPattern() {
-    return this.elementRef.nativeElement.getAttribute(
-      'format-pattern'
-    ) as unknown as DayPickerElement['formatPattern'];
+    return this.elementRef.nativeElement.formatPattern;
   }
   @Input()
   set maxDate(val: DayPickerElement['maxDate']) {
     this.elementRef.nativeElement.maxDate = val;
   }
   get maxDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max-date'
-    ) as unknown as DayPickerElement['maxDate'];
+    return this.elementRef.nativeElement.maxDate;
   }
   @Input()
   set minDate(val: DayPickerElement['minDate']) {
     this.elementRef.nativeElement.minDate = val;
   }
   get minDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'min-date'
-    ) as unknown as DayPickerElement['minDate'];
+    return this.elementRef.nativeElement.minDate;
   }
   @Input()
   set primaryCalendarType(val: DayPickerElement['primaryCalendarType']) {
     this.elementRef.nativeElement.primaryCalendarType = val;
   }
   get primaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'primary-calendar-type'
-    ) as unknown as DayPickerElement['primaryCalendarType'];
+    return this.elementRef.nativeElement.primaryCalendarType;
   }
   @Input()
   set secondaryCalendarType(val: DayPickerElement['secondaryCalendarType']) {
     this.elementRef.nativeElement.secondaryCalendarType = val;
   }
   get secondaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'secondary-calendar-type'
-    ) as unknown as DayPickerElement['secondaryCalendarType'];
+    return this.elementRef.nativeElement.secondaryCalendarType;
   }
   @Input()
   set hideWeekNumbers(val: DayPickerElement['hideWeekNumbers']) {
@@ -96,18 +86,14 @@ export class DayPickerDirective {
     this.elementRef.nativeElement.selectedDates = val;
   }
   get selectedDates() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selected-dates'
-    ) as unknown as DayPickerElement['selectedDates'];
+    return this.elementRef.nativeElement.selectedDates;
   }
   @Input()
   set selectionMode(val: DayPickerElement['selectionMode']) {
     this.elementRef.nativeElement.selectionMode = val;
   }
   get selectionMode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selection-mode'
-    ) as unknown as DayPickerElement['selectionMode'];
+    return this.elementRef.nativeElement.selectionMode;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

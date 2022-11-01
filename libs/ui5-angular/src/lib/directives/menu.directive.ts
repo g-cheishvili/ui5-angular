@@ -23,9 +23,7 @@ export class MenuDirective {
     this.elementRef.nativeElement.headerText = val;
   }
   get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as MenuElement['headerText'];
+    return this.elementRef.nativeElement.headerText;
   }
 
   @Output('item-click') itemClick: Observable<

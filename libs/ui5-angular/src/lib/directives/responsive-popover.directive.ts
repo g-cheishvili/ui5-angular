@@ -46,27 +46,21 @@ export class ResponsivePopoverDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as ResponsivePopoverElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: ResponsivePopoverElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as ResponsivePopoverElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set initialFocus(val: ResponsivePopoverElement['initialFocus']) {
     this.elementRef.nativeElement.initialFocus = val;
   }
   get initialFocus() {
-    return this.elementRef.nativeElement.getAttribute(
-      'initial-focus'
-    ) as unknown as ResponsivePopoverElement['initialFocus'];
+    return this.elementRef.nativeElement.initialFocus;
   }
   @Input()
   set open(val: ResponsivePopoverElement['open']) {
@@ -96,9 +90,7 @@ export class ResponsivePopoverDirective {
     this.elementRef.nativeElement.headerText = val;
   }
   get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as ResponsivePopoverElement['headerText'];
+    return this.elementRef.nativeElement.headerText;
   }
   @Input()
   set hideArrow(val: ResponsivePopoverElement['hideArrow']) {
@@ -119,9 +111,7 @@ export class ResponsivePopoverDirective {
     this.elementRef.nativeElement.horizontalAlign = val;
   }
   get horizontalAlign() {
-    return this.elementRef.nativeElement.getAttribute(
-      'horizontal-align'
-    ) as unknown as ResponsivePopoverElement['horizontalAlign'];
+    return this.elementRef.nativeElement.horizontalAlign;
   }
   @Input()
   set modal(val: ResponsivePopoverElement['modal']) {
@@ -135,27 +125,21 @@ export class ResponsivePopoverDirective {
     this.elementRef.nativeElement.opener = val;
   }
   get opener() {
-    return this.elementRef.nativeElement.getAttribute(
-      'opener'
-    ) as unknown as ResponsivePopoverElement['opener'];
+    return this.elementRef.nativeElement.opener;
   }
   @Input()
   set placementType(val: ResponsivePopoverElement['placementType']) {
     this.elementRef.nativeElement.placementType = val;
   }
   get placementType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placement-type'
-    ) as unknown as ResponsivePopoverElement['placementType'];
+    return this.elementRef.nativeElement.placementType;
   }
   @Input()
   set verticalAlign(val: ResponsivePopoverElement['verticalAlign']) {
     this.elementRef.nativeElement.verticalAlign = val;
   }
   get verticalAlign() {
-    return this.elementRef.nativeElement.getAttribute(
-      'vertical-align'
-    ) as unknown as ResponsivePopoverElement['verticalAlign'];
+    return this.elementRef.nativeElement.verticalAlign;
   }
 
   @Output('after-close') afterClose: Observable<

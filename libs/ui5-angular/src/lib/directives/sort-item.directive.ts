@@ -26,9 +26,7 @@ export class SortItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as SortItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(private elementRef: ElementRef<SortItemElement & HTMLElement>) {}

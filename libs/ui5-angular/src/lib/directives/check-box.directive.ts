@@ -35,18 +35,14 @@ export class CheckBoxDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as CheckBoxElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: CheckBoxElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as CheckBoxElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set checked(val: CheckBoxElement['checked']) {
@@ -74,9 +70,7 @@ export class CheckBoxDirective {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as CheckBoxElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set readonly(val: CheckBoxElement['readonly']) {
@@ -97,27 +91,21 @@ export class CheckBoxDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as CheckBoxElement['text'];
+    return this.elementRef.nativeElement.text;
   }
   @Input()
   set valueState(val: CheckBoxElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as CheckBoxElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
   @Input()
   set wrappingType(val: CheckBoxElement['wrappingType']) {
     this.elementRef.nativeElement.wrappingType = val;
   }
   get wrappingType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'wrapping-type'
-    ) as unknown as CheckBoxElement['wrappingType'];
+    return this.elementRef.nativeElement.wrappingType;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

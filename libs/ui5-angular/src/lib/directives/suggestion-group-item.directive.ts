@@ -16,9 +16,7 @@ export class SuggestionGroupItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as SuggestionGroupItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

@@ -50,54 +50,42 @@ export class TreeDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as TreeElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: TreeElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as TreeElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set footerText(val: TreeElement['footerText']) {
     this.elementRef.nativeElement.footerText = val;
   }
   get footerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'footer-text'
-    ) as unknown as TreeElement['footerText'];
+    return this.elementRef.nativeElement.footerText;
   }
   @Input()
   set headerText(val: TreeElement['headerText']) {
     this.elementRef.nativeElement.headerText = val;
   }
   get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as TreeElement['headerText'];
+    return this.elementRef.nativeElement.headerText;
   }
   @Input()
   set mode(val: TreeElement['mode']) {
     this.elementRef.nativeElement.mode = val;
   }
   get mode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'mode'
-    ) as unknown as TreeElement['mode'];
+    return this.elementRef.nativeElement.mode;
   }
   @Input()
   set noDataText(val: TreeElement['noDataText']) {
     this.elementRef.nativeElement.noDataText = val;
   }
   get noDataText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'no-data-text'
-    ) as unknown as TreeElement['noDataText'];
+    return this.elementRef.nativeElement.noDataText;
   }
 
   @Output('item-click') itemClick: Observable<

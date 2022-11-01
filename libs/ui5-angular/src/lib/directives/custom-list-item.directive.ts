@@ -37,18 +37,14 @@ export class CustomListItemDirective {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as CustomListItemElement['type'];
+    return this.elementRef.nativeElement.type;
   }
   @Input()
   set accessibleName(val: CustomListItemElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as CustomListItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
 
   @Output('detail-click') detailClick: Observable<

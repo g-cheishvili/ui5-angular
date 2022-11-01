@@ -16,9 +16,7 @@ export class MultiComboBoxGroupItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as MultiComboBoxGroupItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

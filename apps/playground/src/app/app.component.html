@@ -1,5 +1,14 @@
-<ui5-combobox placeholder="Enter value">
+<ui5-combobox placeholder="Enter value" [ngModel]="'Item 2'" (ngModelChange)="changeHandler($event)">
   <ui5-cb-item text="Item 1"></ui5-cb-item>
   <ui5-cb-item text="Item 2"></ui5-cb-item>
   <ui5-cb-item text="Item 3"></ui5-cb-item>
 </ui5-combobox>
+<ui5-range-slider
+  min="5"
+  max="15"
+  showTickmarks
+  showTooltip
+  [ngModel]="rangeSliderValue"
+  (ngModelChange)="changeHandler($event)"
+>
+</ui5-range-slider>

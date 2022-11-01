@@ -36,18 +36,14 @@ export class BreadcrumbsDirective {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as BreadcrumbsElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set separatorStyle(val: BreadcrumbsElement['separatorStyle']) {
     this.elementRef.nativeElement.separatorStyle = val;
   }
   get separatorStyle() {
-    return this.elementRef.nativeElement.getAttribute(
-      'separator-style'
-    ) as unknown as BreadcrumbsElement['separatorStyle'];
+    return this.elementRef.nativeElement.separatorStyle;
   }
 
   @Output('item-click') itemClick: Observable<

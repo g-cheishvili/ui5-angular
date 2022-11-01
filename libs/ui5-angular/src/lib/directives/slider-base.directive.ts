@@ -34,9 +34,7 @@ export class SliderBaseDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as SliderBaseElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set disabled(val: SliderBaseElement['disabled']) {
@@ -50,27 +48,21 @@ export class SliderBaseDirective {
     this.elementRef.nativeElement.labelInterval = val;
   }
   get labelInterval() {
-    return this.elementRef.nativeElement.getAttribute(
-      'label-interval'
-    ) as unknown as SliderBaseElement['labelInterval'];
+    return this.elementRef.nativeElement.labelInterval;
   }
   @Input()
   set max(val: SliderBaseElement['max']) {
     this.elementRef.nativeElement.max = val;
   }
   get max() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max'
-    ) as unknown as SliderBaseElement['max'];
+    return this.elementRef.nativeElement.max;
   }
   @Input()
   set min(val: SliderBaseElement['min']) {
     this.elementRef.nativeElement.min = val;
   }
   get min() {
-    return this.elementRef.nativeElement.getAttribute(
-      'min'
-    ) as unknown as SliderBaseElement['min'];
+    return this.elementRef.nativeElement.min;
   }
   @Input()
   set showTickmarks(val: SliderBaseElement['showTickmarks']) {
@@ -91,9 +83,7 @@ export class SliderBaseDirective {
     this.elementRef.nativeElement.step = val;
   }
   get step() {
-    return this.elementRef.nativeElement.getAttribute(
-      'step'
-    ) as unknown as SliderBaseElement['step'];
+    return this.elementRef.nativeElement.step;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -48,18 +48,14 @@ export class UploadCollectionItemDirective {
     this.elementRef.nativeElement.file = val;
   }
   get file() {
-    return this.elementRef.nativeElement.getAttribute(
-      'file'
-    ) as unknown as UploadCollectionItemElement['file'];
+    return this.elementRef.nativeElement.file;
   }
   @Input()
   set fileName(val: UploadCollectionItemElement['fileName']) {
     this.elementRef.nativeElement.fileName = val;
   }
   get fileName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'file-name'
-    ) as unknown as UploadCollectionItemElement['fileName'];
+    return this.elementRef.nativeElement.fileName;
   }
   @Input()
   set fileNameClickable(val: UploadCollectionItemElement['fileNameClickable']) {
@@ -89,18 +85,14 @@ export class UploadCollectionItemDirective {
     this.elementRef.nativeElement.progress = val;
   }
   get progress() {
-    return this.elementRef.nativeElement.getAttribute(
-      'progress'
-    ) as unknown as UploadCollectionItemElement['progress'];
+    return this.elementRef.nativeElement.progress;
   }
   @Input()
   set uploadState(val: UploadCollectionItemElement['uploadState']) {
     this.elementRef.nativeElement.uploadState = val;
   }
   get uploadState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'upload-state'
-    ) as unknown as UploadCollectionItemElement['uploadState'];
+    return this.elementRef.nativeElement.uploadState;
   }
 
   @Output('file-name-click') fileNameClick: Observable<

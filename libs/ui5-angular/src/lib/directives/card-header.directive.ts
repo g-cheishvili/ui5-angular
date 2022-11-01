@@ -37,27 +37,21 @@ export class CardHeaderDirective {
     this.elementRef.nativeElement.status = val;
   }
   get status() {
-    return this.elementRef.nativeElement.getAttribute(
-      'status'
-    ) as unknown as CardHeaderElement['status'];
+    return this.elementRef.nativeElement.status;
   }
   @Input()
   set subtitleText(val: CardHeaderElement['subtitleText']) {
     this.elementRef.nativeElement.subtitleText = val;
   }
   get subtitleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'subtitle-text'
-    ) as unknown as CardHeaderElement['subtitleText'];
+    return this.elementRef.nativeElement.subtitleText;
   }
   @Input()
   set titleText(val: CardHeaderElement['titleText']) {
     this.elementRef.nativeElement.titleText = val;
   }
   get titleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'title-text'
-    ) as unknown as CardHeaderElement['titleText'];
+    return this.elementRef.nativeElement.titleText;
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

@@ -68,99 +68,77 @@ export class ShellBarDirective {
     this.elementRef.nativeElement.accessibilityRoles = val;
   }
   get accessibilityRoles() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-roles'
-    ) as unknown as ShellBarElement['accessibilityRoles'];
+    return this.elementRef.nativeElement.accessibilityRoles;
   }
   @Input()
   set accessibilityTexts(val: ShellBarElement['accessibilityTexts']) {
     this.elementRef.nativeElement.accessibilityTexts = val;
   }
   get accessibilityTexts() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-texts'
-    ) as unknown as ShellBarElement['accessibilityTexts'];
+    return this.elementRef.nativeElement.accessibilityTexts;
   }
   @Input()
   set copilotDomRef(val: ShellBarElement['copilotDomRef']) {
     this.elementRef.nativeElement.copilotDomRef = val;
   }
   get copilotDomRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'copilot-dom-ref'
-    ) as unknown as ShellBarElement['copilotDomRef'];
+    return this.elementRef.nativeElement.copilotDomRef;
   }
   @Input()
   set logoDomRef(val: ShellBarElement['logoDomRef']) {
     this.elementRef.nativeElement.logoDomRef = val;
   }
   get logoDomRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'logo-dom-ref'
-    ) as unknown as ShellBarElement['logoDomRef'];
+    return this.elementRef.nativeElement.logoDomRef;
   }
   @Input()
   set notificationsCount(val: ShellBarElement['notificationsCount']) {
     this.elementRef.nativeElement.notificationsCount = val;
   }
   get notificationsCount() {
-    return this.elementRef.nativeElement.getAttribute(
-      'notifications-count'
-    ) as unknown as ShellBarElement['notificationsCount'];
+    return this.elementRef.nativeElement.notificationsCount;
   }
   @Input()
   set notificationsDomRef(val: ShellBarElement['notificationsDomRef']) {
     this.elementRef.nativeElement.notificationsDomRef = val;
   }
   get notificationsDomRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'notifications-dom-ref'
-    ) as unknown as ShellBarElement['notificationsDomRef'];
+    return this.elementRef.nativeElement.notificationsDomRef;
   }
   @Input()
   set overflowDomRef(val: ShellBarElement['overflowDomRef']) {
     this.elementRef.nativeElement.overflowDomRef = val;
   }
   get overflowDomRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'overflow-dom-ref'
-    ) as unknown as ShellBarElement['overflowDomRef'];
+    return this.elementRef.nativeElement.overflowDomRef;
   }
   @Input()
   set primaryTitle(val: ShellBarElement['primaryTitle']) {
     this.elementRef.nativeElement.primaryTitle = val;
   }
   get primaryTitle() {
-    return this.elementRef.nativeElement.getAttribute(
-      'primary-title'
-    ) as unknown as ShellBarElement['primaryTitle'];
+    return this.elementRef.nativeElement.primaryTitle;
   }
   @Input()
   set productSwitchDomRef(val: ShellBarElement['productSwitchDomRef']) {
     this.elementRef.nativeElement.productSwitchDomRef = val;
   }
   get productSwitchDomRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'product-switch-dom-ref'
-    ) as unknown as ShellBarElement['productSwitchDomRef'];
+    return this.elementRef.nativeElement.productSwitchDomRef;
   }
   @Input()
   set profileDomRef(val: ShellBarElement['profileDomRef']) {
     this.elementRef.nativeElement.profileDomRef = val;
   }
   get profileDomRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'profile-dom-ref'
-    ) as unknown as ShellBarElement['profileDomRef'];
+    return this.elementRef.nativeElement.profileDomRef;
   }
   @Input()
   set secondaryTitle(val: ShellBarElement['secondaryTitle']) {
     this.elementRef.nativeElement.secondaryTitle = val;
   }
   get secondaryTitle() {
-    return this.elementRef.nativeElement.getAttribute(
-      'secondary-title'
-    ) as unknown as ShellBarElement['secondaryTitle'];
+    return this.elementRef.nativeElement.secondaryTitle;
   }
   @Input()
   set showCoPilot(val: ShellBarElement['showCoPilot']) {

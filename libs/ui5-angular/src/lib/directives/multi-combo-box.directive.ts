@@ -46,18 +46,14 @@ export class MultiComboBoxDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as MultiComboBoxElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: MultiComboBoxElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as MultiComboBoxElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set allowCustomValues(val: MultiComboBoxElement['allowCustomValues']) {
@@ -78,9 +74,7 @@ export class MultiComboBoxDirective {
     this.elementRef.nativeElement.filter = val;
   }
   get filter() {
-    return this.elementRef.nativeElement.getAttribute(
-      'filter'
-    ) as unknown as MultiComboBoxElement['filter'];
+    return this.elementRef.nativeElement.filter;
   }
   @Input()
   set noTypeahead(val: MultiComboBoxElement['noTypeahead']) {
@@ -101,9 +95,7 @@ export class MultiComboBoxDirective {
     this.elementRef.nativeElement.placeholder = val;
   }
   get placeholder() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placeholder'
-    ) as unknown as MultiComboBoxElement['placeholder'];
+    return this.elementRef.nativeElement.placeholder;
   }
   @Input()
   set readonly(val: MultiComboBoxElement['readonly']) {
@@ -124,18 +116,14 @@ export class MultiComboBoxDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as MultiComboBoxElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: MultiComboBoxElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as MultiComboBoxElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -44,18 +44,14 @@ export class NotificationListGroupItemDirective {
     this.elementRef.nativeElement.busyDelay = val;
   }
   get busyDelay() {
-    return this.elementRef.nativeElement.getAttribute(
-      'busy-delay'
-    ) as unknown as NotificationListGroupItemElement['busyDelay'];
+    return this.elementRef.nativeElement.busyDelay;
   }
   @Input()
   set priority(val: NotificationListGroupItemElement['priority']) {
     this.elementRef.nativeElement.priority = val;
   }
   get priority() {
-    return this.elementRef.nativeElement.getAttribute(
-      'priority'
-    ) as unknown as NotificationListGroupItemElement['priority'];
+    return this.elementRef.nativeElement.priority;
   }
   @Input()
   set read(val: NotificationListGroupItemElement['read']) {
@@ -76,9 +72,7 @@ export class NotificationListGroupItemDirective {
     this.elementRef.nativeElement.titleText = val;
   }
   get titleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'title-text'
-    ) as unknown as NotificationListGroupItemElement['titleText'];
+    return this.elementRef.nativeElement.titleText;
   }
   @Input()
   set collapsed(val: NotificationListGroupItemElement['collapsed']) {

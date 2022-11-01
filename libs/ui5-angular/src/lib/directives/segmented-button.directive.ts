@@ -26,18 +26,14 @@ export class SegmentedButtonDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as SegmentedButtonElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set selectedItem(val: SegmentedButtonElement['selectedItem']) {
     this.elementRef.nativeElement.selectedItem = val;
   }
   get selectedItem() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selected-item'
-    ) as unknown as SegmentedButtonElement['selectedItem'];
+    return this.elementRef.nativeElement.selectedItem;
   }
 
   @Output('selection-change') selectionChange: Observable<

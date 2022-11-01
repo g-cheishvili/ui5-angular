@@ -42,36 +42,28 @@ export class SegmentedButtonItemDirective {
     this.elementRef.nativeElement.accessibilityAttributes = val;
   }
   get accessibilityAttributes() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-attributes'
-    ) as unknown as SegmentedButtonItemElement['accessibilityAttributes'];
+    return this.elementRef.nativeElement.accessibilityAttributes;
   }
   @Input()
   set accessibleName(val: SegmentedButtonItemElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as SegmentedButtonItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: SegmentedButtonItemElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as SegmentedButtonItemElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set design(val: SegmentedButtonItemElement['design']) {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as SegmentedButtonItemElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: SegmentedButtonItemElement['disabled']) {
@@ -85,9 +77,7 @@ export class SegmentedButtonItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as SegmentedButtonItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set iconEnd(val: SegmentedButtonItemElement['iconEnd']) {
@@ -108,9 +98,7 @@ export class SegmentedButtonItemDirective {
     this.elementRef.nativeElement.tooltip = val;
   }
   get tooltip() {
-    return this.elementRef.nativeElement.getAttribute(
-      'tooltip'
-    ) as unknown as SegmentedButtonItemElement['tooltip'];
+    return this.elementRef.nativeElement.tooltip;
   }
   @Input()
   set pressed(val: SegmentedButtonItemElement['pressed']) {

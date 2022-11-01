@@ -18,18 +18,14 @@ export class CardDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as CardElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: CardElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as CardElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
 
   constructor(private elementRef: ElementRef<CardElement & HTMLElement>) {}

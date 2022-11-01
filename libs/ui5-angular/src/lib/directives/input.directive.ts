@@ -53,18 +53,14 @@ export class InputDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as InputElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: InputElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as InputElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set disabled(val: InputElement['disabled']) {
@@ -78,18 +74,14 @@ export class InputDirective {
     this.elementRef.nativeElement.maxlength = val;
   }
   get maxlength() {
-    return this.elementRef.nativeElement.getAttribute(
-      'maxlength'
-    ) as unknown as InputElement['maxlength'];
+    return this.elementRef.nativeElement.maxlength;
   }
   @Input()
   set name(val: InputElement['name']) {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as InputElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set noTypeahead(val: InputElement['noTypeahead']) {
@@ -103,18 +95,14 @@ export class InputDirective {
     this.elementRef.nativeElement.placeholder = val;
   }
   get placeholder() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placeholder'
-    ) as unknown as InputElement['placeholder'];
+    return this.elementRef.nativeElement.placeholder;
   }
   @Input()
   set previewItem(val: InputElement['previewItem']) {
     this.elementRef.nativeElement.previewItem = val;
   }
   get previewItem() {
-    return this.elementRef.nativeElement.getAttribute(
-      'preview-item'
-    ) as unknown as InputElement['previewItem'];
+    return this.elementRef.nativeElement.previewItem;
   }
   @Input()
   set readonly(val: InputElement['readonly']) {
@@ -149,27 +137,21 @@ export class InputDirective {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as InputElement['type'];
+    return this.elementRef.nativeElement.type;
   }
   @Input()
   set value(val: InputElement['value']) {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as InputElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: InputElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as InputElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

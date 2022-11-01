@@ -29,9 +29,7 @@ export class RatingIndicatorDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as RatingIndicatorElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set disabled(val: RatingIndicatorElement['disabled']) {
@@ -45,9 +43,7 @@ export class RatingIndicatorDirective {
     this.elementRef.nativeElement.max = val;
   }
   get max() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max'
-    ) as unknown as RatingIndicatorElement['max'];
+    return this.elementRef.nativeElement.max;
   }
   @Input()
   set readonly(val: RatingIndicatorElement['readonly']) {
@@ -61,9 +57,7 @@ export class RatingIndicatorDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as RatingIndicatorElement['value'];
+    return this.elementRef.nativeElement.value;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

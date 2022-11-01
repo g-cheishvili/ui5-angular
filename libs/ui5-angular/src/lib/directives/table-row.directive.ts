@@ -34,9 +34,7 @@ export class TableRowDirective {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as TableRowElement['type'];
+    return this.elementRef.nativeElement.type;
   }
 
   constructor(private elementRef: ElementRef<TableRowElement & HTMLElement>) {}

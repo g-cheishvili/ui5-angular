@@ -17,18 +17,14 @@ export class ComboBoxItemDirective {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as ComboBoxItemElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set text(val: ComboBoxItemElement['text']) {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as ComboBoxItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

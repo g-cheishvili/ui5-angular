@@ -25,36 +25,28 @@ export class SuggestionItemDirective {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as SuggestionItemElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set additionalTextState(val: SuggestionItemElement['additionalTextState']) {
     this.elementRef.nativeElement.additionalTextState = val;
   }
   get additionalTextState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text-state'
-    ) as unknown as SuggestionItemElement['additionalTextState'];
+    return this.elementRef.nativeElement.additionalTextState;
   }
   @Input()
   set description(val: SuggestionItemElement['description']) {
     this.elementRef.nativeElement.description = val;
   }
   get description() {
-    return this.elementRef.nativeElement.getAttribute(
-      'description'
-    ) as unknown as SuggestionItemElement['description'];
+    return this.elementRef.nativeElement.description;
   }
   @Input()
   set icon(val: SuggestionItemElement['icon']) {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as SuggestionItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set iconEnd(val: SuggestionItemElement['iconEnd']) {
@@ -68,27 +60,21 @@ export class SuggestionItemDirective {
     this.elementRef.nativeElement.image = val;
   }
   get image() {
-    return this.elementRef.nativeElement.getAttribute(
-      'image'
-    ) as unknown as SuggestionItemElement['image'];
+    return this.elementRef.nativeElement.image;
   }
   @Input()
   set text(val: SuggestionItemElement['text']) {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as SuggestionItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
   @Input()
   set type(val: SuggestionItemElement['type']) {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as SuggestionItemElement['type'];
+    return this.elementRef.nativeElement.type;
   }
 
   constructor(

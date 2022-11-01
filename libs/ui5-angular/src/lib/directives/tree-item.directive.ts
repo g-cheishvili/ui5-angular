@@ -26,27 +26,21 @@ export class TreeItemDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as TreeItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set additionalText(val: TreeItemElement['additionalText']) {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as TreeItemElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set additionalTextState(val: TreeItemElement['additionalTextState']) {
     this.elementRef.nativeElement.additionalTextState = val;
   }
   get additionalTextState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text-state'
-    ) as unknown as TreeItemElement['additionalTextState'];
+    return this.elementRef.nativeElement.additionalTextState;
   }
   @Input()
   set expanded(val: TreeItemElement['expanded']) {
@@ -67,9 +61,7 @@ export class TreeItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as TreeItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set indeterminate(val: TreeItemElement['indeterminate']) {
@@ -90,9 +82,7 @@ export class TreeItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as TreeItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(private elementRef: ElementRef<TreeItemElement & HTMLElement>) {}

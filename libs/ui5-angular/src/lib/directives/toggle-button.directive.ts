@@ -42,36 +42,28 @@ export class ToggleButtonDirective {
     this.elementRef.nativeElement.accessibilityAttributes = val;
   }
   get accessibilityAttributes() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-attributes'
-    ) as unknown as ToggleButtonElement['accessibilityAttributes'];
+    return this.elementRef.nativeElement.accessibilityAttributes;
   }
   @Input()
   set accessibleName(val: ToggleButtonElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as ToggleButtonElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: ToggleButtonElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as ToggleButtonElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set design(val: ToggleButtonElement['design']) {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as ToggleButtonElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: ToggleButtonElement['disabled']) {
@@ -85,9 +77,7 @@ export class ToggleButtonDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as ToggleButtonElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set iconEnd(val: ToggleButtonElement['iconEnd']) {
@@ -108,9 +98,7 @@ export class ToggleButtonDirective {
     this.elementRef.nativeElement.tooltip = val;
   }
   get tooltip() {
-    return this.elementRef.nativeElement.getAttribute(
-      'tooltip'
-    ) as unknown as ToggleButtonElement['tooltip'];
+    return this.elementRef.nativeElement.tooltip;
   }
   @Input()
   set pressed(val: ToggleButtonElement['pressed']) {

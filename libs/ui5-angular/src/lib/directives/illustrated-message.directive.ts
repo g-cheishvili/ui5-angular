@@ -110,45 +110,35 @@ export class IllustratedMessageDirective {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as IllustratedMessageElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set name(val: IllustratedMessageElement['name']) {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as IllustratedMessageElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set size(val: IllustratedMessageElement['size']) {
     this.elementRef.nativeElement.size = val;
   }
   get size() {
-    return this.elementRef.nativeElement.getAttribute(
-      'size'
-    ) as unknown as IllustratedMessageElement['size'];
+    return this.elementRef.nativeElement.size;
   }
   @Input()
   set subtitleText(val: IllustratedMessageElement['subtitleText']) {
     this.elementRef.nativeElement.subtitleText = val;
   }
   get subtitleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'subtitle-text'
-    ) as unknown as IllustratedMessageElement['subtitleText'];
+    return this.elementRef.nativeElement.subtitleText;
   }
   @Input()
   set titleText(val: IllustratedMessageElement['titleText']) {
     this.elementRef.nativeElement.titleText = val;
   }
   get titleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'title-text'
-    ) as unknown as IllustratedMessageElement['titleText'];
+    return this.elementRef.nativeElement.titleText;
   }
 
   constructor(

@@ -28,8 +28,8 @@ export class RangeSliderCva extends GenericControlValueAccessor<{
         };
       },
       set value(val) {
-        elementRef.nativeElement.endValue = val.endValue;
-        elementRef.nativeElement.startValue = val.startValue;
+        elementRef.nativeElement.endValue = val?.endValue;
+        elementRef.nativeElement.startValue = val?.startValue;
       },
       valueUpdatedNotifier$: merge(
         fromEvent(elementRef.nativeElement, 'change'),

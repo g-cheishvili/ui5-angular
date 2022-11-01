@@ -25,27 +25,21 @@ export class ShellBarItemDirective {
     this.elementRef.nativeElement.count = val;
   }
   get count() {
-    return this.elementRef.nativeElement.getAttribute(
-      'count'
-    ) as unknown as ShellBarItemElement['count'];
+    return this.elementRef.nativeElement.count;
   }
   @Input()
   set icon(val: ShellBarItemElement['icon']) {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as ShellBarItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set text(val: ShellBarItemElement['text']) {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as ShellBarItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

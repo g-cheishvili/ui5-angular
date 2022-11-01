@@ -46,27 +46,21 @@ export class PopoverDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as PopoverElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: PopoverElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as PopoverElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set initialFocus(val: PopoverElement['initialFocus']) {
     this.elementRef.nativeElement.initialFocus = val;
   }
   get initialFocus() {
-    return this.elementRef.nativeElement.getAttribute(
-      'initial-focus'
-    ) as unknown as PopoverElement['initialFocus'];
+    return this.elementRef.nativeElement.initialFocus;
   }
   @Input()
   set open(val: PopoverElement['open']) {
@@ -94,9 +88,7 @@ export class PopoverDirective {
     this.elementRef.nativeElement.headerText = val;
   }
   get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as PopoverElement['headerText'];
+    return this.elementRef.nativeElement.headerText;
   }
   @Input()
   set hideArrow(val: PopoverElement['hideArrow']) {
@@ -117,9 +109,7 @@ export class PopoverDirective {
     this.elementRef.nativeElement.horizontalAlign = val;
   }
   get horizontalAlign() {
-    return this.elementRef.nativeElement.getAttribute(
-      'horizontal-align'
-    ) as unknown as PopoverElement['horizontalAlign'];
+    return this.elementRef.nativeElement.horizontalAlign;
   }
   @Input()
   set modal(val: PopoverElement['modal']) {
@@ -133,27 +123,21 @@ export class PopoverDirective {
     this.elementRef.nativeElement.opener = val;
   }
   get opener() {
-    return this.elementRef.nativeElement.getAttribute(
-      'opener'
-    ) as unknown as PopoverElement['opener'];
+    return this.elementRef.nativeElement.opener;
   }
   @Input()
   set placementType(val: PopoverElement['placementType']) {
     this.elementRef.nativeElement.placementType = val;
   }
   get placementType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placement-type'
-    ) as unknown as PopoverElement['placementType'];
+    return this.elementRef.nativeElement.placementType;
   }
   @Input()
   set verticalAlign(val: PopoverElement['verticalAlign']) {
     this.elementRef.nativeElement.verticalAlign = val;
   }
   get verticalAlign() {
-    return this.elementRef.nativeElement.getAttribute(
-      'vertical-align'
-    ) as unknown as PopoverElement['verticalAlign'];
+    return this.elementRef.nativeElement.verticalAlign;
   }
 
   @Output('after-close') afterClose: Observable<

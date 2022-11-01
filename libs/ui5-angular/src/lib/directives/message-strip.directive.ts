@@ -30,9 +30,7 @@ export class MessageStripDirective {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as MessageStripElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set hideCloseButton(val: MessageStripElement['hideCloseButton']) {

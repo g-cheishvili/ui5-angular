@@ -64,9 +64,7 @@ export class FlexibleColumnLayoutDirective {
     this.elementRef.nativeElement.accessibilityRoles = val;
   }
   get accessibilityRoles() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-roles'
-    ) as unknown as FlexibleColumnLayoutElement['accessibilityRoles'];
+    return this.elementRef.nativeElement.accessibilityRoles;
   }
   @Input()
   set accessibilityTexts(
@@ -75,18 +73,14 @@ export class FlexibleColumnLayoutDirective {
     this.elementRef.nativeElement.accessibilityTexts = val;
   }
   get accessibilityTexts() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-texts'
-    ) as unknown as FlexibleColumnLayoutElement['accessibilityTexts'];
+    return this.elementRef.nativeElement.accessibilityTexts;
   }
   @Input()
   set columnLayout(val: FlexibleColumnLayoutElement['columnLayout']) {
     this.elementRef.nativeElement.columnLayout = val;
   }
   get columnLayout() {
-    return this.elementRef.nativeElement.getAttribute(
-      'column-layout'
-    ) as unknown as FlexibleColumnLayoutElement['columnLayout'];
+    return this.elementRef.nativeElement.columnLayout;
   }
   @Input()
   set endColumnVisible(val: FlexibleColumnLayoutElement['endColumnVisible']) {
@@ -107,9 +101,7 @@ export class FlexibleColumnLayoutDirective {
     this.elementRef.nativeElement.layout = val;
   }
   get layout() {
-    return this.elementRef.nativeElement.getAttribute(
-      'layout'
-    ) as unknown as FlexibleColumnLayoutElement['layout'];
+    return this.elementRef.nativeElement.layout;
   }
   @Input()
   set midColumnVisible(val: FlexibleColumnLayoutElement['midColumnVisible']) {
@@ -132,9 +124,7 @@ export class FlexibleColumnLayoutDirective {
     this.elementRef.nativeElement.visibleColumns = val;
   }
   get visibleColumns() {
-    return this.elementRef.nativeElement.getAttribute(
-      'visible-columns'
-    ) as unknown as FlexibleColumnLayoutElement['visibleColumns'];
+    return this.elementRef.nativeElement.visibleColumns;
   }
 
   @Output('layout-change') layoutChange: Observable<

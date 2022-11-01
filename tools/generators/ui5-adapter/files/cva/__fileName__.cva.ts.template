@@ -38,7 +38,7 @@ export class <%- className %>Cva extends GenericControlValueAccessor<
       set value(val) {
         <% if(formData.length > 1) { %>
           <% for (const data of formData) { %>
-          elementRef.nativeElement.<%- data.property.name %> = val.<%- data.property.name %>;<% } %>
+          elementRef.nativeElement.<%- data.property.name %> = val?.<%- data.property.name %>;<% } %>
         <% } else { %>
           elementRef.nativeElement.<%- formData[0].property.name %> = val;
         <% } %>

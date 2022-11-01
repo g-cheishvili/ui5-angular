@@ -23,9 +23,7 @@ export class ColorPickerDirective {
     this.elementRef.nativeElement.color = val;
   }
   get color() {
-    return this.elementRef.nativeElement.getAttribute(
-      'color'
-    ) as unknown as ColorPickerElement['color'];
+    return this.elementRef.nativeElement.color;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

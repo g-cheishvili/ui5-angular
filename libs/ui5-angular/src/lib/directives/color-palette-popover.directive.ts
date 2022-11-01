@@ -28,9 +28,7 @@ export class ColorPalettePopoverDirective {
     this.elementRef.nativeElement.defaultColor = val;
   }
   get defaultColor() {
-    return this.elementRef.nativeElement.getAttribute(
-      'default-color'
-    ) as unknown as ColorPalettePopoverElement['defaultColor'];
+    return this.elementRef.nativeElement.defaultColor;
   }
   @Input()
   set showDefaultColor(val: ColorPalettePopoverElement['showDefaultColor']) {

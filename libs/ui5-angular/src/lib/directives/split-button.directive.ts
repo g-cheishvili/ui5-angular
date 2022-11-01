@@ -37,27 +37,21 @@ export class SplitButtonDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as SplitButtonElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set activeIcon(val: SplitButtonElement['activeIcon']) {
     this.elementRef.nativeElement.activeIcon = val;
   }
   get activeIcon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'active-icon'
-    ) as unknown as SplitButtonElement['activeIcon'];
+    return this.elementRef.nativeElement.activeIcon;
   }
   @Input()
   set design(val: SplitButtonElement['design']) {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as SplitButtonElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: SplitButtonElement['disabled']) {
@@ -71,9 +65,7 @@ export class SplitButtonDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as SplitButtonElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
 
   @Output('arrow-click') arrowClick: Observable<

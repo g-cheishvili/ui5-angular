@@ -29,9 +29,7 @@ export class ProgressIndicatorDirective {
     this.elementRef.nativeElement.displayValue = val;
   }
   get displayValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'display-value'
-    ) as unknown as ProgressIndicatorElement['displayValue'];
+    return this.elementRef.nativeElement.displayValue;
   }
   @Input()
   set hideValue(val: ProgressIndicatorElement['hideValue']) {
@@ -45,18 +43,14 @@ export class ProgressIndicatorDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as ProgressIndicatorElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: ProgressIndicatorElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as ProgressIndicatorElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
 
   constructor(

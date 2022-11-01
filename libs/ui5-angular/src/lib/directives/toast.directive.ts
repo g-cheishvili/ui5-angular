@@ -26,18 +26,14 @@ export class ToastDirective {
     this.elementRef.nativeElement.duration = val;
   }
   get duration() {
-    return this.elementRef.nativeElement.getAttribute(
-      'duration'
-    ) as unknown as ToastElement['duration'];
+    return this.elementRef.nativeElement.duration;
   }
   @Input()
   set placement(val: ToastElement['placement']) {
     this.elementRef.nativeElement.placement = val;
   }
   get placement() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placement'
-    ) as unknown as ToastElement['placement'];
+    return this.elementRef.nativeElement.placement;
   }
 
   constructor(private elementRef: ElementRef<ToastElement & HTMLElement>) {}

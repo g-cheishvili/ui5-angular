@@ -27,9 +27,7 @@ export class NotificationActionDirective {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as NotificationActionElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: NotificationActionElement['disabled']) {
@@ -43,18 +41,14 @@ export class NotificationActionDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as NotificationActionElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set text(val: NotificationActionElement['text']) {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as NotificationActionElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

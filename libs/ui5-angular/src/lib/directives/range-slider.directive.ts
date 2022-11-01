@@ -36,9 +36,7 @@ export class RangeSliderDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as RangeSliderElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set disabled(val: RangeSliderElement['disabled']) {
@@ -52,27 +50,21 @@ export class RangeSliderDirective {
     this.elementRef.nativeElement.labelInterval = val;
   }
   get labelInterval() {
-    return this.elementRef.nativeElement.getAttribute(
-      'label-interval'
-    ) as unknown as RangeSliderElement['labelInterval'];
+    return this.elementRef.nativeElement.labelInterval;
   }
   @Input()
   set max(val: RangeSliderElement['max']) {
     this.elementRef.nativeElement.max = val;
   }
   get max() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max'
-    ) as unknown as RangeSliderElement['max'];
+    return this.elementRef.nativeElement.max;
   }
   @Input()
   set min(val: RangeSliderElement['min']) {
     this.elementRef.nativeElement.min = val;
   }
   get min() {
-    return this.elementRef.nativeElement.getAttribute(
-      'min'
-    ) as unknown as RangeSliderElement['min'];
+    return this.elementRef.nativeElement.min;
   }
   @Input()
   set showTickmarks(val: RangeSliderElement['showTickmarks']) {
@@ -93,27 +85,21 @@ export class RangeSliderDirective {
     this.elementRef.nativeElement.step = val;
   }
   get step() {
-    return this.elementRef.nativeElement.getAttribute(
-      'step'
-    ) as unknown as RangeSliderElement['step'];
+    return this.elementRef.nativeElement.step;
   }
   @Input()
   set endValue(val: RangeSliderElement['endValue']) {
     this.elementRef.nativeElement.endValue = val;
   }
   get endValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'end-value'
-    ) as unknown as RangeSliderElement['endValue'];
+    return this.elementRef.nativeElement.endValue;
   }
   @Input()
   set startValue(val: RangeSliderElement['startValue']) {
     this.elementRef.nativeElement.startValue = val;
   }
   get startValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'start-value'
-    ) as unknown as RangeSliderElement['startValue'];
+    return this.elementRef.nativeElement.startValue;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

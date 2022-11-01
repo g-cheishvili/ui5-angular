@@ -42,27 +42,21 @@ export class DialogDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as DialogElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: DialogElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as DialogElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set initialFocus(val: DialogElement['initialFocus']) {
     this.elementRef.nativeElement.initialFocus = val;
   }
   get initialFocus() {
-    return this.elementRef.nativeElement.getAttribute(
-      'initial-focus'
-    ) as unknown as DialogElement['initialFocus'];
+    return this.elementRef.nativeElement.initialFocus;
   }
   @Input()
   set open(val: DialogElement['open']) {
@@ -90,9 +84,7 @@ export class DialogDirective {
     this.elementRef.nativeElement.headerText = val;
   }
   get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as DialogElement['headerText'];
+    return this.elementRef.nativeElement.headerText;
   }
   @Input()
   set resizable(val: DialogElement['resizable']) {
@@ -106,9 +98,7 @@ export class DialogDirective {
     this.elementRef.nativeElement.state = val;
   }
   get state() {
-    return this.elementRef.nativeElement.getAttribute(
-      'state'
-    ) as unknown as DialogElement['state'];
+    return this.elementRef.nativeElement.state;
   }
   @Input()
   set stretch(val: DialogElement['stretch']) {

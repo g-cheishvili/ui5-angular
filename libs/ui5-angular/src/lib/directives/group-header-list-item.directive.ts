@@ -26,9 +26,7 @@ export class GroupHeaderListItemDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as GroupHeaderListItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
 
   constructor(

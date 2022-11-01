@@ -57,27 +57,21 @@ export class ListDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as ListElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: ListElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as ListElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set accessibleRole(val: ListElement['accessibleRole']) {
     this.elementRef.nativeElement.accessibleRole = val;
   }
   get accessibleRole() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-role'
-    ) as unknown as ListElement['accessibleRole'];
+    return this.elementRef.nativeElement.accessibleRole;
   }
   @Input()
   set busy(val: ListElement['busy']) {
@@ -91,36 +85,28 @@ export class ListDirective {
     this.elementRef.nativeElement.busyDelay = val;
   }
   get busyDelay() {
-    return this.elementRef.nativeElement.getAttribute(
-      'busy-delay'
-    ) as unknown as ListElement['busyDelay'];
+    return this.elementRef.nativeElement.busyDelay;
   }
   @Input()
   set footerText(val: ListElement['footerText']) {
     this.elementRef.nativeElement.footerText = val;
   }
   get footerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'footer-text'
-    ) as unknown as ListElement['footerText'];
+    return this.elementRef.nativeElement.footerText;
   }
   @Input()
   set growing(val: ListElement['growing']) {
     this.elementRef.nativeElement.growing = val;
   }
   get growing() {
-    return this.elementRef.nativeElement.getAttribute(
-      'growing'
-    ) as unknown as ListElement['growing'];
+    return this.elementRef.nativeElement.growing;
   }
   @Input()
   set headerText(val: ListElement['headerText']) {
     this.elementRef.nativeElement.headerText = val;
   }
   get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as ListElement['headerText'];
+    return this.elementRef.nativeElement.headerText;
   }
   @Input()
   set indent(val: ListElement['indent']) {
@@ -134,27 +120,21 @@ export class ListDirective {
     this.elementRef.nativeElement.mode = val;
   }
   get mode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'mode'
-    ) as unknown as ListElement['mode'];
+    return this.elementRef.nativeElement.mode;
   }
   @Input()
   set noDataText(val: ListElement['noDataText']) {
     this.elementRef.nativeElement.noDataText = val;
   }
   get noDataText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'no-data-text'
-    ) as unknown as ListElement['noDataText'];
+    return this.elementRef.nativeElement.noDataText;
   }
   @Input()
   set separators(val: ListElement['separators']) {
     this.elementRef.nativeElement.separators = val;
   }
   get separators() {
-    return this.elementRef.nativeElement.getAttribute(
-      'separators'
-    ) as unknown as ListElement['separators'];
+    return this.elementRef.nativeElement.separators;
   }
 
   @Output('item-click') itemClick: Observable<

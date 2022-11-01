@@ -18,27 +18,21 @@ export class BreadcrumbsItemDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as BreadcrumbsItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set href(val: BreadcrumbsItemElement['href']) {
     this.elementRef.nativeElement.href = val;
   }
   get href() {
-    return this.elementRef.nativeElement.getAttribute(
-      'href'
-    ) as unknown as BreadcrumbsItemElement['href'];
+    return this.elementRef.nativeElement.href;
   }
   @Input()
   set target(val: BreadcrumbsItemElement['target']) {
     this.elementRef.nativeElement.target = val;
   }
   get target() {
-    return this.elementRef.nativeElement.getAttribute(
-      'target'
-    ) as unknown as BreadcrumbsItemElement['target'];
+    return this.elementRef.nativeElement.target;
   }
 
   constructor(

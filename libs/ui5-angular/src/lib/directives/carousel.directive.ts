@@ -31,9 +31,7 @@ export class CarouselDirective {
     this.elementRef.nativeElement.arrowsPlacement = val;
   }
   get arrowsPlacement() {
-    return this.elementRef.nativeElement.getAttribute(
-      'arrows-placement'
-    ) as unknown as CarouselElement['arrowsPlacement'];
+    return this.elementRef.nativeElement.arrowsPlacement;
   }
   @Input()
   set cyclic(val: CarouselElement['cyclic']) {
@@ -61,27 +59,21 @@ export class CarouselDirective {
     this.elementRef.nativeElement.itemsPerPageL = val;
   }
   get itemsPerPageL() {
-    return this.elementRef.nativeElement.getAttribute(
-      'items-per-page-l'
-    ) as unknown as CarouselElement['itemsPerPageL'];
+    return this.elementRef.nativeElement.itemsPerPageL;
   }
   @Input()
   set itemsPerPageM(val: CarouselElement['itemsPerPageM']) {
     this.elementRef.nativeElement.itemsPerPageM = val;
   }
   get itemsPerPageM() {
-    return this.elementRef.nativeElement.getAttribute(
-      'items-per-page-m'
-    ) as unknown as CarouselElement['itemsPerPageM'];
+    return this.elementRef.nativeElement.itemsPerPageM;
   }
   @Input()
   set itemsPerPageS(val: CarouselElement['itemsPerPageS']) {
     this.elementRef.nativeElement.itemsPerPageS = val;
   }
   get itemsPerPageS() {
-    return this.elementRef.nativeElement.getAttribute(
-      'items-per-page-s'
-    ) as unknown as CarouselElement['itemsPerPageS'];
+    return this.elementRef.nativeElement.itemsPerPageS;
   }
 
   @Output() navigate: Observable<CustomEvent<OutputTypes['navigate']>> =

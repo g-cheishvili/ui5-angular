@@ -20,9 +20,7 @@ export class SideNavigationSubItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as SideNavigationSubItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set selected(val: SideNavigationSubItemElement['selected']) {
@@ -36,9 +34,7 @@ export class SideNavigationSubItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as SideNavigationSubItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

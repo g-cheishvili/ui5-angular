@@ -16,9 +16,7 @@ export class ColorPaletteItemDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as ColorPaletteItemElement['value'];
+    return this.elementRef.nativeElement.value;
   }
 
   constructor(

@@ -16,9 +16,7 @@ export class ComboBoxGroupItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as ComboBoxGroupItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

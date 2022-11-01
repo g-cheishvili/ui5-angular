@@ -41,9 +41,7 @@ export class UploadCollectionDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as UploadCollectionElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set hideDragOverlay(val: UploadCollectionElement['hideDragOverlay']) {
@@ -57,27 +55,21 @@ export class UploadCollectionDirective {
     this.elementRef.nativeElement.mode = val;
   }
   get mode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'mode'
-    ) as unknown as UploadCollectionElement['mode'];
+    return this.elementRef.nativeElement.mode;
   }
   @Input()
   set noDataDescription(val: UploadCollectionElement['noDataDescription']) {
     this.elementRef.nativeElement.noDataDescription = val;
   }
   get noDataDescription() {
-    return this.elementRef.nativeElement.getAttribute(
-      'no-data-description'
-    ) as unknown as UploadCollectionElement['noDataDescription'];
+    return this.elementRef.nativeElement.noDataDescription;
   }
   @Input()
   set noDataText(val: UploadCollectionElement['noDataText']) {
     this.elementRef.nativeElement.noDataText = val;
   }
   get noDataText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'no-data-text'
-    ) as unknown as UploadCollectionElement['noDataText'];
+    return this.elementRef.nativeElement.noDataText;
   }
 
   @Output() drop: Observable<CustomEvent<OutputTypes['drop']>> =

@@ -34,9 +34,7 @@ export class TabContainerDirective {
     this.elementRef.nativeElement.allItems = val;
   }
   get allItems() {
-    return this.elementRef.nativeElement.getAttribute(
-      'all-items'
-    ) as unknown as TabContainerElement['allItems'];
+    return this.elementRef.nativeElement.allItems;
   }
   @Input()
   set collapsed(val: TabContainerElement['collapsed']) {
@@ -64,18 +62,14 @@ export class TabContainerDirective {
     this.elementRef.nativeElement.tabLayout = val;
   }
   get tabLayout() {
-    return this.elementRef.nativeElement.getAttribute(
-      'tab-layout'
-    ) as unknown as TabContainerElement['tabLayout'];
+    return this.elementRef.nativeElement.tabLayout;
   }
   @Input()
   set tabsOverflowMode(val: TabContainerElement['tabsOverflowMode']) {
     this.elementRef.nativeElement.tabsOverflowMode = val;
   }
   get tabsOverflowMode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'tabs-overflow-mode'
-    ) as unknown as TabContainerElement['tabsOverflowMode'];
+    return this.elementRef.nativeElement.tabsOverflowMode;
   }
 
   @Output('tab-select') tabSelect: Observable<

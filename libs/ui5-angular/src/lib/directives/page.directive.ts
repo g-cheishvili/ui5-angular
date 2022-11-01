@@ -25,9 +25,7 @@ export class PageDirective {
     this.elementRef.nativeElement.backgroundDesign = val;
   }
   get backgroundDesign() {
-    return this.elementRef.nativeElement.getAttribute(
-      'background-design'
-    ) as unknown as PageElement['backgroundDesign'];
+    return this.elementRef.nativeElement.backgroundDesign;
   }
   @Input()
   set disableScrolling(val: PageElement['disableScrolling']) {

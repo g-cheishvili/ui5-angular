@@ -18,9 +18,7 @@ export class BarDirective {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as BarElement['design'];
+    return this.elementRef.nativeElement.design;
   }
 
   constructor(private elementRef: ElementRef<BarElement & HTMLElement>) {}

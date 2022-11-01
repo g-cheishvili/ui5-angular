@@ -11,6 +11,7 @@ import {
   takeUntil,
   tap,
 } from 'rxjs';
+import fastDeepEqual from 'fast-deep-equal';
 
 interface ValueProviderInterface<ValueType = any> {
   value: ValueType;
@@ -31,7 +32,7 @@ export class GenericControlValueAccessor<ValueType = any>
     this.host.valueUpdatedNotifier$
       .pipe(
         map(() => this.host.value),
-        distinctUntilChanged(),
+        distinctUntilChanged(fastDeepEqual),
         tap((v) => (this._value = v)),
         switchMap(this.onChange$),
         takeUntil(this._destroy$)

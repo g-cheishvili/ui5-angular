@@ -44,27 +44,21 @@ export class MediaGalleryDirective {
     this.elementRef.nativeElement.layout = val;
   }
   get layout() {
-    return this.elementRef.nativeElement.getAttribute(
-      'layout'
-    ) as unknown as MediaGalleryElement['layout'];
+    return this.elementRef.nativeElement.layout;
   }
   @Input()
   set menuHorizontalAlign(val: MediaGalleryElement['menuHorizontalAlign']) {
     this.elementRef.nativeElement.menuHorizontalAlign = val;
   }
   get menuHorizontalAlign() {
-    return this.elementRef.nativeElement.getAttribute(
-      'menu-horizontal-align'
-    ) as unknown as MediaGalleryElement['menuHorizontalAlign'];
+    return this.elementRef.nativeElement.menuHorizontalAlign;
   }
   @Input()
   set menuVerticalAlign(val: MediaGalleryElement['menuVerticalAlign']) {
     this.elementRef.nativeElement.menuVerticalAlign = val;
   }
   get menuVerticalAlign() {
-    return this.elementRef.nativeElement.getAttribute(
-      'menu-vertical-align'
-    ) as unknown as MediaGalleryElement['menuVerticalAlign'];
+    return this.elementRef.nativeElement.menuVerticalAlign;
   }
   @Input()
   set showAllThumbnails(val: MediaGalleryElement['showAllThumbnails']) {

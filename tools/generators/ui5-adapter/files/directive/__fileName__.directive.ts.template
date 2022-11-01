@@ -33,7 +33,7 @@ export class <%- className %>Directive {
     <% if(input.type === 'boolean') { %>
       return this.elementRef.nativeElement.hasAttribute('<%- input.publicName %>');
     <% } else { %>
-      return this.elementRef.nativeElement.getAttribute('<%- input.publicName %>') as unknown as <%- className %>Element["<%- input.name %>"];
+      return this.elementRef.nativeElement.<%- input.name %>;
     <% } %>
   }<% } %>
   <% for(const output of outputs) { %>

@@ -44,9 +44,7 @@ export class TokenDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as TokenElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   @Output() select: Observable<CustomEvent<OutputTypes['select']>> =

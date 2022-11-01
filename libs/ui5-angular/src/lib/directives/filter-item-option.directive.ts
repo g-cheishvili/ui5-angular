@@ -26,9 +26,7 @@ export class FilterItemOptionDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as FilterItemOptionElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

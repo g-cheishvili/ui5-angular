@@ -17,18 +17,14 @@ export class TitleDirective {
     this.elementRef.nativeElement.level = val;
   }
   get level() {
-    return this.elementRef.nativeElement.getAttribute(
-      'level'
-    ) as unknown as TitleElement['level'];
+    return this.elementRef.nativeElement.level;
   }
   @Input()
   set wrappingType(val: TitleElement['wrappingType']) {
     this.elementRef.nativeElement.wrappingType = val;
   }
   get wrappingType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'wrapping-type'
-    ) as unknown as TitleElement['wrappingType'];
+    return this.elementRef.nativeElement.wrappingType;
   }
 
   constructor(private elementRef: ElementRef<TitleElement & HTMLElement>) {}

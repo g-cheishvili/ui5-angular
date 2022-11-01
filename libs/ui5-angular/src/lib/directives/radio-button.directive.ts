@@ -35,18 +35,14 @@ export class RadioButtonDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as RadioButtonElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: RadioButtonElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as RadioButtonElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set checked(val: RadioButtonElement['checked']) {
@@ -67,9 +63,7 @@ export class RadioButtonDirective {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as RadioButtonElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set readonly(val: RadioButtonElement['readonly']) {
@@ -90,36 +84,28 @@ export class RadioButtonDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as RadioButtonElement['text'];
+    return this.elementRef.nativeElement.text;
   }
   @Input()
   set value(val: RadioButtonElement['value']) {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as RadioButtonElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: RadioButtonElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as RadioButtonElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
   @Input()
   set wrappingType(val: RadioButtonElement['wrappingType']) {
     this.elementRef.nativeElement.wrappingType = val;
   }
   get wrappingType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'wrapping-type'
-    ) as unknown as RadioButtonElement['wrappingType'];
+    return this.elementRef.nativeElement.wrappingType;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

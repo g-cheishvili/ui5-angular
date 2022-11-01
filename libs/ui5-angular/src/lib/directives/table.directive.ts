@@ -47,18 +47,14 @@ export class TableDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as TableElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: TableElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as TableElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set busy(val: TableElement['busy']) {
@@ -72,36 +68,28 @@ export class TableDirective {
     this.elementRef.nativeElement.busyDelay = val;
   }
   get busyDelay() {
-    return this.elementRef.nativeElement.getAttribute(
-      'busy-delay'
-    ) as unknown as TableElement['busyDelay'];
+    return this.elementRef.nativeElement.busyDelay;
   }
   @Input()
   set growing(val: TableElement['growing']) {
     this.elementRef.nativeElement.growing = val;
   }
   get growing() {
-    return this.elementRef.nativeElement.getAttribute(
-      'growing'
-    ) as unknown as TableElement['growing'];
+    return this.elementRef.nativeElement.growing;
   }
   @Input()
   set growingButtonSubtext(val: TableElement['growingButtonSubtext']) {
     this.elementRef.nativeElement.growingButtonSubtext = val;
   }
   get growingButtonSubtext() {
-    return this.elementRef.nativeElement.getAttribute(
-      'growing-button-subtext'
-    ) as unknown as TableElement['growingButtonSubtext'];
+    return this.elementRef.nativeElement.growingButtonSubtext;
   }
   @Input()
   set growingButtonText(val: TableElement['growingButtonText']) {
     this.elementRef.nativeElement.growingButtonText = val;
   }
   get growingButtonText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'growing-button-text'
-    ) as unknown as TableElement['growingButtonText'];
+    return this.elementRef.nativeElement.growingButtonText;
   }
   @Input()
   set hideNoData(val: TableElement['hideNoData']) {
@@ -115,18 +103,14 @@ export class TableDirective {
     this.elementRef.nativeElement.mode = val;
   }
   get mode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'mode'
-    ) as unknown as TableElement['mode'];
+    return this.elementRef.nativeElement.mode;
   }
   @Input()
   set noDataText(val: TableElement['noDataText']) {
     this.elementRef.nativeElement.noDataText = val;
   }
   get noDataText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'no-data-text'
-    ) as unknown as TableElement['noDataText'];
+    return this.elementRef.nativeElement.noDataText;
   }
   @Input()
   set stickyColumnHeader(val: TableElement['stickyColumnHeader']) {

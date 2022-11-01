@@ -60,18 +60,14 @@ export class MultiInputDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as MultiInputElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: MultiInputElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as MultiInputElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set disabled(val: MultiInputElement['disabled']) {
@@ -85,18 +81,14 @@ export class MultiInputDirective {
     this.elementRef.nativeElement.maxlength = val;
   }
   get maxlength() {
-    return this.elementRef.nativeElement.getAttribute(
-      'maxlength'
-    ) as unknown as MultiInputElement['maxlength'];
+    return this.elementRef.nativeElement.maxlength;
   }
   @Input()
   set name(val: MultiInputElement['name']) {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as MultiInputElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set noTypeahead(val: MultiInputElement['noTypeahead']) {
@@ -110,18 +102,14 @@ export class MultiInputDirective {
     this.elementRef.nativeElement.placeholder = val;
   }
   get placeholder() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placeholder'
-    ) as unknown as MultiInputElement['placeholder'];
+    return this.elementRef.nativeElement.placeholder;
   }
   @Input()
   set previewItem(val: MultiInputElement['previewItem']) {
     this.elementRef.nativeElement.previewItem = val;
   }
   get previewItem() {
-    return this.elementRef.nativeElement.getAttribute(
-      'preview-item'
-    ) as unknown as MultiInputElement['previewItem'];
+    return this.elementRef.nativeElement.previewItem;
   }
   @Input()
   set readonly(val: MultiInputElement['readonly']) {
@@ -156,27 +144,21 @@ export class MultiInputDirective {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as MultiInputElement['type'];
+    return this.elementRef.nativeElement.type;
   }
   @Input()
   set value(val: MultiInputElement['value']) {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as MultiInputElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: MultiInputElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as MultiInputElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
   @Input()
   set showValueHelpIcon(val: MultiInputElement['showValueHelpIcon']) {

@@ -12,6 +12,7 @@ export class AppComponent {
   @ViewChild(MultiComboBoxDirective)
   multiComboBox!: MultiComboBoxDirective;
   someInputVal!: string;
+  rangeSliderValue = {startValue: 1, endValue: 10};
 
   changeHandler($event: string) {
     console.log($event)

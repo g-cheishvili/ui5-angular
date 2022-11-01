@@ -38,18 +38,14 @@ export class StepInputDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as StepInputElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: StepInputElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as StepInputElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set disabled(val: StepInputElement['disabled']) {
@@ -63,36 +59,28 @@ export class StepInputDirective {
     this.elementRef.nativeElement.max = val;
   }
   get max() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max'
-    ) as unknown as StepInputElement['max'];
+    return this.elementRef.nativeElement.max;
   }
   @Input()
   set min(val: StepInputElement['min']) {
     this.elementRef.nativeElement.min = val;
   }
   get min() {
-    return this.elementRef.nativeElement.getAttribute(
-      'min'
-    ) as unknown as StepInputElement['min'];
+    return this.elementRef.nativeElement.min;
   }
   @Input()
   set name(val: StepInputElement['name']) {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as StepInputElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set placeholder(val: StepInputElement['placeholder']) {
     this.elementRef.nativeElement.placeholder = val;
   }
   get placeholder() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placeholder'
-    ) as unknown as StepInputElement['placeholder'];
+    return this.elementRef.nativeElement.placeholder;
   }
   @Input()
   set readonly(val: StepInputElement['readonly']) {
@@ -113,36 +101,28 @@ export class StepInputDirective {
     this.elementRef.nativeElement.step = val;
   }
   get step() {
-    return this.elementRef.nativeElement.getAttribute(
-      'step'
-    ) as unknown as StepInputElement['step'];
+    return this.elementRef.nativeElement.step;
   }
   @Input()
   set value(val: StepInputElement['value']) {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as StepInputElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valuePrecision(val: StepInputElement['valuePrecision']) {
     this.elementRef.nativeElement.valuePrecision = val;
   }
   get valuePrecision() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-precision'
-    ) as unknown as StepInputElement['valuePrecision'];
+    return this.elementRef.nativeElement.valuePrecision;
   }
   @Input()
   set valueState(val: StepInputElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as StepInputElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

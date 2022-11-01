@@ -22,18 +22,14 @@ export class IconDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as IconElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleRole(val: IconElement['accessibleRole']) {
     this.elementRef.nativeElement.accessibleRole = val;
   }
   get accessibleRole() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-role'
-    ) as unknown as IconElement['accessibleRole'];
+    return this.elementRef.nativeElement.accessibleRole;
   }
   @Input()
   set interactive(val: IconElement['interactive']) {
@@ -47,9 +43,7 @@ export class IconDirective {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as IconElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set showTooltip(val: IconElement['showTooltip']) {

@@ -41,45 +41,35 @@ export class CalendarDirective {
     this.elementRef.nativeElement.formatPattern = val;
   }
   get formatPattern() {
-    return this.elementRef.nativeElement.getAttribute(
-      'format-pattern'
-    ) as unknown as CalendarElement['formatPattern'];
+    return this.elementRef.nativeElement.formatPattern;
   }
   @Input()
   set maxDate(val: CalendarElement['maxDate']) {
     this.elementRef.nativeElement.maxDate = val;
   }
   get maxDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max-date'
-    ) as unknown as CalendarElement['maxDate'];
+    return this.elementRef.nativeElement.maxDate;
   }
   @Input()
   set minDate(val: CalendarElement['minDate']) {
     this.elementRef.nativeElement.minDate = val;
   }
   get minDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'min-date'
-    ) as unknown as CalendarElement['minDate'];
+    return this.elementRef.nativeElement.minDate;
   }
   @Input()
   set primaryCalendarType(val: CalendarElement['primaryCalendarType']) {
     this.elementRef.nativeElement.primaryCalendarType = val;
   }
   get primaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'primary-calendar-type'
-    ) as unknown as CalendarElement['primaryCalendarType'];
+    return this.elementRef.nativeElement.primaryCalendarType;
   }
   @Input()
   set secondaryCalendarType(val: CalendarElement['secondaryCalendarType']) {
     this.elementRef.nativeElement.secondaryCalendarType = val;
   }
   get secondaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'secondary-calendar-type'
-    ) as unknown as CalendarElement['secondaryCalendarType'];
+    return this.elementRef.nativeElement.secondaryCalendarType;
   }
   @Input()
   set hideWeekNumbers(val: CalendarElement['hideWeekNumbers']) {
@@ -93,9 +83,7 @@ export class CalendarDirective {
     this.elementRef.nativeElement.selectionMode = val;
   }
   get selectionMode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selection-mode'
-    ) as unknown as CalendarElement['selectionMode'];
+    return this.elementRef.nativeElement.selectionMode;
   }
 
   @Output('selected-dates-change') selectedDatesChange: Observable<

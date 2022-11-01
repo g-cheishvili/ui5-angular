@@ -17,18 +17,14 @@ export class TimelineDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as TimelineElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set layout(val: TimelineElement['layout']) {
     this.elementRef.nativeElement.layout = val;
   }
   get layout() {
-    return this.elementRef.nativeElement.getAttribute(
-      'layout'
-    ) as unknown as TimelineElement['layout'];
+    return this.elementRef.nativeElement.layout;
   }
 
   constructor(private elementRef: ElementRef<TimelineElement & HTMLElement>) {}

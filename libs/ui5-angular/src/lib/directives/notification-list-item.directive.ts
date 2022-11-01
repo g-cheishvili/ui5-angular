@@ -44,18 +44,14 @@ export class NotificationListItemDirective {
     this.elementRef.nativeElement.busyDelay = val;
   }
   get busyDelay() {
-    return this.elementRef.nativeElement.getAttribute(
-      'busy-delay'
-    ) as unknown as NotificationListItemElement['busyDelay'];
+    return this.elementRef.nativeElement.busyDelay;
   }
   @Input()
   set priority(val: NotificationListItemElement['priority']) {
     this.elementRef.nativeElement.priority = val;
   }
   get priority() {
-    return this.elementRef.nativeElement.getAttribute(
-      'priority'
-    ) as unknown as NotificationListItemElement['priority'];
+    return this.elementRef.nativeElement.priority;
   }
   @Input()
   set read(val: NotificationListItemElement['read']) {
@@ -76,18 +72,14 @@ export class NotificationListItemDirective {
     this.elementRef.nativeElement.titleText = val;
   }
   get titleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'title-text'
-    ) as unknown as NotificationListItemElement['titleText'];
+    return this.elementRef.nativeElement.titleText;
   }
   @Input()
   set wrappingType(val: NotificationListItemElement['wrappingType']) {
     this.elementRef.nativeElement.wrappingType = val;
   }
   get wrappingType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'wrapping-type'
-    ) as unknown as NotificationListItemElement['wrappingType'];
+    return this.elementRef.nativeElement.wrappingType;
   }
 
   @Output() close: Observable<CustomEvent<OutputTypes['close']>> =

@@ -20,18 +20,14 @@ export class MultiComboBoxItemDirective {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as MultiComboBoxItemElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set text(val: MultiComboBoxItemElement['text']) {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as MultiComboBoxItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
   @Input()
   set selected(val: MultiComboBoxItemElement['selected']) {

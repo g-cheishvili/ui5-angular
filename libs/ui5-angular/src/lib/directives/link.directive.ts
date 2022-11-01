@@ -41,45 +41,35 @@ export class LinkDirective {
     this.elementRef.nativeElement.accessibilityAttributes = val;
   }
   get accessibilityAttributes() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessibility-attributes'
-    ) as unknown as LinkElement['accessibilityAttributes'];
+    return this.elementRef.nativeElement.accessibilityAttributes;
   }
   @Input()
   set accessibleName(val: LinkElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as LinkElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: LinkElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as LinkElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set accessibleRole(val: LinkElement['accessibleRole']) {
     this.elementRef.nativeElement.accessibleRole = val;
   }
   get accessibleRole() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-role'
-    ) as unknown as LinkElement['accessibleRole'];
+    return this.elementRef.nativeElement.accessibleRole;
   }
   @Input()
   set design(val: LinkElement['design']) {
     this.elementRef.nativeElement.design = val;
   }
   get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as LinkElement['design'];
+    return this.elementRef.nativeElement.design;
   }
   @Input()
   set disabled(val: LinkElement['disabled']) {
@@ -93,27 +83,21 @@ export class LinkDirective {
     this.elementRef.nativeElement.href = val;
   }
   get href() {
-    return this.elementRef.nativeElement.getAttribute(
-      'href'
-    ) as unknown as LinkElement['href'];
+    return this.elementRef.nativeElement.href;
   }
   @Input()
   set target(val: LinkElement['target']) {
     this.elementRef.nativeElement.target = val;
   }
   get target() {
-    return this.elementRef.nativeElement.getAttribute(
-      'target'
-    ) as unknown as LinkElement['target'];
+    return this.elementRef.nativeElement.target;
   }
   @Input()
   set wrappingType(val: LinkElement['wrappingType']) {
     this.elementRef.nativeElement.wrappingType = val;
   }
   get wrappingType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'wrapping-type'
-    ) as unknown as LinkElement['wrappingType'];
+    return this.elementRef.nativeElement.wrappingType;
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

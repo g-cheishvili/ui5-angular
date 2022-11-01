@@ -41,18 +41,14 @@ export class TextAreaDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as TextAreaElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: TextAreaElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as TextAreaElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set disabled(val: TextAreaElement['disabled']) {
@@ -73,36 +69,28 @@ export class TextAreaDirective {
     this.elementRef.nativeElement.growingMaxLines = val;
   }
   get growingMaxLines() {
-    return this.elementRef.nativeElement.getAttribute(
-      'growing-max-lines'
-    ) as unknown as TextAreaElement['growingMaxLines'];
+    return this.elementRef.nativeElement.growingMaxLines;
   }
   @Input()
   set maxlength(val: TextAreaElement['maxlength']) {
     this.elementRef.nativeElement.maxlength = val;
   }
   get maxlength() {
-    return this.elementRef.nativeElement.getAttribute(
-      'maxlength'
-    ) as unknown as TextAreaElement['maxlength'];
+    return this.elementRef.nativeElement.maxlength;
   }
   @Input()
   set name(val: TextAreaElement['name']) {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as TextAreaElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set placeholder(val: TextAreaElement['placeholder']) {
     this.elementRef.nativeElement.placeholder = val;
   }
   get placeholder() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placeholder'
-    ) as unknown as TextAreaElement['placeholder'];
+    return this.elementRef.nativeElement.placeholder;
   }
   @Input()
   set readonly(val: TextAreaElement['readonly']) {
@@ -123,9 +111,7 @@ export class TextAreaDirective {
     this.elementRef.nativeElement.rows = val;
   }
   get rows() {
-    return this.elementRef.nativeElement.getAttribute(
-      'rows'
-    ) as unknown as TextAreaElement['rows'];
+    return this.elementRef.nativeElement.rows;
   }
   @Input()
   set showExceededText(val: TextAreaElement['showExceededText']) {
@@ -139,18 +125,14 @@ export class TextAreaDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as TextAreaElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: TextAreaElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as TextAreaElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -43,54 +43,42 @@ export class StandardListItemDirective {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as StandardListItemElement['type'];
+    return this.elementRef.nativeElement.type;
   }
   @Input()
   set accessibleName(val: StandardListItemElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as StandardListItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set additionalText(val: StandardListItemElement['additionalText']) {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as StandardListItemElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set additionalTextState(val: StandardListItemElement['additionalTextState']) {
     this.elementRef.nativeElement.additionalTextState = val;
   }
   get additionalTextState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text-state'
-    ) as unknown as StandardListItemElement['additionalTextState'];
+    return this.elementRef.nativeElement.additionalTextState;
   }
   @Input()
   set description(val: StandardListItemElement['description']) {
     this.elementRef.nativeElement.description = val;
   }
   get description() {
-    return this.elementRef.nativeElement.getAttribute(
-      'description'
-    ) as unknown as StandardListItemElement['description'];
+    return this.elementRef.nativeElement.description;
   }
   @Input()
   set icon(val: StandardListItemElement['icon']) {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as StandardListItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set iconEnd(val: StandardListItemElement['iconEnd']) {
@@ -104,9 +92,7 @@ export class StandardListItemDirective {
     this.elementRef.nativeElement.image = val;
   }
   get image() {
-    return this.elementRef.nativeElement.getAttribute(
-      'image'
-    ) as unknown as StandardListItemElement['image'];
+    return this.elementRef.nativeElement.image;
   }
 
   @Output('detail-click') detailClick: Observable<

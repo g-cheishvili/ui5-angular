@@ -53,36 +53,28 @@ export class DateTimePickerDirective {
     this.elementRef.nativeElement.formatPattern = val;
   }
   get formatPattern() {
-    return this.elementRef.nativeElement.getAttribute(
-      'format-pattern'
-    ) as unknown as DateTimePickerElement['formatPattern'];
+    return this.elementRef.nativeElement.formatPattern;
   }
   @Input()
   set maxDate(val: DateTimePickerElement['maxDate']) {
     this.elementRef.nativeElement.maxDate = val;
   }
   get maxDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max-date'
-    ) as unknown as DateTimePickerElement['maxDate'];
+    return this.elementRef.nativeElement.maxDate;
   }
   @Input()
   set minDate(val: DateTimePickerElement['minDate']) {
     this.elementRef.nativeElement.minDate = val;
   }
   get minDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'min-date'
-    ) as unknown as DateTimePickerElement['minDate'];
+    return this.elementRef.nativeElement.minDate;
   }
   @Input()
   set primaryCalendarType(val: DateTimePickerElement['primaryCalendarType']) {
     this.elementRef.nativeElement.primaryCalendarType = val;
   }
   get primaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'primary-calendar-type'
-    ) as unknown as DateTimePickerElement['primaryCalendarType'];
+    return this.elementRef.nativeElement.primaryCalendarType;
   }
   @Input()
   set secondaryCalendarType(
@@ -91,36 +83,28 @@ export class DateTimePickerDirective {
     this.elementRef.nativeElement.secondaryCalendarType = val;
   }
   get secondaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'secondary-calendar-type'
-    ) as unknown as DateTimePickerElement['secondaryCalendarType'];
+    return this.elementRef.nativeElement.secondaryCalendarType;
   }
   @Input()
   set accessibleName(val: DateTimePickerElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as DateTimePickerElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleNameRef(val: DateTimePickerElement['accessibleNameRef']) {
     this.elementRef.nativeElement.accessibleNameRef = val;
   }
   get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as DateTimePickerElement['accessibleNameRef'];
+    return this.elementRef.nativeElement.accessibleNameRef;
   }
   @Input()
   set dateValue(val: DateTimePickerElement['dateValue']) {
     this.elementRef.nativeElement.dateValue = val;
   }
   get dateValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'date-value'
-    ) as unknown as DateTimePickerElement['dateValue'];
+    return this.elementRef.nativeElement.dateValue;
   }
   @Input()
   set disabled(val: DateTimePickerElement['disabled']) {
@@ -141,18 +125,14 @@ export class DateTimePickerDirective {
     this.elementRef.nativeElement.name = val;
   }
   get name() {
-    return this.elementRef.nativeElement.getAttribute(
-      'name'
-    ) as unknown as DateTimePickerElement['name'];
+    return this.elementRef.nativeElement.name;
   }
   @Input()
   set placeholder(val: DateTimePickerElement['placeholder']) {
     this.elementRef.nativeElement.placeholder = val;
   }
   get placeholder() {
-    return this.elementRef.nativeElement.getAttribute(
-      'placeholder'
-    ) as unknown as DateTimePickerElement['placeholder'];
+    return this.elementRef.nativeElement.placeholder;
   }
   @Input()
   set readonly(val: DateTimePickerElement['readonly']) {
@@ -173,18 +153,14 @@ export class DateTimePickerDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as DateTimePickerElement['value'];
+    return this.elementRef.nativeElement.value;
   }
   @Input()
   set valueState(val: DateTimePickerElement['valueState']) {
     this.elementRef.nativeElement.valueState = val;
   }
   get valueState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value-state'
-    ) as unknown as DateTimePickerElement['valueState'];
+    return this.elementRef.nativeElement.valueState;
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -29,9 +29,7 @@ export class SideNavigationItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as SideNavigationItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set selected(val: SideNavigationItemElement['selected']) {
@@ -45,9 +43,7 @@ export class SideNavigationItemDirective {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as SideNavigationItemElement['text'];
+    return this.elementRef.nativeElement.text;
   }
   @Input()
   set wholeItemToggleable(

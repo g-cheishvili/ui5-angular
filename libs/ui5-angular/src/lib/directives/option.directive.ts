@@ -22,9 +22,7 @@ export class OptionDirective {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as OptionElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set disabled(val: OptionElement['disabled']) {
@@ -38,9 +36,7 @@ export class OptionDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as OptionElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set selected(val: OptionElement['selected']) {
@@ -54,9 +50,7 @@ export class OptionDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as OptionElement['value'];
+    return this.elementRef.nativeElement.value;
   }
 
   constructor(private elementRef: ElementRef<OptionElement & HTMLElement>) {}

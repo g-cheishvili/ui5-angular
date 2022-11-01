@@ -32,18 +32,14 @@ export class PanelDirective {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as PanelElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set accessibleRole(val: PanelElement['accessibleRole']) {
     this.elementRef.nativeElement.accessibleRole = val;
   }
   get accessibleRole() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-role'
-    ) as unknown as PanelElement['accessibleRole'];
+    return this.elementRef.nativeElement.accessibleRole;
   }
   @Input()
   set collapsed(val: PanelElement['collapsed']) {
@@ -64,18 +60,14 @@ export class PanelDirective {
     this.elementRef.nativeElement.headerLevel = val;
   }
   get headerLevel() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-level'
-    ) as unknown as PanelElement['headerLevel'];
+    return this.elementRef.nativeElement.headerLevel;
   }
   @Input()
   set headerText(val: PanelElement['headerText']) {
     this.elementRef.nativeElement.headerText = val;
   }
   get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as PanelElement['headerText'];
+    return this.elementRef.nativeElement.headerText;
   }
   @Input()
   set noAnimation(val: PanelElement['noAnimation']) {

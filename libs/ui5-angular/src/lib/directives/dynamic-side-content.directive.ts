@@ -64,9 +64,7 @@ export class DynamicSideContentDirective {
     this.elementRef.nativeElement.sideContentFallDown = val;
   }
   get sideContentFallDown() {
-    return this.elementRef.nativeElement.getAttribute(
-      'side-content-fall-down'
-    ) as unknown as DynamicSideContentElement['sideContentFallDown'];
+    return this.elementRef.nativeElement.sideContentFallDown;
   }
   @Input()
   set sideContentPosition(
@@ -75,9 +73,7 @@ export class DynamicSideContentDirective {
     this.elementRef.nativeElement.sideContentPosition = val;
   }
   get sideContentPosition() {
-    return this.elementRef.nativeElement.getAttribute(
-      'side-content-position'
-    ) as unknown as DynamicSideContentElement['sideContentPosition'];
+    return this.elementRef.nativeElement.sideContentPosition;
   }
   @Input()
   set sideContentVisibility(
@@ -86,9 +82,7 @@ export class DynamicSideContentDirective {
     this.elementRef.nativeElement.sideContentVisibility = val;
   }
   get sideContentVisibility() {
-    return this.elementRef.nativeElement.getAttribute(
-      'side-content-visibility'
-    ) as unknown as DynamicSideContentElement['sideContentVisibility'];
+    return this.elementRef.nativeElement.sideContentVisibility;
   }
 
   @Output('layout-change') layoutChange: Observable<

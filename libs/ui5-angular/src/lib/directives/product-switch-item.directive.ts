@@ -27,45 +27,35 @@ export class ProductSwitchItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as ProductSwitchItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set subtitleText(val: ProductSwitchItemElement['subtitleText']) {
     this.elementRef.nativeElement.subtitleText = val;
   }
   get subtitleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'subtitle-text'
-    ) as unknown as ProductSwitchItemElement['subtitleText'];
+    return this.elementRef.nativeElement.subtitleText;
   }
   @Input()
   set target(val: ProductSwitchItemElement['target']) {
     this.elementRef.nativeElement.target = val;
   }
   get target() {
-    return this.elementRef.nativeElement.getAttribute(
-      'target'
-    ) as unknown as ProductSwitchItemElement['target'];
+    return this.elementRef.nativeElement.target;
   }
   @Input()
   set targetSrc(val: ProductSwitchItemElement['targetSrc']) {
     this.elementRef.nativeElement.targetSrc = val;
   }
   get targetSrc() {
-    return this.elementRef.nativeElement.getAttribute(
-      'target-src'
-    ) as unknown as ProductSwitchItemElement['targetSrc'];
+    return this.elementRef.nativeElement.targetSrc;
   }
   @Input()
   set titleText(val: ProductSwitchItemElement['titleText']) {
     this.elementRef.nativeElement.titleText = val;
   }
   get titleText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'title-text'
-    ) as unknown as ProductSwitchItemElement['titleText'];
+    return this.elementRef.nativeElement.titleText;
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

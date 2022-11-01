@@ -16,9 +16,7 @@ export class CalendarDateDirective {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as CalendarDateElement['value'];
+    return this.elementRef.nativeElement.value;
   }
 
   constructor(

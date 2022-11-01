@@ -43,18 +43,14 @@ export class WheelSliderDirective {
     this.elementRef.nativeElement.label = val;
   }
   get label() {
-    return this.elementRef.nativeElement.getAttribute(
-      'label'
-    ) as unknown as WheelSliderElement['label'];
+    return this.elementRef.nativeElement.label;
   }
   @Input()
   set value(val: WheelSliderElement['value']) {
     this.elementRef.nativeElement.value = val;
   }
   get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as WheelSliderElement['value'];
+    return this.elementRef.nativeElement.value;
   }
 
   constructor(

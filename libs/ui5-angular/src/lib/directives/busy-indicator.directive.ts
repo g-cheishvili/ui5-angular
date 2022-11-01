@@ -28,27 +28,21 @@ export class BusyIndicatorDirective {
     this.elementRef.nativeElement.delay = val;
   }
   get delay() {
-    return this.elementRef.nativeElement.getAttribute(
-      'delay'
-    ) as unknown as BusyIndicatorElement['delay'];
+    return this.elementRef.nativeElement.delay;
   }
   @Input()
   set size(val: BusyIndicatorElement['size']) {
     this.elementRef.nativeElement.size = val;
   }
   get size() {
-    return this.elementRef.nativeElement.getAttribute(
-      'size'
-    ) as unknown as BusyIndicatorElement['size'];
+    return this.elementRef.nativeElement.size;
   }
   @Input()
   set text(val: BusyIndicatorElement['text']) {
     this.elementRef.nativeElement.text = val;
   }
   get text() {
-    return this.elementRef.nativeElement.getAttribute(
-      'text'
-    ) as unknown as BusyIndicatorElement['text'];
+    return this.elementRef.nativeElement.text;
   }
 
   constructor(

@@ -49,36 +49,28 @@ export class TreeListItemDirective {
     this.elementRef.nativeElement.type = val;
   }
   get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as TreeListItemElement['type'];
+    return this.elementRef.nativeElement.type;
   }
   @Input()
   set accessibleName(val: TreeListItemElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
   }
   get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as TreeListItemElement['accessibleName'];
+    return this.elementRef.nativeElement.accessibleName;
   }
   @Input()
   set additionalText(val: TreeListItemElement['additionalText']) {
     this.elementRef.nativeElement.additionalText = val;
   }
   get additionalText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text'
-    ) as unknown as TreeListItemElement['additionalText'];
+    return this.elementRef.nativeElement.additionalText;
   }
   @Input()
   set additionalTextState(val: TreeListItemElement['additionalTextState']) {
     this.elementRef.nativeElement.additionalTextState = val;
   }
   get additionalTextState() {
-    return this.elementRef.nativeElement.getAttribute(
-      'additional-text-state'
-    ) as unknown as TreeListItemElement['additionalTextState'];
+    return this.elementRef.nativeElement.additionalTextState;
   }
   @Input()
   set expanded(val: TreeListItemElement['expanded']) {
@@ -92,18 +84,14 @@ export class TreeListItemDirective {
     this.elementRef.nativeElement.icon = val;
   }
   get icon() {
-    return this.elementRef.nativeElement.getAttribute(
-      'icon'
-    ) as unknown as TreeListItemElement['icon'];
+    return this.elementRef.nativeElement.icon;
   }
   @Input()
   set level(val: TreeListItemElement['level']) {
     this.elementRef.nativeElement.level = val;
   }
   get level() {
-    return this.elementRef.nativeElement.getAttribute(
-      'level'
-    ) as unknown as TreeListItemElement['level'];
+    return this.elementRef.nativeElement.level;
   }
   @Input()
   set showToggleButton(val: TreeListItemElement['showToggleButton']) {
