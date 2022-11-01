@@ -7,6 +7,21 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/DateTimePicker.js';
 interface DateTimePickerElement {
+  formatPattern: string;
+  maxDate: string;
+  minDate: string;
+  primaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  secondaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
   accessibleName: string;
   accessibleNameRef: string;
   dateValue: any;
@@ -17,12 +32,7 @@ interface DateTimePickerElement {
   readonly: BooleanInputType;
   required: BooleanInputType;
   value: string;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
-  formatPattern: string;
-  maxDate: string;
-  minDate: string;
-  primaryCalendarType: any;
-  secondaryCalendarType: any;
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
 
   // Slots
   valueStateMessage: HTMLElement;
@@ -38,6 +48,53 @@ interface OutputTypes {
   selector: 'ui5-datetime-picker',
 })
 export class DateTimePickerDirective {
+  @Input()
+  set formatPattern(val: DateTimePickerElement['formatPattern']) {
+    this.elementRef.nativeElement.formatPattern = val;
+  }
+  get formatPattern() {
+    return this.elementRef.nativeElement.getAttribute(
+      'format-pattern'
+    ) as unknown as DateTimePickerElement['formatPattern'];
+  }
+  @Input()
+  set maxDate(val: DateTimePickerElement['maxDate']) {
+    this.elementRef.nativeElement.maxDate = val;
+  }
+  get maxDate() {
+    return this.elementRef.nativeElement.getAttribute(
+      'max-date'
+    ) as unknown as DateTimePickerElement['maxDate'];
+  }
+  @Input()
+  set minDate(val: DateTimePickerElement['minDate']) {
+    this.elementRef.nativeElement.minDate = val;
+  }
+  get minDate() {
+    return this.elementRef.nativeElement.getAttribute(
+      'min-date'
+    ) as unknown as DateTimePickerElement['minDate'];
+  }
+  @Input()
+  set primaryCalendarType(val: DateTimePickerElement['primaryCalendarType']) {
+    this.elementRef.nativeElement.primaryCalendarType = val;
+  }
+  get primaryCalendarType() {
+    return this.elementRef.nativeElement.getAttribute(
+      'primary-calendar-type'
+    ) as unknown as DateTimePickerElement['primaryCalendarType'];
+  }
+  @Input()
+  set secondaryCalendarType(
+    val: DateTimePickerElement['secondaryCalendarType']
+  ) {
+    this.elementRef.nativeElement.secondaryCalendarType = val;
+  }
+  get secondaryCalendarType() {
+    return this.elementRef.nativeElement.getAttribute(
+      'secondary-calendar-type'
+    ) as unknown as DateTimePickerElement['secondaryCalendarType'];
+  }
   @Input()
   set accessibleName(val: DateTimePickerElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -128,53 +185,6 @@ export class DateTimePickerDirective {
     return this.elementRef.nativeElement.getAttribute(
       'value-state'
     ) as unknown as DateTimePickerElement['valueState'];
-  }
-  @Input()
-  set formatPattern(val: DateTimePickerElement['formatPattern']) {
-    this.elementRef.nativeElement.formatPattern = val;
-  }
-  get formatPattern() {
-    return this.elementRef.nativeElement.getAttribute(
-      'format-pattern'
-    ) as unknown as DateTimePickerElement['formatPattern'];
-  }
-  @Input()
-  set maxDate(val: DateTimePickerElement['maxDate']) {
-    this.elementRef.nativeElement.maxDate = val;
-  }
-  get maxDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'max-date'
-    ) as unknown as DateTimePickerElement['maxDate'];
-  }
-  @Input()
-  set minDate(val: DateTimePickerElement['minDate']) {
-    this.elementRef.nativeElement.minDate = val;
-  }
-  get minDate() {
-    return this.elementRef.nativeElement.getAttribute(
-      'min-date'
-    ) as unknown as DateTimePickerElement['minDate'];
-  }
-  @Input()
-  set primaryCalendarType(val: DateTimePickerElement['primaryCalendarType']) {
-    this.elementRef.nativeElement.primaryCalendarType = val;
-  }
-  get primaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'primary-calendar-type'
-    ) as unknown as DateTimePickerElement['primaryCalendarType'];
-  }
-  @Input()
-  set secondaryCalendarType(
-    val: DateTimePickerElement['secondaryCalendarType']
-  ) {
-    this.elementRef.nativeElement.secondaryCalendarType = val;
-  }
-  get secondaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'secondary-calendar-type'
-    ) as unknown as DateTimePickerElement['secondaryCalendarType'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

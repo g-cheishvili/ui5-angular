@@ -10,16 +10,16 @@ interface StepInputElement {
   accessibleName: string;
   accessibleNameRef: string;
   disabled: BooleanInputType;
-  max: number;
-  min: number;
+  max: any;
+  min: any;
   name: string;
   placeholder: string;
   readonly: BooleanInputType;
   required: BooleanInputType;
-  step: number;
-  value: number;
-  valuePrecision: number;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  step: any;
+  value: any;
+  valuePrecision: any;
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
 
   // Slots
   valueStateMessage: HTMLElement;

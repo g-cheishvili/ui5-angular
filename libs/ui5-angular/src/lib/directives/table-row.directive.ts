@@ -4,6 +4,7 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/TableRow.js';
 interface TableRowElement {
+  navigated: BooleanInputType;
   selected: BooleanInputType;
   type: 'Active' | 'Inactive';
 
@@ -14,6 +15,13 @@ interface TableRowElement {
   selector: 'ui5-table-row',
 })
 export class TableRowDirective {
+  @Input()
+  set navigated(val: TableRowElement['navigated']) {
+    this.elementRef.nativeElement.navigated = booleanInput(val);
+  }
+  get navigated() {
+    return this.elementRef.nativeElement.hasAttribute('navigated');
+  }
   @Input()
   set selected(val: TableRowElement['selected']) {
     this.elementRef.nativeElement.selected = booleanInput(val);

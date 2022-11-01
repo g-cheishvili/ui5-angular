@@ -7,14 +7,24 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/DayPicker.js';
 interface DayPickerElement {
-  hideWeekNumbers: BooleanInputType;
-  selectedDates: Array<any>;
-  selectionMode: 'Multiple' | 'Range' | 'Single';
   formatPattern: string;
   maxDate: string;
   minDate: string;
-  primaryCalendarType: any;
-  secondaryCalendarType: any;
+  primaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  secondaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  hideWeekNumbers: BooleanInputType;
+  selectedDates: Array<any>;
+  selectionMode: 'Multiple' | 'Range' | 'Single';
 
   // Slots
 }
@@ -29,31 +39,6 @@ interface OutputTypes {
   selector: 'ui5-daypicker',
 })
 export class DayPickerDirective {
-  @Input()
-  set hideWeekNumbers(val: DayPickerElement['hideWeekNumbers']) {
-    this.elementRef.nativeElement.hideWeekNumbers = booleanInput(val);
-  }
-  get hideWeekNumbers() {
-    return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
-  }
-  @Input()
-  set selectedDates(val: DayPickerElement['selectedDates']) {
-    this.elementRef.nativeElement.selectedDates = val;
-  }
-  get selectedDates() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selected-dates'
-    ) as unknown as DayPickerElement['selectedDates'];
-  }
-  @Input()
-  set selectionMode(val: DayPickerElement['selectionMode']) {
-    this.elementRef.nativeElement.selectionMode = val;
-  }
-  get selectionMode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selection-mode'
-    ) as unknown as DayPickerElement['selectionMode'];
-  }
   @Input()
   set formatPattern(val: DayPickerElement['formatPattern']) {
     this.elementRef.nativeElement.formatPattern = val;
@@ -98,6 +83,31 @@ export class DayPickerDirective {
     return this.elementRef.nativeElement.getAttribute(
       'secondary-calendar-type'
     ) as unknown as DayPickerElement['secondaryCalendarType'];
+  }
+  @Input()
+  set hideWeekNumbers(val: DayPickerElement['hideWeekNumbers']) {
+    this.elementRef.nativeElement.hideWeekNumbers = booleanInput(val);
+  }
+  get hideWeekNumbers() {
+    return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
+  }
+  @Input()
+  set selectedDates(val: DayPickerElement['selectedDates']) {
+    this.elementRef.nativeElement.selectedDates = val;
+  }
+  get selectedDates() {
+    return this.elementRef.nativeElement.getAttribute(
+      'selected-dates'
+    ) as unknown as DayPickerElement['selectedDates'];
+  }
+  @Input()
+  set selectionMode(val: DayPickerElement['selectionMode']) {
+    this.elementRef.nativeElement.selectionMode = val;
+  }
+  get selectionMode() {
+    return this.elementRef.nativeElement.getAttribute(
+      'selection-mode'
+    ) as unknown as DayPickerElement['selectionMode'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

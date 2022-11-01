@@ -15,14 +15,33 @@ import {<%- className %>Directive} from '../directives/<%- fileName %>.directive
     }
   ]
 })
-export class <%- className %>Cva extends GenericControlValueAccessor<<%- className %>Directive['<%- input.name %>']> {
+export class <%- className %>Cva extends GenericControlValueAccessor<
+  <% if(formData.length > 1) { %>
+    {<% for (const data of formData) { %>
+        <%- data.property.name %>: <%- className %>Directive['<%- data.property.name %>'],<% } %>
+    }
+  <% } else { %>
+    <%- className %>Directive['<%- formData[0].property.name %>']
+  <% } %>
+> {
   constructor(private elementRef: ElementRef<<%- className %>Directive['element']>) {
     super({
       get value() {
-        return elementRef.nativeElement.<%- input.name %>;
+        <% if(formData.length > 1) { %>
+          return {<% for (const data of formData) { %>
+              <%- data.property.name %>: elementRef.nativeElement.<%- data.property.name %>,<% } %>
+          }
+        <% } else { %>
+          return elementRef.nativeElement.<%- formData[0].property.name %>;
+        <% } %>
       },
       set value(val) {
-        elementRef.nativeElement.<%- input.name %> = val;
+        <% if(formData.length > 1) { %>
+          <% for (const data of formData) { %>
+          elementRef.nativeElement.<%- data.property.name %> = val.<%- data.property.name %>;<% } %>
+        <% } else { %>
+          elementRef.nativeElement.<%- formData[0].property.name %> = val;
+        <% } %>
       },
       valueUpdatedNotifier$: merge(<% for(const ev of events) { %>
         fromEvent(elementRef.nativeElement, '<%- ev.name %>'),<% } %>

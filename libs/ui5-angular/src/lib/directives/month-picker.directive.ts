@@ -5,12 +5,22 @@ import { Observable } from 'rxjs';
 
 import '@ui5/webcomponents/dist/MonthPicker.js';
 interface MonthPickerElement {
-  selectedDates: Array<any>;
   formatPattern: string;
   maxDate: string;
   minDate: string;
-  primaryCalendarType: any;
-  secondaryCalendarType: any;
+  primaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  secondaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  selectedDates: Array<any>;
 
   // Slots
 }
@@ -25,15 +35,6 @@ interface OutputTypes {
   selector: 'ui5-monthpicker',
 })
 export class MonthPickerDirective {
-  @Input()
-  set selectedDates(val: MonthPickerElement['selectedDates']) {
-    this.elementRef.nativeElement.selectedDates = val;
-  }
-  get selectedDates() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selected-dates'
-    ) as unknown as MonthPickerElement['selectedDates'];
-  }
   @Input()
   set formatPattern(val: MonthPickerElement['formatPattern']) {
     this.elementRef.nativeElement.formatPattern = val;
@@ -78,6 +79,15 @@ export class MonthPickerDirective {
     return this.elementRef.nativeElement.getAttribute(
       'secondary-calendar-type'
     ) as unknown as MonthPickerElement['secondaryCalendarType'];
+  }
+  @Input()
+  set selectedDates(val: MonthPickerElement['selectedDates']) {
+    this.elementRef.nativeElement.selectedDates = val;
+  }
+  get selectedDates() {
+    return this.elementRef.nativeElement.getAttribute(
+      'selected-dates'
+    ) as unknown as MonthPickerElement['selectedDates'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

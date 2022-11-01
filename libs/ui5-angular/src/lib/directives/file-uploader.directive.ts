@@ -15,7 +15,7 @@ interface FileUploaderElement {
   name: string;
   placeholder: string;
   value: string;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
 
   // Slots
   valueStateMessage: Array<HTMLElement>;

@@ -7,13 +7,24 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/DateRangePicker.js';
 interface DateRangePickerElement {
-  dateValue: any;
-  dateValueUTC: any;
-  delimiter: string;
-  endDateValue: any;
-  startDateValue: any;
+  formatPattern: string;
+  maxDate: string;
+  minDate: string;
+  primaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  secondaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
   accessibleName: string;
   accessibleNameRef: string;
+  dateValue: any;
   disabled: BooleanInputType;
   hideWeekNumbers: BooleanInputType;
   name: string;
@@ -21,12 +32,11 @@ interface DateRangePickerElement {
   readonly: BooleanInputType;
   required: BooleanInputType;
   value: string;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
-  formatPattern: string;
-  maxDate: string;
-  minDate: string;
-  primaryCalendarType: any;
-  secondaryCalendarType: any;
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
+  dateValueUTC: any;
+  delimiter: string;
+  endDateValue: any;
+  startDateValue: any;
 
   // Slots
   valueStateMessage: HTMLElement;
@@ -43,49 +53,51 @@ interface OutputTypes {
 })
 export class DateRangePickerDirective {
   @Input()
-  set dateValue(val: DateRangePickerElement['dateValue']) {
-    this.elementRef.nativeElement.dateValue = val;
+  set formatPattern(val: DateRangePickerElement['formatPattern']) {
+    this.elementRef.nativeElement.formatPattern = val;
   }
-  get dateValue() {
+  get formatPattern() {
     return this.elementRef.nativeElement.getAttribute(
-      'date-value'
-    ) as unknown as DateRangePickerElement['dateValue'];
+      'format-pattern'
+    ) as unknown as DateRangePickerElement['formatPattern'];
   }
   @Input()
-  set dateValueUTC(val: DateRangePickerElement['dateValueUTC']) {
-    this.elementRef.nativeElement.dateValueUTC = val;
+  set maxDate(val: DateRangePickerElement['maxDate']) {
+    this.elementRef.nativeElement.maxDate = val;
   }
-  get dateValueUTC() {
+  get maxDate() {
     return this.elementRef.nativeElement.getAttribute(
-      'date-value-utc'
-    ) as unknown as DateRangePickerElement['dateValueUTC'];
+      'max-date'
+    ) as unknown as DateRangePickerElement['maxDate'];
   }
   @Input()
-  set delimiter(val: DateRangePickerElement['delimiter']) {
-    this.elementRef.nativeElement.delimiter = val;
+  set minDate(val: DateRangePickerElement['minDate']) {
+    this.elementRef.nativeElement.minDate = val;
   }
-  get delimiter() {
+  get minDate() {
     return this.elementRef.nativeElement.getAttribute(
-      'delimiter'
-    ) as unknown as DateRangePickerElement['delimiter'];
+      'min-date'
+    ) as unknown as DateRangePickerElement['minDate'];
   }
   @Input()
-  set endDateValue(val: DateRangePickerElement['endDateValue']) {
-    this.elementRef.nativeElement.endDateValue = val;
+  set primaryCalendarType(val: DateRangePickerElement['primaryCalendarType']) {
+    this.elementRef.nativeElement.primaryCalendarType = val;
   }
-  get endDateValue() {
+  get primaryCalendarType() {
     return this.elementRef.nativeElement.getAttribute(
-      'end-date-value'
-    ) as unknown as DateRangePickerElement['endDateValue'];
+      'primary-calendar-type'
+    ) as unknown as DateRangePickerElement['primaryCalendarType'];
   }
   @Input()
-  set startDateValue(val: DateRangePickerElement['startDateValue']) {
-    this.elementRef.nativeElement.startDateValue = val;
+  set secondaryCalendarType(
+    val: DateRangePickerElement['secondaryCalendarType']
+  ) {
+    this.elementRef.nativeElement.secondaryCalendarType = val;
   }
-  get startDateValue() {
+  get secondaryCalendarType() {
     return this.elementRef.nativeElement.getAttribute(
-      'start-date-value'
-    ) as unknown as DateRangePickerElement['startDateValue'];
+      'secondary-calendar-type'
+    ) as unknown as DateRangePickerElement['secondaryCalendarType'];
   }
   @Input()
   set accessibleName(val: DateRangePickerElement['accessibleName']) {
@@ -104,6 +116,15 @@ export class DateRangePickerDirective {
     return this.elementRef.nativeElement.getAttribute(
       'accessible-name-ref'
     ) as unknown as DateRangePickerElement['accessibleNameRef'];
+  }
+  @Input()
+  set dateValue(val: DateRangePickerElement['dateValue']) {
+    this.elementRef.nativeElement.dateValue = val;
+  }
+  get dateValue() {
+    return this.elementRef.nativeElement.getAttribute(
+      'date-value'
+    ) as unknown as DateRangePickerElement['dateValue'];
   }
   @Input()
   set disabled(val: DateRangePickerElement['disabled']) {
@@ -170,51 +191,40 @@ export class DateRangePickerDirective {
     ) as unknown as DateRangePickerElement['valueState'];
   }
   @Input()
-  set formatPattern(val: DateRangePickerElement['formatPattern']) {
-    this.elementRef.nativeElement.formatPattern = val;
+  set dateValueUTC(val: DateRangePickerElement['dateValueUTC']) {
+    this.elementRef.nativeElement.dateValueUTC = val;
   }
-  get formatPattern() {
+  get dateValueUTC() {
     return this.elementRef.nativeElement.getAttribute(
-      'format-pattern'
-    ) as unknown as DateRangePickerElement['formatPattern'];
+      'date-value-utc'
+    ) as unknown as DateRangePickerElement['dateValueUTC'];
   }
   @Input()
-  set maxDate(val: DateRangePickerElement['maxDate']) {
-    this.elementRef.nativeElement.maxDate = val;
+  set delimiter(val: DateRangePickerElement['delimiter']) {
+    this.elementRef.nativeElement.delimiter = val;
   }
-  get maxDate() {
+  get delimiter() {
     return this.elementRef.nativeElement.getAttribute(
-      'max-date'
-    ) as unknown as DateRangePickerElement['maxDate'];
+      'delimiter'
+    ) as unknown as DateRangePickerElement['delimiter'];
   }
   @Input()
-  set minDate(val: DateRangePickerElement['minDate']) {
-    this.elementRef.nativeElement.minDate = val;
+  set endDateValue(val: DateRangePickerElement['endDateValue']) {
+    this.elementRef.nativeElement.endDateValue = val;
   }
-  get minDate() {
+  get endDateValue() {
     return this.elementRef.nativeElement.getAttribute(
-      'min-date'
-    ) as unknown as DateRangePickerElement['minDate'];
+      'end-date-value'
+    ) as unknown as DateRangePickerElement['endDateValue'];
   }
   @Input()
-  set primaryCalendarType(val: DateRangePickerElement['primaryCalendarType']) {
-    this.elementRef.nativeElement.primaryCalendarType = val;
+  set startDateValue(val: DateRangePickerElement['startDateValue']) {
+    this.elementRef.nativeElement.startDateValue = val;
   }
-  get primaryCalendarType() {
+  get startDateValue() {
     return this.elementRef.nativeElement.getAttribute(
-      'primary-calendar-type'
-    ) as unknown as DateRangePickerElement['primaryCalendarType'];
-  }
-  @Input()
-  set secondaryCalendarType(
-    val: DateRangePickerElement['secondaryCalendarType']
-  ) {
-    this.elementRef.nativeElement.secondaryCalendarType = val;
-  }
-  get secondaryCalendarType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'secondary-calendar-type'
-    ) as unknown as DateRangePickerElement['secondaryCalendarType'];
+      'start-date-value'
+    ) as unknown as DateRangePickerElement['startDateValue'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

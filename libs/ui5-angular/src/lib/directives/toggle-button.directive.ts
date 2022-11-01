@@ -7,7 +7,6 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/ToggleButton.js';
 interface ToggleButtonElement {
-  pressed: BooleanInputType;
   accessibilityAttributes: Record<string, any>;
   accessibleName: string;
   accessibleNameRef: string;
@@ -23,6 +22,7 @@ interface ToggleButtonElement {
   iconEnd: BooleanInputType;
   submits: BooleanInputType;
   tooltip: string;
+  pressed: BooleanInputType;
 
   // Slots
 }
@@ -35,13 +35,6 @@ interface OutputTypes {
   selector: 'ui5-toggle-button',
 })
 export class ToggleButtonDirective {
-  @Input()
-  set pressed(val: ToggleButtonElement['pressed']) {
-    this.elementRef.nativeElement.pressed = booleanInput(val);
-  }
-  get pressed() {
-    return this.elementRef.nativeElement.hasAttribute('pressed');
-  }
   @Input()
   set accessibilityAttributes(
     val: ToggleButtonElement['accessibilityAttributes']
@@ -118,6 +111,13 @@ export class ToggleButtonDirective {
     return this.elementRef.nativeElement.getAttribute(
       'tooltip'
     ) as unknown as ToggleButtonElement['tooltip'];
+  }
+  @Input()
+  set pressed(val: ToggleButtonElement['pressed']) {
+    this.elementRef.nativeElement.pressed = booleanInput(val);
+  }
+  get pressed() {
+    return this.elementRef.nativeElement.hasAttribute('pressed');
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

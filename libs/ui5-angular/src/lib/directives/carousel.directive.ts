@@ -11,9 +11,9 @@ interface CarouselElement {
   cyclic: BooleanInputType;
   hideNavigationArrows: BooleanInputType;
   hidePageIndicator: BooleanInputType;
-  itemsPerPageL: number;
-  itemsPerPageM: number;
-  itemsPerPageS: number;
+  itemsPerPageL: any;
+  itemsPerPageM: any;
+  itemsPerPageS: any;
 
   // Slots
 }

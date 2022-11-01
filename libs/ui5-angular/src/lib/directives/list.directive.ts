@@ -11,7 +11,7 @@ interface ListElement {
   accessibleNameRef: string;
   accessibleRole: string;
   busy: BooleanInputType;
-  busyDelay: number;
+  busyDelay: any;
   footerText: string;
   growing: 'Button' | 'None' | 'Scroll';
   headerText: string;

@@ -12,7 +12,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.11",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.IBar"
       ],
@@ -24,7 +24,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "BarDesign",
+          "type": "sap.ui.webcomponents.fiori.types.BarDesign",
           "description": "Defines the component's design.\n\n<br><br> <b>Note:</b> Available options are: <ul> <li><code>Header</code></li> <li><code>Subheader</code></li> <li><code>Footer</code></li> <li><code>FloatingFooter</code></li> </ul>",
           "defaultValue": "\"Header\""
         }
@@ -61,7 +61,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.15",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>BarcodeScannerDialog</code> component provides barcode scanning functionality for all devices that support the <code>MediaDevices.getUserMedia()</code> native API. Opening the dialog launches the device camera and scans for known barcode formats. <br> <br> A <code>scanSuccess</code> event fires whenever a barcode is identified and a <code>scanError</code> event fires when the scan failed (for example, due to missing permisions). <br> <br> Internally, the component uses the zxing-js/library third party OSS.\n\nFor a list of supported barcode formats, see the <ui5-link target=\"_blank\" href=\"https://github.com/zxing-js/library\">zxing-js/library</ui5-link> documentation.",
       "constructor": {
         "visibility": "public"
@@ -120,7 +120,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.1.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe DynamicSideContent (<code>ui5-dynamic-side-content</code>) is a layout component that allows additional content to be displayed in a way that flexibly adapts to different screen sizes. The side content appears in a container next to or directly below the main content (it doesn't overlay). When the side content is triggered, the main content becomes narrower (if appearing side-by-side). The side content contains a separate scrollbar when appearing next to the main content.\n\n<h3>Usage</h3>\n\n<i>When to use?</i>\n\nUse this component if you want to display relevant information that is not critical for users to complete a task. Users should have access to all the key functions and critical information in the app even if they do not see the side content. This is important because on smaller screen sizes it may be difficult to display the side content in a way that is easily accessible for the user.\n\n<i>When not to use?</i>\n\nDon't use it if you want to display navigation or critical information that prevents users from completing a task when they have no access to the side content.\n\n<h3>Responsive Behavior</h3>\n\nScreen width > 1440px\n\n<ul><li>Main vs. side content ratio is 75 vs. 25 percent (with a minimum of 320px each).</li> <li>If the application defines a trigger, the side content can be hidden.</li></ul>\n\nScreen width <= 1440px and > 1024px\n\n<ul><li>Main vs. side content ratio is 66.666 vs. 33.333 percent (with a minimum of 320px each). If the side content width falls below 320 px, it automatically slides under the main content, unless the app development team specifies that it should disappear.</li></ul>\n\nScreen width <= 1024px and > 720px\n\n<ul><li>The side content ratio is fixed to 340px, and the main content takes the rest of the width. Only if the <code>sideContentFallDown</code> is set to <code>OnMinimumWidth</code> and screen width is <= 960px and > 720px the side content falls below the main content.</li></ul>\n\nScreen width <= 720px (for example on a mobile device)\n\n<ul><li>In this case, the side content automatically disappears from the screen (unless specified to stay under the content by setting of <code>sideContentVisibility</code> property to <code>AlwaysShow</code>) and can be triggered from a pre-set trigger (specified within the app). When the side content is triggered, it replaces the main content. We recommend that you always place the trigger for the side content in the same location, such as in the app footer.</li></ul>\n\nA special case allows switching the comparison mode between the main and side content. In this case, the screen is split into 50:50 percent for main vs. side content. The responsive behavior of the equal split is the same as in the standard view - the side content disappears on screen widths of less than 720 px and can only be viewed by triggering it.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/DynamicSideContent\";</code>",
       "constructor": {
         "visibility": "public"
@@ -150,21 +150,21 @@
         {
           "name": "sideContentFallDown",
           "visibility": "public",
-          "type": "SideContentFallDown",
+          "type": "sap.ui.webcomponents.fiori.types.SideContentFallDown",
           "description": "Defines on which breakpoints the side content falls down below the main content.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>BelowXL</code></li> <li><code>BelowL</code></li> <li><code>BelowM</code></li> <li><code>OnMinimumWidth</code></li> </ul>",
           "defaultValue": "\"OnMinimumWidth\""
         },
         {
           "name": "sideContentPosition",
           "visibility": "public",
-          "type": "SideContentPosition",
+          "type": "sap.ui.webcomponents.fiori.types.SideContentPosition",
           "description": "Defines whether the side content is positioned before the main content (left side in LTR mode), or after the the main content (right side in LTR mode).\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Start</code></li> <li><code>End</code></li> </ul>",
           "defaultValue": "\"End\""
         },
         {
           "name": "sideContentVisibility",
           "visibility": "public",
-          "type": "SideContentVisibility",
+          "type": "sap.ui.webcomponents.fiori.types.SideContentVisibility",
           "description": "Defines on which breakpoints the side content is visible.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>AlwaysShow</code></li> <li><code>ShowAboveL</code></li> <li><code>ShowAboveM</code></li> <li><code>ShowAboveS</code></li> <li><code>NeverShow</code></li> </ul>",
           "defaultValue": "\"ShowAboveS\""
         }
@@ -230,7 +230,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.16",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.IFilterItem"
       ],
@@ -267,7 +267,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.16",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.IFilterItemOption"
       ],
@@ -303,7 +303,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>FlexibleColumnLayout</code> implements the list-detail-detail paradigm by displaying up to three pages in separate columns. There are several possible layouts that can be changed either with the component API, or by pressing the arrows, displayed between the columns.\n\n<h3>Usage</h3>\n\nUse this component for applications that need to display several logical levels of related information side by side (e.g. list of items, item, sub-item, etc.). The Component is flexible in a sense that the application can focus the user's attention on one particular column.\n\n<h3>Responsive Behavior</h3>\n\nThe <code>FlexibleColumnLayout</code> automatically displays the maximum possible number of columns based on <code>layout</code> property and the window size. The component would display 1 column for window size smaller than 599px, up to two columns between 599px and 1023px, and 3 columns for sizes bigger than 1023px.\n\n<br><br> <h3>Keyboard Handling</h3>\n\n<h4>Basic Navigation</h4> <ul> <li>[SPACE, ENTER, RETURN] - If focus is on the layout toggle button (arrow button), once activated, it triggers the associated action (such as expand/collapse the column).</li> <li>This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code></li> </ul>\n\n<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code> <br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/FlexibleColumnLayout.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -312,7 +312,7 @@
         {
           "name": "_layoutsConfiguration",
           "visibility": "restricted",
-          "type": "Object",
+          "type": "object",
           "description": "Allows the user to replace the whole layouts configuration"
         },
         {
@@ -335,7 +335,7 @@
           "name": "columnLayout",
           "readonly": "true",
           "visibility": "public",
-          "type": "Array",
+          "type": "array",
           "description": "Returns the current column layout, based on both the <code>layout</code> property and the screen size. <br><br> <b>For example:</b> [\"67%\", \"33%\", 0], [\"100%\", 0, 0], [\"25%\", \"50%\", \"25%\"], etc, where the numbers represents the width of the start, middle and end columns.",
           "defaultValue": "[\"100%\", 0, 0]"
         },
@@ -358,7 +358,7 @@
         {
           "name": "layout",
           "visibility": "public",
-          "type": "FCLLayout",
+          "type": "sap.ui.webcomponents.fiori.types.FCLLayout",
           "description": "Defines the columns layout and their proportion. <br><br> <b>Note:</b> The layout also depends on the screen size - one column for screens smaller than 599px, two columns between 599px and 1023px and three columns for sizes bigger than 1023px. <br><br> Available options are: <ul> <li><code>OneColumn</code></li> <li><code>TwoColumnsStartExpanded</code></li> <li><code>TwoColumnsMidExpanded</code></li> <li><code>ThreeColumnsMidExpanded</code></li> <li><code>ThreeColumnsEndExpanded</code></li> <li><code>ThreeColumnsStartExpandedEndHidden</code></li> <li><code>ThreeColumnsMidExpandedEndHidden</code></li> <li><code>MidColumnFullScreen</code></li> <li><code>EndColumnFullScreen</code></li> </ul> <br><br> <b>For example:</b> layout=<code>TwoColumnsStartExpanded</code> means the layout will display up to two columns in 67%/33% proportion.",
           "defaultValue": "\"OneColumn\""
         },
@@ -382,7 +382,7 @@
           "name": "visibleColumns",
           "readonly": "true",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Returns the number of currently visible columns.",
           "defaultValue": "1"
         }
@@ -414,12 +414,12 @@
           "parameters": [
             {
               "name": "layout",
-              "type": "FCLLayout",
+              "type": "sap.ui.webcomponents.fiori.types.FCLLayout",
               "description": "The current layout"
             },
             {
               "name": "columnLayout",
-              "type": "Array",
+              "type": "array",
               "description": "The effective column layout, f.e [67%, 33%, 0]"
             },
             {
@@ -492,7 +492,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.15",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> An IllustratedMessage is a recommended combination of a solution-oriented message, an engaging illustration, and conversational tone to better communicate an empty or a success state than just show a message alone.\n\nEach illustration has default internationalised title and subtitle texts. Also they can be managed with <code>titleText</code> and <code>subtitleText</code> properties.\n\nTo display the desired illustration, use the <code>name</code> property, where you can find the list of all available illustrations. <br><br> <b>Note:</b> By default the “BeforeSearch” illustration is loaded. To use other illustrations, make sure you import them in addition, for example: <br> <code>import \"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\"</code> <br> <b>Note:</b> Illustrations starting with the “Tnt” prefix are part of another illustration set. For example to use the “TntSuccess” illustration, add the following import:: <br> <code>import \"@ui5/webcomponents-fiori/dist/illustrations/tnt/Success.js\"</code>\n\n<h3>Structure</h3> The IllustratedMessage consists of the following elements, which are displayed below each other in the following order: <br> <ul> <li>Illustration</li> <li>Title</li> <li>Subtitle</li> <li>Actions</li> </ul>\n\n<h3>Usage</h3> <code>ui5-illustrated-message</code> is meant to be used inside container component, for example a <code>ui5-card</code>, a <code>ui5-dialog</code> or a <code>ui5-page</code>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/IllustratedMessage.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -502,14 +502,14 @@
           "name": "accessibleNameRef",
           "visibility": "public",
           "since": "1.7.0",
-          "type": "String",
+          "type": "string",
           "description": "Receives id(or many ids) of the elements that label the component.",
           "defaultValue": "\"\""
         },
         {
           "name": "name",
           "visibility": "public",
-          "type": "IllustrationMessageType",
+          "type": "sap.ui.webcomponents.fiori.types.IllustrationMessageType",
           "description": "Defines the illustration name that will be displayed in the component. <br><br> Available illustrations are: <ul> <li><code>AddColumn</code></li> <li><code>AddPeople</code></li> <li><code>BalloonSky</code></li> <li><code>BeforeSearch</code></li> <li><code>Connection</code></li> <li><code>EmptyCalendar</code></li> <li><code>EmptyList</code></li> <li><code>EmptyPlanningCalendar</code></li> <li><code>ErrorScreen</code></li> <li><code>FilterTable</code></li> <li><code>GroupTable</code></li> <li><code>NoActivities</code></li> <li><code>NoData</code></li> <li><code>NoEntries</code></li> <li><code>NoFilterResults</code></li> <li><code>NoMail_v1</code></li> <li><code>NoMail</code></li> <li><code>NoNotifications</code></li> <li><code>NoSavedItems_v1</code></li> <li><code>NoSavedItems</code></li> <li><code>NoSearchResults</code></li> <li><code>NoTasks_v1</code></li> <li><code>NoTasks</code></li> <li><code>PageNotFound</code></li> <li><code>ReloadScreen</code></li> <li><code>ResizeColumn</code></li> <li><code>SearchEarth</code></li> <li><code>SearchFolder</code></li> <li><code>SimpleBalloon</code></li> <li><code>SimpleBell</code></li> <li><code>SimpleCalendar</code></li> <li><code>SimpleCheckMark</code></li> <li><code>SimpleConnection</code></li> <li><code>SimpleEmptyDoc</code></li> <li><code>SimpleEmptyList</code></li> <li><code>SimpleError</code></li> <li><code>SimpleMagnifier</code></li> <li><code>SimpleMail</code></li> <li><code>SimpleNoSavedItems</code></li> <li><code>SimpleNotFoundMagnifier</code></li> <li><code>SimpleReload</code></li> <li><code>SimpleTask</code></li> <li><code>SleepingBell</code></li> <li><code>SortColumn</code></li> <li><code>SuccessBalloon</code></li> <li><code>SuccessCheckMark</code></li> <li><code>SuccessHighFive</code></li> <li><code>SuccessScreen</code></li> <li><code>Tent</code></li> <li><code>UnableToLoad</code></li> <li><code>UnableToLoadImage</code></li> <li><code>UnableToUpload</code></li> <li><code>UploadCollection</code></li> <li><code>TntChartArea</code></li> <li><code>TntChartArea2</code></li> <li><code>TntChartBar</code></li> <li><code>TntChartBPMNFlow</code></li> <li><code>TntChartBullet</code></li> <li><code>TntChartDoughnut</code></li> <li><code>TntChartFlow</code></li> <li><code>TntChartGantt</code></li> <li><code>TntChartOrg</code></li> <li><code>TntChartPie</code></li> <li><code>TntCodePlaceholder</code></li> <li><code>TntCompany</code></li> <li><code>TntComponents</code></li> <li><code>TntExternalLink</code></li> <li><code>TntFaceID</code></li> <li><code>TntFingerprint</code></li> <li><code>TntLock</code></li> <li><code>TntMission</code></li> <li><code>TntNoApplications</code></li> <li><code>TntNoFlows</code></li> <li><code>TntNoUsers</code></li> <li><code>TntRadar</code></li> <li><code>TntSecrets</code></li> <li><code>TntServices</code></li> <li><code>TntSessionExpired</code></li> <li><code>TntSessionExpiring</code></li> <li><code>TntSuccess</code></li> <li><code>TntSuccessfulAuth</code></li> <li><code>TntSystems</code></li> <li><code>TntTeams</code></li> <li><code>TntTools</code></li> <li><code>TntUnableToLoad</code></li> <li><code>TntUnlock</code></li> <li><code>TntUnsuccessfulAuth</code></li> <li><code>TntUser2</code></li> </ul> <br><br> <b>Note:</b> By default the <code>BeforeSearch</code> illustration is loaded. <br> When using an illustration type, other than the default, it should be loaded in addition: <br> <code>import \"@ui5/webcomponents-fiori/dist/illustrations/NoData.js\";</code> <br><br> <b>Note:</b> TNT illustrations cointain <code>Tnt</code> prefix in their name. You can import them removing the <code>Tnt</code> prefix like this: <br> <code>import \"@ui5/webcomponents-fiori/dist/illustrations/tnt/SessionExpired.js\";</code>",
           "defaultValue": "\"BeforeSearch\""
         },
@@ -517,7 +517,7 @@
           "name": "size",
           "visibility": "public",
           "since": "1.5.0",
-          "type": "IllustrationMessageSize",
+          "type": "sap.ui.webcomponents.fiori.types.IllustrationMessageSize",
           "description": "Determines which illustration breakpoint variant is used. <br><br> Available options are: <ul> <li><code>Auto</code></li> <li><code>Base</code></li> <li><code>Spot</code></li> <li><code>Dialog</code></li> <li><code>Scene</code></li> </ul>\n\nAs <code>IllustratedMessage</code> adapts itself around the <code>Illustration</code>, the other elements of the component are displayed differently on the different breakpoints/illustration sizes.",
           "defaultValue": "\"Auto\""
         },
@@ -683,7 +683,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.1.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-media-gallery</code> component allows the user to browse through multimedia items. Currently, the supported items are images and videos. The items should be defined using the <code>ui5-media-gallery-item</code> component.\n\nThe items are initially displayed as thumbnails. When the user selects a thumbnail, the corresponding item is displayed in larger size. <br> The component is responsive by default and adjusts the position of the menu with respect to viewport size, but the application is able to further customize the layout via the provided API.\n\n<h3>Keyboard Handling</h3> The <code>ui5-media-gallery</code> provides advanced keyboard handling. <br> When the thumbnails menu is focused the following keyboard shortcuts allow the user to navigate through the thumbnail items: <br>\n\n<ul> <li>[UP/DOWN] - Navigates up and down the items</li> <li>[HOME] - Navigates to first item</li> <li>[END] - Navigates to the last item</li> <li>[SPACE/ENTER] - Select an item </ul> <br>\n\n<h3>ES6 Module Import</h3> <code>import \"@ui5/webcomponents-fiori/dist/MediaGallery\";</code> <br> <code>import \"@ui5/webcomponents-fiori/dist/MediaGalleryItem\";</code>",
       "constructor": {
         "visibility": "public"
@@ -699,21 +699,21 @@
         {
           "name": "layout",
           "visibility": "public",
-          "type": "MediaGalleryLayout",
+          "type": "sap.ui.webcomponents.fiori.types.MediaGalleryLayout",
           "description": "Determines the layout of the component. <br><br> Available options are: <ul> <li><code>Auto</code></li> <li><code>Vertical</code></li> <li><code>Horizontal</code></li> </ul>",
           "defaultValue": "\"Auto\""
         },
         {
           "name": "menuHorizontalAlign",
           "visibility": "public",
-          "type": "MediaGalleryMenuHorizontalAlign",
+          "type": "sap.ui.webcomponents.fiori.types.MediaGalleryMenuHorizontalAlign",
           "description": "Determines the horizontal alignment of the thumbnails menu vs. the central display area. <br><br> Available options are: <ul> <li><code>Left</code></li> <li><code>Right</code></li> </ul>",
           "defaultValue": "\"Left\""
         },
         {
           "name": "menuVerticalAlign",
           "visibility": "public",
-          "type": "MediaGalleryMenuVerticalAlign",
+          "type": "sap.ui.webcomponents.fiori.types.MediaGalleryMenuVerticalAlign",
           "description": "Determines the vertical alignment of the thumbnails menu vs. the central display area. <br><br> Available options are: <ul> <li><code>Top</code></li> <li><code>Bottom</code></li> </ul>",
           "defaultValue": "\"Bottom\""
         },
@@ -788,7 +788,7 @@
         {
           "name": "layout",
           "visibility": "public",
-          "type": "MediaGalleryItemLayout",
+          "type": "sap.ui.webcomponents.fiori.types.MediaGalleryItemLayout",
           "description": "Determines the layout of the item container. <br><br> Available options are: <ul> <li><code>Square</code></li> <li><code>Wide</code></li> </ul>",
           "defaultValue": "\"Square\""
         },
@@ -825,7 +825,7 @@
       "module": "NotificationAction",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.INotificationAction"
       ],
@@ -837,7 +837,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "ButtonDesign",
+          "type": "sap.ui.webcomponents.main.types.ButtonDesign",
           "description": "Defines the action design.\n\n<br><br> <b>Note:</b> <ul> <li><code>Default</code></li> <li><code>Emphasized</code></li> <li><code>Positive</code></li> <li><code>Negative</code></li> <li><code>Transparent</code></li> </ul>",
           "defaultValue": "\"Transparent\""
         },
@@ -876,7 +876,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "NotificationListItemBase",
+      "extends": "sap.ui.webcomponents.fiori.NotificationListItemBase",
       "implements": [
         "sap.ui.webcomponents.main.IListItem"
       ],
@@ -928,7 +928,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "NotificationListItemBase",
+      "extends": "sap.ui.webcomponents.fiori.NotificationListItemBase",
       "implements": [
         "sap.ui.webcomponents.fiori.INotificationListItem",
         "sap.ui.webcomponents.main.IListItem"
@@ -942,7 +942,7 @@
           "name": "wrappingType",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "WrappingType",
+          "type": "sap.ui.webcomponents.main.types.WrappingType",
           "description": "Defines if the <code>titleText</code> and <code>description</code> should wrap, they truncate by default.\n\n<br><br> <b>Note:</b> by default the <code>titleText</code> and <code>decription</code>, and a <code>ShowMore/Less</code> button would be displayed.",
           "defaultValue": "\"None\""
         }
@@ -981,7 +981,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "ListItemBase",
+      "extends": "sap.ui.webcomponents.main.ListItemBase",
       "description": "The base class of the <code>NotificationListItem</code> and <code>NotificationListGroupItem</code>.",
       "constructor": {
         "visibility": "public"
@@ -998,14 +998,14 @@
         {
           "name": "busyDelay",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
           "defaultValue": "1000"
         },
         {
           "name": "priority",
           "visibility": "public",
-          "type": "Priority",
+          "type": "sap.ui.webcomponents.main.types.Priority",
           "description": "Defines the <code>priority</code> of the item. Available options are: <ul> <li><code>None</code></li> <li><code>Low</code></li> <li><code>Medium</code></li> <li><code>High</code></li> </ul>",
           "defaultValue": "\"None\""
         },
@@ -1057,7 +1057,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.12",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-page</code> is a container component that holds one whole screen of an application. The page has three distinct areas that can hold content - a header, content area and a footer. <h3>Structure</h3> <h4>Header</h4> The top most area of the page is occupied by the header. The standard header includes a navigation button and a title. <h4>Content</h4> The content occupies the main part of the page. Only the content area is scrollable by default. This can be prevented by setting <code>enableScrolling</code> to <code>false</code>. <h4>Footer</h4> The footer is optional and occupies the fixed bottom part of the page. Alternatively, the footer can be floating above the bottom part of the content. This is enabled with the <code>floatingFooter</code> property.\n\n<b>Note:</b> <code>ui5-page</code> occipues the whole available space of its parent. In order to achieve the intended design you have to make sure that there is enough space for the <code>ui5-page</code> to be rendered.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/Page.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -1066,7 +1066,7 @@
         {
           "name": "backgroundDesign",
           "visibility": "public",
-          "type": "PageBackgroundDesign",
+          "type": "sap.ui.webcomponents.fiori.types.PageBackgroundDesign",
           "description": "Defines the background color of the <code>ui5-page</code>. <br><br> <b>Note:</b> When a ui5-list is placed inside the page, we recommend using “List” to ensure better color contrast. <br><br> Available options are: <ul> <li><code>Solid</code></li> (default) <li><code>Transparent</code></li> <li><code>List</code></li> </ul>",
           "defaultValue": "\"Solid\""
         },
@@ -1530,7 +1530,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>SideNavigation</code> is used as a standard menu in applications. It consists of three containers: header (top-aligned), main navigation section (top-aligned) and the secondary section (bottom-aligned). <ul> <li>The header is meant for displaying user related information - profile data, avatar, etc.</li> <li>The main navigation section is related to the user’s current work context</li> <li>The secondary section is mostly used to link additional information that may be of interest (legal information, developer communities, external help, contact information and so on). </li> </ul>\n\n<h3>Usage</h3>\n\nUse the available <code>ui5-side-navigation-item</code> and <code>ui5-side-navigation-sub-item</code> components to build your menu. The items can consist of text only or an icon with text. The use or non-use of icons must be consistent for all items on one level. You must not combine entries with and without icons on the same level. We strongly recommend that you do not use icons on the second level.\n\n<h3>Keyboard Handling</h3>\n\n<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code> <br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/SideNavigation.js\";</code> <br> <code>import \"@ui5/webcomponents-fiori/dist/SideNavigationItem.js\";</code> (for <code>ui5-side-navigation-item</code>) <br> <code>import \"@ui5/webcomponents-fiori/dist/SideNavigationSubItem.js\";</code> (for <code>ui5-side-navigation-sub-item</code>)",
       "constructor": {
         "visibility": "public"
@@ -1592,7 +1592,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.ISideNavigationItem"
       ],
@@ -1658,7 +1658,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.ISideNavigationSubItem"
       ],
@@ -1701,7 +1701,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.16",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.ISortItem"
       ],
@@ -1738,7 +1738,7 @@
       "static": true,
       "visibility": "public",
       "since": "0.8.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-timeline</code> component shows entries (such as objects, events, or posts) in chronological order. A common use case is to provide information about changes to an object, or events related to an object. These entries can be generated by the system (for example, value XY changed from A to B), or added manually. There are two distinct variants of the timeline: basic and social. The basic timeline is read-only, while the social timeline offers a high level of interaction and collaboration, and is integrated within SAP Jam.",
       "constructor": {
         "visibility": "public"
@@ -1755,7 +1755,7 @@
           "name": "layout",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "TimelineLayout",
+          "type": "sap.ui.webcomponents.fiori.types.TimelineLayout",
           "description": "Defines the items orientation.\n\n<br><br> <b>Note:</b> Available options are: <ul> <li><code>Vertical</code></li> <li><code>Horizontal</code></li> </ul>",
           "defaultValue": "\"Vertical\""
         }
@@ -1779,7 +1779,7 @@
       "module": "TimelineItem",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.ITimelineItem"
       ],
@@ -2882,7 +2882,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.7",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> This component allows you to represent files before uploading them to a server, with the help of <code>ui5-upload-collection-item</code>. It also allows you to show already uploaded files.\n\n<h3>ES6 Module Import</h3> <code>import \"@ui5/webcomponents-fiori/dist/UploadCollection.js\";</code> <br> <code>import \"@ui5/webcomponents-fiori/dist/UploadCollectionItem.js\";</code> (for <code>ui5-upload-collection-item</code>)",
       "constructor": {
         "visibility": "public"
@@ -2906,7 +2906,7 @@
         {
           "name": "mode",
           "visibility": "public",
-          "type": "ListMode",
+          "type": "sap.ui.webcomponents.main.types.ListMode",
           "description": "Defines the mode of the <code>ui5-upload-collection</code>.\n\n<br><br> <b>Note:</b> <ul> <li><code>None</code></li> <li><code>SingleSelect</code></li> <li><code>MultiSelect</code></li> <li><code>Delete</code></li> </ul>",
           "defaultValue": "\"None\""
         },
@@ -2990,7 +2990,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.7",
-      "extends": "ListItem",
+      "extends": "sap.ui.webcomponents.main.ListItem",
       "implements": [
         "sap.ui.webcomponents.fiori.IUploadCollectionItem"
       ],
@@ -3044,14 +3044,14 @@
         {
           "name": "progress",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "The upload progress in percentage. <br><br> <b>Note:</b> Expected values are in the interval [0, 100].",
           "defaultValue": "0"
         },
         {
           "name": "uploadState",
           "visibility": "public",
-          "type": "UploadState",
+          "type": "sap.ui.webcomponents.fiori.types.UploadState",
           "description": "If set to <code>Uploading</code> or <code>Error</code>, a progress indicator showing the <code>progress</code> is displayed. Also if set to <code>Error</code>, a refresh button is shown. When this icon is pressed <code>retry</code> event is fired. If set to <code>Uploading</code>, a terminate button is shown. When this icon is pressed <code>terminate</code> event is fired.",
           "defaultValue": "\"Ready\""
         }
@@ -3104,7 +3104,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.16",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-view-settings-dialog</code> component helps the user to sort data within a list or a table. It consists of several lists like <code>Sort order</code> which is built-in and <code>Sort By</code> and <code>Filter By</code> lists, for which you must be provide items(<code>ui5-sort-item</code> & <code>ui5-filter-item</code> respectively) These options can be used to create sorters for a table.\n\nThe <code>ui5-view-settings-dialog</code> interrupts the current application processing as it is the only focused UI element and the main screen is dimmed/blocked. The <code>ui5-view-settings-dialog</code> is modal, which means that user action is required before returning to the parent window is possible.\n\n<h3>Structure</h3> A <code>ui5-view-settings-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-view-settings-dialog</code> is usually displayed at the center of the screen.\n\n<h3>Responsive Behavior</h3> <code>ui5-view-settings-dialog</code> stretches on full screen on phones.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents-fiori/dist/ViewSettingsDialog\";</code>",
       "constructor": {
         "visibility": "public"
@@ -3257,7 +3257,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.10",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-wizard</code> helps users to complete a complex task by dividing it into sections and guiding them through it. It has two main areas - a navigation area at the top showing the step sequence and a content area below it.\n\n<h3>Structure</h3> <h4>Navigation area</h4> The top most area of the <code>ui5-wizard</code> is occupied by the navigation area. It shows the sequence of steps, where the recommended number of steps is between 3 and 8 steps. <ul> <li> Steps can have different visual representations - numbers or icons. <li> Steps might have labels for better readability - titleText and subTitleText.</li> <li> Steps are defined by using the <code>ui5-wizard-step</code> as slotted element within the <code>ui5-wizard</code>.</li> </ul>\n\n<b>Note:</b> If no selected step is defined, the first step will be auto selected. <br> <b>Note:</b> If multiple selected steps are defined, the last step will be selected.\n\n<h3>Keyboard Handling</h3> The user can navigate using the following keyboard shortcuts: <br>\n\n<h4>Wizard Progress Navigation</h4> <ul> <li>[LEFT], [DOWN] - Focus moves backward to the WizardProgressNavAnchors.</li> <li>[UP], [RIGHT] - Focus moves forward to the WizardProgressNavAnchor.</li> <li>[SPACE] or [ENTER], [RETURN] - Selects an active step</li> <li>[HOME] or [PAGE UP] - Focus goes to the first step</li> <li>[END] or [PAGE DOWN] - Focus goes to the last step</li> </ul>\n\n<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code>\n\n<h4>Content</h4> The content occupies the main part of the page. It can hold any type of HTML elements. It's defined by using the <code>ui5-wizard-step</code> as slotted element within the <code>ui5-wizard</code>.\n\n<h3>Scrolling</h3> The component handles user scrolling by selecting the closest step, based on the current scroll position and scrolls to particular place, when the user clicks on the step within the navigation area. <br><br>\n\n<b>Important:</b> In order the component's scrolling behaviour to work, it has to be limited from the outside parent element in terms of height. The component or its parent has to be given percentage or absolute height. Otherwise, the component will be scrolled out with the entire page. <br><br> <b>For example:</b> <br><br> <code>&lt;ui5-dialog style=\"height: 80%\"&gt;<br></code> <code>&#9;&lt;ui5-wizard&gt;&lt;/ui5-wizard&gt;<br></code> <code>&lt;/ui5-dialog&gt;</code>\n\n<h4>Moving to next step</h4> The <code>ui5-wizard-step</code> provides the necessary API and it's up to the user of the component to use it to move to the next step. You have to set its <code>selected</code> property (and remove the <code>disabled</code> one if set) to <code>true</code>. The <code>ui5-wizard</code> will automatically scroll to the content of the newly selected step. <br><br>\n\nThe Fiori 3 guidelines recommends having a \"nextStep\" button in the content area. You can place a button, or any other type of element to trigger step change, inside the <code>ui5-wizard-step</code>, and show/hide it when certain fields are filled or user defined criteria is met.\n\n<h3>Usage</h3> <h4>When to use:</h4> When the user has to accomplish a long or unfamiliar task.\n\n<h4>When not to use:</h4> When the task has less than 3 steps.\n\n<h3>Responsive Behavior</h3> On small widths the step's titleText, subtitleText and separators in the navigation area shrink and from particular point the steps are grouped together and overlap. Tapping on them will show a popover to select the step to navigate to. On mobile device, the grouped steps are presented within a dialog.\n\n<h3>ES6 Module Import</h3> <code>import \"@ui5/webcomponents-fiori/dist/Wizard.js\";</code> (includes <ui5-wizard-step>)",
       "constructor": {
         "visibility": "public"
@@ -3307,7 +3307,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.10",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.fiori.IWizardStep"
       ],

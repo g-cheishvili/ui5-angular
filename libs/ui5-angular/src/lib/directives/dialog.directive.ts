@@ -7,16 +7,16 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/Dialog.js';
 interface DialogElement {
-  draggable: BooleanInputType;
-  headerText: string;
-  resizable: BooleanInputType;
-  state: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
-  stretch: BooleanInputType;
   accessibleName: string;
   accessibleNameRef: string;
   initialFocus: string;
   open: BooleanInputType;
   preventFocusRestore: BooleanInputType;
+  draggable: BooleanInputType;
+  headerText: string;
+  resizable: BooleanInputType;
+  state: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
+  stretch: BooleanInputType;
 
   // Slots
   footer: Array<HTMLElement>;
@@ -37,45 +37,6 @@ interface OutputTypes {
   selector: 'ui5-dialog',
 })
 export class DialogDirective {
-  @Input()
-  set draggable(val: DialogElement['draggable']) {
-    this.elementRef.nativeElement.draggable = booleanInput(val);
-  }
-  get draggable() {
-    return this.elementRef.nativeElement.hasAttribute('draggable');
-  }
-  @Input()
-  set headerText(val: DialogElement['headerText']) {
-    this.elementRef.nativeElement.headerText = val;
-  }
-  get headerText() {
-    return this.elementRef.nativeElement.getAttribute(
-      'header-text'
-    ) as unknown as DialogElement['headerText'];
-  }
-  @Input()
-  set resizable(val: DialogElement['resizable']) {
-    this.elementRef.nativeElement.resizable = booleanInput(val);
-  }
-  get resizable() {
-    return this.elementRef.nativeElement.hasAttribute('resizable');
-  }
-  @Input()
-  set state(val: DialogElement['state']) {
-    this.elementRef.nativeElement.state = val;
-  }
-  get state() {
-    return this.elementRef.nativeElement.getAttribute(
-      'state'
-    ) as unknown as DialogElement['state'];
-  }
-  @Input()
-  set stretch(val: DialogElement['stretch']) {
-    this.elementRef.nativeElement.stretch = booleanInput(val);
-  }
-  get stretch() {
-    return this.elementRef.nativeElement.hasAttribute('stretch');
-  }
   @Input()
   set accessibleName(val: DialogElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -116,6 +77,45 @@ export class DialogDirective {
   }
   get preventFocusRestore() {
     return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
+  }
+  @Input()
+  set draggable(val: DialogElement['draggable']) {
+    this.elementRef.nativeElement.draggable = booleanInput(val);
+  }
+  get draggable() {
+    return this.elementRef.nativeElement.hasAttribute('draggable');
+  }
+  @Input()
+  set headerText(val: DialogElement['headerText']) {
+    this.elementRef.nativeElement.headerText = val;
+  }
+  get headerText() {
+    return this.elementRef.nativeElement.getAttribute(
+      'header-text'
+    ) as unknown as DialogElement['headerText'];
+  }
+  @Input()
+  set resizable(val: DialogElement['resizable']) {
+    this.elementRef.nativeElement.resizable = booleanInput(val);
+  }
+  get resizable() {
+    return this.elementRef.nativeElement.hasAttribute('resizable');
+  }
+  @Input()
+  set state(val: DialogElement['state']) {
+    this.elementRef.nativeElement.state = val;
+  }
+  get state() {
+    return this.elementRef.nativeElement.getAttribute(
+      'state'
+    ) as unknown as DialogElement['state'];
+  }
+  @Input()
+  set stretch(val: DialogElement['stretch']) {
+    this.elementRef.nativeElement.stretch = booleanInput(val);
+  }
+  get stretch() {
+    return this.elementRef.nativeElement.hasAttribute('stretch');
   }
 
   @Output('after-close') afterClose: Observable<

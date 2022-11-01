@@ -5,12 +5,22 @@ import { Observable } from 'rxjs';
 
 import '@ui5/webcomponents/dist/YearPicker.js';
 interface YearPickerElement {
-  selectedDates: Array<any>;
   formatPattern: string;
   maxDate: string;
   minDate: string;
-  primaryCalendarType: any;
-  secondaryCalendarType: any;
+  primaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  secondaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  selectedDates: Array<any>;
 
   // Slots
 }
@@ -25,15 +35,6 @@ interface OutputTypes {
   selector: 'ui5-yearpicker',
 })
 export class YearPickerDirective {
-  @Input()
-  set selectedDates(val: YearPickerElement['selectedDates']) {
-    this.elementRef.nativeElement.selectedDates = val;
-  }
-  get selectedDates() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selected-dates'
-    ) as unknown as YearPickerElement['selectedDates'];
-  }
   @Input()
   set formatPattern(val: YearPickerElement['formatPattern']) {
     this.elementRef.nativeElement.formatPattern = val;
@@ -78,6 +79,15 @@ export class YearPickerDirective {
     return this.elementRef.nativeElement.getAttribute(
       'secondary-calendar-type'
     ) as unknown as YearPickerElement['secondaryCalendarType'];
+  }
+  @Input()
+  set selectedDates(val: YearPickerElement['selectedDates']) {
+    this.elementRef.nativeElement.selectedDates = val;
+  }
+  get selectedDates() {
+    return this.elementRef.nativeElement.getAttribute(
+      'selected-dates'
+    ) as unknown as YearPickerElement['selectedDates'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -5,7 +5,7 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 import '@ui5/webcomponents/dist/SuggestionItem.js';
 interface SuggestionItemElement {
   additionalText: string;
-  additionalTextState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  additionalTextState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   description: string;
   icon: string;
   iconEnd: BooleanInputType;

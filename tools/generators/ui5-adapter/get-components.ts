@@ -6,7 +6,6 @@ interface ComponentData {
   dependencies: Array<{ path: string, className: string }>,
   selector: string,
   implements: Array<string>,
-  formData: Array<{ input: ComponentData['inputs'][number], events: ComponentData['outputs'] }>,
   componentNames: {
     name: string;
     className: string;
@@ -32,6 +31,10 @@ interface ComponentData {
     supportedElements: Array<ComponentData>,
     isArray: boolean,
   }>
+  formData?: {
+    property: ComponentData["inputs"][number],
+    events: Array<ComponentData["outputs"][number]>,
+  }[]
 }
 
 const objectTypeMapper = (elementTagName: string, identifier: string) => {
@@ -76,8 +79,7 @@ export function getComponents({
     array: 'Array<any>',
     htmlelement: 'HTMLElement',
     element: 'Element',
-    node: 'Node',
-    valuestate: '"None" | "Success" | "Warning" | "Error" | "Information"'
+    node: 'Node'
   }
 
   function getPropertyType(type: string, tagname: string, identifier: string): string {
@@ -85,9 +87,19 @@ export function getComponents({
     if (isArray) {
       type = type.slice(0, -2);
     }
-    if (symbols[type]) {
+    const mappedType = typesMap[type.toLowerCase()];
+    if (!mappedType && symbols[type]) {
       if (symbols[type].kind === 'class') {
-        const types = symbols[type].properties.map(p => JSON.stringify(p.type));
+        let types = symbols[type].properties.map(p => JSON.stringify(p.type));
+        types = types.length ? types : ['any'];
+        if (isArray) {
+          return `Array<${types.join(' | ')}>`;
+        }
+        return types.join(' | ');
+      }
+      if (symbols[type].kind === 'interface') {
+        let types = implementers[type].map(c => `${c.basename}Directive`);
+        types = types.length ? types : ['any'];
         if (isArray) {
           return `Array<${types.join(' | ')}>`;
         }
@@ -95,9 +107,7 @@ export function getComponents({
       } else {
         console.log('wtf');
       }
-      // return symbols[type];
     }
-    const mappedType = typesMap[type.toLowerCase()];
     if (typeof mappedType === 'function') {
       if (isArray) {
         return `Array<${mappedType(tagname, identifier)}>`;
@@ -168,28 +178,24 @@ export function getComponents({
       const component: ComponentData = {
         baseName: symbol.basename,
         dependencies,
-        formData: [],
         implements: symbol.implements,
         selector: symbol.tagname,
         componentNames: names(symbol.basename),
         path: symbol.resource,
         inputs: [],
         outputs: [],
-        slots: []
+        slots: [],
       };
       component.inputs = getInputs(symbol);
       component.outputs = getOutputs(symbol);
       component.slots = getSlots(symbol, component);
-      if (symbol.formAssociated) {
-        for (const propertyName of symbol.formProperties) {
-          const property = symbol.properties.find(p => p.name === propertyName);
-          if (!property) {
-            console.warn(`Property ${propertyName} not found in ${symbol.basename}`);
+      if (symbol.formData) {
+        component.formData = symbol.formData.map(data => {
+          return {
+            property: component.inputs.find(i => i.name === data.propertyName),
+            events: component.outputs.filter(o => data.events.includes(o.name)),
           }
-          const input = component.inputs.find(i => i.name === propertyName);
-          const events = component.outputs.filter(o => property?.formEvents?.includes(o.name));
-          component.formData.push({input, events});
-        }
+        });
       }
       const getDepIdentifier = ({path, className}: { path: string, className: string }) => `${path}#${className}`;
       for (const slot of component.slots) {

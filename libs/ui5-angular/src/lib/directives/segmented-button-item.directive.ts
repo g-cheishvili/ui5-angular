@@ -7,6 +7,9 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/SegmentedButtonItem.js';
 interface SegmentedButtonItemElement {
+  accessibilityAttributes: Record<string, any>;
+  accessibleName: string;
+  accessibleNameRef: string;
   design:
     | 'Attention'
     | 'Default'
@@ -14,15 +17,12 @@ interface SegmentedButtonItemElement {
     | 'Negative'
     | 'Positive'
     | 'Transparent';
-  iconEnd: BooleanInputType;
-  submits: BooleanInputType;
-  pressed: BooleanInputType;
-  accessibilityAttributes: Record<string, any>;
-  accessibleName: string;
-  accessibleNameRef: string;
   disabled: BooleanInputType;
   icon: string;
+  iconEnd: BooleanInputType;
+  submits: BooleanInputType;
   tooltip: string;
+  pressed: BooleanInputType;
 
   // Slots
 }
@@ -35,36 +35,6 @@ interface OutputTypes {
   selector: 'ui5-segmented-button-item',
 })
 export class SegmentedButtonItemDirective {
-  @Input()
-  set design(val: SegmentedButtonItemElement['design']) {
-    this.elementRef.nativeElement.design = val;
-  }
-  get design() {
-    return this.elementRef.nativeElement.getAttribute(
-      'design'
-    ) as unknown as SegmentedButtonItemElement['design'];
-  }
-  @Input()
-  set iconEnd(val: SegmentedButtonItemElement['iconEnd']) {
-    this.elementRef.nativeElement.iconEnd = booleanInput(val);
-  }
-  get iconEnd() {
-    return this.elementRef.nativeElement.hasAttribute('icon-end');
-  }
-  @Input()
-  set submits(val: SegmentedButtonItemElement['submits']) {
-    this.elementRef.nativeElement.submits = booleanInput(val);
-  }
-  get submits() {
-    return this.elementRef.nativeElement.hasAttribute('submits');
-  }
-  @Input()
-  set pressed(val: SegmentedButtonItemElement['pressed']) {
-    this.elementRef.nativeElement.pressed = booleanInput(val);
-  }
-  get pressed() {
-    return this.elementRef.nativeElement.hasAttribute('pressed');
-  }
   @Input()
   set accessibilityAttributes(
     val: SegmentedButtonItemElement['accessibilityAttributes']
@@ -95,6 +65,15 @@ export class SegmentedButtonItemDirective {
     ) as unknown as SegmentedButtonItemElement['accessibleNameRef'];
   }
   @Input()
+  set design(val: SegmentedButtonItemElement['design']) {
+    this.elementRef.nativeElement.design = val;
+  }
+  get design() {
+    return this.elementRef.nativeElement.getAttribute(
+      'design'
+    ) as unknown as SegmentedButtonItemElement['design'];
+  }
+  @Input()
   set disabled(val: SegmentedButtonItemElement['disabled']) {
     this.elementRef.nativeElement.disabled = booleanInput(val);
   }
@@ -111,6 +90,20 @@ export class SegmentedButtonItemDirective {
     ) as unknown as SegmentedButtonItemElement['icon'];
   }
   @Input()
+  set iconEnd(val: SegmentedButtonItemElement['iconEnd']) {
+    this.elementRef.nativeElement.iconEnd = booleanInput(val);
+  }
+  get iconEnd() {
+    return this.elementRef.nativeElement.hasAttribute('icon-end');
+  }
+  @Input()
+  set submits(val: SegmentedButtonItemElement['submits']) {
+    this.elementRef.nativeElement.submits = booleanInput(val);
+  }
+  get submits() {
+    return this.elementRef.nativeElement.hasAttribute('submits');
+  }
+  @Input()
   set tooltip(val: SegmentedButtonItemElement['tooltip']) {
     this.elementRef.nativeElement.tooltip = val;
   }
@@ -118,6 +111,13 @@ export class SegmentedButtonItemDirective {
     return this.elementRef.nativeElement.getAttribute(
       'tooltip'
     ) as unknown as SegmentedButtonItemElement['tooltip'];
+  }
+  @Input()
+  set pressed(val: SegmentedButtonItemElement['pressed']) {
+    this.elementRef.nativeElement.pressed = booleanInput(val);
+  }
+  get pressed() {
+    return this.elementRef.nativeElement.hasAttribute('pressed');
   }
 
   @Output() click: Observable<CustomEvent<OutputTypes['click']>> =

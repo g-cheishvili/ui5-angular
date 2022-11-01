@@ -7,6 +7,11 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/Popover.js';
 interface PopoverElement {
+  accessibleName: string;
+  accessibleNameRef: string;
+  initialFocus: string;
+  open: BooleanInputType;
+  preventFocusRestore: BooleanInputType;
   allowTargetOverlap: BooleanInputType;
   headerText: string;
   hideArrow: BooleanInputType;
@@ -16,11 +21,6 @@ interface PopoverElement {
   opener: any;
   placementType: 'Bottom' | 'Left' | 'Right' | 'Top';
   verticalAlign: 'Bottom' | 'Center' | 'Stretch' | 'Top';
-  accessibleName: string;
-  accessibleNameRef: string;
-  initialFocus: string;
-  open: BooleanInputType;
-  preventFocusRestore: BooleanInputType;
 
   // Slots
   footer: Array<HTMLElement>;
@@ -41,6 +41,47 @@ interface OutputTypes {
   selector: 'ui5-popover',
 })
 export class PopoverDirective {
+  @Input()
+  set accessibleName(val: PopoverElement['accessibleName']) {
+    this.elementRef.nativeElement.accessibleName = val;
+  }
+  get accessibleName() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name'
+    ) as unknown as PopoverElement['accessibleName'];
+  }
+  @Input()
+  set accessibleNameRef(val: PopoverElement['accessibleNameRef']) {
+    this.elementRef.nativeElement.accessibleNameRef = val;
+  }
+  get accessibleNameRef() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name-ref'
+    ) as unknown as PopoverElement['accessibleNameRef'];
+  }
+  @Input()
+  set initialFocus(val: PopoverElement['initialFocus']) {
+    this.elementRef.nativeElement.initialFocus = val;
+  }
+  get initialFocus() {
+    return this.elementRef.nativeElement.getAttribute(
+      'initial-focus'
+    ) as unknown as PopoverElement['initialFocus'];
+  }
+  @Input()
+  set open(val: PopoverElement['open']) {
+    this.elementRef.nativeElement.open = booleanInput(val);
+  }
+  get open() {
+    return this.elementRef.nativeElement.hasAttribute('open');
+  }
+  @Input()
+  set preventFocusRestore(val: PopoverElement['preventFocusRestore']) {
+    this.elementRef.nativeElement.preventFocusRestore = booleanInput(val);
+  }
+  get preventFocusRestore() {
+    return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
+  }
   @Input()
   set allowTargetOverlap(val: PopoverElement['allowTargetOverlap']) {
     this.elementRef.nativeElement.allowTargetOverlap = booleanInput(val);
@@ -113,47 +154,6 @@ export class PopoverDirective {
     return this.elementRef.nativeElement.getAttribute(
       'vertical-align'
     ) as unknown as PopoverElement['verticalAlign'];
-  }
-  @Input()
-  set accessibleName(val: PopoverElement['accessibleName']) {
-    this.elementRef.nativeElement.accessibleName = val;
-  }
-  get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as PopoverElement['accessibleName'];
-  }
-  @Input()
-  set accessibleNameRef(val: PopoverElement['accessibleNameRef']) {
-    this.elementRef.nativeElement.accessibleNameRef = val;
-  }
-  get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as PopoverElement['accessibleNameRef'];
-  }
-  @Input()
-  set initialFocus(val: PopoverElement['initialFocus']) {
-    this.elementRef.nativeElement.initialFocus = val;
-  }
-  get initialFocus() {
-    return this.elementRef.nativeElement.getAttribute(
-      'initial-focus'
-    ) as unknown as PopoverElement['initialFocus'];
-  }
-  @Input()
-  set open(val: PopoverElement['open']) {
-    this.elementRef.nativeElement.open = booleanInput(val);
-  }
-  get open() {
-    return this.elementRef.nativeElement.hasAttribute('open');
-  }
-  @Input()
-  set preventFocusRestore(val: PopoverElement['preventFocusRestore']) {
-    this.elementRef.nativeElement.preventFocusRestore = booleanInput(val);
-  }
-  get preventFocusRestore() {
-    return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
   }
 
   @Output('after-close') afterClose: Observable<

@@ -5,7 +5,7 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 import '@ui5/webcomponents/dist/TableColumn.js';
 interface TableColumnElement {
   demandPopin: BooleanInputType;
-  minWidth: number;
+  minWidth: any;
   popinText: string;
 
   // Slots

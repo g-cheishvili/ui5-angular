@@ -2,7 +2,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/ColorPaletteItem.js';
 interface ColorPaletteItemElement {
-  value: string;
+  value: any;
 
   // Slots
 }

@@ -12,7 +12,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IAvatar"
       ],
@@ -39,7 +39,7 @@
         {
           "name": "colorScheme",
           "visibility": "public",
-          "type": "AvatarColorScheme",
+          "type": "sap.ui.webcomponents.main.types.AvatarColorScheme",
           "description": "Defines the background color of the desired image. <br><br> Available options are: <ul> <li><code>Accent1</code></li> <li><code>Accent2</code></li> <li><code>Accent3</code></li> <li><code>Accent4</code></li> <li><code>Accent5</code></li> <li><code>Accent6</code></li> <li><code>Accent7</code></li> <li><code>Accent8</code></li> <li><code>Accent9</code></li> <li><code>Accent10</code></li> <li><code>Placeholder</code></li> </ul>",
           "defaultValue": "\"Accent6\""
         },
@@ -67,14 +67,14 @@
         {
           "name": "shape",
           "visibility": "public",
-          "type": "AvatarShape",
+          "type": "sap.ui.webcomponents.main.types.AvatarShape",
           "description": "Defines the shape of the component. <br><br> Available options are: <ul> <li><code>Circle</code></li> <li><code>Square</code></li> </ul>",
           "defaultValue": "\"Circle\""
         },
         {
           "name": "size",
           "visibility": "public",
-          "type": "AvatarSize",
+          "type": "sap.ui.webcomponents.main.types.AvatarSize",
           "description": "Defines predefined size of the component. <br><br> Available options are: <ul> <li><code>XS</code></li> <li><code>S</code></li> <li><code>M</code></li> <li><code>L</code></li> <li><code>XL</code></li> </ul>",
           "defaultValue": "\"S\""
         }
@@ -86,7 +86,7 @@
           "visibility": "public",
           "since": "1.7.0",
           "type": "HTMLElement",
-          "description": "Defines the optional badge that will be used for visual affordance. <b>Note:</b> While the slot allows for custom badges, to achieve the Fiori design, please use <code>ui5-badge</code> with <code>ui5-icon</code> in the corresponding <code>icon</code> slot, without text nodes. <br><br> Example: <br><br> &lt;ui5-avatar><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-badge slot=\"badge\"><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-icon slot=\"icon\" name=\"employee\">&lt;/ui5-icon><br> &nbsp;&nbsp;&nbsp;&nbsp&lt;/ui5-badge><br> &lt;/ui5-avatar> <br><br> <ui5-avatar initials=\"AB\" color-scheme=\"Accent1\"> <ui5-badge slot=\"badge\"> <ui5-icon slot=\"icon\" name=\"accelerated\"></ui5-icon> </ui5-badge> </ui5-avatar>"
+          "description": "Defines the optional badge that will be used for visual affordance. <b>Note:</b> While the slot allows for custom badges, to achieve the Fiori design, please use <code>ui5-badge</code> with <code>ui5-icon</code> in the corresponding <code>icon</code> slot, without text nodes. <br><br> Example: <br><br> &lt;ui5-avatar><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-badge slot=\"badge\"><br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ui5-icon slot=\"icon\" name=\"employee\">&lt;/ui5-icon><br> &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ui5-badge><br> &lt;/ui5-avatar> <br><br> <ui5-avatar initials=\"AB\" color-scheme=\"Accent1\"> <ui5-badge slot=\"badge\"> <ui5-icon slot=\"icon\" name=\"accelerated\"></ui5-icon> </ui5-badge> </ui5-avatar>"
         },
         {
           "name": "default",
@@ -108,7 +108,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.11",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nDisplays a group of avatars arranged horizontally. It is useful to visually showcase a group of related avatars, such as, project team members or employees.\n\nThe component allows you to display the avatars in different sizes, depending on your use case.\n\nThe <code>AvatarGroup</code> component has two group types: <ul> <li><code>Group</code> type: The avatars are displayed as partially overlapped on top of each other and the entire group has one click/tap area.</li> <li><code>Individual</code> type: The avatars are displayed side-by-side and each avatar has its own click/tap area.</li> </ul>\n\n<h3>Responsive Behavior</h3>\n\nWhen the available space is less than the width required to display all avatars, an overflow visualization appears as a button placed at the end with the same shape and size as the avatars. The visualization displays the number of avatars that have overflowed and are not currently visible.\n\n<h3>Usage</h3>\n\nUse the <code>AvatarGroup</code> if: <ul> <li>You want to display a group of avatars.</li> <li>You want to display several avatars which have something in common.</li> </ul>\n\nDo not use the <code>AvatarGroup</code> if: <ul> <li>You want to display a single avatar.</li> <li>You want to display a gallery for simple images.</li> <li>You want to use it for other visual content than avatars.</li> </ul>\n\n<h3>Keyboard Handling</h3> The component provides advanced keyboard handling. When focused, the user can use the following keyboard shortcuts in order to perform a navigation: <br> - <code>type</code> Individual: <br> <ul> <li>[TAB] - Move focus to the overflow button</li> <li>[LEFT] - Navigate one avatar to the left</li> <li>[RIGHT] - Navigate one avatar to the right</li> <li>[HOME] - Navigate to the first avatar</li> <li>[END] - Navigate to the last avatar</li> <li>[SPACE],[ENTER],[RETURN] - Trigger <code>ui5-click</code> event</li> </ul> <br> - <code>type</code> Group: <br> <ul> <li>[TAB] - Move focus to the next interactive element after the component</li> <li>[SPACE],[ENTER],[RETURN] - Trigger <code>ui5-click</code> event</li> </ul> <br>",
       "constructor": {
         "visibility": "public"
@@ -125,7 +125,7 @@
           "name": "colorScheme",
           "readonly": "true",
           "visibility": "public",
-          "type": "AvatarColorScheme[]",
+          "type": "sap.ui.webcomponents.main.types.AvatarColorScheme[]",
           "description": "Returns an array containing the <code>AvatarColorScheme</code> values that correspond to the avatars in the component.",
           "defaultValue": "[]"
         },
@@ -140,7 +140,7 @@
         {
           "name": "type",
           "visibility": "public",
-          "type": "AvatarGroupType",
+          "type": "sap.ui.webcomponents.main.types.AvatarGroupType",
           "description": "Defines the mode of the <code>AvatarGroup</code>. <br><br> Available options are: <ul> <li><code>Group</code></li> <li><code>Individual</code></li> </ul>",
           "defaultValue": "\"Group\""
         }
@@ -239,7 +239,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.15",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> Enables users to navigate between items by providing a list of links to previous steps in the user's navigation path. It helps the user to be aware of their location within the application and allows faster navigation. <br><br> The last three steps can be accessed as links directly, while the remaining links prior to them are available in a drop-down menu. <br><br> You can choose the type of separator to be used from a number of predefined options.\n\n<h3>Keyboard Handling</h3> The <code>ui5-breadcrumbs</code> provides advanced keyboard handling. <br> <ul> <li>[F4, ALT+UP, ALT+DOWN, SPACE, ENTER] - If the dropdown arrow is focused - opens/closes the drop-down.</li> <li>[SPACE, ENTER] - Activates the focused item and triggers the <code>item-click</code> event.</li> <li>[ESC] - Closes the drop-down.</li> <li>[LEFT] - If the drop-down is closed - navigates one item to the left.</li> <li>[RIGHT] - If the drop-down is closed - navigates one item to the right.</li> <li>[UP] - If the drop-down is open - moves focus to the next item.</li> <li>[DOWN] - If the drop-down is open - moves focus to the previous item.</li> <li>[HOME] - Navigates to the first item.</li> <li>[END] - Navigates to the last item.</li> </ul> <br>",
       "constructor": {
         "visibility": "public"
@@ -248,14 +248,14 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "BreadcrumbsDesign",
+          "type": "sap.ui.webcomponents.main.types.BreadcrumbsDesign",
           "description": "Defines the visual indication and behavior of the breadcrumbs. Available options are <code>Standard</code> (by default) and <code>NoCurrentPage</code>. <br><br> <b>Note:</b> The <code>Standard</code> breadcrumbs show the current page as the last item in the trail. The last item contains only plain text and is not a link.",
           "defaultValue": "\"Standard\""
         },
         {
           "name": "separatorStyle",
           "visibility": "public",
-          "type": "BreadcrumbsSeparatorStyle",
+          "type": "sap.ui.webcomponents.main.types.BreadcrumbsSeparatorStyle",
           "description": "Determines the visual style of the separator between the breadcrumb items.\n\n<br><br> Available options are: <ul> <li><code>Slash</code></li> <li><code>BackSlash</code></li> <li><code>DoubleBackSlash</code></li> <li><code>DoubleGreaterThan</code></li> <li><code>DoubleSlash</code></li> <li><code>GreaterThan</code></li> </ul>",
           "defaultValue": "\"Slash\""
         }
@@ -365,7 +365,7 @@
       "static": true,
       "visibility": "public",
       "since": "0.12.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-busy-indicator</code> signals that some operation is going on and that the user must wait. It does not block the current UI screen so other operations could be triggered in parallel. It displays 3 dots and each dot expands and shrinks at a different rate, resulting in a cascading flow of animation.\n\n<h3>Usage</h3> For the <code>ui5-busy-indicator</code> you can define the size, the text and whether it is shown or hidden. In order to hide it, use the \"active\" property. <br><br> In order to show busy state over an HTML element, simply nest the HTML element in a <code>ui5-busy-indicator</code> instance. <br> <b>Note:</b> Since <code>ui5-busy-indicator</code> has <code>display: inline-block;</code> by default and no width of its own, whenever you need to wrap a block-level element, you should set <code>display: block</code> to the busy indicator as well.\n\n<h4>When to use:</h4> <ul> <li>The user needs to be able to cancel the operation.</li> <li>Only part of the application or a particular component is affected.</li> </ul>\n\n<h4>When not to use:</h4> <ul> <li>The operation takes less than one second.</li> <li>You need to block the screen and prevent the user from starting another activity.</li> <li>Do not show multiple busy indicators at once.</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/BusyIndicator\";</code>",
       "constructor": {
         "visibility": "public"
@@ -381,14 +381,14 @@
         {
           "name": "delay",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the delay in milliseconds, after which the busy indicator will be visible on the screen.",
           "defaultValue": "1000"
         },
         {
           "name": "size",
           "visibility": "public",
-          "type": "BusyIndicatorSize",
+          "type": "sap.ui.webcomponents.main.types.BusyIndicatorSize",
           "description": "Defines the size of the component.\n\n<br><br> <b>Note:</b>\n\n<ul> <li><code>Small</code></li> <li><code>Medium</code></li> <li><code>Large</code></li> </ul>",
           "defaultValue": "\"Medium\""
         },
@@ -419,7 +419,7 @@
       "module": "Button",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IButton"
       ],
@@ -454,7 +454,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "ButtonDesign",
+          "type": "sap.ui.webcomponents.main.types.ButtonDesign",
           "description": "Defines the component design.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Default</code></li> <li><code>Emphasized</code></li> <li><code>Positive</code></li> <li><code>Negative</code></li> <li><code>Transparent</code></li> <li><code>Attention</code></li> </ul>",
           "defaultValue": "\"Default\""
         },
@@ -522,7 +522,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.11",
-      "extends": "CalendarPart",
+      "extends": "sap.ui.webcomponents.main.CalendarPart",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-calendar</code> component allows users to select one or more dates. <br><br> Currently selected dates are represented with instances of <code>ui5-date</code> as children of the <code>ui5-calendar</code>. The value property of each <code>ui5-date</code> must be a date string, correctly formatted according to the <code>ui5-calendar</code>'s <code>formatPattern</code> property. Whenever the user changes the date selection, <code>ui5-calendar</code> will automatically create/remove instances of <code>ui5-date</code> in itself, unless you prevent this behavior by calling <code>preventDefault()</code> for the <code>selected-dates-change</code> event. This is useful if you want to control the selected dates externally. <br><br>\n\n<h3>Usage</h3>\n\nThe user can navigate to a particular date by: <br> <ul> <li>Pressing over a month inside the months view</li> <li>Pressing over an year inside the years view</li> </ul> <br> The user can confirm a date selection by pressing over a date inside the days view. <br><br>\n\n<h3>Keyboard Handling</h3> The <code>ui5-calendar</code> provides advanced keyboard handling. When a picker is showed and focused the user can use the following keyboard shortcuts in order to perform a navigation: <br> - Day picker: <br> <ul> <li>[F4] - Shows month picker</li> <li>[SHIFT] + [F4] - Shows year picker</li> <li>[PAGEUP] - Navigate to the previous month</li> <li>[PAGEDOWN] - Navigate to the next month</li> <li>[SHIFT] + [PAGEUP] - Navigate to the previous year</li> <li>[SHIFT] + [PAGEDOWN] - Navigate to the next year</li> <li>[CTRL] + [SHIFT] + [PAGEUP] - Navigate ten years backwards</li> <li>[CTRL] + [SHIFT] + [PAGEDOWN] - Navigate ten years forwards</li> <li>[HOME] - Navigate to the first day of the week</li> <li>[END] - Navigate to the last day of the week</li> <li>[CTRL] + [HOME] - Navigate to the first day of the month</li> <li>[CTRL] + [END] - Navigate to the last day of the month</li> </ul> <br> - Month picker: <br> <ul> <li>[PAGEUP] - Navigate to the previous year</li> <li>[PAGEDOWN] - Navigate to the next year</li> <li>[HOME] - Navigate to the first month of the current row</li> <li>[END] - Navigate to the last month of the current row</li> <li>[CTRL] + [HOME] - Navigate to the first month of the current year</li> <li>[CTRL] + [END] - Navigate to the last month of the year</li> </ul> <br> - Year picker: <br> <ul> <li>[PAGEUP] - Navigate to the previous year range</li> <li>[PAGEDOWN] - Navigate the next year range</li> <li>[HOME] - Navigate to the first year of the current row</li> <li>[END] - Navigate to the last year of the current row</li> <li>[CTRL] + [HOME] - Navigate to the first year of the current year range</li> <li>[CTRL] + [END] - Navigate to the last year of the current year range</li> </ul> <br>\n\n<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code> <br><br>\n\n<h3>Calendar types</h3> The component supports several calendar types - Gregorian, Buddhist, Islamic, Japanese and Persian. By default the Gregorian Calendar is used. In order to use the Buddhist, Islamic, Japanese or Persian calendar, you need to set the <code>primaryCalendarType</code> property and import one or more of the following modules: <br><br>\n\n<code>import \"@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js\";</code> <br> <code>import \"@ui5/webcomponents-localization/dist/features/calendar/Islamic.js\";</code> <br> <code>import \"@ui5/webcomponents-localization/dist/features/calendar/Japanese.js\";</code> <br> <code>import \"@ui5/webcomponents-localization/dist/features/calendar/Persian.js\";</code> <br><br>\n\nOr, you can use the global configuration and set the <code>calendarType</code> key: <br> <code> &lt;script data-id=\"sap-ui-config\" type=\"application/json\"&gt; { \"calendarType\": \"Japanese\" } &lt;/script&gt; </code>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Calendar\";</code>",
       "constructor": {
         "visibility": "public"
@@ -545,7 +545,7 @@
         {
           "name": "selectionMode",
           "visibility": "public",
-          "type": "CalendarSelectionMode",
+          "type": "sap.ui.webcomponents.main.types.CalendarSelectionMode",
           "description": "Defines the type of selection used in the calendar component. Accepted property values are:<br> <ul> <li><code>CalendarSelectionMode.Single</code> - enables a single date selection.(default value)</li> <li><code>CalendarSelectionMode.Range</code> - enables selection of a date range.</li> <li><code>CalendarSelectionMode.Multiple</code> - enables selection of multiple dates.</li> </ul>",
           "defaultValue": "\"Single\""
         }
@@ -615,7 +615,7 @@
       "module": "CalendarPart",
       "static": true,
       "visibility": "public",
-      "extends": "DateComponentBase",
+      "extends": "sap.ui.webcomponents.main.DateComponentBase",
       "description": "Abstract base class for Calendar, DayPicker, MonthPicker and YearPicker that adds support for: - common properties (timestamp, selectedDates): declarations and methods that operate on them - other common code",
       "constructor": {
         "visibility": "public"
@@ -636,7 +636,7 @@
         {
           "name": "timestamp",
           "visibility": "protected",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "The timestamp of the currently focused date. Set this property to move the component's focus to a certain date. <b>Node:</b> Timestamp is 10-digit Integer representing the seconds (not milliseconds) since the Unix Epoch."
         }
       ],
@@ -801,7 +801,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The Carousel allows the user to browse through a set of items. The component is mostly used for showing a gallery of images, but can hold any other HTML element. <br> There are several ways to perform navigation: <ul> <li>on desktop - the user can navigate using the navigation arrows or with keyboard shorcuts.</li> <li>on mobile - the user can use swipe gestures.</li> </ul>\n\n<h3>Usage</h3>\n\n<h4>When to use:</h4>\n\n<ul> <li>The items you want to display are very different from each other.</li> <li>You want to display the items one after the other.</li> </ul>\n\n<h4>When not to use:</h4>\n\n<ul> <li>The items you want to display need to be visible at the same time.</li> <li>The items you want to display are uniform and very similar.</li> </ul>\n\n<h3>Keyboard Handling</h3>\n\n<h4>Basic Navigation</h4> When the <code>ui5-carousel</code> is focused the user can navigate between the items with the following keyboard shortcuts: <br>\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-carousel</code> exposes the following CSS Shadow Parts: <ul> <li>content - Used to style the content of the component</li> </ul>\n\n* <h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code> <br><br>\n\n<ul> <li>[UP/DOWN] - Navigates to previous and next item</li> <li>[LEFT/RIGHT] - Navigates to previous and next item</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Carousel.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -810,7 +810,7 @@
         {
           "name": "arrowsPlacement",
           "visibility": "public",
-          "type": "CarouselArrowsPlacement",
+          "type": "sap.ui.webcomponents.main.types.CarouselArrowsPlacement",
           "description": "Defines the position of arrows. <br><br> Available options are: <ul> <li><code>Content</code></li> <li><code>Navigation</code></li> </ul> <br> When set to \"Content\", the arrows are placed on the sides of the current page. <br> When set to \"Navigation\", the arrows are placed on the sides of the page indicator.",
           "defaultValue": "\"Content\""
         },
@@ -840,21 +840,21 @@
         {
           "name": "itemsPerPageL",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the number of items per page on large size (more than 1024px). One item per page shown by default.",
           "defaultValue": "1"
         },
         {
           "name": "itemsPerPageM",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the number of items per page on medium size (from 640px to 1024px). One item per page shown by default.",
           "defaultValue": "1"
         },
         {
           "name": "itemsPerPageS",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the number of items per page on small size (up to 640px). One item per page shown by default.",
           "defaultValue": "1"
         }
@@ -905,8 +905,6 @@
       "name": "sap.ui.webcomponents.main.CheckBox",
       "basename": "CheckBox",
       "tagname": "ui5-checkbox",
-      "formProperties": "checked",
-      "formAssociated": "true",
       "resource": "CheckBox.js",
       "module": "CheckBox",
       "static": true,
@@ -937,6 +935,7 @@
           "name": "checked",
           "visibility": "public",
           "formEvents": "change",
+          "formProperty": "true",
           "type": "boolean",
           "description": "Defines if the component is checked. <br><br> <b>Note:</b> The property can be changed with user interaction, either by cliking/tapping on the component, or by pressing the Enter or Space key.",
           "defaultValue": "false"
@@ -988,14 +987,14 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component.\n\n<br><br> <b>Note:</b>\n\n<ul> <li><code>Warning</code></li> <li><code>Error</code></li> <li><code>None</code>(default)</li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         },
         {
           "name": "wrappingType",
           "visibility": "public",
-          "type": "WrappingType",
+          "type": "sap.ui.webcomponents.main.types.WrappingType",
           "description": "Defines whether the component text wraps when there is not enough space. <br><br> Available options are: <ul> <li><code>None</code> - The text will be truncated with an ellipsis.</li> <li><code>Normal</code> - The text will wrap. The words will not be broken based on hyphenation.</li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -1020,7 +1019,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.12",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-color-palette</code> provides the users with a range of predefined colors. The colors are fixed and do not change with the theme.\n\n<h3>Usage</h3>\n\nThe <code>ui5-color-palette</code> is meant for users that need to select a color from a predefined set. To define the colors, use the <code>ui5-color-palette-item</code> component inside the default slot of the <code>ui5-color-palette</code>.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ColorPalette.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -1073,7 +1072,7 @@
         {
           "name": "value",
           "visibility": "public",
-          "type": "CSSColor",
+          "type": "sap.ui.webcomponents.base.types.CSSColor",
           "description": "Defines the colour of the component. <br><br> <b>Note:</b> The value should be a valid CSS color."
         }
       ],
@@ -1089,7 +1088,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.16",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> Represents a predefined range of colors for easier selection.\n\nOverview The ColorPalettePopover provides the users with a slot to predefine colors.\n\nYou can customize them with the use of the colors property. You can specify a defaultColor and display a \"Default color\" button for the user to choose directly. You can display a \"More colors...\" button that opens an additional color picker for the user to choose specific colors that are not present in the predefined range.\n\n<h3>Usage</h3>\n\nThe palette is intended for users, who don't want to check and remember the different values of the colors and spend large amount of time to configure the right color through the color picker.\n\nFor the <code>ui5-color-palette-popover</code> <h3>ES6 Module Import</h3>\n\n<code>import @ui5/webcomponents/dist/ColorPalettePopover.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -1098,7 +1097,7 @@
         {
           "name": "defaultColor",
           "visibility": "public",
-          "type": "CSSColor",
+          "type": "sap.ui.webcomponents.base.types.CSSColor",
           "description": "Defines the default color of the component. <b>Note:</b> The default color should be a part of the ColorPalette colors</code>"
         },
         {
@@ -1199,7 +1198,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.12",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-color-picker</code> allows users to choose any color and provides different input options for selecting colors.\n\n<h3>Usage</h3>\n\n<h4>When to use:</h4 Use the color picker if: <ul> <li> users need to select any color freely.</li> </ul>\n\n<h4>When not to use:</h4> <ul> <li> Users need to select one color from a predefined set of colors. Use the ColorPalette component instead.</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ColorPicker.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -1208,7 +1207,7 @@
         {
           "name": "color",
           "visibility": "public",
-          "type": "CSSColor",
+          "type": "sap.ui.webcomponents.base.types.CSSColor",
           "description": "Defines the currently selected color of the component. <br><br> <b>Note</b>: use HEX, RGB, RGBA, HSV formats or a CSS color name when modifying this property."
         }
       ],
@@ -1227,14 +1226,12 @@
       "basename": "ComboBox",
       "tagname": "ui5-combobox",
       "appenddocs": "ComboBoxItem ComboBoxGroupItem",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "ComboBox.js",
       "module": "ComboBox",
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-combobox</code> component represents a drop-down menu with a list of the available options and a text input field to narrow down the options.\n\nIt is commonly used to enable users to select an option from a predefined list.\n\n<h3>Structure</h3> The <code>ui5-combobox</code> consists of the following elements: <ul> <li> Input field - displays the selected option or a custom user entry. Users can type to narrow down the list or enter their own value. <li> Drop-down arrow - expands\\collapses the option list.</li> <li> Option list - the list of available options.</li> </ul>\n\n<h3>Keyboard Handling</h3>\n\nThe <code>ui5-combobox</code> provides advanced keyboard handling. <br>\n\n<ul> <li>[F4], [ALT]+[UP], or [ALT]+[DOWN] - Toggles the picker.</li> <li>[ESC] - Closes the picker, if open. If closed, cancels changes and reverts the typed in value.</li> <li>[ENTER] or [RETURN] - If picker is open, takes over the currently selected item and closes it.</li> <li>[DOWN] - Selects the next matching item in the picker.</li> <li>[UP] - Selects the previous matching item in the picker.</li> <li>[PAGEDOWN] - Moves selection down by page size (10 items by default).</li> <li>[PAGEUP] - Moves selection up by page size (10 items by default). </li> <li>[HOME] - If focus is in the ComboBox, moves cursor at the beginning of text. If focus is in the picker, selects the first item.</li> <li>[END] - If focus is in the ComboBox, moves cursor at the end of text. If focus is in the picker, selects the last item.</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ComboBox\";</code>",
       "constructor": {
         "visibility": "public"
@@ -1301,6 +1298,7 @@
           "name": "value",
           "visibility": "public",
           "formEvents": "change,input",
+          "formProperty": "true",
           "type": "string",
           "description": "Defines the value of the component.",
           "defaultValue": "\"\""
@@ -1308,7 +1306,7 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -1371,7 +1369,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.15",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IComboBoxItem"
       ],
@@ -1405,7 +1403,7 @@
       "module": "ComboBoxItem",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IComboBoxItem"
       ],
@@ -1441,7 +1439,7 @@
       "module": "CustomListItem",
       "static": true,
       "visibility": "public",
-      "extends": "ListItem",
+      "extends": "sap.ui.webcomponents.main.ListItem",
       "implements": [
         "sap.ui.webcomponents.main.IListItem"
       ],
@@ -1508,14 +1506,14 @@
         {
           "name": "primaryCalendarType",
           "visibility": "public",
-          "type": "CalendarType",
+          "type": "sap.ui.webcomponents.base.types.CalendarType",
           "description": "Sets a calendar type used for display. If not set, the calendar type of the global configuration is used."
         },
         {
           "name": "secondaryCalendarType",
           "visibility": "public",
           "since": "1.0.0-rc.16",
-          "type": "CalendarType",
+          "type": "sap.ui.webcomponents.base.types.CalendarType",
           "description": "Defines the secondary calendar type. If not set, the calendar will only show the primary calendar type.",
           "defaultValue": "undefined"
         }
@@ -1527,13 +1525,11 @@
       "name": "sap.ui.webcomponents.main.DatePicker",
       "basename": "DatePicker",
       "tagname": "ui5-date-picker",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "DatePicker.js",
       "module": "DatePicker",
       "static": true,
       "visibility": "public",
-      "extends": "DateComponentBase",
+      "extends": "sap.ui.webcomponents.main.DateComponentBase",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-date-picker</code> component provides an input field with assigned calendar which opens on user action. The <code>ui5-date-picker</code> allows users to select a localized date using touch, mouse, or keyboard input. It consists of two parts: the date input field and the date picker.\n\n<h3>Usage</h3>\n\nThe user can enter a date by: <ul> <li>Using the calendar that opens in a popup</li> <li>Typing it in directly in the input field</li> </ul> <br><br> When the user makes an entry and presses the enter key, the calendar shows the corresponding date. When the user directly triggers the calendar display, the actual date is displayed.\n\n<h3>Formatting</h3>\n\nIf a date is entered by typing it into the input field, it must fit to the used date format. <br><br> Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see <ui5-link target=\"_blank\" href=\"http://unicode.org/reports/tr35/#Date_Field_Symbol_Table\" class=\"api-table-content-cell-link\">UTS #35: Unicode Locale Data Markup Language</ui5-link>. <br><br> For example, if the <code>format-pattern</code> is \"yyyy-MM-dd\", a valid value string is \"2015-07-30\" and the same is displayed in the input.\n\n<h3>Keyboard Handling</h3> The <code>ui5-date-picker</code> provides advanced keyboard handling. If the <code>ui5-date-picker</code> is focused, you can open or close the drop-down by pressing <code>F4</code>, <code>ALT+UP</code> or <code>ALT+DOWN</code> keys. Once the drop-down is opened, you can use the <code>UP</code>, <code>DOWN</code>, <code>LEFT</code>, <code>RIGHT</code> arrow keys to navigate through the dates and select one by pressing the <code>Space</code> or <code>Enter</code> keys. Moreover you can use TAB to reach the buttons for changing month and year. <br>\n\nIf the <code>ui5-date-picker</code> input field is focused and its corresponding picker dialog is not opened, then users can increment or decrement the date referenced by <code>dateValue</code> property by using the following shortcuts: <br> <ul> <li>[PAGEDOWN] - Decrements the corresponding day of the month by one</li> <li>[SHIFT] + [PAGEDOWN] - Decrements the corresponding month by one</li> <li>[SHIFT] + [CTRL] + [PAGEDOWN] - Decrements the corresponding year by one</li> <li>[PAGEUP] - Increments the corresponding day of the month by one</li> <li>[SHIFT] + [PAGEUP] - Increments the corresponding month by one</li> <li>[SHIFT] + [CTRL] + [PAGEUP] - Increments the corresponding year by one</li> </ul>\n\n<h3>Calendar types</h3> The component supports several calendar types - Gregorian, Buddhist, Islamic, Japanese and Persian. By default the Gregorian Calendar is used. In order to use the Buddhist, Islamic, Japanese or Persian calendar, you need to set the <code>primaryCalendarType</code> property and import one or more of the following modules: <br><br>\n\n<code>import \"@ui5/webcomponents-localization/dist/features/calendar/Buddhist.js\";</code> <br> <code>import \"@ui5/webcomponents-localization/dist/features/calendar/Islamic.js\";</code> <br> <code>import \"@ui5/webcomponents-localization/dist/features/calendar/Japanese.js\";</code> <br> <code>import \"@ui5/webcomponents-localization/dist/features/calendar/Persian.js\";</code> <br><br>\n\nOr, you can use the global configuration and set the <code>calendarType</code> key: <br> <pre><code>&lt;script data-id=\"sap-ui-config\" type=\"application/json\"&gt;\n{\n\t\"calendarType\": \"Japanese\"\n}\n&lt;/script&gt;</code></pre>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/DatePicker\";</code>",
       "constructor": {
         "visibility": "public"
@@ -1632,6 +1628,7 @@
           "name": "value",
           "visibility": "public",
           "formEvents": "change,input",
+          "formProperty": "true",
           "type": "string",
           "description": "Defines a formatted date value.",
           "defaultValue": "\"\""
@@ -1639,7 +1636,7 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -1827,14 +1824,12 @@
       "name": "sap.ui.webcomponents.main.DateRangePicker",
       "basename": "DateRangePicker",
       "tagname": "ui5-daterange-picker",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "DateRangePicker.js",
       "module": "DateRangePicker",
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "DatePicker",
+      "extends": "sap.ui.webcomponents.main.DatePicker",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The DateRangePicker enables the users to enter a localized date range using touch, mouse, keyboard input, or by selecting a date range in the calendar.\n\n<h3>Usage</h3> The user can enter a date by: Using the calendar that opens in a popup or typing it in directly in the input field (not available for mobile devices). For the <code>ui5-daterange-picker</code> <h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/DateRangePicker.js\";</code>\n\n<h3>Keyboard Handling</h3> The <code>ui5-daterange-picker</code> provides advanced keyboard handling. <br>\n\nWhen the <code>ui5-daterange-picker</code> input field is focused the user can increment or decrement respectively the range start or end date, depending on where the cursor is. The following shortcuts are available: <br> <ul> <li>[PAGEDOWN] - Decrements the corresponding day of the month by one</li> <li>[SHIFT] + [PAGEDOWN] - Decrements the corresponding month by one</li> <li>[SHIFT] + [CTRL] + [PAGEDOWN] - Decrements the corresponding year by one</li> <li>[PAGEUP] - Increments the corresponding day of the month by one</li> <li>[SHIFT] + [PAGEUP] - Increments the corresponding month by one</li> <li>[SHIFT] + [CTRL] + [PAGEUP] - Increments the corresponding year by one</li> </ul>",
       "constructor": {
         "visibility": "public"
@@ -1882,14 +1877,12 @@
       "name": "sap.ui.webcomponents.main.DateTimePicker",
       "basename": "DateTimePicker",
       "tagname": "ui5-datetime-picker",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "DateTimePicker.js",
       "module": "DateTimePicker",
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.7",
-      "extends": "DatePicker",
+      "extends": "sap.ui.webcomponents.main.DatePicker",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>DateTimePicker</code> component alows users to select both date (day, month and year) and time (hours, minutes and seconds) and for the purpose it consists of input field and Date/Time picker.\n\n<h3>Usage</h3>\n\nUse the <code>DateTimePicker</code> if you need a combined date and time input component. Don't use it if you want to use either date, or time value. In this case, use the <code>DatePicker</code> or the <code>TimePicker</code> components instead. <br><br> The user can set date/time by: <ul> <li>using the calendar and the time selectors</li> <li>typing in the input field</li> </ul>\n\nProgrammatically, to set date/time for the <code>DateTimePicker</code>, use the <code>value</code> property\n\n<h3>Formatting</h3>\n\nThe value entered by typing into the input field must fit to the used date/time format. <br><br> Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see <ui5-link target=\"_blank\" href=\"https://unicode.org/reports/tr35/tr35-dates.html#Date_Field_Symbol_Table\" class=\"api-table-content-cell-link\">UTS #35: Unicode Locale Data Markup Language</ui5-link>. <br><br> <b>Example:</b> the following format <code>dd/MM/yyyy, hh:mm:ss aa</code> corresponds the <code>13/04/2020, 03:16:16 AM</code> value. <br> The small 'h' defines \"12\" hours format and the \"aa\" symbols - \"AM/PM\" time periods.\n\n<br><br> <b>Example:</b> the following format <code>dd/MM/yyyy, HH:mm:ss</code> corresponds the <code>13/04/2020, 15:16:16</code> value. <br> The capital 'H' indicates \"24\" hours format.\n\n<br><br> <b>Note:</b> If the <code>formatPattern</code> does NOT include time, the <code>DateTimePicker</code> will fallback to the default time format according to the locale.\n\n<br><br> <b>Note:</b> If no placeholder is set to the <code>DateTimePicker</code>, the current <code>formatPattern</code> is displayed as a placeholder. If another placeholder is needed, it must be set or in case no placeholder is needed - it can be set to an empty string.\n\n<br><br> <b>Note:</b> If the user input does NOT match the <code>formatPattern</code>, the <code>DateTimePicker</code> makes an attempt to parse it based on the locale settings.\n\n<h3>Responsive behavior</h3>\n\nThe <code>DateTimePicker</code> is responsive and fully adapts to all devices. For larger screens, such as tablet or desktop, it is displayed as a popover, while on phone devices, it is displayed full screen.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/DateTimePicker.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -1911,7 +1904,7 @@
       "module": "DayPicker",
       "static": true,
       "visibility": "public",
-      "extends": "CalendarPart",
+      "extends": "sap.ui.webcomponents.main.CalendarPart",
       "description": "Represents one month view inside a calendar.",
       "constructor": {
         "visibility": "public"
@@ -1928,13 +1921,13 @@
         {
           "name": "selectedDates",
           "visibility": "public",
-          "type": "Array",
+          "type": "array",
           "description": "An array of UTC timestamps representing the selected date or dates depending on the capabilities of the picker component."
         },
         {
           "name": "selectionMode",
           "visibility": "public",
-          "type": "CalendarSelectionMode",
+          "type": "sap.ui.webcomponents.main.types.CalendarSelectionMode",
           "description": "Defines the type of selection used in the day picker component. Accepted property values are:<br> <ul> <li><code>CalendarSelectionMode.Single</code> - enables a single date selection.(default value)</li> <li><code>CalendarSelectionMode.Range</code> - enables selection of a date range.</li> <li><code>CalendarSelectionMode.Multiple</code> - enables selection of multiple dates.</li> </ul>",
           "defaultValue": "\"Single\""
         }
@@ -1984,7 +1977,7 @@
       "module": "Dialog",
       "static": true,
       "visibility": "public",
-      "extends": "Popup",
+      "extends": "sap.ui.webcomponents.main.Popup",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-dialog</code> component is used to temporarily display some information in a size-limited window in front of the regular app screen. It is used to prompt the user for an action or a confirmation. The <code>ui5-dialog</code> interrupts the current app processing as it is the only focused UI element and the main screen is dimmed/blocked. The dialog combines concepts known from other technologies where the windows have names such as dialog box, dialog window, pop-up, pop-up window, alert box, or message box. <br><br> The <code>ui5-dialog</code> is modal, which means that user action is required before returning to the parent window is possible. The content of the <code>ui5-dialog</code> is fully customizable.\n\n<h3>Structure</h3> A <code>ui5-dialog</code> consists of a header, content, and a footer for action buttons. The <code>ui5-dialog</code> is usually displayed at the center of the screen. Its position can be changed by the user. To enable this, you need to set the property <code>draggable</code> accordingly.\n\n<h3>Responsive Behavior</h3> The <code>stretch</code> property can be used to stretch the <code>ui5-dialog</code> on full screen.\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-dialog</code> exposes the following CSS Shadow Parts: <ul> <li>header - Used to style the header of the component</li> <li>content - Used to style the content of the component</li> <li>footer - Used to style the footer of the component</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Dialog\";</code>\n\n<b>Note:</b> We don't recommend nesting popup-like components (<code>ui5-dialog</code>, <code>ui5-popover</code>) inside <code>ui5-dialog</code>. Ideally you should create all popups on the same level inside your HTML page and just open them from one another, rather than nesting them.\n\n<b>Note:</b> We don't recommend nesting popup-like components (<code>ui5-dialog</code>, <code>ui5-popover</code>) inside other components containing z-index. This might break z-index management.",
       "constructor": {
         "visibility": "public"
@@ -2017,7 +2010,7 @@
           "name": "state",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the state of the <code>Dialog</code>. <br> Available options are: <code>\"None\"</code> (by default), <code>\"Success\"</code>, <code>\"Warning\"</code>, <code>\"Information\"</code> and <code>\"Error\"</code>.",
           "defaultValue": "\"None\""
         },
@@ -2069,14 +2062,12 @@
       "name": "sap.ui.webcomponents.main.FileUploader",
       "basename": "FileUploader",
       "tagname": "ui5-file-uploader",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "FileUploader.js",
       "module": "FileUploader",
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-file-uploader</code> opens a file explorer dialog and enables users to upload files. The component consists of input field, but you can provide an HTML element by your choice to trigger the file upload, by using the default slot. Furthermore, you can set the property \"hideInput\" to \"true\" to hide the input field. <br> To get all selected files, you can simply use the read-only \"files\" property. To restrict the types of files the user can select, you can use the \"accept\" property. <br> And, similar to all input based components, the FileUploader supports \"valueState\", \"placeholder\", \"name\", and \"disabled\" properties.\n\nFor the <code>ui5-file-uploader</code> <h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/FileUploader.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -2135,6 +2126,7 @@
           "name": "value",
           "visibility": "public",
           "formEvents": "change",
+          "formProperty": "true",
           "type": "string",
           "description": "Defines the name/names of the file/files to upload.",
           "defaultValue": "\"\""
@@ -2142,7 +2134,7 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -2187,7 +2179,7 @@
       "module": "GroupHeaderListItem",
       "static": true,
       "visibility": "public",
-      "extends": "ListItemBase",
+      "extends": "sap.ui.webcomponents.main.ListItemBase",
       "implements": [
         "sap.ui.webcomponents.main.IListItem"
       ],
@@ -2398,8 +2390,6 @@
       "basename": "Input",
       "tagname": "ui5-input",
       "appenddocs": "SuggestionItem SuggestionGroupItem",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "Input.js",
       "module": "Input",
       "static": true,
@@ -2445,7 +2435,7 @@
           "name": "maxlength",
           "visibility": "public",
           "since": "1.0.0-rc.5",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Sets the maximum number of characters available in the input field. <br><br> <b>Note:</b> This property is not compatible with the ui5-input type InputType.Number. If the ui5-input type is set to Number, the maxlength value is ignored."
         },
         {
@@ -2516,7 +2506,7 @@
         {
           "name": "type",
           "visibility": "public",
-          "type": "InputType",
+          "type": "sap.ui.webcomponents.main.types.InputType",
           "description": "Defines the HTML type of the component. Available options are: <code>Text</code>, <code>Email</code>, <code>Number</code>, <code>Password</code>, <code>Tel</code>, and <code>URL</code>. <br><br> <b>Notes:</b> <ul> <li>The particular effect of this property differs depending on the browser and the current language settings, especially for type <code>Number</code>.</li> <li>The property is mostly intended to be used with touch devices that use different soft keyboard layouts depending on the given input type.</li> </ul>",
           "defaultValue": "\"Text\""
         },
@@ -2524,6 +2514,7 @@
           "name": "value",
           "visibility": "public",
           "formEvents": "change,input",
+          "formProperty": "true",
           "type": "string",
           "description": "Defines the value of the component. <br><br> <b>Note:</b> The property is updated upon typing.",
           "defaultValue": "\"\""
@@ -2531,7 +2522,7 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -2750,7 +2741,7 @@
           "name": "required",
           "visibility": "public",
           "type": "boolean",
-          "description": "Defines whether an asterisk character is added to the component text. <br><br> <b>Note:</b> Usually indicates that user input is required.",
+          "description": "Defines whether an asterisk character is added to the component text. <br><br> <b>Note:</b> Usually indicates that user input (bound with the <code>for</code> property) is required. In that case the <code>required</> property of the corresponding input should also be set.",
           "defaultValue": "false"
         },
         {
@@ -2763,7 +2754,7 @@
         {
           "name": "wrappingType",
           "visibility": "public",
-          "type": "WrappingType",
+          "type": "sap.ui.webcomponents.main.types.WrappingType",
           "description": "Defines how the text of a component will be displayed when there is not enough space. Available options are: <ul> <li><code>None</code> - The text will be truncated with an ellipsis.</li> <li><code>Normal</code> - The text will wrap. The words will not be broken based on hyphenation.</li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -2827,7 +2818,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "LinkDesign",
+          "type": "sap.ui.webcomponents.main.types.LinkDesign",
           "description": "Defines the component design. <br><br> <b>Note:</b> Avaialble options are <code>Default</code>, <code>Subtle</code>, and <code>Emphasized</code>.",
           "defaultValue": "\"Default\""
         },
@@ -2855,7 +2846,7 @@
         {
           "name": "wrappingType",
           "visibility": "public",
-          "type": "WrappingType",
+          "type": "sap.ui.webcomponents.main.types.WrappingType",
           "description": "Defines how the text of a component will be displayed when there is not enough space. Available options are: <ul> <li><code>None</code> - The text will be truncated with an ellipsis.</li> <li><code>Normal</code> - The text will wrap. The words will not be broken based on hyphenation.</li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -2909,7 +2900,7 @@
       "module": "List",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-list</code> component allows displaying a list of items, advanced keyboard handling support for navigating between items, and predefined modes to improve the development efficiency. <br><br> The <code>ui5-list</code> is a container for the available list items: <ul> <li><code>ui5-li</code></li> <li><code>ui5-li-custom</code></li> <li><code>ui5-li-groupheader</code></li> </ul> <br><br> To benefit from the built-in selection mechanism, you can use the available selection modes, such as <code>SingleSelect</code>, <code>MultiSelect</code> and <code>Delete</code>. <br><br> Additionally, the <code>ui5-list</code> provides header, footer, and customization for the list item separators.\n\n<br><br> <h3>Keyboard Handling</h3>\n\n<h4>Basic Navigation</h4> The <code>ui5-list</code> provides advanced keyboard handling. When a list is focused the user can use the following keyboard shortcuts in order to perform a navigation: <br>\n\n<ul> <li>[UP/DOWN] - Navigates up and down the items</li> <li>[HOME] - Navigates to first item</li> <li>[END] - Navigates to the last item</li> </ul>\n\nThe user can use the following keyboard shortcuts to perform actions (such as select, delete), when the <code>mode</code> property is in use: <ul> <li>[SPACE] - Select an item (if <code>type</code> is 'Active') when <code>mode</code> is selection</li> <li>[DELETE] - Delete an item if <code>mode</code> property is <code>Delete</code></li> </ul>\n\n<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code> <br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/List.js\";</code> <br> <code>import \"@ui5/webcomponents/dist/StandardListItem.js\";</code> (for <code>ui5-li</code>) <br> <code>import \"@ui5/webcomponents/dist/CustomListItem.js\";</code> (for <code>ui5-li-custom</code>) <br> <code>import \"@ui5/webcomponents/dist/GroupHeaderListItem.js\";</code> (for <code>ui5-li-groupheader</code>)",
       "constructor": {
         "visibility": "public"
@@ -2950,7 +2941,7 @@
         {
           "name": "busyDelay",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
           "defaultValue": "1000"
         },
@@ -2965,7 +2956,7 @@
           "name": "growing",
           "visibility": "public",
           "since": "1.0.0-rc.13",
-          "type": "ListGrowingMode",
+          "type": "sap.ui.webcomponents.main.types.ListGrowingMode",
           "description": "Defines whether the component will have growing capability either by pressing a <code>More</code> button, or via user scroll. In both cases <code>load-more</code> event is fired. <br><br>\n\nAvailable options: <br><br> <code>Button</code> - Shows a <code>More</code> button at the bottom of the list, pressing of which triggers the <code>load-more</code> event. <br> <code>Scroll</code> - The <code>load-more</code> event is triggered when the user scrolls to the bottom of the list; <br> <code>None</code> (default) - The growing is off. <br><br>\n\n<b>Restrictions:</b> <code>growing=\"Scroll\"</code> is not supported for Internet Explorer, on IE the component will fallback to <code>growing=\"Button\"</code>.",
           "defaultValue": "\"None\""
         },
@@ -2986,7 +2977,7 @@
         {
           "name": "mode",
           "visibility": "public",
-          "type": "ListMode",
+          "type": "sap.ui.webcomponents.main.types.ListMode",
           "description": "Defines the mode of the component. <br><br> <b>Note:</b> Available options are <code>None</code>, <code>SingleSelect</code>, <code>SingleSelectBegin</code>, <code>SingleSelectEnd</code>, <code>MultiSelect</code>, and <code>Delete</code>.",
           "defaultValue": "\"None\""
         },
@@ -3000,7 +2991,7 @@
         {
           "name": "separators",
           "visibility": "public",
-          "type": "ListSeparators",
+          "type": "sap.ui.webcomponents.main.types.ListSeparators",
           "description": "Defines the item separator style that is used. <br><br> <b>Notes:</b> <ul> <li>Avalaible options are <code>All</code>, <code>Inner</code>, and <code>None</code>.</li> <li>When set to <code>None</code>, none of the items are separated by horizontal lines.</li> <li>When set to <code>Inner</code>, the first item doesn't have a top separator and the last item doesn't have a bottom separator.</li> </ul>",
           "defaultValue": "\"All\""
         }
@@ -3124,7 +3115,7 @@
       "module": "ListItem",
       "static": true,
       "visibility": "public",
-      "extends": "ListItemBase",
+      "extends": "sap.ui.webcomponents.main.ListItemBase",
       "description": "A class to serve as a base for the <code>StandardListItem</code> and <code>CustomListItem</code> classes.",
       "constructor": {
         "visibility": "public"
@@ -3133,12 +3124,20 @@
         {
           "name": "type",
           "visibility": "public",
-          "type": "ListItemType",
+          "type": "sap.ui.webcomponents.main.types.ListItemType",
           "description": "Defines the visual indication and behavior of the list items. Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>. <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover, while with type <code>Inactive</code> and <code>Detail</code> - will not.",
           "defaultValue": "\"Active\""
         }
       ],
-      "slots": [],
+      "slots": [
+        {
+          "name": "deleteButton",
+          "visibility": "public",
+          "since": "1.9.0",
+          "type": "sap.ui.webcomponents.main.IButton",
+          "description": "Defines the delete button, displayed in \"Delete\" mode. <b>Note:</b> While the slot allows custom buttons, to match design guidelines, please use the <code>ui5-button</code> component. <b>Note:</b> When the slot is not present, a built-in delete button will be displayed."
+        }
+      ],
       "events": [
         {
           "name": "detail-click",
@@ -3156,7 +3155,7 @@
       "abstract": true,
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "A class to serve as a foundation for the <code>ListItem</code> and <code>GroupHeaderListItem</code> classes.",
       "constructor": {
         "visibility": "public"
@@ -3191,7 +3190,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.3.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\n<code>ui5-menu</code> component represents a hierarchical menu structure.\n\n<h3>Usage</h3>\n\n<code>ui5-menu</code> contains <code>ui5-menu-item</code> components. An arbitrary hierarchy structure can be represented by recursively nesting menu items.\n\n<h3>Keyboard Handling</h3>\n\nThe <code>ui5-menu</code> provides advanced keyboard handling. The user can use the following keyboard shortcuts in order to navigate trough the tree: <ul> <li><code>Arrow Up</code> / <code>Arrow Down</code> - Navigates up and down the menu items that are currently visible.</li> <li><code>Arrow Right</code>, <code>Space</code> or <code>Enter</code> - Opens a sub-menu if there are menu items nested in the currently clicked menu item.</li> <li><code>Arrow Left</code> or <code>Escape</code> - Closes the currently opened sub-menu.</li> </ul> Note: if the text ditrection is set to Right-to-left (RTL), <code>Arrow Right</code> and <code>Arrow Left</code> functionality is swapped. <br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Menu.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -3264,7 +3263,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.3.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IMenuItem"
       ],
@@ -3312,7 +3311,7 @@
         {
           "name": "text",
           "visibility": "public",
-          "type": "String",
+          "type": "string",
           "description": "Defines the text of the tree item.",
           "defaultValue": "\"\""
         }
@@ -3337,7 +3336,7 @@
       "static": true,
       "visibility": "public",
       "since": "0.9.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-message-strip</code> component enables the embedding of app-related messages. It displays 4 designs of messages, each with corresponding semantic color and icon: Information, Positive, Warning and Negative. Each message can have a Close button, so that it can be removed from the UI, if needed.\n\n<h3>Usage</h3>\n\nFor the <code>ui5-message-strip</code> component, you can define whether it displays an icon in the beginning and a close button. Moreover, its size and background can be controlled with CSS.\n\n<h3>Keyboard Handling</h3>\n\n<h4>Fast Navigation</h4> This component provides a build in fast navigation group which can be used via <code>F6 / Shift + F6</code> or <code> Ctrl + Alt(Option) + Down / Ctrl + Alt(Option) + Up</code>. In order to use this functionality, you need to import the following module: <code>import \"@ui5/webcomponents-base/dist/features/F6Navigation.js\"</code> <br><br>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/MessageStrip\";</code>",
       "constructor": {
         "visibility": "public"
@@ -3347,7 +3346,7 @@
           "name": "design",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "MessageStripDesign",
+          "type": "sap.ui.webcomponents.main.types.MessageStripDesign",
           "description": "Defines the component type. <br><br> <b>Note:</b> Available options are <code>\"Information\"</code>, <code>\"Positive\"</code>, <code>\"Negative\"</code>, and <code>\"Warning\"</code>.",
           "defaultValue": "\"Information\""
         },
@@ -3398,7 +3397,7 @@
       "module": "MonthPicker",
       "static": true,
       "visibility": "public",
-      "extends": "CalendarPart",
+      "extends": "sap.ui.webcomponents.main.CalendarPart",
       "description": "Displays months which can be selected.",
       "constructor": {
         "visibility": "public"
@@ -3407,7 +3406,7 @@
         {
           "name": "selectedDates",
           "visibility": "public",
-          "type": "Array",
+          "type": "array",
           "description": "An array of UTC timestamps representing the selected date or dates depending on the capabilities of the picker component."
         }
       ],
@@ -3454,14 +3453,12 @@
       "basename": "MultiComboBox",
       "tagname": "ui5-multi-combobox",
       "appenddocs": "MultiComboBoxItem MultiComboBoxGroupItem",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "MultiComboBox.js",
       "module": "MultiComboBox",
       "static": true,
       "visibility": "public",
       "since": "0.11.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-multi-combobox</code> component consists of a list box with items and a text field allowing the user to either type a value directly into the text field, or choose from the list of existing items.\n\nThe drop-down list is used for selecting and filtering values, it enables users to select one or more options from a predefined list. The control provides an editable input field to filter the list, and a dropdown arrow to expand/collapse the list of available options. The options in the list have checkboxes that permit multi-selection. Entered values are displayed as tokens. <h3>Structure</h3> The <code>ui5-multi-combobox</code> consists of the following elements: <ul> <li> Tokenizer - a list of tokens with selected options. <li> Input field - displays the selected option/s as token/s. Users can type to filter the list. <li> Drop-down arrow - expands\\collapses the option list.</li> <li> Option list - the list of available options.</li> </ul> <h3>Keyboard Handling</h3>\n\nThe <code>ui5-multi-combobox</code> provides advanced keyboard handling.\n\n<h4>Picker</h4> If the <code>ui5-multi-combobox</code> is focused, you can open or close the drop-down by pressing <code>F4</code>, <code>ALT+UP</code> or <code>ALT+DOWN</code> keys. Once the drop-down is opened, you can use the <code>UP</code> and <code>DOWN</code> arrow keys to navigate through the available options and select one by pressing the <code>Space</code> or <code>Enter</code> keys. <br>\n\n<h4>Tokens</h4> <ul> <li> Left/Right arrow keys - moves the focus selection form the currently focused token to the previous/next one (if available). </li> <li> Delete - deletes the token and focuses the previous token. </li> <li> Backspace - deletes the token and focus the next token. </li> </ul>\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-multi-combobox</code> exposes the following CSS Shadow Parts: <ul> <li>token-{index} - Used to style each token(where <code>token-0</code> corresponds to the first item)</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/MultiComboBox\";</code>",
       "constructor": {
         "visibility": "public"
@@ -3546,6 +3543,7 @@
           "name": "value",
           "visibility": "public",
           "formEvents": "change,input",
+          "formProperty": "true",
           "type": "string",
           "description": "Defines the value of the component. <br><br> <b>Note:</b> The property is updated upon typing.",
           "defaultValue": "\"\""
@@ -3553,7 +3551,7 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -3622,7 +3620,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.4.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IMultiComboBoxItem"
       ],
@@ -3656,7 +3654,7 @@
       "module": "MultiComboBoxItem",
       "static": true,
       "visibility": "public",
-      "extends": "ComboBoxItem",
+      "extends": "sap.ui.webcomponents.main.ComboBoxItem",
       "implements": [
         "sap.ui.webcomponents.main.IMultiComboBoxItem"
       ],
@@ -3681,14 +3679,12 @@
       "basename": "MultiInput",
       "tagname": "ui5-multi-input",
       "appenddocs": "Token",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "MultiInput.js",
       "module": "MultiInput",
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.9",
-      "extends": "Input",
+      "extends": "sap.ui.webcomponents.main.Input",
       "description": "<h3>Overview</h3> A <code>ui5-multi-input</code> field allows the user to enter multiple values, which are displayed as <code>ui5-token</code>.\n\nUser can choose interaction for creating tokens. Fiori Guidelines say that user should create tokens when: <ul> <li>Type a value in the input and press enter or focus out the input field (<code>change</code> event is fired) <li>Select a value from the suggestion list</li> (<code>suggestion-item-select</code> event is fired) </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/MultiInput\";</code>",
       "constructor": {
         "visibility": "public"
@@ -3824,7 +3820,7 @@
         {
           "name": "accessibleRole",
           "visibility": "public",
-          "type": "PanelAccessibleRole",
+          "type": "sap.ui.webcomponents.main.types.PanelAccessibleRole",
           "description": "Sets the accessible ARIA role of the component. Depending on the usage, you can change the role from the default <code>Form</code> to <code>Region</code> or <code>Complementary</code>.",
           "defaultValue": "\"Form\""
         },
@@ -3845,7 +3841,7 @@
         {
           "name": "headerLevel",
           "visibility": "public",
-          "type": "TitleLevel",
+          "type": "sap.ui.webcomponents.main.types.TitleLevel",
           "description": "Defines the \"aria-level\" of component heading, set by the <code>headerText</code>. <br><br> Available options are: <code>\"H6\"</code> to <code>\"H1\"</code>.",
           "defaultValue": "\"H2\""
         },
@@ -3897,7 +3893,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "Popup",
+      "extends": "sap.ui.webcomponents.main.Popup",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-popover</code> component displays additional information for an object in a compact way and without leaving the page. The Popover can contain various UI elements, such as fields, tables, images, and charts. It can also include actions in the footer.\n\n<h3>Structure</h3>\n\nThe popover has three main areas: <ul> <li>Header (optional)</li> <li>Content</li> <li>Footer (optional)</li> </ul>\n\n<b>Note:</b> The <code>ui5-popover</code> is closed when the user clicks or taps outside the popover or selects an action within the popover. You can prevent this with the <code>modal</code> property.\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-popover</code> exposes the following CSS Shadow Parts: <ul> <li>header - Used to style the header of the component</li> <li>content - Used to style the content of the component</li> <li>footer - Used to style the footer of the component</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Popover.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -3936,7 +3932,7 @@
         {
           "name": "horizontalAlign",
           "visibility": "public",
-          "type": "PopoverHorizontalAlign",
+          "type": "sap.ui.webcomponents.main.types.PopoverHorizontalAlign",
           "description": "Determines the horizontal alignment of the component. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Stretch</code></li> </ul>",
           "defaultValue": "\"Center\""
         },
@@ -3951,21 +3947,21 @@
           "name": "opener",
           "visibility": "public",
           "since": "1.2.0",
-          "type": "DOMReference",
+          "type": "sap.ui.webcomponents.base.types.DOMReference",
           "description": "Defines the ID or DOM Reference of the element that the popover is shown at",
           "defaultValue": "\"\""
         },
         {
           "name": "placementType",
           "visibility": "public",
-          "type": "PopoverPlacementType",
+          "type": "sap.ui.webcomponents.main.types.PopoverPlacementType",
           "description": "Determines on which side the component is placed at. <br><br> Available options are: <ul> <li><code>Left</code></li> <li><code>Right</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> </ul>",
           "defaultValue": "\"Right\""
         },
         {
           "name": "verticalAlign",
           "visibility": "public",
-          "type": "PopoverVerticalAlign",
+          "type": "sap.ui.webcomponents.main.types.PopoverVerticalAlign",
           "description": "Determines the vertical alignment of the component. <br><br> Available options are: <ul> <li><code>Center</code></li> <li><code>Top</code></li> <li><code>Bottom</code></li> <li><code>Stretch</code></li> </ul>",
           "defaultValue": "\"Center\""
         }
@@ -4217,7 +4213,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> Shows the progress of a process in a graphical way. To indicate the progress, the inside of the component is filled with a color.\n\n<h3>Responsive Behavior</h3> You can change the size of the Progress Indicator by changing its <code>width</code> or <code>height</code> CSS properties.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ProgressIndicator.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -4246,14 +4242,14 @@
         {
           "name": "value",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Specifies the numerical value in percent for the length of the component.\n\n<b>Note:</b> If a value greater than 100 is provided, the percentValue is set to 100. In other cases of invalid value, percentValue is set to its default of 0.",
           "defaultValue": "0"
         },
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -4265,8 +4261,6 @@
       "name": "sap.ui.webcomponents.main.RadioButton",
       "basename": "RadioButton",
       "tagname": "ui5-radio-button",
-      "formProperties": "checked",
-      "formAssociated": "true",
       "resource": "RadioButton.js",
       "module": "RadioButton",
       "static": true,
@@ -4298,6 +4292,7 @@
           "visibility": "public",
           "since": "1.0.0-rc.15",
           "formEvents": "change",
+          "formProperty": "true",
           "type": "boolean",
           "description": "Defines whether the component is checked or not. <br><br> <b>Note:</b> The property value can be changed with user interaction, either by clicking/tapping on the component, or by using the Space or Enter key.",
           "defaultValue": "false"
@@ -4324,6 +4319,14 @@
           "defaultValue": "false"
         },
         {
+          "name": "required",
+          "visibility": "public",
+          "since": "1.9.0",
+          "type": "boolean",
+          "description": "Defines whether the component is required.",
+          "defaultValue": "false"
+        },
+        {
           "name": "text",
           "visibility": "public",
           "type": "string",
@@ -4340,14 +4343,14 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         },
         {
           "name": "wrappingType",
           "visibility": "public",
-          "type": "WrappingType",
+          "type": "sap.ui.webcomponents.main.types.WrappingType",
           "description": "Defines whether the component text wraps when there is not enough space. <br><br> Available options are: <ul> <li><code>None</code> - The text will be truncated with an ellipsis.</li> <li><code>Normal</code> - The text will wrap. The words will not be broken based on hyphenation.</li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -4372,7 +4375,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.11",
-      "extends": "SliderBase",
+      "extends": "sap.ui.webcomponents.main.SliderBase",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> Represents a numerical interval and two handles (grips) to select a sub-range within it. The purpose of the component to enable visual selection of sub-ranges within a given interval.\n\n<h3>Structure</h3> The most important properties of the Range Slider are: <ul> <li>min - The minimum value of the slider range.</li> <li>max - The maximum value of the slider range.</li> <li>value - The current value of the slider.</li> <li>step - Determines the increments in which the slider will move.</li> <li>showTooltip - Determines if a tooltip should be displayed above the handle.</li> <li>showTickmarks - Displays a visual divider between the step values.</li> <li>labelInterval - Labels some or all of the tickmarks with their values.</li> </ul> <h4>Notes:</h4> <ul> <li>The right and left handle can be moved individually and their positions could therefore switch.</li> <li>The entire range can be moved along the interval.</li> </ul> <h3>Usage</h3> The most common use case is to select and move sub-ranges on a continuous numerical scale.\n\n<h3>Responsive Behavior</h3> You can move the currently selected range by clicking on it and dragging it along the interval.\n\n<h3>Keyboard Handling</h3>\n\n<ul> <li><code>Left or Down Arrow</code> - Moves a component's handle or the entire selection one step to the left;</li> <li><code>Right or Up Arrow</code> - Moves a component's handle or the entire selection one step to the right;</li> <li><code>Left or Down Arrow + Ctrl/Cmd</code> - Moves a component's handle to the left or the entire range with step equal to 1/10th of the entire range;</li> <li><code>Right or Up Arrow + Ctrl/Cmd</code> - Moves a component's handle to the right or the entire range with step equal to 1/10th of the entire range;</li> <li><code>Plus</code> - Same as <code>Right or Up Arrow</code>;</li> <li><code>Minus</code> - Same as <code>Left or Down Arrow</code>;</li> <li><code>Home</code> - Moves the entire selection or the selected handle to the beginning of the component's range;</li> <li><code>End</code> - Moves the entire selection or the selected handle to the end of the component's range;</li> <li><code>Page Up</code> - Same as <code>Right or Up Arrow + Ctrl/Cmd</code>;</li> <li><code>Page Down</code> - Same as <code>Left or Down Arrow + Ctrl/Cmd</code>;</li> <li><code>Escape</code> - Resets the <code>startValue</code> and <code>endValue</code> properties to the values prior the component focusing;</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/RangeSlider\";</code>",
       "constructor": {
         "visibility": "public"
@@ -4381,14 +4384,18 @@
         {
           "name": "endValue",
           "visibility": "public",
-          "type": "Float",
+          "formEvents": "change,input",
+          "formProperty": "true",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines end point of a selection - position of a second handle on the slider. <br><br>",
           "defaultValue": "100"
         },
         {
           "name": "startValue",
           "visibility": "public",
-          "type": "Float",
+          "formEvents": "change,input",
+          "formProperty": "true",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines start point of a selection - position of a first handle on the slider. <br><br>",
           "defaultValue": "0"
         }
@@ -4412,7 +4419,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The Rating Indicator is used to display a specific number of icons that are used to rate an item. Additionally, it is also used to display the average and overall ratings.\n\n<h3>Usage</h3> The recommended number of icons is between 5 and 7.\n\n<h3>Responsive Behavior</h3> You can change the size of the Rating Indicator by changing its <code>font-size</code> CSS property. <br> Example: <code>&lt;ui5-rating-indicator style=\"font-size: 3rem;\">&lt;/ui5-rating-indicator></code>\n\n<h3>Keyboard Handling</h3> When the <code>ui5-rating-indicator</code> is focused, the user can change the rating with the following keyboard shortcuts: <br>\n\n<ul> <li>[RIGHT/UP] - Increases the value of the rating by one step. If the highest value is reached, does nothing</li> <li>[LEFT/DOWN] - Decreases the value of the rating by one step. If the lowest value is reached, does nothing.</li> <li>[HOME] - Sets the lowest value.</li> <li>[END] - Sets the highest value.</li> <li>[SPACE/ENTER/RETURN] - Increases the value of the rating by one step. If the highest value is reached, sets the rating to the lowest value.</li> <li>Any number - Changes value to the corresponding number. If typed number is larger than the number of values, sets the highest value.</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/RatingIndicator.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -4436,7 +4443,7 @@
           "name": "max",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "The number of displayed rating symbols.",
           "defaultValue": "5"
         },
@@ -4450,7 +4457,7 @@
         {
           "name": "value",
           "visibility": "public",
-          "type": "Float",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "The indicated value of the rating. <br><br> <b>Note:</b> If you set a number which is not round, it would be shown as follows: <ul> <li>1.0 - 1.2 -> 1</li> <li>1.3 - 1.7 -> 1.5</li> <li>1.8 - 1.9 -> 2</li> <ul>",
           "defaultValue": "0"
         }
@@ -4474,7 +4481,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "Popover",
+      "extends": "sap.ui.webcomponents.main.Popover",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-responsive-popover</code> acts as a Popover on desktop and tablet, while on phone it acts as a Dialog. The component improves tremendously the user experience on mobile.\n\n<h3>Usage</h3> Use it when you want to make sure that all the content is visible on any device.\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-responsive-popover</code> exposes the following CSS Shadow Parts: <ul> <li>header - Used to style the header of the component</li> <li>content - Used to style the content of the component</li> <li>footer - Used to style the footer of the component</li> </ul>",
       "constructor": {
         "visibility": "public"
@@ -4584,7 +4591,7 @@
       "module": "SegmentedButtonItem",
       "static": true,
       "visibility": "public",
-      "extends": "ToggleButton",
+      "extends": "sap.ui.webcomponents.main.ToggleButton",
       "implements": [
         "sap.ui.webcomponents.main.ISegmentedButtonItem"
       ],
@@ -4596,7 +4603,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "ButtonDesign",
+          "type": "sap.ui.webcomponents.main.types.ButtonDesign",
           "description": "<b>Note:</b> The property is inherited and not supported. If set, it won't take any effect.",
           "defaultValue": "\"Default\""
         },
@@ -4623,8 +4630,6 @@
       "basename": "Select",
       "tagname": "ui5-select",
       "appenddocs": "Option",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "Select.js",
       "module": "Select",
       "static": true,
@@ -4681,18 +4686,9 @@
           "description": "Currently selected <code>ui5-option</code> element."
         },
         {
-          "name": "value",
-          "readonly": "true",
-          "visibility": "public",
-          "since": "1.9.0",
-          "formEvents": "change",
-          "type": "String",
-          "description": "Currently selected value."
-        },
-        {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -4738,7 +4734,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.11",
-      "extends": "SliderBase",
+      "extends": "sap.ui.webcomponents.main.SliderBase",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The Slider component represents a numerical range and a handle (grip). The purpose of the component is to enable visual selection of a value in a continuous numerical range by moving an adjustable handle.\n\n<h3>Structure</h3> The most important properties of the Slider are: <ul> <li>min - The minimum value of the slider range.</li> <li>max - The maximum value of the slider range.</li> <li>value - The current value of the slider range.</li> <li>step - Determines the increments in which the slider will move.</li> <li>showTooltip - Determines if a tooltip should be displayed above the handle.</li> <li>showTickmarks - Displays a visual divider between the step values.</li> <li>labelInterval - Labels some or all of the tickmarks with their values.</li> </ul>\n\n<h3>Usage</h3> The most common use case is to select values on a continuous numerical scale (e.g. temperature, volume, etc. ).\n\n<h3>Responsive Behavior</h3> The <code>ui5-slider</code> component adjusts to the size of its parent container by recalculating and resizing the width of the control. You can move the slider handle in several different ways: <ul> <li>Drag and drop the handle to the desired value.</li> <li>Click/tap on the range bar to move the handle to that location.</li> </ul>\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-slider</code> exposes the following CSS Shadow Parts: <ul> <li>progress-container - Used to style the progress container(the horizontal bar which visually represents the range between the minimum and maximum value) of the <code>ui5-slider</code>.</li> <li>progress-bar - Used to style the progress bar, which shows the progress of the <code>ui5-slider</code>.</li> <li>handle - Used to style the handle of the <code>ui5-slider</code>.</li> </ul>\n\n<h3>Keyboard Handling</h3>\n\n<ul> <li><code>Left or Down Arrow</code> - Moves the handle one step to the left, effectively decreasing the component's value by <code>step</code> amount;</li> <li><code>Right or Up Arrow</code> - Moves the handle one step to the right, effectively increasing the component's value by <code>step</code> amount;</li> <li><code>Left or Down Arrow + Ctrl/Cmd</code> - Moves the handle to the left with step equal to 1/10th of the entire range, effectively decreasing the component's value by 1/10th of the range;</li> <li><code>Right or Up Arrow + Ctrl/Cmd</code> - Moves the handle to the right with step equal to 1/10th of the entire range, effectively increasing the component's value by 1/10th of the range;</li> <li><code>Plus</code> - Same as <code>Right or Up Arrow</code>;</li> <li><code>Minus</code> - Same as <code>Left or Down Arrow</code>;</li> <li><code>Home</code> - Moves the handle to the beginning of the range;</li> <li><code>End</code> - Moves the handle to the end of the range;</li> <li><code>Page Up</code> - Same as <code>Right or Up + Ctrl/Cmd</code>;</li> <li><code>Page Down</code> - Same as <code>Left or Down + Ctrl/Cmd</code>;</li> <li><code>Escape</code> - Resets the value property after interaction, to the position prior the component's focusing;</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Slider\";</code>",
       "constructor": {
         "visibility": "public"
@@ -4747,7 +4743,9 @@
         {
           "name": "value",
           "visibility": "public",
-          "type": "Float",
+          "formEvents": "change,input",
+          "formProperty": "true",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Current value of the slider",
           "defaultValue": "0"
         }
@@ -4786,21 +4784,21 @@
         {
           "name": "labelInterval",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Displays a label with a value on every N-th step. <br><br> <b>Note:</b> The step and tickmarks properties must be enabled. Example - if the step value is set to 2 and the label interval is also specified to 2 - then every second tickmark will be labelled, which means every 4th value number.",
           "defaultValue": "0"
         },
         {
           "name": "max",
           "visibility": "public",
-          "type": "Float",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines the maximum value of the slider.",
           "defaultValue": "100"
         },
         {
           "name": "min",
           "visibility": "public",
-          "type": "Float",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines the minimum value of the slider.",
           "defaultValue": "0"
         },
@@ -4821,7 +4819,7 @@
         {
           "name": "step",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the size of the slider's selection intervals (e.g. min = 0, max = 10, step = 5 would result in possible selection of the values 0, 5, 10). <br><br> <b>Note:</b> If set to 0 the slider handle movement is disabled. When negative number or value other than a number, the component fallbacks to its default value.",
           "defaultValue": "1"
         }
@@ -4927,7 +4925,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.1.0",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\n<code>ui5-split-button</code> enables users to trigger actions. It is constructed of two separate actions - default action and arrow action that can be activated by clicking or tapping, or by pressing certain keyboard keys - <code>Space</code> or <code>Enter</code> for default action, and <code>Arrow Down</code> or <code>Arrow Up</code> for arrow action.\n\n<h3>Usage</h3>\n\n<code>ui5-split-button</code> consists two separate buttons: <ul> <li>for the first one (default action) you can define some <code>text</code> or an <code>icon</code>, or both. Also, it is possible to define different icon for active state of this button - <code>activeIcon</code>.</li> <li>the second one (arrow action) contains only <code>slim-arrow-down</code> icon.</li> </ul> You can choose a <code>design</code> from a set of predefined types (the same as for ui5-button) that offer different styling to correspond to the triggered action. Both text and arrow actions have the same design. <br><br> You can set the <code>ui5-split-button</code> as enabled or disabled. Both parts of an enabled <code>ui5-split-button</code> can be pressed by clicking or tapping it, or by certain keys, which changes the style to provide visual feedback to the user that it is pressed or hovered over with the mouse cursor. A disabled <code>ui5-split-button</code> appears inactive and any of the two buttons cannot be pressed.\n\n<h3>Keyboard Handling</h3> <ul> <li><code>Space</code> or <code>Enter</code> - triggers the default action</li> <li><code>Shift</code> or <code>Escape</code> - if <code>Space</code> is pressed, releases the default action button without triggering the click event.</li> <li><code>Arrow Down</code>, <code>Arrow Up</code>, <code>Alt</code>+<code>Arrow Down</code>, <code>Alt</code>+<code>Arrow Up</code>, or <code>F4</code> - triggers the arrow action There are separate events that are fired on activating of <code>ui5-split-button</code> parts: <ul> <li><code>click</code> for the first button (default action)</li> <li><code>arrow-click</code> for the second button (arrow action)</li> </ul> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/SplitButton.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -4949,7 +4947,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "ButtonDesign",
+          "type": "sap.ui.webcomponents.main.types.ButtonDesign",
           "description": "Defines the component design.\n\n<br><br> <b>The available values are:</b>\n\n<ul> <li><code>Default</code></li> <li><code>Emphasized</code></li> <li><code>Positive</code></li> <li><code>Negative</code></li> <li><code>Transparent</code></li> <li><code>Attention</code></li> </ul>",
           "defaultValue": "\"Default\""
         },
@@ -4998,7 +4996,7 @@
       "module": "StandardListItem",
       "static": true,
       "visibility": "public",
-      "extends": "ListItem",
+      "extends": "sap.ui.webcomponents.main.ListItem",
       "implements": [
         "sap.ui.webcomponents.main.IListItem"
       ],
@@ -5026,7 +5024,7 @@
           "name": "additionalTextState",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the state of the <code>additionalText</code>. <br> Available options are: <code>\"None\"</code> (by default), <code>\"Success\"</code>, <code>\"Warning\"</code>, <code>\"Information\"</code> and <code>\"Error\"</code>.",
           "defaultValue": "\"None\""
         },
@@ -5076,7 +5074,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.13",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-step-input</code> consists of an input field and buttons with icons to increase/decrease the value with the predefined step. <br><br> The user can change the value of the component by pressing the increase/decrease buttons, by typing a number directly, by using the keyboard up/down and page up/down, or by using the mouse scroll wheel. Decimal values are supported.\n\n<h3>Usage</h3>\n\nThe default step is 1 but the app developer can set a different one.\n\nApp developers can set a maximum and minimum value for the <code>StepInput</code>. The increase/decrease button and the up/down keyboard navigation become disabled when the value reaches the max/min or a new value is entered from the input which is greater/less than the max/min. <br><br> <h4>When to use:</h4> <ul> <li>To adjust amounts, quantities, or other values quickly.</li> <li>To adjust values for a specific step.</li> </ul>\n\n<h4>When not to use:</h4> <ul> <li>To enter a static number (for example, postal code, phone number, or ID). In this case, use the regular <code>ui5-input</code> instead.</li> <li>To display a value that rarely needs to be adjusted and does not pertain to a particular step. In this case, use the regular <code>ui5-input</code> instead.</li> <li>To enter dates and times. In this case, use date/time related components instead.</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/StepInput.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -5107,13 +5105,13 @@
         {
           "name": "max",
           "visibility": "public",
-          "type": "Float",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines a maximum value of the component."
         },
         {
           "name": "min",
           "visibility": "public",
-          "type": "Float",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines a minimum value of the component."
         },
         {
@@ -5147,28 +5145,28 @@
         {
           "name": "step",
           "visibility": "public",
-          "type": "Float",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines a step of increasing/decreasing the value of the component.",
           "defaultValue": "1"
         },
         {
           "name": "value",
           "visibility": "public",
-          "type": "Float",
+          "type": "sap.ui.webcomponents.base.types.Float",
           "description": "Defines a value of the component.",
           "defaultValue": "0"
         },
         {
           "name": "valuePrecision",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Determines the number of digits after the decimal point of the component.",
           "defaultValue": "0"
         },
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -5199,7 +5197,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.15",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IInputSuggestionItem"
       ],
@@ -5233,7 +5231,7 @@
       "module": "SuggestionItem",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.IInputSuggestionItem"
       ],
@@ -5253,7 +5251,7 @@
           "name": "additionalTextState",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the state of the <code>additionalText</code>. <br><br> Available options are: <code>\"None\"</code> (by default), <code>\"Success\"</code>, <code>\"Information\"</code>, <code>\"Warning\"</code> and <code>\"Error\"</code>.",
           "defaultValue": "\"None\""
         },
@@ -5293,7 +5291,7 @@
           "name": "type",
           "visibility": "public",
           "since": "1.0.0-rc.8",
-          "type": "ListItemType",
+          "type": "sap.ui.webcomponents.main.types.ListItemType",
           "description": "Defines the visual indication and behavior of the item. Available options are <code>Active</code> (by default), <code>Inactive</code> and <code>Detail</code>. <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press and hover, while when <code>Inactive</code> or <code>Detail</code> - will not.",
           "defaultValue": "\"Active\""
         }
@@ -5305,8 +5303,6 @@
       "name": "sap.ui.webcomponents.main.Switch",
       "basename": "Switch",
       "tagname": "ui5-switch",
-      "formProperties": "checked",
-      "formAssociated": "true",
       "resource": "Switch.js",
       "module": "Switch",
       "static": true,
@@ -5337,6 +5333,7 @@
           "name": "checked",
           "visibility": "public",
           "formEvents": "change",
+          "formProperty": "true",
           "type": "boolean",
           "description": "Defines if the component is checked. <br><br> <b>Note:</b> The property can be changed with user interaction, either by cliking the component, or by pressing the <code>Enter</code> or <code>Space</code> key.",
           "defaultValue": "false"
@@ -5344,7 +5341,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "SwitchDesign",
+          "type": "sap.ui.webcomponents.main.types.SwitchDesign",
           "description": "Defines the component design. <br><br> <b>Note:</b> If <code>Graphical</code> type is set, positive and negative icons will replace the <code>textOn</code> and <code>textOff</code>.",
           "defaultValue": "\"Textual\""
         },
@@ -5368,6 +5365,13 @@
           "type": "string",
           "description": "Defines the text, displayed when the component is checked.\n\n<br><br> <b>Note:</b> We recommend using short texts, up to 3 letters (larger texts would be cut off). <b>Note:</b> This property will have no effect if the theme is set to <code>sap_horizon</code>.",
           "defaultValue": "\"\""
+        },
+        {
+          "name": "tooltip",
+          "visibility": "public",
+          "since": "1.9.0",
+          "type": "string",
+          "description": "Defines the tooltip of the component. <br> <b>Note:</b> If applicable an external label reference should always be the preferred option to provide context to the <code>ui5-switch</code> component over a tooltip."
         }
       ],
       "slots": [],
@@ -5388,7 +5392,7 @@
       "module": "Tab",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.ITab"
       ],
@@ -5407,7 +5411,7 @@
         {
           "name": "design",
           "visibility": "public",
-          "type": "SemanticColor",
+          "type": "sap.ui.webcomponents.main.types.SemanticColor",
           "description": "Defines the component's design color. <br><br> The design is applied to: <ul> <li>the component icon</li> <li>the <code>text</code> when the component overflows</li> <li>the tab selection line</li> </ul>\n\n<br><br> Available designs are: <code>\"Default\"</code>, <code>\"Neutral\"</code>, <code>\"Positive\"</code>, <code>\"Critical\"</code> and <code>\"Negative\"</code>.\n\n<br><br> <b>Note:</b> The design depends on the current theme.",
           "defaultValue": "\"Default\""
         },
@@ -5514,7 +5518,7 @@
         {
           "name": "tabLayout",
           "visibility": "public",
-          "type": "TabLayout",
+          "type": "sap.ui.webcomponents.main.types.TabLayout",
           "description": "Defines the alignment of the content and the <code>additionalText</code> of a tab.\n\n<br><br> <b>Note:</b> The content and the <code>additionalText</code> would be displayed vertically by defualt, but when set to <code>Inline</code>, they would be displayed horizontally.\n\n<br><br> Available options are: <ul> <li><code>Standard</code></li> <li><code>Inline</code></li> </ul>",
           "defaultValue": "\"Standard\""
         },
@@ -5522,7 +5526,7 @@
           "name": "tabsOverflowMode",
           "visibility": "public",
           "since": "1.1.0",
-          "type": "TabsOverflowMode",
+          "type": "sap.ui.webcomponents.main.types.TabsOverflowMode",
           "description": "Defines the overflow mode of the tab strip. If you have a large number of tabs, only the tabs that can fit on screen will be visible. All other tabs that can 't fit on the screen are available in an overflow tab \"More\".\n\n<br><br> <b>Note:</b> Only one overflow at the end would be displayed by default, but when set to <code>StartAndEnd</code>, there will be two overflows on both ends, and tab order will not change on tab selection.\n\n<br><br> Available options are: <ul> <li><code>End</code></li> <li><code>StartAndEnd</code></li> </ul>",
           "defaultValue": "\"End\""
         }
@@ -5613,7 +5617,7 @@
         {
           "name": "busyDelay",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the delay in milliseconds, after which the busy indicator will show up for this component.",
           "defaultValue": "1000"
         },
@@ -5621,7 +5625,7 @@
           "name": "growing",
           "visibility": "public",
           "since": "1.0.0-rc.12",
-          "type": "TableGrowingMode",
+          "type": "sap.ui.webcomponents.main.types.TableGrowingMode",
           "description": "Defines whether the table will have growing capability either by pressing a <code>More</code> button, or via user scroll. In both cases <code>load-more</code> event is fired. <br><br>\n\nAvailable options: <br><br> <code>Button</code> - Shows a <code>More</code> button at the bottom of the table, pressing of which triggers the <code>load-more</code> event. <br> <code>Scroll</code> - The <code>load-more</code> event is triggered when the user scrolls to the bottom of the table; <br> <code>None</code> (default) - The growing is off. <br><br>\n\n<b>Restrictions:</b> <code>growing=\"Scroll\"</code> is not supported for Internet Explorer, and the component will fallback to <code>growing=\"Button\"</code>.",
           "defaultValue": "\"None\""
         },
@@ -5653,7 +5657,7 @@
           "name": "mode",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "TableMode",
+          "type": "sap.ui.webcomponents.main.types.TableMode",
           "description": "Defines the mode of the component. <br><br> Available options are: <ul> <li><code>MultiSelect</code></li> <li><code>SingleSelect</code></li> <li><code>None</code></li> <ul>",
           "defaultValue": "\"None\""
         },
@@ -5794,7 +5798,7 @@
         {
           "name": "minWidth",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the minimum table width required to display this column. By default it is always displayed. <br><br> The responsive behavior of the <code>ui5-table</code> is determined by this property. As an example, by setting <code>minWidth</code> property to <code>400</code> sets the minimum width to 400 pixels, and shows this column on tablet (and desktop) but hides it on mobile. <br> For further responsive design options, see <code>demandPopin</code> property.",
           "defaultValue": "Infinity"
         },
@@ -5862,6 +5866,14 @@
       },
       "properties": [
         {
+          "name": "navigated",
+          "visibility": "public",
+          "since": "1.9.0",
+          "type": "boolean",
+          "description": "Indicates if the table row is navigated.",
+          "defaultValue": "false"
+        },
+        {
           "name": "selected",
           "visibility": "public",
           "since": "1.0.0-rc.15",
@@ -5873,7 +5885,7 @@
           "name": "type",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "TableRowType",
+          "type": "sap.ui.webcomponents.main.types.TableRowType",
           "description": "Defines the visual indication and behavior of the component. <br><br> Available options are: <ul> <li><code>Active</code></li> <li><code>Inactive</code></li> </ul> <br><br> <b>Note:</b> When set to <code>Active</code>, the item will provide visual response upon press, while with type <code>Inactive</code> - will not.",
           "defaultValue": "\"Inactive\""
         }
@@ -5897,7 +5909,7 @@
       "module": "TabSeparator",
       "static": true,
       "visibility": "public",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.ITab"
       ],
@@ -5960,14 +5972,14 @@
         {
           "name": "growingMaxLines",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the maximum number of lines that the component can grow.",
           "defaultValue": "0"
         },
         {
           "name": "maxlength",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the maximum number of characters that the <code>value</code> can have.",
           "defaultValue": "null"
         },
@@ -6003,7 +6015,7 @@
         {
           "name": "rows",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the number of visible text lines for the component. <br><br> <b>Notes:</b> <ul> <li>If the <code>growing</code> property is enabled, this property defines the minimum rows to be displayed in the textarea.</li> <li>The CSS <code>height</code> property wins over the <code>rows</code> property, if both are set.</li> </ul>",
           "defaultValue": "0"
         },
@@ -6025,7 +6037,7 @@
           "name": "valueState",
           "visibility": "public",
           "since": "1.0.0-rc.7",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the component. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul> <br><br> <b>Note:</b> If <code>maxlength</code> property is set, the component turns into \"Warning\" state once the characters exceeds the limit. In this case, only the \"Error\" state is considered and can be applied.",
           "defaultValue": "\"None\""
         }
@@ -6058,14 +6070,12 @@
       "name": "sap.ui.webcomponents.main.TimePicker",
       "basename": "TimePicker",
       "tagname": "ui5-time-picker",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "TimePicker.js",
       "module": "TimePicker",
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "TimePickerBase",
+      "extends": "sap.ui.webcomponents.main.TimePickerBase",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-time-picker</code> component provides an input field with assigned sliders which are opened on user action. The <code>ui5-time-picker</code> allows users to select a localized time using touch, mouse, or keyboard input. It consists of two parts: the time input field and the sliders.\n\n<h3>Usage</h3> The user can enter a time by: <ul> <li>Using the sliders that are displayed in a popup</li> <li>Typing it in directly in the input field</li> </ul> <br><br> When the user makes an entry and chooses the enter key, the sliders shows the corresponding time. When the user directly triggers the sliders display, the actual time is displayed. For the <code>ui5-time-picker</code>\n\n<h3>Formatting</h3>\n\nIf a time is entered by typing it into the input field, it must fit to the used time format. <br><br> Supported format options are pattern-based on Unicode LDML Date Format notation. For more information, see <ui5-link target=\"_blank\" href=\"http://unicode.org/reports/tr35/#Date_Field_Symbol_Table\" class=\"api-table-content-cell-link\">UTS #35: Unicode Locale Data Markup Language</ui5-link>. <br><br> For example, if the <code>format-pattern</code> is \"HH:mm:ss\", a valid value string is \"11:42:35\" and the same is displayed in the input.\n\n<h3>Keyboard handling</h3> [F4], [ALT]+[UP], [ALT]+[DOWN] Open/Close picker dialog and move focus to it. <br> When closed: <ul> <li>[PAGEUP] - Increments hours by 1. If 12 am is reached, increment hours to 1 pm and vice versa.</li> <li>[PAGEDOWN] - Decrements the corresponding field by 1. If 1 pm is reached, decrement hours to 12 am and vice versa.</li> <li>[SHIFT]+[PAGEUP] Increments minutes by 1.</li> <li>[SHIFT]+ [PAGEDOWN] Decrements minutes by 1.</li> <li>[SHIFT]+[CTRL]+[PAGEUP] Increments seconds by 1.</li> <li>[SHIFT]+[CTRL]+ [PAGEDOWN] Decrements seconds by 1.</li> </ul> When opened: <ul> <li>[UP] If focus is on one of the selection lists: Select the value which is above the current value. If the first value is selected, select the last value in the list. Exception: AM/ PM List: stay on the first item.</li> <li>[DOWN] If focus is on one of the selection lists: Select the value which is below the current value. If the last value is selected, select the first value in the list. Exception: AM/ PM List: stay on the last item.</li> <li>[LEFT] If focus is on one of the selection lists: Move focus to the selection list which is left of the current selection list. If focus is at the first selection list, move focus to the last selection list.</li> <li>[RIGHT] If focus is on one of the selection lists: Move focus to the selection list which is right of the current selection list. When focus is at the last selection list, move focus to the first selection list.</li> <li>[PAGEUP] If focus is on one of the selection lists: Move focus to the first entry of this list.</li> <li>[PAGEDOWN] If focus is on one of the selection lists: Move focus to the last entry of this list.</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/TimePicker.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -6085,14 +6095,12 @@
       "kind": "class",
       "name": "sap.ui.webcomponents.main.TimePickerBase",
       "basename": "TimePickerBase",
-      "formProperties": "value",
-      "formAssociated": "true",
       "resource": "TimePickerBase.js",
       "module": "TimePickerBase",
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "constructor": {
         "visibility": "public"
       },
@@ -6148,6 +6156,7 @@
           "name": "value",
           "visibility": "public",
           "formEvents": "change,input",
+          "formProperty": "true",
           "type": "string",
           "description": "Defines a formatted time value.",
           "defaultValue": "undefined"
@@ -6155,7 +6164,7 @@
         {
           "name": "valueState",
           "visibility": "public",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the value state of the <code>ui5-time-picker</code>. <br><br> Available options are: <ul> <li><code>None</code></li> <li><code>Error</code></li> <li><code>Warning</code></li> <li><code>Success</code></li> <li><code>Information</code></li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -6256,14 +6265,14 @@
         {
           "name": "level",
           "visibility": "public",
-          "type": "TitleLevel",
+          "type": "sap.ui.webcomponents.main.types.TitleLevel",
           "description": "Defines the component level. Available options are: <code>\"H6\"</code> to <code>\"H1\"</code>.",
           "defaultValue": "\"H2\""
         },
         {
           "name": "wrappingType",
           "visibility": "public",
-          "type": "WrappingType",
+          "type": "sap.ui.webcomponents.main.types.WrappingType",
           "description": "Defines how the text of a component will be displayed when there is not enough space. Available options are: <ul> <li><code>None</code> - The text will be truncated with an ellipsis.</li> <li><code>Normal</code> - The text will wrap. The words will not be broken based on hyphenation.</li> </ul>",
           "defaultValue": "\"None\""
         }
@@ -6287,7 +6296,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-toast</code> is a small, non-disruptive popup for success or information messages that disappears automatically after a few seconds.\n\n<h3>Usage</h3>\n\n<h4>When to use:</h4> <ul> <li>You want to display a short success or information message.</li> <li>You do not want to interrupt users while they are performing an action.</li> <li>You want to confirm a successful action.</li> </ul> <h4>When not to use:</h4> <ul> <li>You want to display error or warning message.</li> <li>You want to interrupt users while they are performing an action.</li> <li>You want to make sure that users read the message before they leave the page.</li> <li>You want users to be able to copy some part of the message text.</li> </ul>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/Toast\";</code>",
       "constructor": {
         "visibility": "public"
@@ -6296,14 +6305,14 @@
         {
           "name": "duration",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the duration in milliseconds for which component remains on the screen before it's automatically closed. <br><br> <b>Note:</b> The minimum supported value is <code>500</code> ms and even if a lower value is set, the duration would remain <code>500</code> ms.",
           "defaultValue": "3000"
         },
         {
           "name": "placement",
           "visibility": "public",
-          "type": "ToastPlacement",
+          "type": "sap.ui.webcomponents.main.types.ToastPlacement",
           "description": "Defines the placement of the component. <br><br> Available options are: <ul> <li><code>TopStart</code></li> <li><code>TopCenter</code></li> <li><code>TopEnd</code></li> <li><code>MiddleStart</code></li> <li><code>MiddleCenter</code></li> <li><code>MiddleEnd</code></li> <li><code>BottomStart</code></li> <li><code>BottomCenter</code></li> <li><code>BottomEnd</code></li> </ul>",
           "defaultValue": "\"BottomCenter\""
         }
@@ -6333,7 +6342,7 @@
       "module": "ToggleButton",
       "static": true,
       "visibility": "public",
-      "extends": "Button",
+      "extends": "sap.ui.webcomponents.main.Button",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\nThe <code>ui5-toggle-button</code> component is an enhanced <code>ui5-button</code> that can be toggled between pressed and normal states. Users can use the <code>ui5-toggle-button</code> as a switch to turn a setting on or off. It can also be used to represent an independent choice similar to a check box. <br><br> Clicking or tapping on a <code>ui5-toggle-button</code> changes its state to <code>pressed</code>. The button returns to its initial state when the user clicks or taps on it again. By applying additional custom CSS-styling classes, apps can give a different style to any <code>ui5-toggle-button</code>.\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/ToggleButton\";</code>",
       "constructor": {
         "visibility": "public"
@@ -6416,7 +6425,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3> The <code>ui5-tree</code> component provides a tree structure for displaying data in a hierarchy.\n\n<h3>Usage</h3>\n\n<h4>When to use:</h4> <ul> <li>To display hierarchically structured items.</li> <li>To select one or more items out of a set of hierarchically structured items.</li> </ul>\n\n<h4>When not to use:</h4> <ul> <li>To display items not hierarchically strcutured. In this case, use the List component.</li> <li>To select one item from a very small number of non-hierarchical items. Select or ComboBox might be more appropriate.</li> <li>The hierarchy turns out to have only two levels. In this case, use List with group items.</li> </ul>\n\n<h3>Keyboard Handling</h3>\n\nThe <code>ui5-tree</code> provides advanced keyboard handling. The user can use the following keyboard shortcuts in order to navigate trough the tree: <ul> <li>[UP/DOWN] - Navigates up and down the tree items that are currently visible.</li> <li>[RIGHT] - Drills down the tree by expanding the tree nodes.</li> <li>[LEFT] - Goes up the tree and collapses the tree nodes.</li> </ul> <br>\n\nThe user can use the following keyboard shortcuts to perform selection, when the <code>mode</code> property is in use: <ul> <li>[SPACE] - Selects the currently focused item upon keyup.</li> <li>[ENTER] - Selects the currently focused item upon keydown.</li> </ul>\n\n<h3>ES6 Module Import</h3> <code>import \"@ui5/webcomponents/dist/Tree.js\";</code> <br> <code>import \"@ui5/webcomponents/dist/TreeItem.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -6468,7 +6477,7 @@
         {
           "name": "mode",
           "visibility": "public",
-          "type": "ListMode",
+          "type": "sap.ui.webcomponents.main.types.ListMode",
           "description": "Defines the mode of the component. Since the tree uses a <code>ui5-list</code> to display its structure, the tree modes are exactly the same as the list modes, and are all applicable.\n\n<br><br> <b>Note:</b>\n\n<ul> <li><code>None</code></li> <li><code>SingleSelect</code></li> <li><code>SingleSelectBegin</code></li> <li><code>SingleSelectEnd</code></li> <li><code>MultiSelect</code></li> <li><code>Delete</code></li> </ul>",
           "defaultValue": "\"None\""
         },
@@ -6622,7 +6631,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "implements": [
         "sap.ui.webcomponents.main.ITreeItem"
       ],
@@ -6649,7 +6658,7 @@
           "name": "additionalTextState",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the state of the <code>additionalText</code>. <br> Available options are: <code>\"None\"</code> (by default), <code>\"Success\"</code>, <code>\"Warning\"</code>, <code>\"Information\"</code> and <code>\"Error\"</code>.",
           "defaultValue": "\"None\""
         },
@@ -6724,7 +6733,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.8",
-      "extends": "ListItem",
+      "extends": "sap.ui.webcomponents.main.ListItem",
       "description": "The <code>ui5-li-tree</code> represents a node in a tree structure, shown as a <code>ui5-list</code>. <br> <i>Note:</i> Do not use <code>ui5-li-tree</code> directly in your apps. Use <code>ui5-tree-item</code> instead, as it can be nested inside a <code>ui5-tree</code>. On the other hand, <code>ui5-li-tree</code> can only be slotted inside a <code>ui5-list</code>, being a list item. It may be useful if you want to build a custom tree component, for example.\n\n<h3>CSS Shadow Parts</h3>\n\n<ui5-link target=\"_blank\" href=\"https://developer.mozilla.org/en-US/docs/Web/CSS/::part\">CSS Shadow Parts</ui5-link> allow developers to style elements inside the Shadow DOM. <br> The <code>ui5-li-tree</code> exposes the following CSS Shadow Parts: <ul> <li>title - Used to style the title of the tree list item</li> <li>additionalText - Used to style the additionalText of the tree list item</li> <li>icon - Used to style the icon of the tree list item</li> </ul>",
       "constructor": {
         "visibility": "public"
@@ -6762,7 +6771,7 @@
           "name": "additionalTextState",
           "visibility": "public",
           "since": "1.0.0-rc.15",
-          "type": "ValueState",
+          "type": "sap.ui.webcomponents.base.types.ValueState",
           "description": "Defines the state of the <code>additionalText</code>. <br> Available options are: <code>\"None\"</code> (by default), <code>\"Success\"</code>, <code>\"Warning\"</code>, <code>\"Information\"</code> and <code>\"Error\"</code>.",
           "defaultValue": "\"None\""
         },
@@ -6783,7 +6792,7 @@
         {
           "name": "level",
           "visibility": "public",
-          "type": "Integer",
+          "type": "sap.ui.webcomponents.base.types.Integer",
           "description": "Defines the indentation of the tree list item. Use level 1 for tree list items, representing top-level tree nodes.",
           "defaultValue": "1"
         },
@@ -8188,7 +8197,7 @@
       "static": true,
       "visibility": "public",
       "since": "1.0.0-rc.6",
-      "extends": "UI5Element",
+      "extends": "sap.ui.webcomponents.base.UI5Element",
       "description": "<h3 class=\"comment-api-title\">Overview</h3>\n\n<h3>Usage</h3>\n\n<h3>ES6 Module Import</h3>\n\n<code>import \"@ui5/webcomponents/dist/WheelSlider.js\";</code>",
       "constructor": {
         "visibility": "public"
@@ -8241,7 +8250,7 @@
       "module": "YearPicker",
       "static": true,
       "visibility": "public",
-      "extends": "CalendarPart",
+      "extends": "sap.ui.webcomponents.main.CalendarPart",
       "description": "Displays years which can be selected.",
       "constructor": {
         "visibility": "public"
@@ -8250,7 +8259,7 @@
         {
           "name": "selectedDates",
           "visibility": "public",
-          "type": "Array",
+          "type": "array",
           "description": "An array of UTC timestamps representing the selected date or dates depending on the capabilities of the picker component."
         }
       ],

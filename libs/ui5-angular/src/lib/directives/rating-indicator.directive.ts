@@ -9,9 +9,9 @@ import '@ui5/webcomponents/dist/RatingIndicator.js';
 interface RatingIndicatorElement {
   accessibleName: string;
   disabled: BooleanInputType;
-  max: number;
+  max: any;
   readonly: BooleanInputType;
-  value: number;
+  value: any;
 
   // Slots
 }

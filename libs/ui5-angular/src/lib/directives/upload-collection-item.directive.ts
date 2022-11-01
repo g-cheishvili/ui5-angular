@@ -13,7 +13,7 @@ interface UploadCollectionItemElement {
   fileNameClickable: BooleanInputType;
   hideRetryButton: BooleanInputType;
   hideTerminateButton: BooleanInputType;
-  progress: number;
+  progress: any;
   uploadState: 'Complete' | 'Error' | 'Ready' | 'Uploading';
 
   // Slots

@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { ButtonDirective } from './button.directive';
+
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
 
@@ -7,11 +9,12 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/CustomListItem.js';
 interface CustomListItemElement {
-  accessibleName: string;
-  type: 'Active' | 'Detail' | 'Inactive';
   selected: BooleanInputType;
+  type: 'Active' | 'Detail' | 'Inactive';
+  accessibleName: string;
 
   // Slots
+  deleteButton: ButtonDirective['element'];
 }
 
 interface OutputTypes {
@@ -23,13 +26,11 @@ interface OutputTypes {
 })
 export class CustomListItemDirective {
   @Input()
-  set accessibleName(val: CustomListItemElement['accessibleName']) {
-    this.elementRef.nativeElement.accessibleName = val;
+  set selected(val: CustomListItemElement['selected']) {
+    this.elementRef.nativeElement.selected = booleanInput(val);
   }
-  get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as CustomListItemElement['accessibleName'];
+  get selected() {
+    return this.elementRef.nativeElement.hasAttribute('selected');
   }
   @Input()
   set type(val: CustomListItemElement['type']) {
@@ -41,11 +42,13 @@ export class CustomListItemDirective {
     ) as unknown as CustomListItemElement['type'];
   }
   @Input()
-  set selected(val: CustomListItemElement['selected']) {
-    this.elementRef.nativeElement.selected = booleanInput(val);
+  set accessibleName(val: CustomListItemElement['accessibleName']) {
+    this.elementRef.nativeElement.accessibleName = val;
   }
-  get selected() {
-    return this.elementRef.nativeElement.hasAttribute('selected');
+  get accessibleName() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name'
+    ) as unknown as CustomListItemElement['accessibleName'];
   }
 
   @Output('detail-click') detailClick: Observable<
@@ -57,5 +60,9 @@ export class CustomListItemDirective {
 
   get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
+  }
+
+  get deleteButton(): CustomListItemElement['deleteButton'] {
+    return this.elementRef.nativeElement.deleteButton;
   }
 }

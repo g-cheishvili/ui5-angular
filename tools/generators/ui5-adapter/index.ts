@@ -1,5 +1,5 @@
 import {formatFiles, generateFiles, names, Tree} from '@nrwl/devkit';
-import {rmdirSync} from "fs";
+import {existsSync, rmSync} from "fs";
 import {indexApiJson} from "./index-api-json";
 import {getComponents} from "./get-components";
 
@@ -16,24 +16,26 @@ const directiveImport = (ui5ClassName: Record<string, string> | string, base: st
 }
 
 export default async function (tree: Tree) {
-  rmdirSync('libs/ui5-angular/src', {recursive: true});
+  if (existsSync('libs/ui5-angular/src')) {
+    rmSync('libs/ui5-angular/src', {recursive: true});
+  }
   const directives = [];
   for (const component of components) {
     const namings = component.componentNames;
-    if (component.formData.length > 1) {
-      console.warn('multiple form data was provided');
-    }
-    const formData = component.formData[0];
+
+    const formData = component.formData;
+
     if (formData) {
-      const symbol = symbols[component.baseName];
-      if (component.selector === 'ui5-daterange-picker') {
-        debugger;
-      }
       generateFiles(tree, `${__dirname}/files/cva`, `libs/ui5-angular/src/lib/cvas`, {
         ...namings,
         selector: component.selector,
-        input: formData.input,
-        events: formData.events,
+        formData,
+        events: Object.values(formData.reduce((acc, next) => {
+          next.events.forEach(e => {
+            acc[e.name] = e;
+          });
+          return acc;
+        }, {}))
       });
       directives.push(directiveImport(namings, 'cva'));
     }
@@ -66,6 +68,7 @@ export default async function (tree: Tree) {
   generateFiles(tree, `${__dirname}/files/module`, 'libs/ui5-angular/src/lib', {imports: directives})
   generateFiles(tree, `${__dirname}/files/other`, 'libs/ui5-angular/src', {imports: directives});
   await formatFiles(tree);
+
   return () => {
   };
 }

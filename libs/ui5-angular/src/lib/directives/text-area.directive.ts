@@ -11,16 +11,16 @@ interface TextAreaElement {
   accessibleNameRef: string;
   disabled: BooleanInputType;
   growing: BooleanInputType;
-  growingMaxLines: number;
-  maxlength: number;
+  growingMaxLines: any;
+  maxlength: any;
   name: string;
   placeholder: string;
   readonly: BooleanInputType;
   required: BooleanInputType;
-  rows: number;
+  rows: any;
   showExceededText: BooleanInputType;
   value: string;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
 
   // Slots
   valueStateMessage: Array<HTMLElement>;

@@ -12,18 +12,18 @@ interface InputElement {
   accessibleName: string;
   accessibleNameRef: string;
   disabled: BooleanInputType;
-  maxlength: number;
+  maxlength: any;
   name: string;
   noTypeahead: BooleanInputType;
   placeholder: string;
-  previewItem: any;
+  previewItem: SuggestionGroupItemDirective | SuggestionItemDirective;
   readonly: BooleanInputType;
   required: BooleanInputType;
   showClearIcon: BooleanInputType;
   showSuggestions: BooleanInputType;
   type: 'Email' | 'Number' | 'Password' | 'Tel' | 'Text' | 'URL';
   value: string;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
 
   // Slots
   icon: Array<IconDirective['element']>;

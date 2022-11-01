@@ -9,43 +9,29 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListGroupItem.js';
 interface NotificationListGroupItemElement {
-  collapsed: BooleanInputType;
-  showCounter: BooleanInputType;
   busy: BooleanInputType;
-  busyDelay: number;
+  busyDelay: any;
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: BooleanInputType;
   showClose: BooleanInputType;
   titleText: string;
+  collapsed: BooleanInputType;
+  showCounter: BooleanInputType;
 
   // Slots
   actions: Array<NotificationActionDirective['element']>;
 }
 
 interface OutputTypes {
-  toggle: void;
-
   close: void;
+
+  toggle: void;
 }
 
 @Directive({
   selector: 'ui5-li-notification-group',
 })
 export class NotificationListGroupItemDirective {
-  @Input()
-  set collapsed(val: NotificationListGroupItemElement['collapsed']) {
-    this.elementRef.nativeElement.collapsed = booleanInput(val);
-  }
-  get collapsed() {
-    return this.elementRef.nativeElement.hasAttribute('collapsed');
-  }
-  @Input()
-  set showCounter(val: NotificationListGroupItemElement['showCounter']) {
-    this.elementRef.nativeElement.showCounter = booleanInput(val);
-  }
-  get showCounter() {
-    return this.elementRef.nativeElement.hasAttribute('show-counter');
-  }
   @Input()
   set busy(val: NotificationListGroupItemElement['busy']) {
     this.elementRef.nativeElement.busy = booleanInput(val);
@@ -94,10 +80,24 @@ export class NotificationListGroupItemDirective {
       'title-text'
     ) as unknown as NotificationListGroupItemElement['titleText'];
   }
+  @Input()
+  set collapsed(val: NotificationListGroupItemElement['collapsed']) {
+    this.elementRef.nativeElement.collapsed = booleanInput(val);
+  }
+  get collapsed() {
+    return this.elementRef.nativeElement.hasAttribute('collapsed');
+  }
+  @Input()
+  set showCounter(val: NotificationListGroupItemElement['showCounter']) {
+    this.elementRef.nativeElement.showCounter = booleanInput(val);
+  }
+  get showCounter() {
+    return this.elementRef.nativeElement.hasAttribute('show-counter');
+  }
 
-  @Output() toggle: Observable<CustomEvent<OutputTypes['toggle']>> =
-    new PlaceholderOutput();
   @Output() close: Observable<CustomEvent<OutputTypes['close']>> =
+    new PlaceholderOutput();
+  @Output() toggle: Observable<CustomEvent<OutputTypes['toggle']>> =
     new PlaceholderOutput();
   constructor(
     private elementRef: ElementRef<

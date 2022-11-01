@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 import '@ui5/webcomponents/dist/SegmentedButton.js';
 interface SegmentedButtonElement {
   accessibleName: string;
-  selectedItem: any;
+  selectedItem: SegmentedButtonItemDirective;
 
   // Slots
 }

@@ -7,13 +7,23 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/Calendar.js';
 interface CalendarElement {
-  hideWeekNumbers: BooleanInputType;
-  selectionMode: 'Multiple' | 'Range' | 'Single';
   formatPattern: string;
   maxDate: string;
   minDate: string;
-  primaryCalendarType: any;
-  secondaryCalendarType: any;
+  primaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  secondaryCalendarType:
+    | 'Buddhist'
+    | 'Gregorian'
+    | 'Islamic'
+    | 'Japanese'
+    | 'Persian';
+  hideWeekNumbers: BooleanInputType;
+  selectionMode: 'Multiple' | 'Range' | 'Single';
 
   // Slots
 }
@@ -26,22 +36,6 @@ interface OutputTypes {
   selector: 'ui5-calendar',
 })
 export class CalendarDirective {
-  @Input()
-  set hideWeekNumbers(val: CalendarElement['hideWeekNumbers']) {
-    this.elementRef.nativeElement.hideWeekNumbers = booleanInput(val);
-  }
-  get hideWeekNumbers() {
-    return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
-  }
-  @Input()
-  set selectionMode(val: CalendarElement['selectionMode']) {
-    this.elementRef.nativeElement.selectionMode = val;
-  }
-  get selectionMode() {
-    return this.elementRef.nativeElement.getAttribute(
-      'selection-mode'
-    ) as unknown as CalendarElement['selectionMode'];
-  }
   @Input()
   set formatPattern(val: CalendarElement['formatPattern']) {
     this.elementRef.nativeElement.formatPattern = val;
@@ -86,6 +80,22 @@ export class CalendarDirective {
     return this.elementRef.nativeElement.getAttribute(
       'secondary-calendar-type'
     ) as unknown as CalendarElement['secondaryCalendarType'];
+  }
+  @Input()
+  set hideWeekNumbers(val: CalendarElement['hideWeekNumbers']) {
+    this.elementRef.nativeElement.hideWeekNumbers = booleanInput(val);
+  }
+  get hideWeekNumbers() {
+    return this.elementRef.nativeElement.hasAttribute('hide-week-numbers');
+  }
+  @Input()
+  set selectionMode(val: CalendarElement['selectionMode']) {
+    this.elementRef.nativeElement.selectionMode = val;
+  }
+  get selectionMode() {
+    return this.elementRef.nativeElement.getAttribute(
+      'selection-mode'
+    ) as unknown as CalendarElement['selectionMode'];
   }
 
   @Output('selected-dates-change') selectedDatesChange: Observable<

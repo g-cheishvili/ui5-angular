@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import '@ui5/webcomponents/dist/ColorPicker.js';
 interface ColorPickerElement {
-  color: string;
+  color: any;
 
   // Slots
 }

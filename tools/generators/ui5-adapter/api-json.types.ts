@@ -4,6 +4,7 @@ export interface Constructor {
 
 export interface Property {
   formEvents: string[];
+  formProperty: boolean;
   name: string;
   visibility: string;
   since: string;
@@ -54,4 +55,8 @@ export interface SymbolObject {
   properties: Property[];
   slots: Slot[];
   events: Event[];
+  formData: {
+    propertyName: string;
+    events: string[]
+  }[]
 }

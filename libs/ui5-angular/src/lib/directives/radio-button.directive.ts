@@ -13,9 +13,10 @@ interface RadioButtonElement {
   disabled: BooleanInputType;
   name: string;
   readonly: BooleanInputType;
+  required: BooleanInputType;
   text: string;
   value: string;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   wrappingType: 'None' | 'Normal';
 
   // Slots
@@ -76,6 +77,13 @@ export class RadioButtonDirective {
   }
   get readonly() {
     return this.elementRef.nativeElement.hasAttribute('readonly');
+  }
+  @Input()
+  set required(val: RadioButtonElement['required']) {
+    this.elementRef.nativeElement.required = booleanInput(val);
+  }
+  get required() {
+    return this.elementRef.nativeElement.hasAttribute('required');
   }
   @Input()
   set text(val: RadioButtonElement['text']) {

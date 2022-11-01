@@ -7,13 +7,13 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/TimePicker.js';
 interface TimePickerElement {
-  dateValue: any;
   disabled: BooleanInputType;
   formatPattern: string;
   placeholder: string;
   readonly: BooleanInputType;
   value: string;
-  valueState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  valueState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
+  dateValue: any;
 
   // Slots
   valueStateMessage: HTMLElement;
@@ -29,15 +29,6 @@ interface OutputTypes {
   selector: 'ui5-time-picker',
 })
 export class TimePickerDirective {
-  @Input()
-  set dateValue(val: TimePickerElement['dateValue']) {
-    this.elementRef.nativeElement.dateValue = val;
-  }
-  get dateValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'date-value'
-    ) as unknown as TimePickerElement['dateValue'];
-  }
   @Input()
   set disabled(val: TimePickerElement['disabled']) {
     this.elementRef.nativeElement.disabled = booleanInput(val);
@@ -87,6 +78,15 @@ export class TimePickerDirective {
     return this.elementRef.nativeElement.getAttribute(
       'value-state'
     ) as unknown as TimePickerElement['valueState'];
+  }
+  @Input()
+  set dateValue(val: TimePickerElement['dateValue']) {
+    this.elementRef.nativeElement.dateValue = val;
+  }
+  get dateValue() {
+    return this.elementRef.nativeElement.getAttribute(
+      'date-value'
+    ) as unknown as TimePickerElement['dateValue'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { ButtonDirective } from './button.directive';
+
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
 
@@ -7,33 +9,50 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/TreeListItem.js';
 interface TreeListItemElement {
+  selected: BooleanInputType;
+  type: 'Active' | 'Detail' | 'Inactive';
   accessibleName: string;
   additionalText: string;
-  additionalTextState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  additionalTextState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   expanded: BooleanInputType;
   icon: string;
-  level: number;
+  level: any;
   showToggleButton: BooleanInputType;
-  type: 'Active' | 'Detail' | 'Inactive';
-  selected: BooleanInputType;
 
   // Slots
+  deleteButton: ButtonDirective['element'];
 }
 
 interface OutputTypes {
+  detailClick: void;
+
   stepIn: { item: HTMLElement };
 
   stepOut: { item: HTMLElement };
 
   toggle: { item: HTMLElement };
-
-  detailClick: void;
 }
 
 @Directive({
   selector: 'ui5-li-tree',
 })
 export class TreeListItemDirective {
+  @Input()
+  set selected(val: TreeListItemElement['selected']) {
+    this.elementRef.nativeElement.selected = booleanInput(val);
+  }
+  get selected() {
+    return this.elementRef.nativeElement.hasAttribute('selected');
+  }
+  @Input()
+  set type(val: TreeListItemElement['type']) {
+    this.elementRef.nativeElement.type = val;
+  }
+  get type() {
+    return this.elementRef.nativeElement.getAttribute(
+      'type'
+    ) as unknown as TreeListItemElement['type'];
+  }
   @Input()
   set accessibleName(val: TreeListItemElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -93,37 +112,25 @@ export class TreeListItemDirective {
   get showToggleButton() {
     return this.elementRef.nativeElement.hasAttribute('show-toggle-button');
   }
-  @Input()
-  set type(val: TreeListItemElement['type']) {
-    this.elementRef.nativeElement.type = val;
-  }
-  get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as TreeListItemElement['type'];
-  }
-  @Input()
-  set selected(val: TreeListItemElement['selected']) {
-    this.elementRef.nativeElement.selected = booleanInput(val);
-  }
-  get selected() {
-    return this.elementRef.nativeElement.hasAttribute('selected');
-  }
 
+  @Output('detail-click') detailClick: Observable<
+    CustomEvent<OutputTypes['detailClick']>
+  > = new PlaceholderOutput();
   @Output('step-in') stepIn: Observable<CustomEvent<OutputTypes['stepIn']>> =
     new PlaceholderOutput();
   @Output('step-out') stepOut: Observable<CustomEvent<OutputTypes['stepOut']>> =
     new PlaceholderOutput();
   @Output() toggle: Observable<CustomEvent<OutputTypes['toggle']>> =
     new PlaceholderOutput();
-  @Output('detail-click') detailClick: Observable<
-    CustomEvent<OutputTypes['detailClick']>
-  > = new PlaceholderOutput();
   constructor(
     private elementRef: ElementRef<TreeListItemElement & HTMLElement>
   ) {}
 
   get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
+  }
+
+  get deleteButton(): TreeListItemElement['deleteButton'] {
+    return this.elementRef.nativeElement.deleteButton;
   }
 }

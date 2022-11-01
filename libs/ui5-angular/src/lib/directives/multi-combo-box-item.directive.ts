@@ -4,9 +4,9 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/MultiComboBoxItem.js';
 interface MultiComboBoxItemElement {
-  selected: BooleanInputType;
   additionalText: string;
   text: string;
+  selected: BooleanInputType;
 
   // Slots
 }
@@ -15,13 +15,6 @@ interface MultiComboBoxItemElement {
   selector: 'ui5-mcb-item',
 })
 export class MultiComboBoxItemDirective {
-  @Input()
-  set selected(val: MultiComboBoxItemElement['selected']) {
-    this.elementRef.nativeElement.selected = booleanInput(val);
-  }
-  get selected() {
-    return this.elementRef.nativeElement.hasAttribute('selected');
-  }
   @Input()
   set additionalText(val: MultiComboBoxItemElement['additionalText']) {
     this.elementRef.nativeElement.additionalText = val;
@@ -39,6 +32,13 @@ export class MultiComboBoxItemDirective {
     return this.elementRef.nativeElement.getAttribute(
       'text'
     ) as unknown as MultiComboBoxItemElement['text'];
+  }
+  @Input()
+  set selected(val: MultiComboBoxItemElement['selected']) {
+    this.elementRef.nativeElement.selected = booleanInput(val);
+  }
+  get selected() {
+    return this.elementRef.nativeElement.hasAttribute('selected');
   }
 
   constructor(

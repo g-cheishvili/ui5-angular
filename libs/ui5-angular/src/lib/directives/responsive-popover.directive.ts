@@ -7,6 +7,11 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/ResponsivePopover.js';
 interface ResponsivePopoverElement {
+  accessibleName: string;
+  accessibleNameRef: string;
+  initialFocus: string;
+  open: BooleanInputType;
+  preventFocusRestore: BooleanInputType;
   allowTargetOverlap: BooleanInputType;
   headerText: string;
   hideArrow: BooleanInputType;
@@ -16,11 +21,6 @@ interface ResponsivePopoverElement {
   opener: any;
   placementType: 'Bottom' | 'Left' | 'Right' | 'Top';
   verticalAlign: 'Bottom' | 'Center' | 'Stretch' | 'Top';
-  accessibleName: string;
-  accessibleNameRef: string;
-  initialFocus: string;
-  open: BooleanInputType;
-  preventFocusRestore: BooleanInputType;
 
   // Slots
   footer: Array<HTMLElement>;
@@ -41,6 +41,49 @@ interface OutputTypes {
   selector: 'ui5-responsive-popover',
 })
 export class ResponsivePopoverDirective {
+  @Input()
+  set accessibleName(val: ResponsivePopoverElement['accessibleName']) {
+    this.elementRef.nativeElement.accessibleName = val;
+  }
+  get accessibleName() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name'
+    ) as unknown as ResponsivePopoverElement['accessibleName'];
+  }
+  @Input()
+  set accessibleNameRef(val: ResponsivePopoverElement['accessibleNameRef']) {
+    this.elementRef.nativeElement.accessibleNameRef = val;
+  }
+  get accessibleNameRef() {
+    return this.elementRef.nativeElement.getAttribute(
+      'accessible-name-ref'
+    ) as unknown as ResponsivePopoverElement['accessibleNameRef'];
+  }
+  @Input()
+  set initialFocus(val: ResponsivePopoverElement['initialFocus']) {
+    this.elementRef.nativeElement.initialFocus = val;
+  }
+  get initialFocus() {
+    return this.elementRef.nativeElement.getAttribute(
+      'initial-focus'
+    ) as unknown as ResponsivePopoverElement['initialFocus'];
+  }
+  @Input()
+  set open(val: ResponsivePopoverElement['open']) {
+    this.elementRef.nativeElement.open = booleanInput(val);
+  }
+  get open() {
+    return this.elementRef.nativeElement.hasAttribute('open');
+  }
+  @Input()
+  set preventFocusRestore(
+    val: ResponsivePopoverElement['preventFocusRestore']
+  ) {
+    this.elementRef.nativeElement.preventFocusRestore = booleanInput(val);
+  }
+  get preventFocusRestore() {
+    return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
+  }
   @Input()
   set allowTargetOverlap(val: ResponsivePopoverElement['allowTargetOverlap']) {
     this.elementRef.nativeElement.allowTargetOverlap = booleanInput(val);
@@ -113,49 +156,6 @@ export class ResponsivePopoverDirective {
     return this.elementRef.nativeElement.getAttribute(
       'vertical-align'
     ) as unknown as ResponsivePopoverElement['verticalAlign'];
-  }
-  @Input()
-  set accessibleName(val: ResponsivePopoverElement['accessibleName']) {
-    this.elementRef.nativeElement.accessibleName = val;
-  }
-  get accessibleName() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name'
-    ) as unknown as ResponsivePopoverElement['accessibleName'];
-  }
-  @Input()
-  set accessibleNameRef(val: ResponsivePopoverElement['accessibleNameRef']) {
-    this.elementRef.nativeElement.accessibleNameRef = val;
-  }
-  get accessibleNameRef() {
-    return this.elementRef.nativeElement.getAttribute(
-      'accessible-name-ref'
-    ) as unknown as ResponsivePopoverElement['accessibleNameRef'];
-  }
-  @Input()
-  set initialFocus(val: ResponsivePopoverElement['initialFocus']) {
-    this.elementRef.nativeElement.initialFocus = val;
-  }
-  get initialFocus() {
-    return this.elementRef.nativeElement.getAttribute(
-      'initial-focus'
-    ) as unknown as ResponsivePopoverElement['initialFocus'];
-  }
-  @Input()
-  set open(val: ResponsivePopoverElement['open']) {
-    this.elementRef.nativeElement.open = booleanInput(val);
-  }
-  get open() {
-    return this.elementRef.nativeElement.hasAttribute('open');
-  }
-  @Input()
-  set preventFocusRestore(
-    val: ResponsivePopoverElement['preventFocusRestore']
-  ) {
-    this.elementRef.nativeElement.preventFocusRestore = booleanInput(val);
-  }
-  get preventFocusRestore() {
-    return this.elementRef.nativeElement.hasAttribute('prevent-focus-restore');
   }
 
   @Output('after-close') afterClose: Observable<

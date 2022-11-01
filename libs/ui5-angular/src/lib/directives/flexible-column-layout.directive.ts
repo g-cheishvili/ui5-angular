@@ -24,7 +24,7 @@ interface FlexibleColumnLayoutElement {
     | 'TwoColumnsStartExpanded';
   midColumnVisible: BooleanInputType;
   startColumnVisible: BooleanInputType;
-  visibleColumns: number;
+  visibleColumns: any;
 
   // Slots
   endColumn: HTMLElement;

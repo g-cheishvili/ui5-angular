@@ -12,7 +12,7 @@ interface TableElement {
   accessibleName: string;
   accessibleNameRef: string;
   busy: BooleanInputType;
-  busyDelay: number;
+  busyDelay: any;
   growing: 'Button' | 'None' | 'Scroll';
   growingButtonSubtext: string;
   growingButtonText: string;

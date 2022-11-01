@@ -3,22 +3,22 @@ import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { GenericControlValueAccessor } from '../generic-control-value-accessor';
 import { fromEvent, merge } from 'rxjs';
 
-import { SelectDirective } from '../directives/select.directive';
+import { SliderDirective } from '../directives/slider.directive';
 
 @Directive({
-  selector: 'ui5-select',
+  selector: 'ui5-slider',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => SelectCva),
+      useExisting: forwardRef(() => SliderCva),
       multi: true,
     },
   ],
 })
-export class SelectCva extends GenericControlValueAccessor<
-  SelectDirective['value']
+export class SliderCva extends GenericControlValueAccessor<
+  SliderDirective['value']
 > {
-  constructor(private elementRef: ElementRef<SelectDirective['element']>) {
+  constructor(private elementRef: ElementRef<SliderDirective['element']>) {
     super({
       get value() {
         return elementRef.nativeElement.value;
@@ -27,7 +27,8 @@ export class SelectCva extends GenericControlValueAccessor<
         elementRef.nativeElement.value = val;
       },
       valueUpdatedNotifier$: merge(
-        fromEvent(elementRef.nativeElement, 'change')
+        fromEvent(elementRef.nativeElement, 'change'),
+        fromEvent(elementRef.nativeElement, 'input')
       ),
     });
   }

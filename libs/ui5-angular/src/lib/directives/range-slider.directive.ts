@@ -7,16 +7,16 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/RangeSlider.js';
 interface RangeSliderElement {
-  endValue: number;
-  startValue: number;
   accessibleName: string;
   disabled: BooleanInputType;
-  labelInterval: number;
-  max: number;
-  min: number;
+  labelInterval: any;
+  max: any;
+  min: any;
   showTickmarks: BooleanInputType;
   showTooltip: BooleanInputType;
-  step: number;
+  step: any;
+  endValue: any;
+  startValue: any;
 
   // Slots
 }
@@ -31,24 +31,6 @@ interface OutputTypes {
   selector: 'ui5-range-slider',
 })
 export class RangeSliderDirective {
-  @Input()
-  set endValue(val: RangeSliderElement['endValue']) {
-    this.elementRef.nativeElement.endValue = val;
-  }
-  get endValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'end-value'
-    ) as unknown as RangeSliderElement['endValue'];
-  }
-  @Input()
-  set startValue(val: RangeSliderElement['startValue']) {
-    this.elementRef.nativeElement.startValue = val;
-  }
-  get startValue() {
-    return this.elementRef.nativeElement.getAttribute(
-      'start-value'
-    ) as unknown as RangeSliderElement['startValue'];
-  }
   @Input()
   set accessibleName(val: RangeSliderElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -114,6 +96,24 @@ export class RangeSliderDirective {
     return this.elementRef.nativeElement.getAttribute(
       'step'
     ) as unknown as RangeSliderElement['step'];
+  }
+  @Input()
+  set endValue(val: RangeSliderElement['endValue']) {
+    this.elementRef.nativeElement.endValue = val;
+  }
+  get endValue() {
+    return this.elementRef.nativeElement.getAttribute(
+      'end-value'
+    ) as unknown as RangeSliderElement['endValue'];
+  }
+  @Input()
+  set startValue(val: RangeSliderElement['startValue']) {
+    this.elementRef.nativeElement.startValue = val;
+  }
+  get startValue() {
+    return this.elementRef.nativeElement.getAttribute(
+      'start-value'
+    ) as unknown as RangeSliderElement['startValue'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

@@ -2,7 +2,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
 
 import '@ui5/webcomponents/dist/Toast.js';
 interface ToastElement {
-  duration: number;
+  duration: any;
   placement:
     | 'BottomCenter'
     | 'BottomEnd'

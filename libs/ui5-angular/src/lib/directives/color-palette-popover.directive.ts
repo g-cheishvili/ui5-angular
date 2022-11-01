@@ -7,7 +7,7 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/ColorPalettePopover.js';
 interface ColorPalettePopoverElement {
-  defaultColor: string;
+  defaultColor: any;
   showDefaultColor: BooleanInputType;
   showMoreColors: BooleanInputType;
   showRecentColors: BooleanInputType;

@@ -5,7 +5,7 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 import '@ui5/webcomponents/dist/BusyIndicator.js';
 interface BusyIndicatorElement {
   active: BooleanInputType;
-  delay: number;
+  delay: any;
   size: 'Large' | 'Medium' | 'Small';
   text: string;
 

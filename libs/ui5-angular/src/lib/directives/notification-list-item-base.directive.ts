@@ -10,7 +10,7 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 import '@ui5/webcomponents-fiori/dist/NotificationListItemBase.js';
 interface NotificationListItemBaseElement {
   busy: BooleanInputType;
-  busyDelay: number;
+  busyDelay: any;
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: BooleanInputType;
   showClose: BooleanInputType;

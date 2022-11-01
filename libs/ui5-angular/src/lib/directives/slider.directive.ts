@@ -7,15 +7,15 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/Slider.js';
 interface SliderElement {
-  value: number;
   accessibleName: string;
   disabled: BooleanInputType;
-  labelInterval: number;
-  max: number;
-  min: number;
+  labelInterval: any;
+  max: any;
+  min: any;
   showTickmarks: BooleanInputType;
   showTooltip: BooleanInputType;
-  step: number;
+  step: any;
+  value: any;
 
   // Slots
 }
@@ -30,15 +30,6 @@ interface OutputTypes {
   selector: 'ui5-slider',
 })
 export class SliderDirective {
-  @Input()
-  set value(val: SliderElement['value']) {
-    this.elementRef.nativeElement.value = val;
-  }
-  get value() {
-    return this.elementRef.nativeElement.getAttribute(
-      'value'
-    ) as unknown as SliderElement['value'];
-  }
   @Input()
   set accessibleName(val: SliderElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -104,6 +95,15 @@ export class SliderDirective {
     return this.elementRef.nativeElement.getAttribute(
       'step'
     ) as unknown as SliderElement['step'];
+  }
+  @Input()
+  set value(val: SliderElement['value']) {
+    this.elementRef.nativeElement.value = val;
+  }
+  get value() {
+    return this.elementRef.nativeElement.getAttribute(
+      'value'
+    ) as unknown as SliderElement['value'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =

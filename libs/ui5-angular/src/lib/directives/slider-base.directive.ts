@@ -9,12 +9,12 @@ import '@ui5/webcomponents/dist/SliderBase.js';
 interface SliderBaseElement {
   accessibleName: string;
   disabled: BooleanInputType;
-  labelInterval: number;
-  max: number;
-  min: number;
+  labelInterval: any;
+  max: any;
+  min: any;
   showTickmarks: BooleanInputType;
   showTooltip: BooleanInputType;
-  step: number;
+  step: any;
 
   // Slots
 }

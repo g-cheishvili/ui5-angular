@@ -1,5 +1,7 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
+import { ButtonDirective } from './button.directive';
+
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
 
@@ -7,17 +9,18 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents/dist/StandardListItem.js';
 interface StandardListItemElement {
+  selected: BooleanInputType;
+  type: 'Active' | 'Detail' | 'Inactive';
   accessibleName: string;
   additionalText: string;
-  additionalTextState: 'None' | 'Success' | 'Warning' | 'Error' | 'Information';
+  additionalTextState: 'Error' | 'Information' | 'None' | 'Success' | 'Warning';
   description: string;
   icon: string;
   iconEnd: BooleanInputType;
   image: string;
-  type: 'Active' | 'Detail' | 'Inactive';
-  selected: BooleanInputType;
 
   // Slots
+  deleteButton: ButtonDirective['element'];
 }
 
 interface OutputTypes {
@@ -28,6 +31,22 @@ interface OutputTypes {
   selector: 'ui5-li',
 })
 export class StandardListItemDirective {
+  @Input()
+  set selected(val: StandardListItemElement['selected']) {
+    this.elementRef.nativeElement.selected = booleanInput(val);
+  }
+  get selected() {
+    return this.elementRef.nativeElement.hasAttribute('selected');
+  }
+  @Input()
+  set type(val: StandardListItemElement['type']) {
+    this.elementRef.nativeElement.type = val;
+  }
+  get type() {
+    return this.elementRef.nativeElement.getAttribute(
+      'type'
+    ) as unknown as StandardListItemElement['type'];
+  }
   @Input()
   set accessibleName(val: StandardListItemElement['accessibleName']) {
     this.elementRef.nativeElement.accessibleName = val;
@@ -89,22 +108,6 @@ export class StandardListItemDirective {
       'image'
     ) as unknown as StandardListItemElement['image'];
   }
-  @Input()
-  set type(val: StandardListItemElement['type']) {
-    this.elementRef.nativeElement.type = val;
-  }
-  get type() {
-    return this.elementRef.nativeElement.getAttribute(
-      'type'
-    ) as unknown as StandardListItemElement['type'];
-  }
-  @Input()
-  set selected(val: StandardListItemElement['selected']) {
-    this.elementRef.nativeElement.selected = booleanInput(val);
-  }
-  get selected() {
-    return this.elementRef.nativeElement.hasAttribute('selected');
-  }
 
   @Output('detail-click') detailClick: Observable<
     CustomEvent<OutputTypes['detailClick']>
@@ -115,5 +118,9 @@ export class StandardListItemDirective {
 
   get element(): typeof this.elementRef['nativeElement'] {
     return this.elementRef.nativeElement;
+  }
+
+  get deleteButton(): StandardListItemElement['deleteButton'] {
+    return this.elementRef.nativeElement.deleteButton;
   }
 }

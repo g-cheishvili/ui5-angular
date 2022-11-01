@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
-import { AvatarDirective } from './avatar.directive';
 import { NotificationActionDirective } from './notification-action.directive';
+import { AvatarDirective } from './avatar.directive';
 
 import { PlaceholderOutput } from '../utils/placeholder-output';
 import { Observable } from 'rxjs';
@@ -10,18 +10,18 @@ import { booleanInput, BooleanInputType } from '../utils/boolean-input';
 
 import '@ui5/webcomponents-fiori/dist/NotificationListItem.js';
 interface NotificationListItemElement {
-  wrappingType: 'None' | 'Normal';
   busy: BooleanInputType;
-  busyDelay: number;
+  busyDelay: any;
   priority: 'High' | 'Low' | 'Medium' | 'None';
   read: BooleanInputType;
   showClose: BooleanInputType;
   titleText: string;
+  wrappingType: 'None' | 'Normal';
 
   // Slots
+  actions: Array<NotificationActionDirective['element']>;
   avatar: AvatarDirective['element'];
   footnotes: Array<HTMLElement>;
-  actions: Array<NotificationActionDirective['element']>;
 }
 
 interface OutputTypes {
@@ -32,15 +32,6 @@ interface OutputTypes {
   selector: 'ui5-li-notification',
 })
 export class NotificationListItemDirective {
-  @Input()
-  set wrappingType(val: NotificationListItemElement['wrappingType']) {
-    this.elementRef.nativeElement.wrappingType = val;
-  }
-  get wrappingType() {
-    return this.elementRef.nativeElement.getAttribute(
-      'wrapping-type'
-    ) as unknown as NotificationListItemElement['wrappingType'];
-  }
   @Input()
   set busy(val: NotificationListItemElement['busy']) {
     this.elementRef.nativeElement.busy = booleanInput(val);
@@ -89,6 +80,15 @@ export class NotificationListItemDirective {
       'title-text'
     ) as unknown as NotificationListItemElement['titleText'];
   }
+  @Input()
+  set wrappingType(val: NotificationListItemElement['wrappingType']) {
+    this.elementRef.nativeElement.wrappingType = val;
+  }
+  get wrappingType() {
+    return this.elementRef.nativeElement.getAttribute(
+      'wrapping-type'
+    ) as unknown as NotificationListItemElement['wrappingType'];
+  }
 
   @Output() close: Observable<CustomEvent<OutputTypes['close']>> =
     new PlaceholderOutput();
@@ -100,15 +100,15 @@ export class NotificationListItemDirective {
     return this.elementRef.nativeElement;
   }
 
+  get actions(): NotificationListItemElement['actions'] {
+    return this.elementRef.nativeElement.actions;
+  }
+
   get avatar(): NotificationListItemElement['avatar'] {
     return this.elementRef.nativeElement.avatar;
   }
 
   get footnotes(): NotificationListItemElement['footnotes'] {
     return this.elementRef.nativeElement.footnotes;
-  }
-
-  get actions(): NotificationListItemElement['actions'] {
-    return this.elementRef.nativeElement.actions;
   }
 }

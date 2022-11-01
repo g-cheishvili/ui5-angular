@@ -1,11 +1,11 @@
 import { Directive, ElementRef, Input, Output } from '@angular/core';
 
 import { AvatarDirective } from './avatar.directive';
+import { NotificationListGroupItemDirective } from './notification-list-group-item.directive';
+import { NotificationListItemDirective } from './notification-list-item.directive';
 import { CustomListItemDirective } from './custom-list-item.directive';
 import { GroupHeaderListItemDirective } from './group-header-list-item.directive';
 import { StandardListItemDirective } from './standard-list-item.directive';
-import { NotificationListGroupItemDirective } from './notification-list-group-item.directive';
-import { NotificationListItemDirective } from './notification-list-item.directive';
 import { InputDirective } from './input.directive';
 import { ButtonDirective } from './button.directive';
 
@@ -34,11 +34,11 @@ interface ShellBarElement {
   // Slots
   logo: AvatarDirective['element'];
   menuItems: Array<
+    | NotificationListGroupItemDirective['element']
+    | NotificationListItemDirective['element']
     | CustomListItemDirective['element']
     | GroupHeaderListItemDirective['element']
     | StandardListItemDirective['element']
-    | NotificationListGroupItemDirective['element']
-    | NotificationListItemDirective['element']
   >;
   profile: AvatarDirective['element'];
   searchField: InputDirective['element'];

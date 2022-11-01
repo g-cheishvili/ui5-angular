@@ -14,6 +14,7 @@ interface SwitchElement {
   disabled: BooleanInputType;
   textOff: string;
   textOn: string;
+  tooltip: string;
 
   // Slots
 }
@@ -84,6 +85,15 @@ export class SwitchDirective {
     return this.elementRef.nativeElement.getAttribute(
       'text-on'
     ) as unknown as SwitchElement['textOn'];
+  }
+  @Input()
+  set tooltip(val: SwitchElement['tooltip']) {
+    this.elementRef.nativeElement.tooltip = val;
+  }
+  get tooltip() {
+    return this.elementRef.nativeElement.getAttribute(
+      'tooltip'
+    ) as unknown as SwitchElement['tooltip'];
   }
 
   @Output() change: Observable<CustomEvent<OutputTypes['change']>> =
