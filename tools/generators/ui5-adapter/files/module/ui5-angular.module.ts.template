@@ -3,10 +3,11 @@ import {CommonModule} from '@angular/common';
 <% for(const imp of imports) { %>
 import { <%= imp.className %> } from './<%= imp.fileName %>';<% } %>
 import {RtlDirective} from './directives/rtl.directive';
+import {CompactDirective} from './directives/compact.directive';
 
 const declarations = [
   RtlDirective,
-  <% for(const imp of imports) { %>
+  CompactDirective,<% for(const imp of imports) { %>
   <%= imp.className %>,<% } %>
 ];
 

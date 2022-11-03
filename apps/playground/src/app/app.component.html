@@ -4,3 +4,11 @@
     <ui5-cb-item text="rtl"></ui5-cb-item>
   </ui5-combobox>
 </div>
+
+
+<div [ui5Compact]="isCompact">
+  <ui5-combobox placeholder="Enter value" [ngModel]="isCompact ? 'compact' : 'cozy'" (ngModelChange)="setCompact($event === 'compact')">
+    <ui5-cb-item text="compact"></ui5-cb-item>
+    <ui5-cb-item text="cozy"></ui5-cb-item>
+  </ui5-combobox>
+</div>

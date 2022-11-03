@@ -5,15 +5,16 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class RtlService {
-  private _isRtl$ = new BehaviorSubject<boolean>(false);
+  private _isRtl = new BehaviorSubject(false);
 
-  constructor() {
-    this._isRtl$.subscribe((isRtl) => {
-      document.body.dir = isRtl ? 'rtl' : 'ltr';
-    });
+  isRtlChange = this._isRtl.asObservable();
+
+  get isRtl() {
+    return this._isRtl.value;
   }
 
-  setRtl(isRtl: boolean) {
-    this._isRtl$.next(isRtl);
+  set isRtl(isRtl: boolean) {
+    this._isRtl.next(isRtl);
+    document.body.dir = isRtl ? 'rtl' : 'ltr';
   }
 }

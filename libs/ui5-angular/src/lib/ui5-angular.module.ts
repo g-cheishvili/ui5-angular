@@ -193,10 +193,11 @@ import { TreeListItemDirective } from './directives/tree-list-item.directive';
 import { WheelSliderDirective } from './directives/wheel-slider.directive';
 import { YearPickerDirective } from './directives/year-picker.directive';
 import { RtlDirective } from './directives/rtl.directive';
+import { CompactDirective } from './directives/compact.directive';
 
 const declarations = [
   RtlDirective,
-
+  CompactDirective,
   BarEndContentSlot,
   BarStartContentSlot,
   BarDirective,

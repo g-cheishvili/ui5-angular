@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import '@ui5/webcomponents/dist/Calendar.js';
-import {MultiComboBoxDirective, RtlService} from "ui5-angular";
+import {CompactService, MultiComboBoxDirective, RtlService} from "ui5-angular";
 
 @Component({
   selector: 'ui-angular-root',
@@ -13,11 +13,17 @@ export class AppComponent {
   multiComboBox!: MultiComboBoxDirective;
   someInputVal!: string;
   rangeSliderValue = {startValue: 1, endValue: 10};
+  isCompact = false;
 
-  constructor(private rtlService: RtlService) {
+  constructor(private rtlService: RtlService, private compactService: CompactService) {
   }
 
   changeHandler($event: string) {
-    this.rtlService.setRtl($event === 'rtl');
+    this.rtlService.isRtl = ($event === 'rtl');
+  }
+
+  setCompact(b: boolean) {
+    this.isCompact = b;
+    this.compactService.isCompact = b;
   }
 }
